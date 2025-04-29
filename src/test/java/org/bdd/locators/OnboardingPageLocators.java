@@ -71,7 +71,7 @@ public class OnboardingPageLocators {
     public WebElement allowBtnScreen2;
 
     @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_message")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"“Man Utd Stg” Would Like to Send You Notifications\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"“Man Utd” Would Like to Send You Notifications\"]")
     public WebElement allowNotificationScreen2;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='com.android.permissioncontroller:id/permission_allow_button']")
@@ -101,7 +101,7 @@ public class OnboardingPageLocators {
     @iOSXCUITFindBy(accessibility = "Select your favourite player for access to exclusive content, regular updates and related offers")
     public WebElement selectionScreen3;
 
-    @AndroidFindBy(accessibility = "Disabled Confirm button")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Disabled Confirm button\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONFIRM\"]")
     public WebElement confirmButtonScreen3;
 
@@ -192,5 +192,13 @@ public class OnboardingPageLocators {
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout//android.widget.FrameLayout//androidx.recyclerview.widget.RecyclerView//android.widget.FrameLayout//android.widget.ImageView")
     @iOSXCUITFindBy(accessibility = "Join now for free and be part of United's global fan community to enjoy exclusive content perks & rewards")
 	public List<WebElement> playerslist;
+    
+    @AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/signup_screen_text")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/../XCUIElementTypeStaticText")
+	public List<WebElement> signUpThreeScreens;
+    
+    @AndroidFindBy(xpath = "//android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")
+    //@iOSXCUITFindBy(accessibility = "Join now for free and be part of United's global fan community to enjoy exclusive content perks & rewards")
+	public List<WebElement> playerCategeoryVerify;
 
 }

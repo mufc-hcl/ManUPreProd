@@ -569,4 +569,10 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Videos\"]")
 	public WebElement video;
 	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Ask App Not to Track\"]")
+	public WebElement askAppNotToTrack;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
+	public WebElement clicksOnContinueButton;
+	
 }

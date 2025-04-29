@@ -72,7 +72,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username                  | password  |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario: [MUTV]TC010 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
     Given user navigates to manu android application
@@ -118,7 +118,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
 
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
@@ -153,7 +153,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | notificationbutton | username                  | password  |
-      | allow_button       | subscribeuser@yopmail.com | Manu@1234 |
+      | allow_button       | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
     Given user navigates to manu android application
@@ -179,7 +179,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username             | password   |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
 
   Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen
@@ -205,7 +205,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 #below two test caess added by Automation team and moving to regression pack
   #Scenario Outline: [MUTV]TC015 Verify podcaset in MUTV screen

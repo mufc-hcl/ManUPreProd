@@ -16,6 +16,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OnboardingPage extends Common {
@@ -94,10 +95,11 @@ public class OnboardingPage extends Common {
         }
     }
 
-    // screen 2 reusable methods -getting all text values
+    //screen 2 reusable methods -getting all text values
     public String getTextforWelcomeHeading() {
+    	 String device = GlobalParams.getPlatformName();
+         ;
         WebElement ele = null;
-      String device = GlobalParams.getPlatformName();
         try {
             if (device.equalsIgnoreCase("android")) {
                 waitForVisibilityFluentWait(onboardingPageLocators.welcomeToTheManUtdApp, 60);
@@ -367,23 +369,28 @@ public class OnboardingPage extends Common {
         }
     }
 
-    public String getMenScreen3() {
-      String device = GlobalParams.getPlatformName();
+    public ArrayList<String> getMenScreen3() {
+        String device = GlobalParams.getPlatformName();
+        ArrayList<String> verifyPlayerCategeory = new ArrayList<>();
         try {
-            if (device.equalsIgnoreCase("android")) {
-                waitForVisibilityFluentWait(onboardingPageLocators.menButtonScreen3, 60);
-                ExtentsReportManager.extentReportLogging("pass", "Returns men button in screen 3");
-                return onboardingPageLocators.menButtonScreen3.getText();
-            } else {
-                waitForVisibilityFluentWait(onboardingPageLocators.menButtonScreen3, 60);
-                ExtentsReportManager.extentReportLogging("pass", "Returns men button in screen 3 ");
-                return onboardingPageLocators.menButtonScreen3.getDomAttribute("label");
-            }
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getMenScreen3()<br />" + e);
-            throw e;
-        }
-    }
+  			if (device.equalsIgnoreCase("android")) {
+  				for (int i = 0; i < onboardingPageLocators.playerCategeoryVerify.size(); i++) {
+  					verifyPlayerCategeory.add(onboardingPageLocators.playerCategeoryVerify.get(i).getText().toUpperCase());
+  				}
+  				ExtentsReportManager.extentReportLogging("pass", "Returns player categeory text from UI" );
+  			} else {
+  				for (int i = 0; i < onboardingPageLocators.playerCategeoryVerify.size(); i++) {
+  					verifyPlayerCategeory.add(onboardingPageLocators.playerCategeoryVerify.get(i).getDomAttribute("label").toUpperCase());
+  				}
+  				ExtentsReportManager.extentReportLogging("pass", "Returns player categeory text from UI" );
+  			}
+  			return verifyPlayerCategeory;
+  		} catch (Exception e) {
+  			ExtentsReportManager.extentReportLogging("fail",
+  					"Exception occurred in function-getMenScreen3()<br />" + e);
+  			throw e;
+  		}
+      }
 
     public String getWomenScreen3() {
       String device = GlobalParams.getPlatformName();
@@ -504,22 +511,27 @@ public class OnboardingPage extends Common {
         }
     }
 
-    public String getbutton1Screen4() {
-      String device = GlobalParams.getPlatformName();
-        try {
-            if (device.equalsIgnoreCase("android")) {
-                waitForVisibilityFluentWait(onboardingPageLocators.fullMutvAccessScreen4, 30);
-                ExtentsReportManager.extentReportLogging("pass", "Returned full mutv access text ");
-                return onboardingPageLocators.fullMutvAccessScreen4.getText();
-            } else {
-                waitForVisibilityFluentWait(onboardingPageLocators.fullMutvAccessScreen4, 30);
-                ExtentsReportManager.extentReportLogging("pass", "Returned full mutv access text");
-                return onboardingPageLocators.fullMutvAccessScreen4.getDomAttribute("label");
-            }
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getbutton1Screen4()<br />" + e);
-            throw e;
-        }
+    public ArrayList<String> getbutton1Screen4()  {
+		String device = GlobalParams.getPlatformName();
+		ArrayList<String> signUpscreen = new ArrayList<>();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				for (int i = 0; i < onboardingPageLocators.signUpThreeScreens.size(); i++) {
+					signUpscreen.add(onboardingPageLocators.signUpThreeScreens.get(i).getText().replace("INSIDER ACCESS", "FULL MUTV ACCESS").toUpperCase());
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Returns signUpscreen text" );
+			} else {
+				for (int i = 0; i < onboardingPageLocators.signUpThreeScreens.size(); i++) {
+					signUpscreen.add(onboardingPageLocators.signUpThreeScreens.get(i).getDomAttribute("label").replace("INSIDER ACCESS", "FULL MUTV ACCESS").toUpperCase());
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Returns signUpscreen text" );
+			}
+			return signUpscreen;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getbutton1Screen4()<br />" + e);
+			throw e;
+		}
     }
 
     public String getButton2Screen4() {

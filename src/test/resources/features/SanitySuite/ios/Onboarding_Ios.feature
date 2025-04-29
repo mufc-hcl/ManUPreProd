@@ -19,7 +19,7 @@ Feature: Onboarding
     And user clicks on allow button in ios
     Then user validate all objects in allow notifcation screen in ios
       | notification                                       | allow | dontallow   |
-      | “Man Utd Stg” Would Like to Send You Notifications | Allow | Don’t Allow |
+      | “Man Utd” Would Like to Send You Notifications | Allow | Don’t Allow |
     And user clicks on "<notificationbutton>" button in notification screen in ios
     Then user validates all objects in screen three in ios using Api
 

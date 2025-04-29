@@ -2444,5 +2444,49 @@ public class ExplorePage extends Common {
 			throw e;
 		}
 	}
+	
+	public void askAppNotToTrack() throws Exception {
+		try {
+//            waitForVisibilityFluentWait(explorePageLocators.weUseCookiesTexts);
+			if (explorePageLocators.askAppNotToTrack.isDisplayed()) {
+//                waitForVisibilityFluentWait(explorePageLocators.okButtonCookiesScreen);
+				explorePageLocators.askAppNotToTrack.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on Ask App Not to Track");
+			}
+			Thread.sleep(1000);
+		} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-askAppNotToTrack()<br />" + e);
+			throw e;
+		}
+	}
 
-}
+	public void clickOnContinueButton() throws Exception {
+		try {
+//            waitForVisibilityFluentWait(explorePageLocators.weUseCookiesTexts);
+			if (explorePageLocators.clicksOnContinueButton.isDisplayed()) {
+//                waitForVisibilityFluentWait(explorePageLocators.okButtonCookiesScreen);
+				explorePageLocators.clicksOnContinueButton.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on continue button");
+			}
+			Thread.sleep(1000);
+		} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickOnContinueButton()<br />" + e);
+			throw e;
+		}
+	}
+		
+	}
+		
+
+
+

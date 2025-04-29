@@ -65,7 +65,7 @@ Feature: My United features
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 
 
@@ -99,7 +99,7 @@ Feature: My United features
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC004 Validate the Season card navigation
     Given user navigates to manu ios application
@@ -127,7 +127,7 @@ Feature: My United features
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 
   Scenario Outline: [My United]TC007 Click on the Primary and Secondary CTA buttons displayed below the jersey card section
@@ -157,7 +157,7 @@ Feature: My United features
     #Then user validates shop now is displayed in ios
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu ios application
@@ -184,7 +184,7 @@ Feature: My United features
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu ios application
@@ -224,7 +224,7 @@ Feature: My United features
 
     Examples:
       | username             | password | Daily streaks |
-      | Manutest@yopmail.com | Manu@123 | DAILY STREAKS |
+      | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS |
 
 
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
@@ -265,7 +265,7 @@ Feature: My United features
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
   
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
     Given user navigates to manu ios application
@@ -349,5 +349,5 @@ Feature: My United features
     
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
       

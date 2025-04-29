@@ -62,7 +62,7 @@ Feature: IDM
     #| SIGN FOR UNITED | LOG IN       |
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 #not feasible due to multi factor authentication
 #  Scenario Outline: [IDM]TC008 &TC009 Verify that user is able to Login using valid credentials using social channel,User should Not see Change email & change password in seeting screen however user should see Edit profile, Preference center and Log out.
@@ -132,7 +132,7 @@ Feature: IDM
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario: [IDM]TC0011 Verify that user is able to sign up natively & an email should get triggered with expected email template & post sucessfuly confirmation of email user is able to log in using the credntials successfully.
    #Partial script till entering the values in the signup screen
@@ -217,4 +217,4 @@ Feature: IDM
 
     Examples:
       | username             | password |
-      | Manutest@yopmail.com | Manu@123 |
+      | manupreprod@yopmail.com | Manu@123 |

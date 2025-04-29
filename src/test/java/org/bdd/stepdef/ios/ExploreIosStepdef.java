@@ -674,9 +674,11 @@ public class ExploreIosStepdef {
     }
 
     @And("user clicks on ok in the cookies screen in ios")
-    public void userClicksOnOkInTheCookiesScreenInIos() {
+    public void userClicksOnOkInTheCookiesScreenInIos() throws Exception {
         try {
             explorePage.clicksOnOkButtonInCookiesScreenIos();
+            explorePage.clickOnContinueButton();
+            explorePage.askAppNotToTrack();
             ExtentsReportManager.extentReportLogging("info", "Clicked on ok in the cookies screen in ios");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail",

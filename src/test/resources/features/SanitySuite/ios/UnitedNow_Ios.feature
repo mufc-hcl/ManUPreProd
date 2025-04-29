@@ -268,7 +268,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -291,7 +291,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     And user click on My United in bottom tab in ios
@@ -306,7 +306,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario: [United now]TC0019 Validate the Live Video functionality in United Now if enabled from CMS
     Given user navigates to manu ios application
@@ -340,7 +340,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC021 - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -363,7 +363,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC022 - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -386,7 +386,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC023 - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -409,7 +409,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC024 - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -432,7 +432,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario Outline: [United now]TC025 - Validate the functionality of the Image Card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -455,7 +455,7 @@ Feature: United now
 
     Examples: 
       | username                  | password  |
-      | subscribeuser@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@1234 |
 
   Scenario: [United now]TC0026 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu ios application

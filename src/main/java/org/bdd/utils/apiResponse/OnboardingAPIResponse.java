@@ -160,18 +160,28 @@ public class OnboardingAPIResponse extends BaseApiService {
 		}
 	}
 
-	public String geMenFromAPIScThreeApi(String endpoint) throws Exception {
+	public ArrayList<String> geMenFromAPIScThreeApi(String endpoint) throws Exception {
 		try {
-			Response res = getResponse(endpoint);
+			ArrayList<String> verifyPlayerCategeory = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String menScThree=js.getString("PageFilterResponse.response.docs[0].label_t");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-		return menScThree;
+			int size = js.getList("PageFilterResponse.response.docs").size();
+			System.out.println("size=" + size);
+			for (int i = 0; i < size; i++) {
+				verifyPlayerCategeory.add(
+						js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
+			}
+			ExtentsReportManager.extentReportLogging("info", "Getting the player categeory tabs from API" + verifyPlayerCategeory);
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return verifyPlayerCategeory;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function geMenFromAPIScThreeApi()" + e);
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function geMenFromAPIScThreeApi()" + e);
 			throw e;
 		}
 	}
+
 
 	public String getWomenFromAPIScThreeApi(String endpoint) throws Exception {
 		try {
@@ -251,15 +261,24 @@ public class OnboardingAPIResponse extends BaseApiService {
 		}
 			}
 
-	public String getButton1FromAPIScFourApi(String endpoint) throws Exception {
+	public ArrayList<String> getButton1FromAPIScFourApi(String endpoint) throws Exception {
 		try {
-			Response res = getResponse(endpoint);
+			ArrayList<String> signUpThreeTabs = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String fullMUTVAccessScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreentextbox_t");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-		return fullMUTVAccessScFour;
+			int size = js.getList("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs").size();
+			System.out.println("size=" + size);
+			for (int i = 0; i < size; i++) {
+				signUpThreeTabs.add(
+						js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[" + i + "].onboardingsignupscreentextbox_t").toUpperCase());
+			}
+			ExtentsReportManager.extentReportLogging("info", "Getting the signup tabs" + signUpThreeTabs);
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return signUpThreeTabs;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getButton1FromAPIScFourApi()" + e);
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getButton1FromAPIScFourApi()" + e);
 			throw e;
 		}
 	}

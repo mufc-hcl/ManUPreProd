@@ -100,7 +100,7 @@ public class OnboardingIosStepDef {
 	public void userValidatesAllObjectsInScreenThreeInIos() throws Throwable {
 		try {
             String welcomeTextFromAPIScThree = onboardingAPIResponse.getWelcomeTextFromAPIScThreeApi("onBoardingScreenOneEndPoint");
-            //String menFromAPIScThree = onboardingAPIResponse.geMenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
+            //ArrayList<String> menFromAPIScThree = onboardingAPIResponse.geMenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
             //String womenFromAPIScThree = onboardingAPIResponse.getWomenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
             //String swipeToSelectFromAPIScThree = onboardingAPIResponse.getSwipeToSelectFromAPIScThreeApi("onBoardingScreenOneEndPoint");
             String selectionFromAPIScThree = onboardingAPIResponse.getSelectionFromAPIScThreeApi("onBoardingScreenOneEndPoint");
@@ -110,8 +110,11 @@ public class OnboardingIosStepDef {
             String actualWelcomeText = onboardingPage.getTextForWelcomeHeadingScreen3();
             soft.assertEquals(actualWelcomeText.toUpperCase(), welcomeTextFromAPIScThree.toUpperCase());
             
-//            String actualMen = onboardingPage.getMenScreen3();
-//            soft.assertEquals(actualMen.toUpperCase(), menFromAPIScThree.toUpperCase());
+//          ArrayList<String> actualMen = onboardingPage.getMenScreen3();
+//          ExtentsReportManager.extentReportLogging("info","Expected  player categeory tabs from API" + menFromAPIScThree);
+//          ExtentsReportManager.extentReportLogging("info","Actual player categeory tabs From UI" + onboardingPage.getMenScreen3());
+//          soft.assertTrue(menFromAPIScThree.containsAll(actualMen));
+//          soft.assertEquals(actualMen.toUpperCase(), menFromAPIScThree.toUpperCase());
             
 //            String actualWomen = onboardingPage.getWomenScreen3();
 //            soft.assertEquals(actualWomen.toUpperCase(), womenFromAPIScThree.toUpperCase());
@@ -141,32 +144,38 @@ public class OnboardingIosStepDef {
 try {
         	
             String welcomeTextFromAPIScFour = onboardingAPIResponse.getWelcomeTextFromAPIScFourApi("onBoardingScreenOneEndPoint");
-            String button1FromAPIScFour = onboardingAPIResponse.getButton1FromAPIScFourApi("onBoardingScreenOneEndPoint");
-            String button2FromAPIScFour = onboardingAPIResponse.getbutton2FromAPIScFourApi("onBoardingScreenOneEndPoint");
-            String button3FromAPIScFour = onboardingAPIResponse.getbutton3FromAPIScFourApi("onBoardingScreenOneEndPoint");
+            ArrayList<String> button1FromAPIScFour = onboardingAPIResponse.getButton1FromAPIScFourApi("onBoardingScreenOneEndPoint");
+            //String button2FromAPIScFour = onboardingAPIResponse.getbutton2FromAPIScFourApi("onBoardingScreenOneEndPoint");
+            //String button3FromAPIScFour = onboardingAPIResponse.getbutton3FromAPIScFourApi("onBoardingScreenOneEndPoint");
             String getExclusiveAccessText = onboardingAPIResponse.getgetExclusiveAccessTextApi("onBoardingScreenOneEndPoint");
-            //String descFromAPIScFour = onboardingAPIResponse.getDescFromAPIScFourApi("onBoardingScreenOneEndPoint");
+            String descFromAPIScFour = onboardingAPIResponse.getDescFromAPIScFourApi("onBoardingScreenOneEndPoint");
             String signForUnitedButtonFromAPIScFour = onboardingAPIResponse.getsignForUnitedButtonFromAPIScFourApi("onBoardingScreenOneEndPoint");
             String skipButtonFromAPIScFour = onboardingAPIResponse.getskipButtonFromAPIScFourApi("onBoardingScreenOneEndPoint");
-            String myUnitedBenefitsFromAPIScFour = onboardingAPIResponse.getmyUnitedBenefitsFromAPIScFourApi("onBoardingScreenOneEndPoint");
+            //String myUnitedBenefitsFromAPIScFour = onboardingAPIResponse.getmyUnitedBenefitsFromAPIScFourApi("onBoardingScreenOneEndPoint");
 
             String actualWelcomeText = onboardingPage.getTextForWelcomeHeadingScreen4();
             soft.assertEquals(actualWelcomeText.toUpperCase(), welcomeTextFromAPIScFour.toUpperCase());
             
-            String actualButton1 = onboardingPage.getbutton1Screen4();
-            soft.assertEquals(actualButton1.toUpperCase(), button1FromAPIScFour.toUpperCase());
+            ArrayList<String> actualButton1 = onboardingPage.getbutton1Screen4();
+            ExtentsReportManager.extentReportLogging("info","Expected  sign up three tabs" + button1FromAPIScFour);
+            ExtentsReportManager.extentReportLogging("info","Actual Shop menu items" + onboardingPage.getbutton1Screen4());
+            //soft.assertEquals(actualButton1, onboardingPage.getbutton1Screen4());
+            soft.assertTrue(onboardingPage.getbutton1Screen4().containsAll(button1FromAPIScFour));
+
             
-            String actualButton2 = onboardingPage.getButton2Screen4();
-            soft.assertEquals(actualButton2.toUpperCase(), button2FromAPIScFour.toUpperCase());
-            
-            String actualButton3 = onboardingPage.getButton3Screen4();
-            soft.assertEquals(actualButton3.toUpperCase(), button3FromAPIScFour.toUpperCase());
+//            String actualButton2 = onboardingPage.getButton2Screen4();
+//            soft.assertEquals(actualButton2.toUpperCase(), button2FromAPIScFour.toUpperCase());
+//            
+//            String actualButton3 = onboardingPage.getButton3Screen4();
+//            soft.assertEquals(actualButton3.toUpperCase(), button3FromAPIScFour.toUpperCase());
             
             String actualGetExclusiveAccessText = onboardingPage.getGetExclusiveAccessTextScreen4();
             soft.assertEquals(actualGetExclusiveAccessText.toUpperCase(), getExclusiveAccessText.toUpperCase());
             
-//            String actualDesc = onboardingPage.getDescScreen4();
-//            soft.assertEquals(actualDesc.toUpperCase(), descFromAPIScFour.toUpperCase());
+            
+            String actualDesc = onboardingPage.getDescScreen4();
+            soft.assertTrue(actualDesc.contains(descFromAPIScFour));
+            //soft.assertEquals(actualDesc.toUpperCase(), descFromAPIScFour.toUpperCase());
             
             String actualSignForUnitedButton = onboardingPage.getSignForUnitedButtonScreen4();
             soft.assertEquals(actualSignForUnitedButton.toUpperCase(), signForUnitedButtonFromAPIScFour.toUpperCase());
@@ -174,7 +183,7 @@ try {
             String actualSkipButton = onboardingPage.getSkipButtonScreen4();
             soft.assertEquals(actualSkipButton.toUpperCase(), skipButtonFromAPIScFour.toUpperCase());
             
-            String actualMyUnitedBenefits = onboardingPage.getMyUnitedBenefitsScreen4();
+            //String actualMyUnitedBenefits = onboardingPage.getMyUnitedBenefitsScreen4();
             
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated all objects in screen four");
