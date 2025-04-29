@@ -1,0 +1,11 @@
+userName: nandakumargurusa_C5a3W0
+accessKey: 2KCGdiqtEHocFUD635sK
+projectName: ManUAppiumParallelExecution
+buildName: ManU Appium build
+buildIdentifier: '#${BUILD_NUMBER}'
+framework: testng
+debug: true
+networkLogs: true
+consoleLogs: errors
+testObservability: true
+browserstackAutomation: false
