@@ -11,13 +11,14 @@ Feature: Onboarding
     And user navigates to screen four
     Then user validates all objects in screen four using Api
 
+
   Scenario Outline: [Onboarding]TC002 TC003 Native dialouge asking user to allow dont allow notifications should display
     Given user navigates to manu android application
     And user navigates to screen two
     And user clicks on allow button
     Then user validate all objects in allow notifcation screen
       | notification                                   | allow | dontallow   |
-      | Allow Man Utd Stage to send you notifications? | Allow | Don’t allow |
+      | Allow Man Utd to send you notifications? | Allow | Don’t allow |
     And user clicks on "<notificationbutton>" button in notification screen
     Then user validates all objects in screen three using Api
 

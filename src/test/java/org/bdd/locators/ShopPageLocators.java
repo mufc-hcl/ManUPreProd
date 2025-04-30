@@ -17,7 +17,9 @@ import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
 public class ShopPageLocators {
 
-
+//	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'navigation_bar_item_small_label_view') and contains(@text, 'Shop')]")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Shop')]")
+//	public WebElement shopTabIcon;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/navigation_bar_item_small_label_view\" and @text=\"Shop\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Shop\"]")
@@ -94,19 +96,25 @@ public class ShopPageLocators {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
     public List<WebElement> heroCarouselDotsmembershipShopScreen;
+    
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRAINING\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRAINING\"]")
     public List<WebElement> trainingText1;
+    
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TICKETS & HOSPITALITY !\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS & HOSPITALITY !\"]")
     public List<WebElement> ticketsAndHospitalityText1;
+    
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"SHOPTAB\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SHOPTAB\"]")
     public WebElement sHopTabIconInShopScreen;
+    
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRENDING\"]")
     public  WebElement trendingMembershiPage;
+    
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PLAYERS\"]")
     public WebElement playersMembershiPage;
+    
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage[1]")
     public  WebElement heroCarouselShopTab;
 
@@ -205,9 +213,12 @@ public class ShopPageLocators {
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[5]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink")
    	public List<WebElement> heroCarouselEnabledShop;
 
-    @AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent")
-   	@iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"OK\"`]")
-   	public WebElement okButtonCookiesScreenInShop;
+    
+    
+    
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'framelayout_tabwidget_parent')]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"OK\"`]")
+    public WebElement okButtonCookiesScreenInShop;
 
 	 
     
