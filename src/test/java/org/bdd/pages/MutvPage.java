@@ -185,10 +185,11 @@ public class MutvPage extends Common {
         ;
         try {
             if (device.equalsIgnoreCase("android")) {
-                driver.findElement(By.xpath(
-                                "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/tabTextView\" and @text=\""
-                                        + dayandFutureDay + "\"]"))
-                        .click();
+//                driver.findElement(By.xpath(
+//                                "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/tabTextView\" and @text=\""
+//                                        + dayandFutureDay + "\"]"))
+            	driver.findElement(By.xpath(
+            		    "//android.widget.TextView[contains(@resource-id, ':id/tabTextView') and @text='" + dayandFutureDay + "']")).click();
                 ExtentsReportManager.extentReportLogging("pass", "Clicks on dayandFutureDay ");
             } else {
                 driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"" + dayandFutureDay + "Tab Item\"]"))
@@ -381,19 +382,30 @@ public class MutvPage extends Common {
 //            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
             AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
-                try {
-                    if (mutvPageLocators.videosMutvPage.get(i)
-                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                            .isDisplayed()
-                            && mutvPageLocators.videosMutvPage.get(i)
-                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                            .getText().contains("Subscribe to watch")) {
-                        mutvPageLocators.videosMutvPage.get(i)
-                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                                .click();
-                        break;
-                    }
-                } catch (NoSuchElementException n) {
+//                try {
+//                    if (mutvPageLocators.videosMutvPage.get(i)
+//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                            .isDisplayed()
+//                            && mutvPageLocators.videosMutvPage.get(i)
+//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                            .getText().contains("Subscribe to watch")) {
+//                        mutvPageLocators.videosMutvPage.get(i)
+//                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                                .click();
+//                        break;
+//                    }
+//                } 
+            	try {
+            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
+            	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
+
+            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
+            	        subscriptionStatus.click();
+            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage");
+            	        break;
+            	    }
+            	} 
+            	catch (NoSuchElementException n) {
                     System.out.println("subscribtion not found to this video");
                 }
             }
@@ -426,20 +438,31 @@ public class MutvPage extends Common {
             AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
             IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
-                try {
-                    if (mutvPageLocators.videosMutvPage.get(i)
-                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                            .isDisplayed()
-                            && mutvPageLocators.videosMutvPage.get(i)
-                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                            .getText().contains("Register to watch")) {
-                        mutvPageLocators.videosMutvPage.get(i)
-                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-                                .click();
-                        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
-                        break;
-                    }
-                } catch (NoSuchElementException n) {
+//                try {
+//                    if (mutvPageLocators.videosMutvPage.get(i)
+//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                            .isDisplayed()
+//                            && mutvPageLocators.videosMutvPage.get(i)
+//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                            .getText().contains("Register to watch")) {
+//                        mutvPageLocators.videosMutvPage.get(i)
+//                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
+//                                .click();
+//                        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
+//                        break;
+//                    }
+//                } 
+            	try {
+            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
+            	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
+
+            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
+            	        subscriptionStatus.click();
+            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
+            	        break;
+            	    }
+            	} 
+            	catch (NoSuchElementException n) {
                     System.out.println("subscribtion not found to this video");
                 }
             }

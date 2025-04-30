@@ -10,17 +10,17 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class ExplorePageLocators {
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/mLatestNewsTxt")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/mLatestNewsTxt\')]")
 	@iOSXCUITFindBy(accessibility = "WHAT'S NEW")
 	public WebElement whatsNew;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/mLatestNewsTxt")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/mLatestNewsTxt\')]")
 	@iOSXCUITFindBy(accessibility = "WHAT'S NEW")
 	public List<WebElement> whatsNew1;
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent\"]")
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[contains(@resource-id, \':id/framelayout_tabwidget_parent\')]")
 	public WebElement popScreen;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/navigation_bar_item_small_label_view\" and @text=\"My United\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/navigation_bar_item_small_label_view\') and @text=\"My United\"]")
 	@iOSXCUITFindBy(accessibility = "My United, you are not logged in.")
 	public WebElement myUnitedButton;
 
@@ -40,7 +40,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"contact us\"]")
 	public WebElement contactUs;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"CONTACT US\"])[1]")
 	public WebElement contactUsScreenText;
 
@@ -48,7 +48,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"faqs\"]")
 	public WebElement faqSHelp;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"FAQS\"])[1]")
 	public WebElement faqsFaqsPage;
 
@@ -56,7 +56,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"accessibility\"]")
 	public WebElement accessibilityHelp;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"ACCESSIBILITY\"])[1]")
 	public WebElement accessibilityAccessibilityPage;
 
@@ -64,7 +64,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"terms of use\"]")
 	public WebElement termsOfUseHelp;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TERMS OF USE\"]")
 	public WebElement termsOfUseTermsOfUsePage;
 
@@ -72,7 +72,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"privacy policy\"]")
 	public WebElement privacyPolicyHelp;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PRIVACY POLICY\"]")
 	public WebElement privacyPolicyPrivacyPolicyPage;
 
@@ -84,23 +84,23 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"FEEDBACK\"]")
 	public WebElement feedBackPageTitle;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/edit_text_email")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/edit_text_email\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Email Address*\"]")
 	public WebElement emailAddressTextBoxFeedBackPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/edittext_feedback_subject")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/edittext_feedback_subject\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Subject*\"]")
 	public WebElement subjectTextBoxFeedBackPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/edittext_feedback_cmnt")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/edittext_feedback_cmnt\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView[@name=\"Feedback*\"]")
 	public WebElement feedbackCommentTextBoxFeedBackPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/btn_submit")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/btn_submit\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SUBMIT\"]")
 	public WebElement submitButtonFeedBackPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/snackbar_text\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/snackbar_text\')]")
 	public WebElement successMessageFeedBackPage;
 
 //	@AndroidFindBy(accessibility = "Search")
@@ -109,11 +109,11 @@ public class ExplorePageLocators {
 	public WebElement searchButtonUnitedPage;
 
 	// search screen locators
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"HELP\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"HELP\"]")
 	@iOSXCUITFindBy(accessibility = "HELP")
 	public WebElement helpCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"HISTORY\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"HISTORY\"]")
 	@iOSXCUITFindBy(accessibility = "HISTORY")
 	public WebElement historyCouroselSearchPage;
 
@@ -121,15 +121,15 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MANCHESTER UNITED'S STORY: THE GREATEST EVER TOLD\"]")
 	public WebElement storyInHistorySearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"MUTV\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"MUTV\"]")
 	@iOSXCUITFindBy(accessibility = "MUTV")
 	public WebElement mutvCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_heading\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/textview_heading\')]")
 	@iOSXCUITFindBy(accessibility = "WELCOME TO MUTV")
 	public WebElement mutvWelcomeTextMutvPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_description\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/textview_description\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"WELCOME TO MUTV\"]/../XCUIElementTypeStaticText[2]")
 	public WebElement mutvDescriptionMutvPage;
 
@@ -137,19 +137,19 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"EXPLORE\"]")
 	public WebElement mutvExploreButtonMutvPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"SHOP\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"SHOP\"]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SHOP\"])[1]")
 	public WebElement shopCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Shop\"]")
 	public WebElement shopTitleShopPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"FIXTURES & TABLES\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"FIXTURES & TABLES\"]")
 	@iOSXCUITFindBy(accessibility = "FIXTURES & TABLES")
 	public WebElement fixturesAndTableCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"MY TICKETS\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"MY TICKETS\"]")
 	@iOSXCUITFindBy(accessibility = "MY TICKETS")
 	public WebElement myTicketsCouroselSearchPage;
 
@@ -157,11 +157,11 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "BUY TICKETS")
 	public WebElement buyTicketsCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_title\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS\"]")
 	public WebElement ticketTitleTicketPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"MEMBERSHIP\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"MEMBERSHIP\"]")
 	@iOSXCUITFindBy(accessibility = "MEMBERSHIP")
 	public WebElement membershipCouroselSearchPage;
 
@@ -181,7 +181,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "Be part of the United family. 2024/25 United Membership is now on sale.")
 	public WebElement unitedMembershipDesc;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"FANS\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"FANS\"]")
 	@iOSXCUITFindBy(accessibility = "FANS")
 	public WebElement fansCouroselSearchPage;
 
@@ -189,19 +189,19 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name,'FOOTBALL IS NOTHING WITHOUT FANS')]")
 	public WebElement fansPageContent;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"MY UNITED\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"MY UNITED\"]")
 	@iOSXCUITFindBy(accessibility = "My United")
 	public WebElement myUnitedCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/txtHeaderTitle\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/txtHeaderTitle\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MY UNITED\"]")
 	public WebElement myUnitedTitle;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"PREDICTIONS\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"PREDICTIONS\"]")
 	@iOSXCUITFindBy(accessibility = "Predictions")
 	public WebElement predictionsCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\" and @text=\"PLAYERS\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\') and @text=\"PLAYERS\"]")
 	@iOSXCUITFindBy(accessibility = "PLAYERS")
 	public WebElement playersCouroselSearchPage;
 
@@ -221,7 +221,7 @@ public class ExplorePageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/summary\" and @text=\"Transfers, team news, injury updates, new contracts, and all daily updates direct from the club\"]")
 	@iOSXCUITFindBy(accessibility = "Latest, Transfers, team news, injury updates, new contracts, and all daily updates direct from the club")
 	public WebElement latestSwitchIconUnitedNowAlertsPage;
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/ok_btn\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/ok_btn\')]")
 	@iOSXCUITFindBy(accessibility = "Go to Settings")
 	public WebElement goToSettingsButtonEnableAlerts;
 	@AndroidFindBy(id = "android:id/switch_widget")
@@ -240,7 +240,7 @@ public class ExplorePageLocators {
 	@AndroidFindBy(id = "android:id/title")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell")
 	public List<WebElement> matchAlertTexts;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/primary_text")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/primary_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
 	public WebElement okButtonCookiesScreen;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
@@ -250,19 +250,19 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"REJECT\"]")
 	public WebElement rejectBtnQA1;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/contextual_button")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/contextual_button\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MAKE YOUR PREDICTIONS\"]")
 	public List<WebElement> makeYourPredictionsUnitedNowScreen;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/contextual_button")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/contextual_button\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MAKE YOUR PREDICTIONS\"]")
 	public WebElement makeYourPredictionsUnitedNowScreen1;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/textview_heading")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/textview_heading\')]")
 //		@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell/XCUIElementTypeStaticText")
 	public WebElement weUseCookiesTexts;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/tertiary_text")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public List<WebElement> notNowButtonMatchAppearanceAlert1;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/tertiary_text")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public WebElement notNowButtonMatchAppearanceAlert;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"iwtwmh\"]")
@@ -277,7 +277,7 @@ public class ExplorePageLocators {
 	public List<WebElement> liveBlogUniteNowPage1;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"LIVE MATCH CENTRE\"]")
 	public List<WebElement> liveMatchCenterUnitedNowScreen;
-	@AndroidFindBy(xpath = "(//android.widget.FrameLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/card_view\"])[1]")
+	@AndroidFindBy(xpath = "(//android.widget.FrameLayout[contains(@resource-id, \':id/card_view\')])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeScrollView[2]//XCUIElementTypeOther//XCUIElementTypeCollectionView//XCUIElementTypeCell[1]")
 	public WebElement latestCardInLatestScreen;
 	@AndroidFindBy(accessibility = "Latest Tab")
@@ -301,7 +301,7 @@ public class ExplorePageLocators {
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[@content-desc=\"Share\"])")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"share\"])[1]")
 	public WebElement shareIconLatestScreen;
-	@AndroidFindBy(xpath = "//android.widget.ListView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/listview\"]/android.widget.LinearLayout[1]")
+	@AndroidFindBy(xpath = "//android.widget.ListView[contains(@resource-id, \':id/listview\')]/android.widget.LinearLayout[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name=\"Messages\"]/XCUIElementTypeOther/XCUIElementTypeImage")
 	public WebElement messageIconShareScreen;
 	@AndroidFindBy(accessibility = "Close")
@@ -326,14 +326,14 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "search-icon-inactive-light")
 	public WebElement searchInputInExplorePage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/search_src_text")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/search_src_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField")
 	public WebElement searchInputTextInExplorePage;
 
 	@AndroidFindBy(accessibility = "Back")
 	@iOSXCUITFindBy(accessibility = "Exit search")
 	public WebElement exitBtnInSearchPagePlayers;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/edit_text_search")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/edit_text_search\')]")
 	@iOSXCUITFindBy(className = "XCUIElementTypeSearchField")
 	public List<WebElement> autoSuggestionExploreScreen;
 
@@ -352,7 +352,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeLink")
 	public List<WebElement> pageFiltersInSearchResultScreen;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_searchsuggestion_listitem\"][1]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/textview_searchsuggestion_listitem\')][1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell")
 	public WebElement selectPlayerInSuggestions;
 
@@ -410,15 +410,15 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
 	public WebElement allTableFiltersinFixturesPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/statsheading")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/statsheading\')]")
 	@iOSXCUITFindBy(accessibility = "LAST MATCH")
 	public WebElement matchLivePlayersPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/statsheading")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/statsheading\')]")
 	@iOSXCUITFindBy(accessibility = "SEASON STATS")
 	public WebElement seasonStatsPlayersPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/manutextview_viewall")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/manutextview_viewall\')]")
 	@iOSXCUITFindBy(iOSNsPredicate = "name == \"VIEW MORE\"")
 	public WebElement viewMoreBtnLatestSectionPlayersPage;
 
@@ -462,19 +462,19 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Table\"])[1]")
 	public List<WebElement> tableCTABtnInFixtures;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_match_tables\"])[1]")
+	@AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, \':id/textview_match_tables\')])[1]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Table\"])[1]")
 	public WebElement tableCTABtnInFixtures1;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/image_view_icon")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/image_view_icon\')]")
 	@iOSXCUITFindBy(accessibility = "icon video play")
 	public List<WebElement> latestVideoListingPage;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/image_view_icon")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/image_view_icon\')]")
 	@iOSXCUITFindBy(accessibility = "Video with upsell and icons")
 	public WebElement latestVideoListingPage1;
 
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/text_more_info")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/text_more_info\')]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"MORE INFO\"])[1]")
 	public WebElement moreInfoBtnInVideoModel;
 
@@ -498,36 +498,36 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "Profile Tab")
 	public WebElement profileTabInPlayersPage;
 
-	@AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/linear_layout_dfp\"]")
+	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, \':id/linear_layout_dfp\')]")
 	public List<WebElement> dfpAdCardInLatestScreen;
-	@AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/linear_layout_dfp\"]")
+	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, \':id/linear_layout_dfp\')]")
 	public WebElement dfpAdCardInLatestScreen1;
 
-	@AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/adViewContainer\"]")
+	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, \':id/adViewContainer\')]")
 	public List<WebElement> dfpAdCardInPlayersScreen;
-	@AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/adViewContainer\"]")
+	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, \':id/adViewContainer\')]")
 	public WebElement dfpAdCardInPlayersScreen1;
 
-	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/imgTeamIconA\"])[2]")
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/imgTeamIconA\')])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[4]/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeImage")
 	public WebElement crestAImageInFixturesScreen;
 
-	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/imgTeamIconB\"])[2]")
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/imgTeamIconB\')])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[4]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage")
 	public WebElement crestBImageInFixturesScreen;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/tertiary_cta\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/tertiary_cta\')]")
 	public List<WebElement> ReggressionPopUpUniteNow;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name]")
 	public List<WebElement> carouselList;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\')]")
 	@iOSXCUITFindBy(accessibility = "POPULAR")
 	public List<WebElement> popularSection;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/text_view_heading\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\')]")
 	@iOSXCUITFindBy(accessibility = "CATEGORIES")
 	public List<WebElement> categoriesSection;
 
@@ -535,15 +535,15 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value]")
 	public List<WebElement> popularSectionData;
 	
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/edit_text_search")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/edit_text_search\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField[@name=\"Search\"]")
 	public WebElement searchInputTextInUnitedNowSearchScreen;
 	
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/search_src_text")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/search_src_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField")
 	public WebElement typesearchInputTextInUnitedNowSearchScreen;
 	
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/listview_search_suggestion")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/listview_search_suggestion\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell")
 	public List<WebElement> suggestion;
 
