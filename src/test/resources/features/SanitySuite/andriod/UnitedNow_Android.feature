@@ -62,8 +62,7 @@ Feature: United now
       | UNITED | ALL TEAMS |
     And user click on men drop down and validates the dropdown values using API
 
-  
-  Scenario: [United now]TC008 Validate the fixture listing page show the data based on the Team + League filter applied
+   Scenario: [United now]TC008 Validate the fixture listing page show the data based on the Team + League filter applied
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -106,7 +105,6 @@ Feature: United now
       | League   |
       | Friendly |
     Then user validate Friendly text using api
-
 
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu android application

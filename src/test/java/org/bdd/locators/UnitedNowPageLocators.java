@@ -743,23 +743,23 @@ public class UnitedNowPageLocators {
     public List<WebElement> englishFACups;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'English Premier League')])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "(//*[contains(@value,\"English Premier League\")])[2]")
     public List<WebElement> englishPremierLeague;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'English Premier League')])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "(//*[contains(@value,'English FA Cup')])[1]")
     public List<WebElement> faCup;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'UEFA Europa League')])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "(//*[contains(@value,'UEFA Europa League')])[1]")
     public List<WebElement> uEFAEuropaLeague;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,League Cup')])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "(//*[contains(@value,'English League Cup')])[1]")
     public List<WebElement> leagueCup;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'Friendly')])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "(//*[contains(@value,'Friendly')])[1]")
     public List<WebElement> friendly;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'DATE TBC')])[1]")
@@ -773,6 +773,9 @@ public class UnitedNowPageLocators {
     
     @iOSXCUITFindBy(xpath = "(//*[contains(@name,'MATCHDAY LIVE')])[1]")
     public List<WebElement> matchDayLive;
+    
+    @iOSXCUITFindBy(id = "Planned matchWednesday5MarchDummy Test SiteCore 11022025")
+    public List<WebElement> dummyTestSiteCore;
 
 
 }

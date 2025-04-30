@@ -5,6 +5,7 @@ import static io.restassured.RestAssured.given;
 import static org.bdd.utils.PropertyFileManager.props;
 
 import java.io.IOException;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -911,6 +912,57 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	        return getMatchReview.get(0);
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail", "Exception in getMatchDayLive(): " + e.getMessage());
+	        throw e;
+	    }
+	}
+	
+	public ArrayList<String> getAllLeaguesFromApinew(String endpoint) throws Exception {
+		try {
+			boolean flag=true;
+			ArrayList<String> allLeagueFilters = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			int currentYear = Year.now().getValue()-1;
+			int nextYear = Year.now().getValue() % 100;
+	        String sid="sid:"+currentYear;
+	        String expAll="All "+currentYear+"/"+nextYear;
+			js = new JsonPath(res.asString());
+			int parentSize = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			int sample = 0;
+			for(int i=0;i< parentSize;i++) {
+				int childSize = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
+				for(int j=0;j< childSize;j++) {
+					String actuAll = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
+					if(expAll.equalsIgnoreCase(actuAll)) {
+						sample=i;
+						break;
+					}
+				}
+			}
+			int child1 = js.getList("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs.label_t").size();
+			for(int j=0;j<child1;j++)
+			{
+				allLeagueFilters.add(js.getString("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs["+j+"].label_t"));
+			}
+					ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+			return allLeagueFilters;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getDropDownValuesFromApi()" + e);
+			throw e;
+		}
+	}
+	
+	public String getDummyTestSiteCore(String endpoint) throws Exception {
+		try {
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+	        String geDummyTestSiteCore = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+
+	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+	    	geDummyTestSiteCore=geDummyTestSiteCore.replaceAll("[0-9]", "");
+	        return geDummyTestSiteCore;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in getDummyTestSiteCore(): " + e.getMessage());
 	        throw e;
 	    }
 	}
