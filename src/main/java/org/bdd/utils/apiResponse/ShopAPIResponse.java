@@ -288,7 +288,58 @@ public class ShopAPIResponse extends BaseApiService {
 		}
 	}
 	
+	public String getWebViewFromAPI(String endpoint) throws Exception {
+		try {
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			String webViewItem = js.getString("ShopAppFiltersResponse.response.docs[0].tabtype_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return webViewItem;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getWebViewFromAPI()" + e);
+			throw e;
+		}
+	}
 
+	public ArrayList<String> getHamburgerMenuItemsFromApi(String endpoint) throws IOException {
+		try {
+			String itemName;
+			ArrayList<String> hamburgerTabMenuItems = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			JsonPath js = new JsonPath(res.asString());
+
+			// Get the size of the items array
+			int size = js
+					.getList("UnitednowconfigurationsResponse.response.docs[0].shopappnavigationstructure_t[1].items")
+					.size();
+
+			// Loop through the items and add their names to the list
+			for (int i = 1; i < size; i++) {
+				if (i == 1) {
+					itemName = js.getString(
+							"UnitednowconfigurationsResponse.response.docs[0].shopappnavigationstructure_t[0].items[0].children[0].children[0].name");
+				
+				} else {
+					itemName = js.getString(
+							"UnitednowconfigurationsResponse.response.docs[0].shopappnavigationstructure_t[1].items["
+									+ i + "].name");
+				}
+				if (itemName != null) {
+					hamburgerTabMenuItems.add(itemName.trim());
+				}
+			}
+
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return hamburgerTabMenuItems;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getHamburgerMenuItemsFromApi()" + e);
+			throw e;
+		}
+	}
 	}
 
 	
