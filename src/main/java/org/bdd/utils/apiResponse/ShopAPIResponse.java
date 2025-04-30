@@ -46,7 +46,7 @@ public class ShopAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String carosel1ForKits=js.getString("ShopAppResponse.response.docs[0].category_s");
+			String carosel1ForKits=js.getString("ShopAppResponse.response.docs[1].category_s");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return carosel1ForKits;
 		} catch (Exception e) {

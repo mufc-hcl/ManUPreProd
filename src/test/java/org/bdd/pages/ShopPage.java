@@ -538,7 +538,7 @@ public class ShopPage extends Common {
 	        try {
 	            if (device.equalsIgnoreCase("android")) {
 	            	KitsShop=driver.findElement(AppiumBy.xpath(
-                            "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/textview_header_new\" and @text='"
+                            "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text='"
                                     + expKitsTextFromAPI.toUpperCase() + "']"));
 	                waitForVisibility(KitsShop, 15);
 	                ExtentsReportManager.extentReportLogging("pass", "Returned  KITS Text");
