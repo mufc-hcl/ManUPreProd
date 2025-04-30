@@ -17,11 +17,7 @@ import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
 public class ShopPageLocators {
 
-//	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'navigation_bar_item_small_label_view') and contains(@text, 'Shop')]")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Shop')]")
-//	public WebElement shopTabIcon;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/navigation_bar_item_small_label_view\" and @text=\"Shop\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'navigation_bar_item_small_label_view') and contains(@text, 'Shop')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Shop\"]")
     public WebElement shopTabIcon;
 
@@ -50,41 +46,41 @@ public class ShopPageLocators {
     @iOSXCUITFindBy(accessibility = "STICKERS")
     public WebElement stickersTabIconInShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRAINING\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TRAINING')]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"TRAINING\"])[1]")
     public WebElement trainingText;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TICKETS & HOSPITALITY !\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TICKETS & HOSPITALITY')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS & HOSPITALITY !\"]")
     public WebElement ticketsAndHospitalityText;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"HERO CARD\"]")
     public WebElement heroCardStickersShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"KITS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'KITS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"KITS\"]")
     public WebElement kitsTitleStickersShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"UNITED ESSENTIALS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'UNITED ESSENTIALS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNITED ESSENTIALS\"]")
     public WebElement unitedEssentialsTitleStickersShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"COLLECTIONS CAROUSEL WITH ALL …\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'COLLECTIONS CAROUSEL')]")
     @iOSXCUITFindBy(id = "COLLECTIONS CAROUSEL WITH ALL ...")
     public WebElement collectionsCoursoselTitleStickersShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"CATEGORY2\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'CATEGORY2')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"CATEGORY2\"]")
     public  WebElement catogory2TitleStickersShopScreen;
-
-    @AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/oops_text_view")
+    
+    @AndroidFindBy(xpath="//android.widget.TextView[contains(@resource-id, 'id/oops_text_view')]")
 //	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"KITS\"]")
     public WebElement errorMessageTicketsShopScreen;
 
     @AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/error_retry_btn")
     public WebElement retryButtonTicketsShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/tabDots\"]/android.widget.LinearLayout/android.widget.LinearLayout")
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[contains(@resource-id, 'tabDots')]/android.widget.LinearLayout/android.widget.LinearLayout")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
     public List<WebElement> heroCardsDotMutvPage;
 
@@ -97,11 +93,11 @@ public class ShopPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
     public List<WebElement> heroCarouselDotsmembershipShopScreen;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRAINING\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TRAINING')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRAINING\"]")
     public List<WebElement> trainingText1;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TICKETS & HOSPITALITY !\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TICKETS & HOSPITALITY')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS & HOSPITALITY !\"]")
     public List<WebElement> ticketsAndHospitalityText1;
     
@@ -134,69 +130,69 @@ public class ShopPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell//XCUIElementTypeStaticText")
     public List<WebElement> shopTabMenuItems;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"KITS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'KITS')]")
     @iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@name=\"KITS\"]")
     public WebElement carosel1ForKitsShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRENDING\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TRENDING')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRENDING\"]")
     public WebElement membershipBenifitsShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"PLAYERS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'PLAYERS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PLAYERS\"]")
     public WebElement helpAndInfoShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRAINING\"]")
     public WebElement carosel1ForKitsCollectbilesShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"COLLECTIBLES CLAIM YOURS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'COLLECTIBLES CLAIM YOURS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"COLLECTIBLES CLAIM YOURS\"]")
     public WebElement collectbilesClaimYoursShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"COLLECTIONS & REWARDS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'COLLECTIONS & REWARDS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"COLLECTIONS & REWARDS\"]")
     public WebElement collectionsAndRewardsShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRAINING\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TRAINING')]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"TRAINING\"])[2]")
     public WebElement carousel1ForKITSStoreShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"UNITED ESSENTIALS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'UNITED ESSENTIALS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRENDING\"]")
     public WebElement trendingStoreShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"PLAYERS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'PLAYERS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNITED ESSENTIALS\"]")
     public WebElement playersStoreShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TICKETS & HOSPITALITY \"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TICKETS & HOSPITALITY')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS & HOSPITALITY \"]")
     public WebElement ticketsAndHospitalityStoreShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"TRAINING\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'TRAINING')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TRAINING\"]")
     public WebElement trainingStoreShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textview_header_new\" and @text=\"COLLECTIONS\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, 'COLLECTIONS')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"COLLECTIONS\"]")
     public WebElement collectionsStoreShop;
     
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textViewHeading\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textViewHeading')]")
     // @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"COLLECTIONS\"]")
     public WebElement heroCarouselMembershipShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textViewHeading\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textViewHeading')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Personalise your shirt\"]")
     public WebElement heroCarouselCollectiblesShop;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/textViewHeading\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'textViewHeading')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Invalid Thumbnail and Valid BG Video !\"]")
     public WebElement heroCarouselStoreShop;
     
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/continueBtn\"]")
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'continueBtn')]")
 	@iOSXCUITFindBy(xpath = "//*[contains(@text,'CONTINUE')]")
 	public List<WebElement> continueAlertShopScreen;
     
@@ -207,15 +203,11 @@ public class ShopPageLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Shop By Category\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Shop By Category\"]")
     public WebElement shopByCategoryMerchTab;
-            
     
     @AndroidFindBy(xpath = "//android.view.View[@resource-id=\"__nuxt\"]/android.view.View/android.view.View[1]/android.widget.TextView")
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[5]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink")
    	public List<WebElement> heroCarouselEnabledShop;
 
-    
-    
-    
     @AndroidFindBy(xpath = "//*[contains(@resource-id, 'framelayout_tabwidget_parent')]")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"OK\"`]")
     public WebElement okButtonCookiesScreenInShop;
