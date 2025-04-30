@@ -1220,6 +1220,11 @@ public class MyUnitedPage extends Common {
 	public String selectAppearenceInAppearenceCard(String expectedAppearence) {
 		String actualAppearence = null;
 		try {
+			   actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();
+		        if (actualAppearence.equalsIgnoreCase(expectedAppearence)) {
+		            ExtentsReportManager.extentReportLogging("pass", "Appearance already displayed, no need to scroll.");
+		            return actualAppearence;
+		        }
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
 				actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();

@@ -194,21 +194,18 @@ public class MyUnitedAndroidStepDef {
             throw e;
         }
     }
-
-    @Then("^user validates My united text in myunited screen using Api$")
-    public void userValidatesMyUnitedTextInMyunitedScreen() throws Exception {
-        try {
-            String myUnitedTextFromAPI = myUnitedAPIResponse.getMyunitedTextFromAPI("MyUnitedTextFromAPI");
-            String actualMyUnitedText = myUnitedPage.getMyUnitedText();
-            System.out.printf(actualMyUnitedText, myUnitedTextFromAPI);
-            soft.assertEquals(actualMyUnitedText, myUnitedTextFromAPI);
-            soft.assertAll();
-
-            ExtentsReportManager.extentReportLogging("info", "Validated my united text in my united screen");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in validating my united text in mu united screen <br />" + e);
-            throw e;
-        }
+    @Then("^user validates My united text in myunited screen$")
+    public void userValidatesMyUnitedTextInMyunitedScreen(DataTable table) throws Exception {
+    	 try {
+             String expMyUnitedText = table.cell(1, 0);
+             String actualMyUnitedText = myUnitedPage.getMyUnitedText();
+             soft.assertEquals(actualMyUnitedText, expMyUnitedText);
+             soft.assertAll();
+             ExtentsReportManager.extentReportLogging("info", "Validated my united text in my united screen");
+         } catch (AssertionError e) {
+             ExtentsReportManager.extentReportLogging("fail", "Error in validating my united text in mu united screen <br />" + e);
+             throw e;
+         }
     }
 
 

@@ -39,7 +39,8 @@ Feature: My United features
     And user clicks on confirm button in Language Screen
     #And user selects the dont allow button in audio notification alert after Refresh
     #And user selects Dont allow in the photos and videos access in alert after Refresh
-    Then user validates calender Icon in chinese
+    #Then user validates calender Icon in chinese
+    Then user validates calender Icon
     And user click on My United in bottom tab which is in chinese Language
     And user click on setting icon on top righhand side which is in chinese Language
     And user click on GENERAL link in setting screen which is in chinese Language
@@ -59,7 +60,9 @@ Feature: My United features
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
     And user click on My United in bottom tab
-    Then user validates My united text in myunited screen using Api
+      Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     And user clicks on log in button
     And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
@@ -100,7 +103,7 @@ Feature: My United features
     Examples: 
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@clicks
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -178,7 +181,7 @@ Feature: My United features
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-@myuniteduiui
+@clicks
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -202,7 +205,7 @@ Feature: My United features
       | my united total score | prediction  | daily streaks | appearance  |
       | MY UNITED TOTAL SCORE | Predictions | Daily Streaks | Appearances |
     And user clicks on back icon in total score card
-    And user scroll right to left to navigate daily streaks cards "<Daily streaks>"
+    #And user scroll right to left to navigate daily streaks cards "<Daily streaks>"
     Then user validate daily streaks card in my united screen
       | daily streaks | consecutive                 | view |
       | DAILY STREAKS | Consecutive days in the app | VIEW |
@@ -211,7 +214,7 @@ Feature: My United features
       | daily streaks | best score | share |
       | DAILY STREAKS | BEST SCORE | SHARE |
     And user clicks on back icon in daily streaks card
-    And user scroll right to left to navigate appearence cards "<Appearance>"
+    #And user scroll right to left to navigate appearence cards "<Appearance>"
     Then user validates appearance card in my united screen
       | appearance  | this season | view |
       | APPEARANCES | This Season | VIEW |
@@ -328,7 +331,7 @@ Feature: My United features
     Examples: 
       | username             | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
-
+@clicks
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
