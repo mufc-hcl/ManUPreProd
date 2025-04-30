@@ -1706,5 +1706,18 @@ public class UnitedNowIosStepDef {
             throw e;
         }
     }
-	}
+	@Then("^user validate DummyTestSiteCore text using api in ios$")
+    public void userValidateDummyTestSiteCoreTextUsingApiInIos() throws Exception {
+        try {
+            Boolean expectedSelection = unitedNowPage.getDummyTestSiteCore();
+            soft.assertTrue(expectedSelection);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "Validated English FA Cups using API");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Fa Cups Text In All Usingpi<br />" + e);
+            throw e;
+        }
+        
+    }
+}
 

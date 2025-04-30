@@ -3,6 +3,7 @@ package org.bdd.stepdef.android;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.logging.log4j.LogManager;
@@ -165,13 +166,13 @@ public class UnitedNowAndroidStepDef {
     public void userValidatesTheFollowingLeagues() throws Exception {
         try {
             ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
-            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApi("AllLeagueFiltersEndpoint");
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
 
             Collections.sort(allLeagueFiltersDropDownValues);
-
+            List<String> actualDropDownValues = unitedNowPage.getLeagueFilterRadioBtnValues();
             log.info("Expected All league filters from API" + allLeagueFiltersDropDownValues);
             log.info("Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
-            soft.assertEquals(allLeagueFiltersDropDownValues, unitedNowPage.getLeagueFilterRadioBtnValues());
+            soft.assertEquals(allLeagueFiltersDropDownValues, actualDropDownValues);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated the FilterFeeds screen");
         } catch (AssertionError | IOException e) {

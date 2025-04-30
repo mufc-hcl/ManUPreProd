@@ -4380,6 +4380,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //	    }
 		public boolean getEnglishPremierLeague() throws Exception {
 			String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.englishPremierLeague.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.englishPremierLeague.get(0), 60);
@@ -4389,7 +4390,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expEnglishPremierLeague))
+				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
 	        }
 			else {
@@ -4421,6 +4422,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 		
 		public boolean getFACup() throws Exception {
 			String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.faCup.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.faCup.get(0), 60);
@@ -4430,8 +4432,8 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expEnglishFAcupLeague))
-					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishFAcupLeague + " text matching");
+				if (actnoFixturesTextUnitedPage.contains(error))
+					ExtentsReportManager.extentReportLogging("pass", "" + actnoFixturesTextUnitedPage + " text matching");
 	        }
 			else {
 				return false;
@@ -4461,6 +4463,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 		
 		public boolean getEuropaLeague() throws Exception {
 			String expuEFAEuropaLeague = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.uEFAEuropaLeague.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.uEFAEuropaLeague.get(0), 60);
@@ -4470,7 +4473,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expuEFAEuropaLeague))
+				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expuEFAEuropaLeague + " text matching");
 	        }
 			else {
@@ -4486,6 +4489,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 		
 		public boolean getLeagueCup() throws Exception {
 			String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.leagueCup.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.leagueCup.get(0), 60);
@@ -4495,7 +4499,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expLeagueCup))
+				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expLeagueCup + " text matching");
 	        }
 			else {
@@ -4511,6 +4515,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 		
 		public boolean getFriendly() throws Exception {
 			String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.friendly.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.friendly.get(0), 60);
@@ -4520,7 +4525,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expFriendly))
+				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expFriendly + " text matching");
 	        }
 			else {
@@ -4536,6 +4541,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 		
 		public boolean getDateTBC() throws Exception {
 			String expDateTBC = unitedNowAPIResponse.getDateTBC("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
 	        try {
 	        	if(unitedNowPageLocators.dateTBC.size() > 0) { 
 	        	waitForVisibilityFluentWait(unitedNowPageLocators.dateTBC.get(0), 60);
@@ -4545,7 +4551,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(expDateTBC))
+				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expDateTBC + " text matching");
 	        }
 			else {
@@ -4671,6 +4677,31 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 	        	
 	        } catch (Exception e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getMatchDayLive()<br />" + e);
+	            throw e;
+	        }
+	    }
+		public boolean getDummyTestSiteCore() throws Exception {
+			String expDummyTestSiteCore = unitedNowAPIResponse.getDummyTestSiteCore("AllLeagueFiltersEndpoint");
+			String error= "There are currently no fixtures available in this competition.";
+	        try {
+	        	if(unitedNowPageLocators.dummyTestSiteCore.size() > 0) { 
+	        	waitForVisibilityFluentWait(unitedNowPageLocators.dummyTestSiteCore.get(0), 60);
+				String actualDummyTestSiteCore = unitedNowPageLocators.dummyTestSiteCore.get(0).getText();
+	            if (actualDummyTestSiteCore.contains(expDummyTestSiteCore))
+					ExtentsReportManager.extentReportLogging("pass", "" + expDummyTestSiteCore + " text matching");
+			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
+				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
+				if (actnoFixturesTextUnitedPage.contains(error))
+					ExtentsReportManager.extentReportLogging("pass", "" + expDummyTestSiteCore + " text matching");
+	        }
+			else {
+				return false;
+			}
+	            return true;
+	        	
+	        } catch (Exception e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDummyTestSiteCore()<br />" + e);
 	            throw e;
 	        }
 	    }
