@@ -212,7 +212,18 @@ public class ShopPageLocators {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"OK\"`]")
     public WebElement okButtonCookiesScreenInShop;
 
-	 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='My Library']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='navbar shop menu']")
+	public WebElement shopLibraryHamburgerIconInShopPage;
+
+    //without env //android.widget.ImageView[@resource-id="com.mu.muclubapp.staging_mu_dxc:id/imgClose"]
+	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, ':id/imgClose')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Button']")
+	public WebElement closeIconInHamburgerInShopPage;
+
+	@AndroidFindBy(xpath = "//android.view.View[@resource-id=\"__nuxt\"]/android.view.View[2]/android.view.View[1]/android.widget.TextView ")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeStaticText")
+	public List<WebElement> hamburgerMenuItems;
     
     
 

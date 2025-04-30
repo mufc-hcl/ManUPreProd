@@ -11,6 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class ShopAndroidStepDef {
@@ -422,6 +423,43 @@ public class ShopAndroidStepDef {
 	        }
 	    }
 	    
+	@Given("^user validates the shop page when we have the web view enabled using API$")
+	public void user_validates_the_shop_page_when_we_have_the_web_view_enabled_using_API() throws Exception {
+		try {
+			String expectedWebViewItem = shopAPI.getWebViewFromAPI("SelectAllTextEndPoint");
+			boolean actualWebViewItem =  shopPage.validateWebViewInShopPage();
+			soft.assertEquals("WebView",expectedWebViewItem);
+			soft.assertTrue(actualWebViewItem,"Web view Item is not present in Shop Page");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"Validated the Web View enabled in shop page using API " + expectedWebViewItem);
+		} catch (Exception  e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating the Web View enabled in shop page using API <br />" + e);
+			throw e;
+		}
+	}
+	
+	@And("^user validates the Menu items available under the Hamburger page using API$")
+	public void userValidateMenuItemsUnderTheHambergerPageUsingAPI() throws Exception {
+		try {
+			ArrayList<String> expectedHamburgerMenuItemsAPI = new ArrayList<>();
+			expectedHamburgerMenuItemsAPI = shopAPI.getHamburgerMenuItemsFromApi("SelectAllTextEndPoint");
+			ExtentsReportManager.extentReportLogging("info",
+					"Menu items available under the Hamburger page using API " + expectedHamburgerMenuItemsAPI);
+			boolean actualMenuIteminUI = shopPage.OpenandValidatesHamburgerCloseInShopPage(expectedHamburgerMenuItemsAPI);
+			
+			soft.assertTrue(actualMenuIteminUI,"Menu items not present in Shop Page");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"Validated the Menu items available under the Hamburger page using UI and API ");
+
+		} catch (Exception  e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating the Menu items available under the Hamburger page <br />" + e);
+			throw e;
+		}
+	}
 	}
 	
 	

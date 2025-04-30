@@ -995,6 +995,109 @@ public class ShopPage extends Common {
          throw e;
         }
     }
+	
+	public boolean validateWebViewInShopPage() {
+	    String device = GlobalParams.getPlatformName();
+	    List<WebElement> webViewElements;
+
+	    try {
+	        if (device.equalsIgnoreCase("android")) {
+	            webViewElements = driver.findElements(AppiumBy.xpath(
+	                    "//android.webkit.WebView[@text='Manchester United Store - Official Manchester United Store']"));
+	        } else {
+	            webViewElements = driver.findElements(AppiumBy.xpath(
+	                    "//XCUIElementTypeOther[@name='Manchester United Store - Official Manchester United Store']"));
+	        }
+
+	        if (webViewElements.size() > 0) {
+	            WebElement webViewElement = webViewElements.get(0);
+	            String capturedText = device.equalsIgnoreCase("android") ? webViewElement.getText() : webViewElement.getDomAttribute("label");
+	            ExtentsReportManager.extentReportLogging("pass", "Validates WebView in Shop Page and captured text " + capturedText);
+	            return true;
+	        } else {
+	            ExtentsReportManager.extentReportLogging("fail", "WebView - 'Manchester United Store - Official Manchester United Store' element not displayed.");
+	            return false;
+	        }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateWebViewInShopPage()<br />" + e);
+	        return false;
+	    }
+	}
+	
+	public boolean OpenandValidatesHamburgerCloseInShopPage(ArrayList<String> expectedHamburgerMenuItems) {
+	    String device = GlobalParams.getPlatformName();
+	    boolean allItemsDisplayed = true;
+
+	    try {
+	        // Validate the hamburger feature in the shop web view, user should be able to open
+	        openMyLibraryHamburgerIcon();
+
+	        // Captured menu items from API and validating in Hamburger Menu Items Shop UI page
+	        for (String menuItem : expectedHamburgerMenuItems) {
+	            List<WebElement> HamburgerMenuItemElements;
+	            if (device.equalsIgnoreCase("android")) {
+	                HamburgerMenuItemElements = driver.findElements(AppiumBy.androidUIAutomator(
+	                	    "new UiSelector().text(\"" + menuItem + "\")"));
+	            } else {
+	                if (menuItem.equalsIgnoreCase("Home")) {
+	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name='" + menuItem + "'])[2]"));
+	                } else {
+	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='" + menuItem + "']"));
+	                }
+	            }
+
+	            if (HamburgerMenuItemElements.size() > 0) {
+	                WebElement HamburgerMenuItemElement = HamburgerMenuItemElements.get(0);
+	                waitForVisibilityFluentWait(HamburgerMenuItemElement, 60);
+	                if (device.equalsIgnoreCase("android")) {
+	                    ExtentsReportManager.extentReportLogging("info", "Validates Hamburger Menu Item in Shop Page and captured text " + HamburgerMenuItemElement.getText());
+	                } else {
+	                    ExtentsReportManager.extentReportLogging("info", "Validates Hamburger Menu Item in Shop Page and captured text " + HamburgerMenuItemElement.getDomAttribute("label"));
+	                }
+	            } else {
+	                allItemsDisplayed = false;
+	                ExtentsReportManager.extentReportLogging("fail", "Menu item not displayed: " + menuItem);
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("pass", "Validated all Hamburgers menu items the Shop Page " + expectedHamburgerMenuItems);
+
+	        // Validate the hamburger feature in the shop web view, user should be able to close
+	        closeMyLibraryHamburgerIcon();
+
+	        return allItemsDisplayed;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function OpenandValidatesHamburgerCloseInShopPage()<br />" + e);
+	        return false;
+	    }
+	    
+	    
+	}
+	public void openMyLibraryHamburgerIcon() {
+		try {
+			elementToBeClickableFluentWait(shopPageLocators.shopLibraryHamburgerIconInShopPage, 60);
+			shopPageLocators.shopLibraryHamburgerIconInShopPage.click();
+			ExtentsReportManager.extentReportLogging("pass",
+					" Opens hamburger feature in the shop web view ");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-openMyLibraryHamburgerIcon()<br />" + e);
+			throw e;
+		}
+	}
+
+	public void closeMyLibraryHamburgerIcon() {
+		try {
+			elementToBeClickableFluentWait(shopPageLocators.closeIconInHamburgerInShopPage, 60);
+			shopPageLocators.closeIconInHamburgerInShopPage.click();
+			ExtentsReportManager.extentReportLogging("pass",
+					" Closes hamburger feature in the shop web view ");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-closeMyLibraryHamburgerIcon()<br />" + e);
+			throw e;
+		}
+	}
 		
 	}
 
