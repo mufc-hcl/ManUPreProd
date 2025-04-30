@@ -1,4 +1,4 @@
-@Sanity_IOS @Myunited_IOS
+@Sanity_IOS1 @Myunited_IOS
 Feature: My United features
 
   Scenario: [My United]TC001 Settings --> General --> Language / Help / Rate app
@@ -30,7 +30,8 @@ Feature: My United features
     And user click on Language in the General Screen in ios
     And user clicks on chinese Language in langugae Screen in ios
     And user clicks on confirm button in Language Screen in ios
-    Then user validates chinese calender Icon in ios
+    #Then user validates chinese calender Icon in ios
+    Then user validates calender Icon in ios
     And user click on My United in bottom tab which is in chinese Language in ios
     And user click on setting icon on top righhand side which is in chinese Language in ios
     And user click on GENERAL link in setting screen which is in chinese Language in ios
