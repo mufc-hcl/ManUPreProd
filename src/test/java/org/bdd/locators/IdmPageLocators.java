@@ -15,11 +15,11 @@ import java.util.List;
 import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
 public class IdmPageLocators {
-	
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/already_signed_txt\"])[2]")
+
+	@AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, ':id/already_signed_txt')])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
 	public WebElement loginButton;
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/sign_in_text\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/sign_in_text\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN FOR UNITED\"]")
 	public WebElement signForUnitedButton;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Privacy Policy\"]")
@@ -38,16 +38,17 @@ public class IdmPageLocators {
 	public WebElement loginButtonLoginScreen;
 	@AndroidFindBy(accessibility = "Close")
 	public WebElement closeButtonLevelNotification;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/first_header")
+	//android.widget.TextView[contains(@resource-id, ':id/mLatestNewsTxt')]
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/first_header')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"DAILY STREAKS\"]")
 	public WebElement dailyStreaksText;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/second_header")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/second_header')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TOTAL SCORE\"]")
 	public WebElement totalScoreText;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/third_header")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/third_header')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"APPEARANCES\"]")
 	public WebElement AppearanceText;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/myunited_fan_level")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_fan_level')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"👑 LEVEL 2\"]")
 	public WebElement fanLevelText;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"MY PROFILE\"]")
@@ -56,7 +57,7 @@ public class IdmPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"EDIT PROFILE\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"edit profile\"]")
 	public WebElement editProfileMyProfilePage;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/text_view_title")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
 	public WebElement editProfilePageHeadingMyProfilePage;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"CHANGE PASSWORD\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"change password\"]")
@@ -117,7 +118,7 @@ public class IdmPageLocators {
 	public WebElement saveDetailsEditProfilePage;
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Your details have been updated.\"]")
 	public WebElement successMessageEditProfilePage;
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/ok_btn\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ok_btn\"]")
 	// @iOSXCUITFindBy(xpath ="")
 	public WebElement yesIconLogoutAlertBox;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"Account deletion\"]")
@@ -156,7 +157,7 @@ public class IdmPageLocators {
 	public WebElement visitWebsiteButton;
 	@iOSXCUITFindBy(accessibility = "BackButton")
 	public WebElement backButtonPrivateLink;
-	@AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/tabDots\"]/android.widget.LinearLayout/android.widget.LinearLayout")
+	@AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[contains(@resource-id, ':id/tabDots\')]/android.widget.LinearLayout/android.widget.LinearLayout")
 	public List<WebElement> screenCount;
 	@FindBy(id = "Relationship")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@value=\" \"]")
@@ -189,7 +190,7 @@ public class IdmPageLocators {
 	public WebElement password1;
 	@AndroidFindBy(accessibility = "Close tab")
 	public WebElement closeButtonGoogleLogin;
-	@AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/tv_paywall_already_subscribed")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/tv_paywall_already_subscribed')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
 	public List<WebElement> loginButtonSubscribePage;
 	@AndroidFindBy(accessibility = "log in Button")
@@ -200,11 +201,11 @@ public class IdmPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell//XCUIElementTypeStaticText[1]")
 	public List<WebElement> myProfileContent;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/first_score\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/first_score\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"4\"]")
 	public WebElement  dailStreaksIDM;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/third_score\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/third_score\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"33\"]")
 	public WebElement  appearencesIDM;
 
