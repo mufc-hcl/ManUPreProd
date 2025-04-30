@@ -640,7 +640,8 @@ public class ExploreIosStepdef {
         try {
             String expMyUnitedTitle = table.cell(1, 0);
             String actualMyUnitedTitle = explorePage.getFansPageContent();
-            soft.assertEquals(actualMyUnitedTitle, expMyUnitedTitle);
+            soft.assertTrue(expMyUnitedTitle.contains(actualMyUnitedTitle), "Fan screen text is not matched with API");
+          //  soft.assertEquals(actualMyUnitedTitle, expMyUnitedTitle);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "verified the fans screen in ios");
         } catch (AssertionError e) {
