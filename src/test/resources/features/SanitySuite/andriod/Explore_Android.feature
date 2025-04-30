@@ -1,7 +1,6 @@
 @Sanity_Android @Explore_Android
 Feature: Explore
 
-@exploreetc001
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu android application
     And user navigates to screen two

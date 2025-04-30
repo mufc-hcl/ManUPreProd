@@ -1,4 +1,4 @@
-@Sanity_IOS1 @Myunited_IOS
+@Sanity_IOS @Myunited_IOS
 Feature: My United features
 
   Scenario: [My United]TC001 Settings --> General --> Language / Help / Rate app

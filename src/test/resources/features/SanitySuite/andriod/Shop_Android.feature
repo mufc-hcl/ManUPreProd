@@ -1,7 +1,6 @@
 @Sanity_Android @Shop_Android
 Feature: Shop features
 
-@6767676
   Scenario: [Shop]TC001 Click on the shop tab and navigate to the shop screen with all the shop filters if enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two

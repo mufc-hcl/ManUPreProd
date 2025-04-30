@@ -26,7 +26,6 @@ Feature: United now
     And user clicks on braze in app msg
     And user click on filter icon
     Then user validates filter is not selected by default
-
   Scenario: [United now]TC003 Validate the filter functionality on United Now when filter is selected & TC004  Validate the filter functionality on United Now when filter is unselected
     Given user navigates to manu android application
     And user navigates to screen two

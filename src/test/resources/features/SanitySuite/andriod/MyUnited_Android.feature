@@ -103,7 +103,7 @@ Feature: My United features
     Examples: 
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
-@clicks
+
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -181,7 +181,6 @@ Feature: My United features
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-@clicks
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -331,7 +330,7 @@ Feature: My United features
     Examples: 
       | username             | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
-@clicks
+
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
