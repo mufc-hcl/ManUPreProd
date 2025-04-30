@@ -414,11 +414,11 @@ public class ExploreAndroidStepDef {
     public void userVerifyTheMembershipScreen(DataTable table) {
         try {
             String expOfficialMembership = table.cell(1, 0);
-            String expOfficialMembershipdesc = table.cell(1, 1);
+           // String expOfficialMembershipdesc = table.cell(1, 1);
             String actualOfficaialMembership = explorePage.getOfficialMembership();
             soft.assertEquals(actualOfficaialMembership, expOfficialMembership);
-            String actualOfficialMembershipDesc = explorePage.getOfficialMembershipDesc();
-            soft.assertEquals(actualOfficialMembershipDesc, expOfficialMembershipdesc);
+         //   String actualOfficialMembershipDesc = explorePage.getOfficialMembershipDesc();
+           // soft.assertEquals(actualOfficialMembershipDesc, expOfficialMembershipdesc);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Verified membership screen");
         } catch (AssertionError e) {

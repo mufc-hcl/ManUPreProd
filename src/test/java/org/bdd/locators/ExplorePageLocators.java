@@ -169,7 +169,8 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"OFFICIAL MEMBERSHIP\"])[2]")
 	public WebElement officialMembership;
 	
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"UNITED MEMBERSHIP\"])[2]")
+	//@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"UNITED MEMBERSHIP\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"mutv-main-heading\"]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"UNITED MEMBERSHIP\"])[2]")
 	public WebElement unitedMembershipMembership;
 

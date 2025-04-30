@@ -576,7 +576,7 @@ public class ExplorePage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			   if (device.equalsIgnoreCase("android")) {
-			            waitForVisibilityFluentWait(explorePageLocators.officialMembership, 60);
+			            waitForVisibilityFluentWait(explorePageLocators.unitedMembershipMembership, 60);
 			            if (explorePageLocators.unitedMembershipMembership.isDisplayed()) {
 			                ExtentsReportManager.extentReportLogging("pass", "Returns unitedMembershipMembership Text");
 			                return explorePageLocators.unitedMembershipMembership.getText();

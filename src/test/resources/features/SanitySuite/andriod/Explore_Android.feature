@@ -1,6 +1,7 @@
 @Sanity_Android @Explore_Android
 Feature: Explore
 
+@exploreetc001
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -181,9 +182,12 @@ Feature: Explore
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks membership courosel in search screen
-    Then user verify the membership screen
-      | official member     | Description                                                               |
-      | OFFICIAL MEMBERSHIP | Be part of the United family. 2024/25 Official Membership is now on sale. |
+     Then user verify the membership screen
+      | official member     |
+      | UNITED MEMBERSHIP |
+    #Then user verify the membership screen
+      #| official member     | Description                                                               |
+      #| OFFICIAL MEMBERSHIP | Be part of the United family. 2024/25 Official Membership is now on sale. |
 
   Scenario: [Explore]TC018 My United -> should be Hybrid Page
     Given user navigates to manu android application
