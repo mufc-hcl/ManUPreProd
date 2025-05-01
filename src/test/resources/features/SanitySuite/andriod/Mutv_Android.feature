@@ -100,7 +100,7 @@ Feature: MUTV Feature
 
     Examples:
       | username             | password   |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@123 |
 
     Scenario Outline: [MUTV]TC009 Verify that CBR badges display for register signup screen
     Given user navigates to manu android application
@@ -167,8 +167,8 @@ Feature: MUTV Feature
 
     Examples:
       | username             | password |
-      | manupreprod@yopmail.com | Manu@1234 |
-  
+      | manupreprod@yopmail.com | Manu@123 |
+  @AndroidMUTVTC013
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -211,7 +211,7 @@ Feature: MUTV Feature
 
     Examples:
       | username             | password |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
@@ -240,7 +240,7 @@ Feature: MUTV Feature
 
     Examples:
       | username             | password |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 #below two test caess added by Automation team and moving to regression pack
 #@APITestAndroid 
