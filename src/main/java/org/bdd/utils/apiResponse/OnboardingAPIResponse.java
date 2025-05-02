@@ -167,7 +167,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 			js = new JsonPath(res.asString());
 			int size = js.getList("PageFilterResponse.response.docs").size();
 			System.out.println("size=" + size);
-			for (int i = 0; i < size; i++) {
+			for (int i = 1; i < size; i++) {
 				verifyPlayerCategeory.add(
 						js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
 			}

@@ -1,6 +1,7 @@
 @Sanity_Android @Onboarding_Android
 Feature: Onboarding
 
+@tc001_onb
   Scenario: [Onboarding]TC001 Verify the all four screens of the manchester app onboarding
     Given user navigates to manu android application
     Then user validates all objects in screen one using api
@@ -11,14 +12,14 @@ Feature: Onboarding
     And user navigates to screen four
     Then user validates all objects in screen four using Api
 
-
+@onb1
   Scenario Outline: [Onboarding]TC002 TC003 Native dialouge asking user to allow dont allow notifications should display
     Given user navigates to manu android application
     And user navigates to screen two
     And user clicks on allow button
     Then user validate all objects in allow notifcation screen
       | notification                                   | allow | dontallow   |
-      | Allow Man Utd to send you notifications? | Allow | Don’t allow |
+      | Allow Man Utd Stage to send you notifications? | Allow | Don’t allow |
     And user clicks on "<notificationbutton>" button in notification screen
     Then user validates all objects in screen three using Api
 
@@ -27,6 +28,7 @@ Feature: Onboarding
       | allow_button       |
       | deny_button        |
 
+@onb1
   Scenario: [Onboarding]TC004 Native dialouge asking user click on ask me later
     Given user navigates to manu android application
     And user navigates to screen two

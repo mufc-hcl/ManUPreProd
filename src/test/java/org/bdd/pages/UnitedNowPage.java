@@ -3874,7 +3874,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -3927,7 +3927,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4031,7 +4031,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4085,7 +4085,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4140,7 +4140,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4194,7 +4194,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4248,7 +4248,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}
@@ -4303,7 +4303,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>100){
+							if(i>20){
 								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 								return false;
 							}

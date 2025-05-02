@@ -45,6 +45,7 @@ public class ExplorePageLocators {
 	public WebElement contactUsScreenText;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"FAQS\"]")
+	//@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/title') and contains(@text, 'FAQ')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"faqs\"]")
 	public WebElement faqSHelp;
 
