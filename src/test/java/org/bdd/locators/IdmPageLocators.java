@@ -118,8 +118,11 @@ public class IdmPageLocators {
 	public WebElement saveDetailsEditProfilePage;
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Your details have been updated.\"]")
 	public WebElement successMessageEditProfilePage;
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ok_btn\"]")
-	// @iOSXCUITFindBy(xpath ="")
+	//@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ok_btn\"]")
+
+//	public WebElement okButton;
+//	// @iOSXCUITFindBy(xpath ="")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ok_btn')]")
 	public WebElement yesIconLogoutAlertBox;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"Account deletion\"]")
 	public WebElement accountDeletionMyProfilePage;
