@@ -277,7 +277,7 @@ Feature: United now
 
     Examples: 
       | username                | password  |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: TC0018 UNITED NOW - Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu android application
