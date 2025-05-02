@@ -1767,10 +1767,12 @@ public class MutvPage extends Common {
     }
     public void clicksOnShopNowPopUP() {
 		try {
-			waitForVisibilityFluentWait(mutvPageLocators.buyORshopNowInUnitedNowPopUp1, 60);
+			if (mutvPageLocators.buyORshopNowInUnitedNowPopUp1.isDisplayed()) {
+					waitForVisibilityFluentWait(mutvPageLocators.buyORshopNowInUnitedNowPopUp1, 60);
 					mutvPageLocators.buyORshopNowInUnitedNowPopUp1.click();
 					ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in shop Now In UnitedNow PopUp");
-		} catch (NoSuchElementException ns) {
+			}
+			} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {
 			System.out.println("null pointer exception due to override of screens");
