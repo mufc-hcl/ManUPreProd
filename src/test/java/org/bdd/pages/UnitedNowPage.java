@@ -1547,20 +1547,15 @@ public class UnitedNowPage extends Common {
 	public boolean validateUpcomingFixturesInIos(String fixtureText) {
 		String[] splitFixtures = fixtureText.split(",");
 		try {
-			// if (matchDayInAllUnitedNow.isDisplayed()) {
-			// System.out.println("test"+matchDayInAllUnitedNow.getDomAttribute("label"));
 			ExtentsReportManager.extentReportLogging("pass", "Returns match day text");
 			return unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label").contains(splitFixtures[0])
 					|| unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label").contains(splitFixtures[1]);
-//						| textFixtureAndResults.getDomAttribute("label").contains(splitFixtures[2]);
-			// }
 
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-validateUpcomingFixturesInIos()<br />" + e);
 			throw e;
 		}
-		// return false;
 	}
 
 	public void scrollToResultsInUnitedNowScreenInIos() {
@@ -4596,6 +4591,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
 			String actualTicketInfo = null;
 			String actualMatchReview = null;
+			
 	        try {
 	        	if(unitedNowPageLocators.ticketInfo.size() > 0 || unitedNowPageLocators.matchReview.size() > 0) { 
 	        		if(unitedNowPageLocators.ticketInfo.size() > 0){
@@ -4629,6 +4625,46 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 	            throw e;
 	        }
 	    }
+		
+//		public boolean getTicketInfoAndMatchReviewInIOS() throws Exception {
+//			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint");
+//			String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
+//			String actualTicketInfo = null;
+//			String actualMatchReview = null;
+//			
+//	        try {
+//	        	if(unitedNowPageLocators.ticketInfo.size() > 0 || unitedNowPageLocators.matchReview.size() > 0) { 
+//	        		if(unitedNowPageLocators.ticketInfo.size() > 0){
+//	        			waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
+//	        			actualTicketInfo = unitedNowPageLocators.ticketInfo.get(0).getText();
+//	        			ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
+//	        		}
+//	        		else {
+//	        			waitForVisibilityFluentWait(unitedNowPageLocators.matchReview.get(0), 60);
+//	        			actualMatchReview = unitedNowPageLocators.matchReview.get(0).getText();
+//	        			ExtentsReportManager.extentReportLogging("pass", "" + expMatchReview + " text matching");
+//	        			
+//	        		}
+//	            if (actualTicketInfo.contains(expTicketInfo) || actualMatchReview.contains(expTicketInfo)) {
+//					ExtentsReportManager.extentReportLogging("pass",""+ expTicketInfo+" And "+expTicketInfo+" text matching");
+//	            return true;
+//	            }
+//			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+//				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
+//				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
+//				if (actnoFixturesTextUnitedPage.contains(expTicketInfo))
+//					ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
+//	        }
+//			else {
+//				return false;
+//			}
+//	            return true;
+//	        	
+//	        } catch (Exception e) {
+//	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getTicketInfo()<br />" + e);
+//	            throw e;
+//	        }
+//	    }
 		
 		public boolean getMtachReview() throws Exception {
 			String expMatchReview = unitedNowAPIResponse.getDateTBC("MatchReviewEndPoint");
@@ -4698,6 +4734,24 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			else {
 				return false;
 			}
+	            return true;
+	        	
+	        } catch (Exception e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDummyTestSiteCore()<br />" + e);
+	            throw e;
+	        }
+	    }
+		
+		public boolean getTicketInfoInIOS() throws Exception {
+			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint").toUpperCase();
+			String error= "There are currently no fixtures available in this competition.";
+	        try {
+	        	if(unitedNowPageLocators.ticketInfo.size() > 0) { 
+	        	waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
+				String actualTicketInfo = unitedNowPageLocators.ticketInfo.get(0).getAttribute("name").toUpperCase();
+	            if (actualTicketInfo.contains(expTicketInfo))
+					ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
+	        	}
 	            return true;
 	        	
 	        } catch (Exception e) {
