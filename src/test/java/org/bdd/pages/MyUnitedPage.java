@@ -139,7 +139,7 @@ public class MyUnitedPage extends Common {
 					"Clicks on don't allow button in photos and videos access in alert after refresh");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clickOnRateAppInTheGeneralScreen()<br />" + e);
+					"Exception occurred in function-clickOnSettingIconInChineseLanguage()<br />" + e);
 			throw e;
 		}
 
@@ -212,9 +212,13 @@ public class MyUnitedPage extends Common {
 
 	public boolean validateChineseCalenderIcon() {
 		try {
-			waitForVisibilityFluentWait(myUnitedPageLocators.calenderIconChineseUnitedNowIos, 60);
-			ExtentsReportManager.extentReportLogging("pass", "Displays calender icon in chinese united now");
-			return myUnitedPageLocators.calenderIconChineseUnitedNowIos.isDisplayed();
+			if (myUnitedPageLocators.calenderIconUnitedPage1.isEmpty()) {
+				return myUnitedPageLocators.calenderIconUnitedPage.isDisplayed();
+			} else {
+				waitForVisibilityFluentWait(myUnitedPageLocators.calenderIconChineseUnitedNowIos, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Displays calender icon in chinese united now");
+				return myUnitedPageLocators.calenderIconChineseUnitedNowIos.isDisplayed();
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-validateChineseCalenderIcon()<br />" + e);
@@ -881,7 +885,7 @@ public class MyUnitedPage extends Common {
 
 	public void clickOnViewButtonInDailyStreaksCard() {
 		try {
-			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.7);
+//			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.7);
 			waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonThree, 60);
 			myUnitedPageLocators.viewSeasonThree.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on view button in daily streaks card screen");
@@ -1201,7 +1205,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualDailyStreaks = myUnitedPageLocators.appearanceTitleFour.getText();
+				actualDailyStreaks = myUnitedPageLocators.viewSeasonThree.getText();
 				if (actualDailyStreaks.equalsIgnoreCase(expectedDailystreaks)) {
 					break;
 				} else {
@@ -1220,14 +1224,9 @@ public class MyUnitedPage extends Common {
 	public String selectAppearenceInAppearenceCard(String expectedAppearence) {
 		String actualAppearence = null;
 		try {
-			   actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();
-		        if (actualAppearence.equalsIgnoreCase(expectedAppearence)) {
-		            ExtentsReportManager.extentReportLogging("pass", "Appearance already displayed, no need to scroll.");
-		            return actualAppearence;
-		        }
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();
+				actualAppearence = myUnitedPageLocators.viewSeasonFour.getText();
 				if (actualAppearence.equalsIgnoreCase(expectedAppearence)) {
 					break;
 				} else {
@@ -1385,7 +1384,7 @@ public class MyUnitedPage extends Common {
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clickOnRateAppInTheGeneralScreen()<br />" + e);
+					"Exception occurred in function-clickOnPlayerNameInUnitedScreen()<br />" + e);
 			throw e;
 		}
 	}
@@ -2223,6 +2222,17 @@ public class MyUnitedPage extends Common {
 					"Exception occurred in function-getStickersFromMyUnitedUI()<br />" + e);
 			throw e;
 		}
+	}
+
+	public void scrollsRightToLeftToNavigateAppearenceCards() {
+		try {
+			swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Exception occurred in function-scrollsRightToLeftToNavigateAppearenceCards()<br />" + e);
+				throw e;
+			}
+		
 	}
 
 	}

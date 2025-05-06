@@ -378,9 +378,9 @@ public class MutvPage extends Common {
     public void selectsTheVideoAndCheckCBSBadge() {
         try {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
-//            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+////            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
 //                    if (mutvPageLocators.videosMutvPage.get(i)
@@ -435,7 +435,7 @@ public class MutvPage extends Common {
     public void selectsTheVideoAndChecksCBRBadge() {
         try {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
             IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
@@ -456,7 +456,7 @@ public class MutvPage extends Common {
             	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
             	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
 
-            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
+            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
             	        subscriptionStatus.click();
             	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
             	        break;

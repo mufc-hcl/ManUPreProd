@@ -758,9 +758,9 @@ public class MyUnitedAndroidStepDef {
     @Then("^user validates player details updated in my united screen$")
     public void userValidatesPlayerDetailsUpdatedInMyUnitedScreen(DataTable table) {
         try {
-//            String expPlayerName = table.cell(1, 0);
-            String expPlayerName = playerName;
-            String expBuyShirt = table.cell(1, 0);
+            String expPlayerName = table.cell(1, 0);
+//            String expPlayerName = playerName;
+            String expBuyShirt = table.cell(1, 1);
             String actualPlayerName = myUnitedPage.getPlayerNameInUnitedScreen();
             String actualBuyShirt = myUnitedPage.getBuyShirtButtonScreen();
             soft.assertEquals(actualPlayerName, expPlayerName);

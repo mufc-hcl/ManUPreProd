@@ -46,11 +46,11 @@ public class MyUnitedPageLocators {
 
     @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_deny_and_dont_ask_again_button")
     public WebElement dontAllowBtnPhotosAndVideosRefreshed;
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/navigation_bar_item_small_label_view\" and @text=\"我的联合\"')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'navigation_bar_item_small_label_view') and (@text=\"我的联合\" or @text=\"My United\")]")
     @iOSXCUITFindBy(accessibility = "我的曼联")
     public WebElement myUnitedBtnInChinese;
 
-    @AndroidFindBy(accessibility = "设置")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"设置\" or @content-desc=\"Settings\"]")
     @iOSXCUITFindBy(accessibility = "设置")
     public WebElement settingsIconMyUnitedInChinese;
 
@@ -70,9 +70,13 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(accessibility = "确定")
     public WebElement confirmBtnInChineseLanguage;
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'image_left')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"赛程\" or @name=\"Fixtures\"]")
+    public WebElement calenderIconUnitedPage;
+    						
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/image_left')]")
     @iOSXCUITFindBy(accessibility = "Fixtures")
-    public WebElement calenderIconUnitedPage;
+    public List<WebElement> calenderIconUnitedPage1;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/txtHeaderTitle')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MY UNITED\"]")
@@ -129,7 +133,7 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]")
     public WebElement firstStickerInStickersScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/textView\" and @text=\"Search image\"')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"textView\") and contains(@text, \"Search\")]")
     @iOSXCUITFindBy(accessibility = "MY STICKERS")
     public WebElement searchImageLinkStickersScreen;
 
@@ -140,7 +144,7 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(iOSNsPredicate = "name == \"Edit\" AND label == \"Edit\" AND type == \"XCUIElementTypeButton\"")
     public WebElement tShirtEditButton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_jerseyNo_EdtTxt')]")
+    @AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, \"player_jerseyNo_EdtTxt\")]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     public WebElement tShirtTextBox;
 
@@ -157,11 +161,11 @@ public class MyUnitedPageLocators {
     public WebElement tShirtNumberMyUnitedScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_name')]")
-    @iOSXCUITFindBy(accessibility = "T")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
     public WebElement tShirtNameMyUnitedScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/updatemembership')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"GET OFFICIAL MEMBERSHIP\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[9]/XCUIElementTypeOther/XCUIElementTypeButton[1]/XCUIElementTypeStaticText")
     public WebElement getOfficialMemberCTABtnMyUnitedScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
@@ -173,7 +177,7 @@ public class MyUnitedPageLocators {
     public WebElement closeIconInGetOfficialMemberCTABtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/start_day_button')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"BUY SHIRT\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[9]/XCUIElementTypeOther/XCUIElementTypeButton[2]/XCUIElementTypeStaticText")
     public WebElement buyTShirtCTABtnMyUnitedScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
@@ -194,7 +198,7 @@ public class MyUnitedPageLocators {
     public WebElement scoreThisSeasonSeasonOne;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_total_title')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement myUnitedSeasonTwo;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_total_description')]")
@@ -234,7 +238,7 @@ public class MyUnitedPageLocators {
     public WebElement consecutiveDaysinTheAppSeasonThree;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/streaks_view_button')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement viewSeasonThree;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_lineup_pred_title')]")
@@ -267,14 +271,19 @@ public class MyUnitedPageLocators {
     public WebElement numberHeadingSeasonFour;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_title')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement appearanceTitleFour;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_description')]")
     public WebElement thisSeasonFour;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_view_button')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement viewSeasonFour;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_view_button')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
+    public List<WebElement> viewSeasonFour1;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_lineup_pred_title')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"APPEARANCES\"]")
@@ -335,7 +344,7 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SHOP\"]")
     public WebElement shopTitleFavPlayerShopScreen;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_img')]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'player_img')]")
     public WebElement playerImageInMyUnitedScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/imageinboxclose')]")
@@ -345,7 +354,7 @@ public class MyUnitedPageLocators {
     @AndroidFindBy(xpath = "(//android.widget.ImageButton[contains(@resource-id, ':id/ib_selection')])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText")
     public WebElement selectEditedPlayerScreen;
-
+    							
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/edit_fav_player')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Edit\"]")
     public WebElement editIconfavoritePlayerMyUnitedScreen;
@@ -475,22 +484,22 @@ public class MyUnitedPageLocators {
     public WebElement saveDetailsEditProfilePage;
     @iOSXCUITFindBy(accessibility = "Your details have been updated.")
     public WebElement successMessageEditProfilePage;
-    @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, ':id/textview2\"])[1]")
+    @AndroidFindBy(xpath = "(//android.widget.ImageButton[contains(@resource-id, ':id/ib_selection')])")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"plus circle gray\"])[1]/../XCUIElementTypeStaticText")
     public WebElement selectPlayerNameFavoritePlayerScreen1;
     @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, ':id/textview2\"])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText")
     public WebElement selectPlayerNameFavoritePlayerScreen2;
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_first_name")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'player_first_name')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Edit\"]/../XCUIElementTypeStaticText[1]")
     public WebElement playerFirstNameInMyUnitedScreen;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_last_name")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'id/player_last_name')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Edit\"]/../XCUIElementTypeStaticText[2]")
     public WebElement playerLastNameInMyUnitedScreen;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ticket_card_title')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"MY TICKETS\"]")
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.TextView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
     public WebElement myTicketsComponentMyUnited;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
@@ -501,12 +510,12 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Back\"]")
      public WebElement backIconinMyTicketsMyUnited;
     
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/stadium_card_title')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"STADIUM\"]")
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.TextView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
      public WebElement stadiumComponentMyUnited;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/stadiumview_title')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"STADIUM\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText[1]")
      public WebElement stadiumComponentContentMyUnited;
     
     @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[contains(@resource-id, ':id/rv_search\"]/android.widget.LinearLayout/android.widget.ImageView")

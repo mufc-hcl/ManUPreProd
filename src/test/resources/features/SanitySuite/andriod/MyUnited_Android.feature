@@ -226,7 +226,7 @@ Feature: My United features
     Examples:
       | username             | password | Daily streaks |appearance |
       | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS |APPEARANCES |
-
+@222
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -250,8 +250,8 @@ Feature: My United features
       | CHOOSE PLAYER | Men | Women |
     And user selects a favorite player in players screen
     Then user validates player details updated in my united screen
-      | buy shirt CTA |
-      | Buy Shirt     |
+      | player name       | buy shirt CTA |
+ 				 | ALTAY BAYINDIR    | Buy Shirt     |
     Then user validates the star icon is displayed
     #    #    And clicks on  buy shirt button in my united screen
     #    #    Then user validates shop page
