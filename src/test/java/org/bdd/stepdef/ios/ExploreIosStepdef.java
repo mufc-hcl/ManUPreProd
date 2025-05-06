@@ -136,11 +136,11 @@ public class ExploreIosStepdef {
             String actualWhatsNeworLiveBlogTextFromUI = explorePage.getWhatsNewOrLiveBlog();
             System.out.println(actualWhatsNeworLiveBlogTextFromUI);
             if (!contentType) {
-                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNewOrLiveBlogTextFromEndPoint("getUnitedNowConfigurationsEndpoint", "WHAT’S NEW");
+                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNew("getUnitedNowConfigurationsEndpoint").toUpperCase();
                 soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI.toUpperCase(), expWhatsNewTextFromApi.toUpperCase());
                 ExtentsReportManager.extentReportLogging("info", "Verified Whats New in home page");
             } else {
-                String expLiveBlogTextFromApi = unitedNowAPIResponse.getWhatsNewOrLiveBlogTextFromEndPoint("getUnitedNowConfigurationsEndpoint", "Live Match Updates");
+                String expLiveBlogTextFromApi = unitedNowAPIResponse.getLiveBlog("getUnitedNowConfigurationsEndpoint").toUpperCase();
                 soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expLiveBlogTextFromApi.toUpperCase());
                 ExtentsReportManager.extentReportLogging("info", "Verified Live Match Blog in home page");
             } 

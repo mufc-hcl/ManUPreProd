@@ -44,7 +44,37 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 
 	}
-
+	
+	public String getWhatsNew(String endpoint) throws IOException {
+		try {
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+				String whatNew = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlenonmatchday_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return whatNew.trim();
+			}
+		 catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getWhatsNew()" + e);
+			throw e;
+		}
+	}
+	
+	public String getLiveBlog(String endpoint) throws IOException {
+		try {
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+				String liveBlog = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlematchday_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return liveBlog.trim();
+			}
+		 catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getWhatsNew()" + e);
+			throw e;
+		}
+	}
+	
 	public ArrayList<String> getDropDownValuesFromApi(String endpoint) throws IOException {
 		try {
 			ArrayList<String> dropDownValues = new ArrayList<>();
