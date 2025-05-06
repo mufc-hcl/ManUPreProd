@@ -154,11 +154,12 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "MY TICKETS")
 	public WebElement myTicketsCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"BUY TICKETS  opens external window\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_heading') and contains(@text, 'BUY TICKETS')]")
 	@iOSXCUITFindBy(accessibility = "BUY TICKETS")
 	public WebElement buyTicketsCouroselSearchPage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
+	//@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
+	@FindBy(xpath = "(//*[contains(text(),'TICKETS')])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS\"]")
 	public WebElement ticketTitleTicketPage;
 
@@ -171,9 +172,13 @@ public class ExplorePageLocators {
 	public WebElement officialMembership;
 	
 	//@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"UNITED MEMBERSHIP\"])[2]")
+	//@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"UNITED MEMBERSHIP\"])[2]")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"mutv-main-heading\"]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"UNITED MEMBERSHIP\"])[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNITED MEMBERSHIP\"]")
 	public WebElement unitedMembershipMembership;
+
+	@iOSXCUITFindBy(xpath = "//*[@name='UNITED MEMBERSHIP']")
+	public List<WebElement> unitedMembershipOptions;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Be part of the United family. 2024/25 Official Membership is now on sale.\"]")
 	@iOSXCUITFindBy(accessibility = "Be part of the United family. 2024/25 Official Membership is now on sale.")
@@ -577,4 +582,11 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
 	public WebElement clicksOnContinueButton;
 	
+	@FindBy(xpath = "(//*[contains(text(),'Accept all')])[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
+	public List<WebElement> acceptAllInBuyTickets;
+	
+	@FindBy(xpath = "(//*[contains(text(),'TICKETS')])")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS\"]")
+	public List<WebElement> ticketTitleTicketPages;
 }
