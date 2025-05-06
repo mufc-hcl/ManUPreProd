@@ -11,7 +11,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class ExplorePageLocators {
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/mLatestNewsTxt\')]")
-	@iOSXCUITFindBy(accessibility = "WHAT'S NEW")
+	@iOSXCUITFindBy(accessibility = "WHAT’S NEW")
 	public WebElement whatsNew;
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/mLatestNewsTxt\')]")
 	@iOSXCUITFindBy(accessibility = "WHAT'S NEW")

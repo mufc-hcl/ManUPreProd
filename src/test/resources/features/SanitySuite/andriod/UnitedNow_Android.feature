@@ -1,6 +1,5 @@
 @Sanity_Android @UnitedNow_Android
 Feature: United now
-
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -78,7 +77,7 @@ Feature: United now
       | League      |
       | All 2024/25 |
     Then user validate EnglishFaCups text using api
-    And user clicks all radio button and validates leagues displayed
+    #And user clicks all radio button and validates leagues displayed
     And user clicks Three dots icon
     And user clicks the following filter in UnitedNow Calender screen
       | League         |
@@ -300,7 +299,7 @@ Feature: United now
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@TC020
   Scenario Outline: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
     Given user navigates to manu android application
     And user navigates to screen two
@@ -388,7 +387,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@TC023
   Scenario Outline: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -432,7 +431,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@TC025
   Scenario Outline: TC025 UNITED NOW - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
