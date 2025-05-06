@@ -579,22 +579,6 @@ public class UnitedNowIosStepDef {
 
 	@Then("^user validates the upcoming Fixtures in ios$")
 	public void userValidatesTheUpcomingFixturesInIos(DataTable table) throws Throwable {
-//		 try {
-//        	 String matchDayLiveTextFromAPI=unitedNowAPIResponse.getMatchDayLiveFromApi("UpComingFixturesEndPoint");
-//        	 String actualMatchDayLiveTextFromUI = unitedNowPage.validateMatchDayLiveFromUi();
-//
-//			 ExtentsReportManager.extentReportLogging("info","match Day Live Text From API<br />"+matchDayLiveTextFromAPI);
-//			 ExtentsReportManager.extentReportLogging("info","actual Match Day Live Text From UI<br />"+unitedNowPage.validateMatchDayLiveFromUi());
-//        	 
-//           soft.assertEquals(actualMatchDayLiveTextFromUI,matchDayLiveTextFromAPI);
-//            soft.assertAll();
-//            ExtentsReportManager.extentReportLogging("info", "Validated the results");
-//        } catch (AssertionError e) {
-//            ExtentsReportManager.extentReportLogging("fail", "Error in validating the results<br />" + e);
-//            throw e;
-//        }
-//    }
-		
 		try {
 			boolean flag = unitedNowPage.validateUpcomingFixturesInIos(table.cell(1, 0));
 			soft.assertTrue(flag);
@@ -1715,6 +1699,20 @@ public class UnitedNowIosStepDef {
             ExtentsReportManager.extentReportLogging("info", "Validated English FA Cups using API");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Fa Cups Text In All Usingpi<br />" + e);
+            throw e;
+        }
+        
+    }
+	
+	@Then("^user validates the upcoming Fixtures using Api in ios$")
+    public void userValidatesTheUpcomingFixturesusingApiInIOS() throws Exception {
+        try {
+            Boolean expectedSelection1 = unitedNowPage.getTicketInfoInIOS();
+            soft.assertTrue(expectedSelection1);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "Validated upcoming Fixtures using API");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Europa League Text userValidatesTheUpcomingFixturesusingApi<br />" + e);
             throw e;
         }
         

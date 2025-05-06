@@ -574,6 +574,7 @@ public class ExplorePage extends Common {
 
 	public String getOfficialMembership() {
 		String device = GlobalParams.getPlatformName();
+		String headerText = null;
 		try {
 			   if (device.equalsIgnoreCase("android")) {
 			            waitForVisibilityFluentWait(explorePageLocators.unitedMembershipMembership, 60);
@@ -585,9 +586,16 @@ public class ExplorePage extends Common {
 			                return explorePageLocators.officialMembership.getText();
 			            }
 			        } else if (device.equalsIgnoreCase("ios")) {
-			            waitForVisibilityFluentWait(explorePageLocators.unitedMembershipMembership, 60);
+			           // waitForVisibilityFluentWait(explorePageLocators.unitedMembershipMembership, 60)
+			        	for (WebElement element : explorePageLocators.unitedMembershipOptions) {
+			        	    if (element.isDisplayed()) {
+			        	    	headerText = element.getDomAttribute("label"); 
+			        	        break;
+			        	    }
+			        	}
+
 			            ExtentsReportManager.extentReportLogging("pass", "Returns ShopCarouselSearchPage Text for iOS");
-			            return explorePageLocators.unitedMembershipMembership.getDomAttribute("label");
+			            return headerText;
 			        } else {
 			            waitForVisibilityFluentWait(explorePageLocators.officialMembership, 120);
 			            ExtentsReportManager.extentReportLogging("pass", "Returns officialMembership Text for Web");
@@ -765,11 +773,34 @@ public class ExplorePage extends Common {
 
 	public String getTicketTitle() {
 		String device = GlobalParams.getPlatformName();
+		String ticketPage = null;
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
+				switchToWebView();
+//				if (!explorePageLocators.acceptAllInBuyTickets.isEmpty()) {
+////	              elementToBeClickableFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert);
+//					explorePageLocators.acceptAllInBuyTickets.get(0).click();
+//	              ExtentsReportManager.extentReportLogging("pass", "Clicks on Accept all cookies popup ");
+//	          }
+				
+				for (WebElement element : explorePageLocators.acceptAllInBuyTickets) {
+	        	    if (element.isDisplayed()) {
+	        	    	 element.click();
+	        	        break;
+	        	    }
+	        	}
+				
+				//waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
+				//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", explorePageLocators.ticketTitleTicketPage);
+				for (WebElement element : explorePageLocators.acceptAllInBuyTickets) {
+	        	    if (element.isDisplayed()) {
+	        	    	ticketPage = element.getText();
+	        	        break;
+	        	    }
+	        	}
 				ExtentsReportManager.extentReportLogging("pass", "Returns ticketTitleTicketPage Text");
-				return explorePageLocators.ticketTitleTicketPage.getText();
+				//return explorePageLocators.ticketTitleTicketPage.getText();
+				return ticketPage;
 			} else {
 				waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns ticketTitleTicketPage Text");
