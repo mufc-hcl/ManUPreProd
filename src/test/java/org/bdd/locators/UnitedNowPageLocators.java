@@ -93,7 +93,7 @@ public class UnitedNowPageLocators {
     public List<WebElement> allRadioBtnUnitedPage1;
 
 //    @AndroidFindBy(id = "com.mu.muclubapp.preprod_mu_dxc:id/textview_header")
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/textview_header\")]")
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/radio\"])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView//XCUIElementTypeCell[2]//XCUIElementTypeOther[2]//XCUIElementTypeOther//XCUIElementTypeStaticText")
     public WebElement allLeaguesUnitedPage;
 
@@ -148,7 +148,7 @@ public class UnitedNowPageLocators {
     public WebElement fACommunityShieldRadioBtnUnitedPage;
 
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/bottom_textView\"]")
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/bottom_textView\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/bottom_textView\")]")
     @iOSXCUITFindBy(accessibility = "There are currently no fixtures available in this competition.")
     public List<WebElement> noFixturesTextUnitedPage;
 
@@ -332,7 +332,7 @@ public class UnitedNowPageLocators {
     public WebElement womenTabPlayersScreen;
 
     @AndroidFindBy(xpath = "//android.widget.ScrollView//android.widget.LinearLayout//android.widget.HorizontalScrollView//android.widget.LinearLayout//android.widget.LinearLayout[3]//android.widget.TextView")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNDER-23STab Item\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNDER-21STab Item\"]")
     public WebElement under23TabPlayersScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"UNDER-18S\"]")
@@ -978,9 +978,11 @@ public class UnitedNowPageLocators {
     public List<WebElement> dateTBC;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'TICKET INFO')])[1]")
+    @iOSXCUITFindBy(id = "(//*[contains(@name,'TICKET INFO')])[1]")
     public List<WebElement> ticketInfo;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'MATCH REVIEW')])[1]")
+    @iOSXCUITFindBy(id = "(//XCUIElementTypeStaticText[@name=\"MATCH REVIEW\"])[1]")
     public List<WebElement> matchReview;
     
     @iOSXCUITFindBy(xpath = "(//*[contains(@name,'MATCHDAY LIVE')])[1]")

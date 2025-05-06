@@ -29,7 +29,7 @@ public class ExploreAndroidStepDef {
             String actualWhatsNeworLiveBlogTextFromUI = explorePage.getWhatsNewOrLiveBlog();
             System.out.println(actualWhatsNeworLiveBlogTextFromUI);
             if (!contentType) {
-                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNewOrLiveBlogTextFromEndPoint("getUnitedNowConfigurationsEndpoint", "whatNew");
+                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNewOrLiveBlogTextFromEndPoint("getUnitedNowConfigurationsEndpoint", "WHAT’S NEW").toUpperCase();
                 soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expWhatsNewTextFromApi.toUpperCase());
                 ExtentsReportManager.extentReportLogging("info", "Verified Whats New in home page");
             } else {

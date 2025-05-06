@@ -379,7 +379,6 @@ public class MutvPage extends Common {
         try {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
-//            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {

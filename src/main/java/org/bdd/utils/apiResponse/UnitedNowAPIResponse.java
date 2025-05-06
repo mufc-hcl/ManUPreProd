@@ -27,7 +27,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			if (text.equalsIgnoreCase("whatNew")) {
+			if (text.equalsIgnoreCase("WHAT’S NEW")) {
 				String whatNew = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlenonmatchday_t");
 				ExtentsReportManager.extentReportLogging("info",
 						"Getting the response from the endpoint " + getURIInfo(endpoint));
@@ -821,7 +821,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("FixtureListResponse.response.docs[18].competitionname_t");
+	        String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
 	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 	        return getAll;
@@ -835,7 +835,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("FixtureListResponse.response.docs[18].competitionname_t");
+	        String getAll = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
 
 	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 	        return getAll;

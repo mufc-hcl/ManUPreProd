@@ -1417,6 +1417,18 @@ public class MyUnitedIosStepDef {
             throw e;
         }
 }
+
+	@And("^user scrolls right to left to navigate appearence cards$")
+	public void userScrollsRightToLeftToNavigateAppearenceCards() throws Throwable {
+		try {
+            myUnitedPage.scrollsRightToLeftToNavigateAppearenceCards();
+            ExtentsReportManager.extentReportLogging("info", "clicked save details in edit profile screen in ios");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail",
+                    "Error in clicking save details in edit profile screen in ios<br />" + e);
+            throw e;
+        }
+	}
 	}
 	
 	

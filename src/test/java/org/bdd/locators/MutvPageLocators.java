@@ -61,9 +61,9 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/framelayout_tabwidget_parent\')]")
 	public WebElement notificationUnitedNowBottomScreen;
 
-//	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_library_add\')]")
-//	@iOSXCUITFindBy(accessibility = "Add Tracks to Library")
-//	public WebElement plusIconInMyListScreen;
+	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'fs_close_button')]")
+	@iOSXCUITFindBy(accessibility = "Add Tracks to Library")
+	public WebElement closeIconInVideoMutv;
 
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
 	public WebElement oneVideoMutvScreen;
@@ -71,7 +71,7 @@ public class MutvPageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
 	public WebElement oneVideoMutvScreenIos;
 
-	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, \':id/podcast_player_cover_image\')]")
+	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'podcast_mylist_icon')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeStaticText/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeButton")
 	public WebElement plusSymbolMyListScreen;
 
