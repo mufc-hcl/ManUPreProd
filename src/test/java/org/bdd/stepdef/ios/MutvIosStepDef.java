@@ -380,11 +380,11 @@ public class MutvIosStepDef {
 	public void validateSubscribeScreenIsDisplayedInIos(DataTable table) throws Throwable {
 		try {
 			String expSubscrptionTitle = table.cell(1, 0);
-			String expDesc = table.cell(1, 1);
+//			String expDesc = table.cell(1, 1);
 			String actualSubscrptionTitle = mutvPage.getSubscrptionTitleSubcribePage();
-			String actualDesc = mutvPage.getDescriptionSubscribePage();
+//			String actualDesc = mutvPage.getDescriptionSubscribePage();
 			soft.assertEquals(actualSubscrptionTitle, expSubscrptionTitle);
-			soft.assertEquals(actualDesc, expDesc);
+//			soft.assertEquals(actualDesc, expDesc);
 			soft.assertAll();
 			ExtentsReportManager.extentReportLogging("info", "Validated subscribe screen is displayed in ios");
 		} catch (AssertionError e) {

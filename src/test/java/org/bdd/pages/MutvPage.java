@@ -378,9 +378,9 @@ public class MutvPage extends Common {
     public void selectsTheVideoAndCheckCBSBadge() {
         try {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
 //            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
 //                    if (mutvPageLocators.videosMutvPage.get(i)
@@ -399,7 +399,7 @@ public class MutvPage extends Common {
             	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
             	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
 
-            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
+            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
             	        subscriptionStatus.click();
             	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage");
             	        break;
@@ -435,7 +435,7 @@ public class MutvPage extends Common {
     public void selectsTheVideoAndChecksCBRBadge() {
         try {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
+//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
             IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
@@ -456,7 +456,7 @@ public class MutvPage extends Common {
             	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
             	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
 
-            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
+            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
             	        subscriptionStatus.click();
             	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
             	        break;
@@ -816,14 +816,16 @@ public class MutvPage extends Common {
             int i = 1;
             while (i > 0) {
 //                String type = "name";
-                List<WebElement> e = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name=\"  Subscribe to watch\"])"));
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+                List<WebElement> e = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name=\"  Subscribe to watch\"])[1]"));
                 if (e.size() > 0) {
                     ExtentsReportManager.extentReportLogging("pass", "found video with subscribe to watch");
                     e.get(0).click();
+//                    e=driver.findElement("");
                     Thread.sleep(4000);
                     break;
                 } else {
-                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
                     i++;
                     if(i>30){
                         ExtentsReportManager.extentReportLogging("fail", "Failing due to excessive scroll and unable to find the cbs video " + e);
@@ -866,7 +868,7 @@ public class MutvPage extends Common {
 
     public void ClicksOnLoginButtonInSubscribeScreen() {
         try {
-            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+//            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
             elementToBeClickableFluentWait(mutvPageLocators.logInBtnInSubscribeScreen, 60);
             mutvPageLocators.logInBtnInSubscribeScreen.click();
             ExtentsReportManager.extentReportLogging("pass", "Clicks on logInBtnInSubscribeScreen ");

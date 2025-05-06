@@ -197,8 +197,11 @@ public class ShopPageLocators {
 	public List<WebElement> continueAlertShopScreen;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Spring Sale\"]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Spring Sale\"]")
     public List<WebElement> springSaleMerchTab;
+    
+   
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Spring Sale\"]")
+    public WebElement springSaleMerchTabInIOS;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Shop By Category\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Shop By Category\"]")

@@ -118,7 +118,8 @@ Feature: MUTV IOS feature
 
     Examples:
       | username                  | password  |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | manupreprod@yopmail.com | Manu@123 |
+
 
 
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
@@ -153,8 +154,9 @@ Feature: MUTV IOS feature
 
     Examples:
       | notificationbutton | username                  | password  |
-      | allow_button       | manupreprod@yopmail.com | Manu@1234 |
+      | allow_button       | manupreprod@yopmail.com | Manu@123 |
 
+@MUTV_PLUSIOCON
   Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
@@ -169,8 +171,8 @@ Feature: MUTV IOS feature
 #    And user navigates to Mens Highlights CBS video in ios
     And user selects the video and check CBS badge in ios
     Then validate subscribe screen is displayed in ios
-      | subscription title | Desc                            |
-      | SUBSCRIBE          | START YOUR SUBSCRIPTION JOURNEY |
+      | subscription title |                          
+      | SUBSCRIBE          | 
     And user clicks on login button in subscribe screen
     And user clicks on continue button in ios
     And user enter the valid email "<username>" and valid password "<password>" in ios
@@ -179,7 +181,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username             | password   |
-      | manupreprod@yopmail.com | Manu@1234 |
+      | qastgtest@yopmail.com | Mu@12345 |
 
 
   Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen

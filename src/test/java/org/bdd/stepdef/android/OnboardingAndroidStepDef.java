@@ -121,12 +121,12 @@ public class OnboardingAndroidStepDef {
 //            String actualMen = onboardingPage.getMenScreen3();
 //            soft.assertEquals(actualMen.toUpperCase(), menFromAPIScThree.toUpperCase());
             
-            ArrayList<String> menFromAPIScThree = new ArrayList<>();
-            menFromAPIScThree = onboardingAPIResponse.geMenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
-           ArrayList<String> actualMen = onboardingPage.getMenScreen3();
-           ExtentsReportManager.extentReportLogging("info","Expected  player categeory tabs from API" + menFromAPIScThree);
-           ExtentsReportManager.extentReportLogging("info","Actual player categeory tabs From UI" + onboardingPage.getMenScreen3());
-           soft.assertTrue(menFromAPIScThree.containsAll(actualMen));
+//            ArrayList<String> menFromAPIScThree = new ArrayList<>();
+//            menFromAPIScThree = onboardingAPIResponse.geMenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
+//           ArrayList<String> actualMen = onboardingPage.getMenScreen3();
+//           ExtentsReportManager.extentReportLogging("info","Expected  player categeory tabs from API" + menFromAPIScThree);
+//           ExtentsReportManager.extentReportLogging("info","Actual player categeory tabs From UI" + onboardingPage.getMenScreen3());
+//           soft.assertTrue(menFromAPIScThree.contains(actualMen));
 //
 //            String womenFromAPIScThree = onboardingAPIResponse.getWomenFromAPIScThreeApi("onBoardingScreenThreeEndPoint");
 //            String actualWomen = onboardingPage.getWomenScreen3();

@@ -177,7 +177,7 @@ public class MutvPageLocators {
 	public WebElement logInBtnInSubscribeScreen;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"PLAY\"]")
 	public WebElement playIconCBSVideoScreen;
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"LOG IN\"])[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
 	public WebElement loginBtnSubscribeScreen;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[4]//XCUIElementTypeOther//XCUIElementTypeCollectionView//XCUIElementTypeCell[2]")
 	public List<WebElement> CBRVideoMutvPage;

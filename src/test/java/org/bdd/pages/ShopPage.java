@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.bdd.locators.ShopPageLocators;
 import org.bdd.utils.*;
 import org.bdd.utils.apiResponse.ShopAPIResponse;
+import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -538,7 +539,7 @@ public class ShopPage extends Common {
 	        try {
 	            if (device.equalsIgnoreCase("android")) {
 	            	KitsShop=driver.findElement(AppiumBy.xpath(
-                            "@AndroidFindBy(xpath = \"//android.widget.TextView[contains(@resource-id, 'textview_header_new') and contains(@text, '"
+                            "//android.widget.TextView[@text='"
                                     + expKitsTextFromAPI.toUpperCase() + "']"));
 	                waitForVisibility(KitsShop, 15);
 	                ExtentsReportManager.extentReportLogging("pass", "Returned  KITS Text");
@@ -894,6 +895,46 @@ public class ShopPage extends Common {
 		return false;
            
 	}
+	public boolean userValidatesSmallCardCarouselsInMerchTabInIOS() {
+		String device = GlobalParams.getPlatformName();
+        try {
+            if (device.equalsIgnoreCase("ios")) {
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+                ExtentsReportManager.extentReportLogging("pass", "Returned title of the small carousel Text in store tab");
+                return true;
+            
+            }
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-userValidatesSmallCardCarouselsInMerchTabInIOS()<br />" + e);
+            throw e;
+        }
+		return false;
+	}
+//		String device = GlobalParams.getPlatformName();
+//		try {
+//			for (int i = 0; i < 20; i++) {
+//				if (!(shopPageLocators.springSaleMerchTab.size() > 0)) {
+//					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+//				} else {
+//					break;
+//				}
+//			}
+//			ExtentsReportManager.extentReportLogging("pass", "Returns merch tab small carousals names Text");
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Exception occured in function-userValidatesSmallCardCarouselsInMerchTabUsingApi()<br />" + e);
+//			throw e;
+//		}
+//		return false;
+           
+	
 
 	public boolean userValidatesHeroCardIsDisplayedInShopScreenInMerchTab() {
 			try {
@@ -957,11 +998,11 @@ public class ShopPage extends Common {
 	                //driver.findElement(AppiumBy.accessibilityId(menuItem ))
 	                        //.click();
 	            	driver.findElement(AppiumBy.xpath(
-                            "//XCUIElementTypeStaticText[@name='"
-                                    + menuItem.toUpperCase() + "']"))
+                            "//XCUIElementTypeStaticText[contains(@name,'"
+                                    + menuItem.toUpperCase() + "')]"))
                     .click();
 	                if(menuItem.equalsIgnoreCase("STORE")||menuItem.equalsIgnoreCase("MERCH")) {
-	                	userValidatesSmallCardCarouselsInMerchTab();
+	                	userValidatesSmallCardCarouselsInMerchTabInIOS();
 	                }
 	                if(menuItem.equalsIgnoreCase("MEMBERSHIP")) {
 	                	String expKitsTextFromAPI = shopAPI.getCarosel1ForKitsTextApi("ShopMembershipCarouselEndPoint");
