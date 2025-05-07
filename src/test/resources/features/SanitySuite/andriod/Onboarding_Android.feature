@@ -1,7 +1,7 @@
 @Sanity_Android @Onboarding_Android
 Feature: Onboarding
 
-
+@OnboardingTC001
   Scenario: [Onboarding]TC001 Verify the all four screens of the manchester app onboarding
     Given user navigates to manu android application
     Then user validates all objects in screen one using api
