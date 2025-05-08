@@ -460,6 +460,121 @@ public class ShopAndroidStepDef {
 			throw e;
 		}
 	}
+
+	@Then("user adds the first product in the wishlist")
+	public void user_adds_the_first_product_in_the_wishlist() throws Exception {
+		try {
+			shopPage.addFirstProductInWishlist();
+			ExtentsReportManager.extentReportLogging("info", "Clicked on Wishlist for First Product");
+		
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in adding first product to Wishlist in Store screen<br />" + e);
+			throw e;
+		}
+	    
+	}
+	@Then("user adds the first product and select size as {string}")
+	public void user_adds_the_first_product_and_select_size_as(String size) throws Exception {
+		try {
+			shopPage.addFirstProductAndSelectSize(size);
+			ExtentsReportManager.extentReportLogging("info", "Clicked on First Product with size");
+		
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in adding first product to bag in Store screen<br />" + e);
+			throw e;
+		}
+	    
+	}
+	@Then("user clicks on Add to bag button")
+	public void user_click_on_add_to_bag_button() throws Exception {
+		try {
+			shopPage.clickOnAddtoBagButton();
+			ExtentsReportManager.extentReportLogging("info", "Clicked on Add to Bag button");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in clicking  Add to Bag button <br />" + e);
+			throw e;
+		}
+	    
+	}
+	@Then("user validates Added to Bag page")
+	public void user_validates_added_to_bag_page() throws Exception {
+		try {
+			boolean actualAddedtoBagPage = shopPage.validateAddedToBagPage();
+			
+			soft.assertTrue(actualAddedtoBagPage,"'Added to bag' is not present in Shop Page");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "Validated 'Added to Bag' page");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in validating Added to bag page <br />" + e);
+			throw e;
+		}
+	    
+	}
+	@Then("user clicks on Bag button")
+	public void user_click_on_bag_button() throws Exception {
+	   
+		try {
+			shopPage.clickOnBagButton();
+			ExtentsReportManager.extentReportLogging("info", "Clicked on Bag");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in clicking Bag button <br />" + e);
+			throw e;
+		}
+	}
+	
+	
+	
+	@Then("user validates Your Bag page with product")
+	public void user_validates_your_bag_page_with_proudct() throws Exception {
+		try {
+			boolean actualYourBagPage = shopPage.validateYourBagPage();
+			soft.assertTrue(actualYourBagPage,"'Your bag' with product is not present in Store Page");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "Validated 'Your Bag' page with product");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in validating Your Bage page with product <br />" + e);
+			throw e;
+		}
+	    
+	}
+	
+	@Then("user clicks on wishlist button")
+	public void user_click_on_wishlist_button() throws Exception {
+	   
+		try {
+			shopPage.clickOnWishlistButton();
+			ExtentsReportManager.extentReportLogging("info", "Clicked on wishlist button");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in clicking wishlist button <br />" + e);
+			throw e;
+		}
+	}
+	
+	@Then("user validates product in wishlist page")
+	public void user_validates_product_in_wishlist_page() throws Exception {
+		try {
+			boolean actualProductAddedtoWishlist = shopPage.validateWishlistProduct();
+			
+			soft.assertTrue(actualProductAddedtoWishlist,"Product is not present in Wishlist Page");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "Validated product in wishlist page");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in validating product in wishlist page <br />" + e);
+			throw e;
+		}
+	    
+	}
+
+    @And("user clicks on ok button in cookies screen in Store")
+    public void userClicksOnOkButtonInCookiesScreen() throws Exception {
+        try {
+        	shopPage.clicksOnOkButtonInCookiesScreenInStore();
+            ExtentsReportManager.extentReportLogging("info", "Clicked on OK button in cookies screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking ok button in cookies screen<br />" + e);
+            throw e;
+        }
+    }
 	}
 	
 	

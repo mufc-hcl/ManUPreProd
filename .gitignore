@@ -1,10 +1,11 @@
+test-output/
 target/
 logs/
 rerun/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+/cucumber-report.html
 ### IntelliJ IDEA ###
 .idea/
 *.iws
@@ -35,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Java specific
+*.class
+*.log
