@@ -1,6 +1,5 @@
 @Sanity_IOS @Onboarding_IOS
 Feature: Onboarding
-
   Scenario: [Onboarding]TC001 Verify the all four screens of the manchester app onboarding
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
