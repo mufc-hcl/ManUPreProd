@@ -1139,7 +1139,305 @@ public class ShopPage extends Common {
 			throw e;
 		}
 	}
-		
+	public boolean addFirstProductInWishlist() throws Exception {
+	    String device = GlobalParams.getPlatformName();
+
+	    try {
+	        Thread.sleep(60);
+
+	        int maxAttempts = 5;
+	        int attempt = 0;
+
+	        clicksOnOkButtonInCookiesScreenInStore();
+
+	        // Wait until the wishlist title is visible
+	        while (attempt < maxAttempts) {
+	            if (!shopPageLocators.wishListTitle.isEmpty() &&
+	                shopPageLocators.wishListTitle.get(0).isDisplayed()) {
+	                break;
+	            }
+	            Thread.sleep(10);
+	            attempt++;
+	        }
+
+	        if (device.equalsIgnoreCase("ios")) {
+	            for (WebElement product : shopPageLocators.firstWishListProductImage) {
+	                if (product.isDisplayed()) {
+	                    product.click(); // Tap on product image
+
+	                    int maxAttemptsForSize = 8;
+	                    int attemptsForSize = 0;
+	                    Thread.sleep(30);
+
+	                    while (attemptsForSize < maxAttemptsForSize) {
+	                        if (!shopPageLocators.firstWishListButtonInStorePage.isEmpty()) {
+	                            shopPageLocators.firstWishListButtonInStorePage.get(0).click();
+	                            Thread.sleep(30);
+	                            ExtentsReportManager.extentReportLogging("pass", "Added first product to wishlist");
+	                            return true;
+	                        }
+	                        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+	                        Thread.sleep(20);
+	                        attemptsForSize++;
+	                    }
+
+	                    ExtentsReportManager.extentReportLogging("fail", "Unable to add product to wishlist");
+	                    return false;
+	                }
+	            }
+	        } else if (device.equalsIgnoreCase("android")) {
+	            if (!shopPageLocators.firstWishListButtonInStorePage.isEmpty()) {
+	                for (WebElement element : shopPageLocators.firstWishListButtonInStorePage) {
+	                    if (element.isDisplayed()) {
+	                        element.click();
+	                        ExtentsReportManager.extentReportLogging("pass", "Added first product to wishlist");
+	                        return true;
+	                    }
+	                }
+	            }
+	        }
+
+	        // If wishlist button wasn't found or clickable
+	        ExtentsReportManager.extentReportLogging("fail", "Unable to add first product to wishlist");
+	        return false;
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in addFirstProductInWishlist():<br />" + e.getMessage());
+	        throw e;
+	    }
+	}
+
+
+
+	
+	public void clickOnWishlistButton() throws Exception {
+		try {
+			Thread.sleep(40);
+			elementToBeClickableFluentWait(shopPageLocators.wishListButton, 60);
+			shopPageLocators.wishListButton.click();
+			Thread.sleep(40);
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on wishlist button");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickOnWishlistButton()<br />" + e);
+			throw e;
+		}		
+	}
+	
+
+
+	
+	public boolean validateWishlistProduct() throws Exception {
+	    boolean isProductVisible = false;
+
+	    try {
+	        Thread.sleep(60); 
+
+	        int maxAttempts = 10;
+	        int attempts = 0;
+
+	        while (attempts < maxAttempts) {
+	            if (shopPageLocators.wishListLabel.isDisplayed()) {
+	                if (!shopPageLocators.firstWishListProductImage.isEmpty() &&
+	                    shopPageLocators.firstWishListProductImage.get(0).isDisplayed()) {
+
+	                    isProductVisible = true;
+	                    ExtentsReportManager.extentReportLogging("pass", "Product is visible in the wishlist page");
+	                } else {
+	                    ExtentsReportManager.extentReportLogging("fail", "Product not visible in the wishlist page");
+	                }
+	                return isProductVisible;
+	            }
+
+	            Thread.sleep(10); 
+	            attempts++;
+	        }
+
+	        ExtentsReportManager.extentReportLogging("fail", "'Wishlist' label not found within expected attempts");
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in validateWishlistProduct(): " + e.getMessage());
+	        throw e;
+	    }
+
+	    return false;
+	}
+
+	public boolean addFirstProductAndSelectSize(String size) throws Exception {
+	    String device = GlobalParams.getPlatformName();
+
+	    try {
+	    	Thread.sleep(40);
+	       
+	        int maxAttempts = 10;
+	        int attempts = 0;
+
+	       // if (device.equalsIgnoreCase("android")) {
+	            while (attempts < maxAttempts) {
+	            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+	                if (!shopPageLocators.firstProductButtonInStorePage.isEmpty()) {
+	                    shopPageLocators.firstProductButtonInStorePage.get(0).click();
+	                   
+	                    //handled cookies popup
+	                    clicksOnOkButtonInCookiesScreenInStore();
+	                    int maxAttemptsForSize = 5;
+	                    int attemptsForSize = 0;
+	                    Thread.sleep(30);
+	                    while (attemptsForSize < maxAttemptsForSize) {
+	                        if (!shopPageLocators.productSizeinStorePage.isEmpty()) {
+	                            shopPageLocators.productSizeinStorePage.get(0).click();
+	                            Thread.sleep(30);
+	                            ExtentsReportManager.extentReportLogging("pass", "Clicks on first product and selects size");
+	                            return true;
+	                        }
+	                        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+	                        Thread.sleep(20);
+	                        attemptsForSize++;
+	                    }
+	                    ExtentsReportManager.extentReportLogging("fail", "Unable to select size for the first product");
+	                    return false;
+	                }
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+	                attempts++;
+	            }
+	            ExtentsReportManager.extentReportLogging("fail", "Unable to select first product");
+		        return false;
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-addFirstProductAndSelectSize()<br />" + e);
+		        throw e;
+		    }
+		}
+	
+    
+
+	public void clickOnAddtoBagButton() throws Exception {
+		try {
+			Thread.sleep(100);
+			elementToBeClickableFluentWait(shopPageLocators.addtoBagButtonInStorePage, 60);
+			shopPageLocators.addtoBagButtonInStorePage.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on Add to Bag button");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickOnAddtoBagButton()<br />" + e);
+			throw e;
+		}		
+	}
+
+	
+	public void clickOnBagButton() throws Exception {
+		try {
+			Thread.sleep(100);
+			elementToBeClickableFluentWait(shopPageLocators.bagButtonInStorePage, 60);
+			shopPageLocators.bagButtonInStorePage.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on Bag button");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickOnBagButton()<br />" + e);
+			throw e;
+		}		
+	}
+	
+	public boolean validateAddedToBagPage() throws Exception {
+	    boolean isVisible = false;
+
+	    try {
+	        
+	        Thread.sleep(60); 
+
+	        int maxAttempts = 10;
+	        int attempts = 0;
+
+	        while (attempts < maxAttempts) {
+	            if (!shopPageLocators.addedtoBagLabelInStorePage.isEmpty()) {
+	                isVisible = shopPageLocators.addedtoBagLabelInStorePage.get(0).isDisplayed();
+
+	                if (isVisible) {
+	                    ExtentsReportManager.extentReportLogging("pass", "Product is added to bag and visible in Store - Shop page");
+	                } else {
+	                    ExtentsReportManager.extentReportLogging("fail", "Product image not available even though 'Added to Bag' label is present");
+	                }
+
+	                return isVisible;
+	            }
+
+	            Thread.sleep(10); 
+	            attempts++;
+	        }
+
+	        ExtentsReportManager.extentReportLogging("fail", "'Added to Bag' label not found within expected attempts");
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in validateAddedToBagPage(): " + e.getMessage());
+	        throw e;
+	    }
+
+	    return false;
+	}
+
+	public boolean validateYourBagPage() throws Exception {
+	    boolean isVisible = false;
+
+	    try {
+	        Thread.sleep(40); 
+
+	        int maxAttempts = 10;
+	        int attempts = 0;
+
+	        while (attempts < maxAttempts) {
+	            List<WebElement> yourBagElements = shopPageLocators.yourBagLabelInStorePage;
+
+	            if (!yourBagElements.isEmpty()) {
+	                if (!shopPageLocators.firstWishListProductImage.isEmpty() &&
+	                    shopPageLocators.firstWishListProductImage.get(0).isDisplayed()) {
+
+	                    isVisible = true;
+	                    ExtentsReportManager.extentReportLogging("pass", "Validated 'Your Bag' with product present");
+	                    return isVisible;
+
+	                } else {
+	                    ExtentsReportManager.extentReportLogging("fail", "Product image is not displayed in 'Your Bag'");
+	                    return false;
+	                }
+	            }
+
+	            Thread.sleep(10);
+	            attempts++;
+	        }
+
+	        ExtentsReportManager.extentReportLogging("fail", "'Your Bag' section not visible");
+
+	    } catch (NoSuchElementException ns) {
+	        ExtentsReportManager.extentReportLogging("fail", "'Your Bag' section or product not available: " + ns.getMessage());
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in validateYourBagPage(): " + e.getMessage());
+	        throw e;
+	    }
+
+	    return isVisible;
+	}
+
+	public void clicksOnOkButtonInCookiesScreenInStore() throws Exception {
+		try {
+			 Thread.sleep(1000);
+            if (shopPageLocators.okButtonCookiesScreenInStore.isDisplayed()) {
+            	shopPageLocators.okButtonCookiesScreenInStore.click();
+                ExtentsReportManager.extentReportLogging("pass","Clicks on okButtonCookiesScreen");
+            }
+            
+            if (shopPageLocators.okButtonCookiesScreenInStore1.isDisplayed()) {
+            	shopPageLocators.okButtonCookiesScreenInStore1.click();
+                ExtentsReportManager.extentReportLogging("pass","Clicks on okButtonCookiesScreen");
+            }
+            Thread.sleep(1000);
+        } catch (NoSuchElementException ns) {
+            System.out.println("element is not displayed hence skipped");
+        } catch (NullPointerException np) {
+            System.out.println("null pointer exception due to override of screens");
+        } catch (Exception e) {
+         ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnOkButtonInCookiesScreenInStore()<br />" + e);
+         throw e;
+        }
+    }
 	}
 
 	
