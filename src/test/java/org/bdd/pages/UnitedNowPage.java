@@ -3941,25 +3941,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Gallery card" + expGalleryCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//							i++;
-//						}
-//
-//					}
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard);
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
 
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard+"')]"));
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.toUpperCase()+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
 
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
@@ -3968,7 +3953,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 					int i = 1;
 					while (i > 0) {
 						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expGalleryCard + "\""));
+						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expGalleryCard.toUpperCase() + "\""));
 						if (e.size() > 0) {
 							e.get(0).click();
 							Thread.sleep(4000);
@@ -3978,7 +3963,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 							i++;
 						}
 					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Gallery Card d in united now page");
+					ExtentsReportManager.extentReportLogging("pass", "Checks for Gallery Card in united now page");
 				}
 			} catch (Exception e) {
 				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getGalleryCardFromUnitedNow()<br />" + e);
@@ -4099,26 +4084,9 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expPollCard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Poll card" + expPollCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-//							i++;
-//						}
-//
-//					}
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard.toUpperCase());
-
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expPollCard.toUpperCase()+"')]"));
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard);
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text,\""+expPollCard+"\")]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
@@ -4126,7 +4094,7 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 					int i = 1;
 					while (i > 0) {
 						String type = "name ";
-						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expPollCard.toString().toUpperCase()));
+						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expPollCard));
 						if (e.size() > 0) {
 							ExtentsReportManager.extentReportLogging("pass", "Poll card" + expPollCard + " displayed in united now page");
 							e.get(0).click();

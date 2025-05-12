@@ -1,6 +1,7 @@
 package org.bdd.stepdef.android;
 
 import org.bdd.pages.ExplorePage;
+import org.bdd.pages.MutvPage;
 import org.bdd.utils.AppiumDriverManager;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.apiResponse.ExploreAPIResponse;
@@ -19,6 +20,7 @@ public class ExploreAndroidStepDef {
     public ExplorePage explorePage = new ExplorePage();
     public UnitedNowAPIResponse unitedNowAPIResponse = new UnitedNowAPIResponse();
     public ExploreAPIResponse exploreAPIResponse = new ExploreAPIResponse();
+    public MutvPage mutvPage = new MutvPage();
 
     @Then("^verify whats new or live match blog in home page using api$")
     public void verifyWhatsNewOrLiveMatchBlogInHomePageUsingApi() throws Throwable {
@@ -48,6 +50,7 @@ public class ExploreAndroidStepDef {
     @And("^user click on My United in bottom tab$")
     public void userClickOnMyUnitedInBottomTab() {
         try {
+        	mutvPage.clickOnNotNowButtonInMatchAppearanceAlertScreen();
             explorePage.clickMyUnitedTab();
             ExtentsReportManager.extentReportLogging("info", "Clicked on my united in the bottom tab");
         } catch (AssertionError e) {

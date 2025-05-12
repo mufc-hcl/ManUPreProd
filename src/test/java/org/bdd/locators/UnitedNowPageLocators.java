@@ -242,7 +242,7 @@ public class UnitedNowPageLocators {
     public List<WebElement> storiesCouroselUnitedNowPage;
 
 //    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/rv_hightlights\"]/android.widget.LinearLayout[1]")
-    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView[contains(@resource-id, \":id/rv_hightlights\")]/android.widget.LinearLayout[1]")
+    @AndroidFindBy(xpath = "(//android.view.View[contains(@resource-id, \":id/highlight_progress_view\")])[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Match Result\"]")
     public  WebElement storiesCouroselUnitedNowPage1;
     
@@ -494,7 +494,7 @@ public class UnitedNowPageLocators {
     public List<WebElement> closeButtonPredictionCouroselUnitedNowPage2;
     
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/navigation_bar_item_small_label_view\" and @text=\"United Now\"]")
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/navigation_bar_item_small_label_view\") and @text=\"United Now\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='United Now']")
     @iOSXCUITFindBy(accessibility = "United Now")
     public WebElement unitedNowTab;
     
