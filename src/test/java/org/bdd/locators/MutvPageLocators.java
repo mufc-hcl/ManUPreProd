@@ -21,15 +21,15 @@ public class MutvPageLocators {
 	public WebElement myListIconMutvScreen;
 
 	@AndroidFindBy(accessibility = "Back")
-	@iOSXCUITFindBy(accessibility = "Back")
+	@iOSXCUITFindBy(xpath = "//*[@label='Back' or @label='navbar trailing back white']")
 	public WebElement backIconMutvScreen;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/txtHeaderTitle\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MY LIST\"]")
 	public WebElement myListTextMutvScreen;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_library_add\')]")
-	@iOSXCUITFindBy(accessibility = "Add Tracks to Library")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/podcast_library_add') or contains(@resource-id, ':id/podcast_library_download')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Add Tracks to Library\" or @name=\"FIND SOMETHING TO ADD\"]")
 	public WebElement plusIconMutvScreen;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/library_desc_text_view\')]")
@@ -48,7 +48,7 @@ public class MutvPageLocators {
 	@iOSXCUITFindBy(accessibility = "Back")
 	public WebElement backIconSheduleScreenMutv;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/tertiary_text')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public WebElement notNowButtonMatchAppearanceAlert;
 
@@ -76,7 +76,7 @@ public class MutvPageLocators {
 	public WebElement plusSymbolMyListScreen;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_player_cover_image\')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeOther//XCUIElementTypeCell[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeOther[1]/XCUIElementTypeOther")
 	public WebElement vedioTitleLinkInMyListScreen;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_mylist_icon\')]")
@@ -88,7 +88,7 @@ public class MutvPageLocators {
 	public WebElement lessThenSymbolInMyListScreen;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_mylibrary_right_arrow\')]")
-	@iOSXCUITFindBy(accessibility = "Back")
+	@iOSXCUITFindBy(xpath = "//*[@name='Back' or @name='navbar trailing back white']")
 	public WebElement greaterThenSymbolInMyListScreen;
 
 	@AndroidFindBy(accessibility = "Close")
@@ -314,8 +314,30 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/navigation_bar_item_small_label_view\') and @text=\"United Now\"]")
 	public WebElement unitedNowTab;
 	
-	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"i0hp\"]")
+	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='i0hp']")
 	public WebElement buyORshopNowInUnitedNowPopUp1;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'tertiary_text')]")
+	public WebElement notNowPopUpInMatchAlert;
+	
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"title\") and contains(@text, \"PREFERENCE\")]")
+	@iOSXCUITFindBy(accessibility = "Explore")
+	public WebElement preferenceCenterInMutv;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Register to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Register to watch\"]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Subscribe to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to watch\"]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Register to watch\"])[1]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen1;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Subscribe to watch\"])[1]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen1;
 }
 
 

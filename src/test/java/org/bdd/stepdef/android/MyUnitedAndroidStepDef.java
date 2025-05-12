@@ -758,9 +758,9 @@ public class MyUnitedAndroidStepDef {
     @Then("^user validates player details updated in my united screen$")
     public void userValidatesPlayerDetailsUpdatedInMyUnitedScreen(DataTable table) {
         try {
-            String expPlayerName = table.cell(1, 0);
-//            String expPlayerName = playerName;
-            String expBuyShirt = table.cell(1, 1);
+//            String expPlayerName = table.cell(1, 0);
+            String expPlayerName = playerName;
+            String expBuyShirt = table.cell(1, 0);
             String actualPlayerName = myUnitedPage.getPlayerNameInUnitedScreen();
             String actualBuyShirt = myUnitedPage.getBuyShirtButtonScreen();
             soft.assertEquals(actualPlayerName, expPlayerName);
@@ -999,7 +999,6 @@ public class MyUnitedAndroidStepDef {
 	public void userValidatesMyTicketsComponentInMyUnitedScreen() throws Throwable {
 		try {
             boolean flag = myUnitedPage.userValidatesMyTicketsComponentInMyUnitedScreen();
-            myUnitedPage.userClicksOnMyTicketsComponentInMyUnitedScreen();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validated my tickets component in my united screen");
         } catch (AssertionError e) {
@@ -1013,7 +1012,6 @@ public class MyUnitedAndroidStepDef {
 	public void userValidatesStadiumComponentInMyUnitedScreen() throws Throwable {
 		try {
             boolean flag = myUnitedPage.userValidatesStadiumComponentInMyUnitedScreen();
-            myUnitedPage.userClicksOnStadiumComponentInMyUnitedScreen();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validated stadium component in my united screen");
         } catch (AssertionError e) {
@@ -1025,6 +1023,7 @@ public class MyUnitedAndroidStepDef {
 	@Then("^user validates content in stadium component$")
 	public void userValidatesContentInStadiumComponent() throws Throwable {
 		try {
+			 myUnitedPage.userClicksOnStadiumComponentInMyUnitedScreen();
             boolean flag = myUnitedPage.userValidatesContentInStadiumComponent();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validates content in stadium component");
@@ -1037,6 +1036,7 @@ public class MyUnitedAndroidStepDef {
 	@Then("^user validates content in my tickets component$")
 	public void userValidatesContentInMyTicketsComponent() throws Throwable {
 		try {
+			  myUnitedPage.userClicksOnMyTicketsComponentInMyUnitedScreen();
             boolean flag = myUnitedPage.userValidatesContentInMyTicketsComponent();
             myUnitedPage.userClicksOnBackIconInMyTickets();
             soft.assertTrue(flag);
@@ -1098,6 +1098,66 @@ public class MyUnitedAndroidStepDef {
         }
 
     }
+
+	@Then("^user gets the title of the preference center screen$")
+	public void userGetsTheTitleOfThePreferenceCenterScreen(DataTable table) throws Throwable {
+		try {
+            String expPreferenceCenter = table.cell(1, 0);
+            String actualPreferenceCenter = myUnitedPage.getsTheTitleOfThePreferenceCenterScreen();
+            soft.assertEquals(actualPreferenceCenter.toUpperCase(), expPreferenceCenter.toUpperCase());
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "getting the title of the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in getting the title of the preference center screen<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user selecting one of the checklist in the preference center screen$")
+	public void userSelectingOneOfTheChecklistInThePreferenceCenterScreen() throws Throwable {
+		try {
+            myUnitedPage.selectingOneOfTheChecklistInThePreferenceCenterScreen();
+            ExtentsReportManager.extentReportLogging("info", "selected one of the checklist in the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "selecting one of the checklist in the preference center screen <br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user clicks on save preference button$")
+	public void userClicksOnSavePreferenceButton() throws Throwable {
+		try {
+            myUnitedPage.clicksOnSavePreferenceButton();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates preference updated message$")
+	public void userValidatesPreferenceUpdatedMessage(DataTable table) throws Throwable {
+		try {
+            String expPrefUpdate = table.cell(1, 0);
+            String actualPrefUpdate = myUnitedPage.validatesPreferenceUpdatedMessage();
+            soft.assertEquals(actualPrefUpdate, expPrefUpdate);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "validated preference updated message");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating preference updated message<br />" + e);
+            throw e;
+        }
+	}
+	@And("^user scrolls right to left to navigate appearence$")
+	public void userScrollsRightToLeftToNavigateAppearence() throws Throwable {
+		try {
+			  myUnitedPage.userScrollsRightToLeftToNavigateAppearence();
+          ExtentsReportManager.extentReportLogging("info", "validated content in my tickets component");
+      } catch (AssertionError e) {
+          ExtentsReportManager.extentReportLogging("fail", "Error in validating content in my tickets component<br />" + e);
+          throw e;
+      }
+	}
     }
 
 	

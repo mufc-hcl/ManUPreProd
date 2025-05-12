@@ -673,6 +673,7 @@ public class MyUnitedPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "Score this season");
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
 				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season ");
 				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
@@ -1025,7 +1026,7 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				//swipeWithCoordinates(985, 1189, 202, 1176, 200, "right", driver);
+//				swipeWithCoordinates(877, 947, 129, 947, 200, "left", driver);
 				waitForVisibilityFluentWait(myUnitedPageLocators.appearanceTitleFour, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returned appearance title in appearance card");
 				return myUnitedPageLocators.appearanceTitleFour.getText();
@@ -1205,7 +1206,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualDailyStreaks = myUnitedPageLocators.viewSeasonThree.getText();
+				actualDailyStreaks = myUnitedPageLocators.dailyStreaksSeasonThree.getText();
 				if (actualDailyStreaks.equalsIgnoreCase(expectedDailystreaks)) {
 					break;
 				} else {
@@ -1226,7 +1227,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualAppearence = myUnitedPageLocators.viewSeasonFour.getText();
+				actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();
 				if (actualAppearence.equalsIgnoreCase(expectedAppearence)) {
 					break;
 				} else {
@@ -1716,7 +1717,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				if (myUnitedPageLocators.allPointsThisSeasonMYUnitedInIos.size() <= 0) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 				} else {
 					break;
 				}
@@ -2224,18 +2225,151 @@ public class MyUnitedPage extends Common {
 		}
 	}
 
-	public void scrollsRightToLeftToNavigateAppearenceCards() {
+
+	public void userClicksOnPreferenceCenterInIos() {
 		try {
-			swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-scrollsRightToLeftToNavigateAppearenceCards()<br />" + e);
-				throw e;
+			if(myUnitedPageLocators.preferenceCenterInMyUnited.isDisplayed()){
+          elementToBeClickableFluentWait(myUnitedPageLocators.preferenceCenterInMyUnited,60);
+          myUnitedPageLocators.preferenceCenterInMyUnited.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      } else {
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.preferenceCenterInMyUnited,60);
+    	  myUnitedPageLocators.preferenceCenterInMyUnited.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-userClicksOnPreferenceCenter()<br />" + e);
+          throw e;
+      }
+  }
+
+	public String getsTheTitleOfThePreferenceCenterScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.titleOfPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned shop title of the preference center");
+				return myUnitedPageLocators.titleOfPreferenceCenter.getText();
+			} else {
+				waitForVisibilityFluentWait(myUnitedPageLocators.titleOfPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned shop title of the preference center");
+				return myUnitedPageLocators.titleOfPreferenceCenter.getDomAttribute("label");
 			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getsTheTitleOfThePreferenceCenterScreen()<br />" + e);
+			throw e;
+		}
+	}
+
+	public void selectingOneOfTheChecklistInThePreferenceCenterScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+          elementToBeClickableFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter,60);
+          myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","selects the check list in My United");
+      } else {
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter,60);
+    	  myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","selects the check list in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-selectingOneOfTheChecklistInThePreferenceCenterScreen()<br />" + e);
+          throw e;
+      }
+  }
+	
+//		 try {
+//			 if(myUnitedPageLocators.selectingChecklistInPreferenceCenter.isDisplayed())
+//	            waitForVisibilityFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter, 60);
+//	            myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+//	            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
+//		 } else {
+//			 
+//			 
+//	        } catch (Exception e) {
+//	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectingOneOfTheChecklistInThePreferenceCenterScreen()<br />" + e);
+//	            throw e;
+//
+//	        }
+//	    }
+
+	public void clicksOnSavePreferenceButton() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+          elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
+          myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+      } else {
+    	  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
+    	  myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
+          throw e;
+      }
+//		try {
+//            waitForVisibilityFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter, 60);
+//            myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+//            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
+//            throw e;
+//
+//        }
 		
 	}
 
+	public String validatesPreferenceUpdatedMessage() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.updatedPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned updated status of preference center");
+				return myUnitedPageLocators.updatedPreferenceCenter.getText();
+			} else {
+				waitForVisibilityFluentWait(myUnitedPageLocators.updatedPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned updated status of preference center");
+				return myUnitedPageLocators.updatedPreferenceCenter.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validatesPreferenceUpdatedMessage()<br />" + e);
+			throw e;
+		}
 	}
+		
+	public void userScrollsRightToLeftToNavigateAppearence() {
+		            	String device = GlobalParams.getPlatformName();
+		        		try {
+		        			for (int i = 0; i < 5; i++) {
+		        				if (!(myUnitedPageLocators.viewSeasonFour1.size() > 0)) {
+		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.5);
+		        				} else {
+		        					break;
+		        				}
+		        			}
+		        			ExtentsReportManager.extentReportLogging("pass", "Returns Right To Left To Navigate Appearence Text");
+		        		} catch (Exception e) {
+		        			ExtentsReportManager.extentReportLogging("fail",
+		        					"Exception occurred in function-userScrollsRightToLeftToNavigateAppearence()<br />" + e);
+		        			throw e;
+		        		}
+//		        		return false;
+		                   
+	}
+}
+		
+	
+
+	
 	
 		
 	

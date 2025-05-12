@@ -39,6 +39,7 @@ Feature: MUTV Feature
     Then user validate list containing schedules for next seven days
     And user clicks on Back icon
 
+
   Scenario Outline: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -75,6 +76,7 @@ Feature: MUTV Feature
     Examples:
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
+
 
   Scenario Outline: [MUTV]TC008 Verify that CBS badges display for  subscribe display
     Given user navigates to manu android application
@@ -139,6 +141,7 @@ Feature: MUTV Feature
     And user clicks on explore icon
     And user clicks on the hero carousel dots in Mutv screen
 
+
   Scenario Outline: [MUTV]TC011 & TC012 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
     Given user navigates to manu android application
     And user navigates to screen two
@@ -166,9 +169,11 @@ Feature: MUTV Feature
     And user clicks on close button
 
     Examples:
-      | username             | password |
-      | manupreprod@yopmail.com | Manu@123 |
-  @AndroidMUTVTC013
+      | username             | password   |
+      | qastgtest@yopmail.com | Mu@12345 |
+
+  
+ @MUTV_AND
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -210,8 +215,9 @@ Feature: MUTV Feature
     And user clicks in close icon in remainder set page
 
     Examples:
-      | username             | password |
-      | manupreprod@yopmail.com | Manu@123 |
+      | username             | password   |
+      | qastgtest@yopmail.com | Mu@12345 |
+
 
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
@@ -238,9 +244,10 @@ Feature: MUTV Feature
     And user clicks on pause icon in the played video
     And user clicks on the close button in the played video
 
-    Examples:
-      | username             | password |
-      | manupreprod@yopmail.com | Manu@123 |
+   Examples:
+      | username             | password   |
+      | qastgtest@yopmail.com | Mu@12345 |
+
 
 #below two test caess added by Automation team and moving to regression pack
 #@APITestAndroid 
@@ -293,3 +300,24 @@ Feature: MUTV Feature
     Then user verify all carousel is displayed in mutv page using api
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
+
+    @Newscropt
+    Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user clicks on Mutv tab
+    And user clicks on explore icon
+    And user clicks on Schedule icon
+    Then user validates the CBS/CBR badges is not displayed for current program
+    Then user validates the CBS/CBR badges display for previous schedule program
+    Then user validates the CBS/CBR badges display for future schedule program
+    
+    
+    

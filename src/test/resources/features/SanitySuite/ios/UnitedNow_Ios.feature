@@ -428,6 +428,7 @@ Feature: United now
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
+
   Scenario Outline: [United now]TC025 - Validate the functionality of the Image Card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -450,7 +451,7 @@ Feature: United now
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@TC0026
+
   Scenario: [United now]TC0026 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

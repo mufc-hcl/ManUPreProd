@@ -380,6 +380,7 @@ public class MutvPage extends Common {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+        	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
 //                    if (mutvPageLocators.videosMutvPage.get(i)
@@ -433,24 +434,8 @@ public class MutvPage extends Common {
 
     public void selectsTheVideoAndChecksCBRBadge() {
         try {
-//			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "TOP-RATED UTD PODCASTS");
             IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
-//                try {
-//                    if (mutvPageLocators.videosMutvPage.get(i)
-//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                            .isDisplayed()
-//                            && mutvPageLocators.videosMutvPage.get(i)
-//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                            .getText().contains("Register to watch")) {
-//                        mutvPageLocators.videosMutvPage.get(i)
-//                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                                .click();
-//                        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
-//                        break;
-//                    }
-//                } 
             	try {
             	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
             	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
@@ -1782,6 +1767,127 @@ public class MutvPage extends Common {
 					"Exception occured in function-clicksOnShopNowPopUP()<br />" + e);
 			throw e;
 		}
+		}
+
+
+	public void userClicksOnPreferenceCenter() {
+		try {
+			if(mutvPageLocators.preferenceCenterInMutv.isDisplayed()){
+          elementToBeClickableFluentWait(mutvPageLocators.preferenceCenterInMutv,60);
+          mutvPageLocators.preferenceCenterInMutv.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      } else {
+    	  elementToBeClickableFluentWait(mutvPageLocators.preferenceCenterInMutv,60);
+          mutvPageLocators.preferenceCenterInMutv.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-userClicksOnPreferenceCenter()<br />" + e);
+          throw e;
+      }
+  }
+
+
+	public void clicksOnNotnowPopUp() {
+		try {
+			if (mutvPageLocators.notNowPopUpInMatchAlert.isDisplayed()) {
+					waitForVisibilityFluentWait(mutvPageLocators.notNowPopUpInMatchAlert, 60);
+					mutvPageLocators.notNowPopUpInMatchAlert.click();
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+			}
+			} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		}catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clicksOnNotnowPopUp()<br />" + e);
+			throw e;
+		}
+		}
+		
+	
+		
+	
+    public boolean CBSCBRBadgesDisplayForPreviousScheduleProgram() {
+    	try {
+            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
+
+            if (!mutvPageLocators.cbrBadgeEpgScheduleScreen.isEmpty() || !mutvPageLocators.cbsBadgeEpgScheduleScreen.isEmpty()) {
+                ExtentsReportManager.extentReportLogging("pass", "'Subscribe/Register to Watch' badge found after scrolling above");
+                return true;
+            }
+
+
+            ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge not found after scrolling  above");
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception in CBSCBRBadgesDisplayForPreviousScheduleProgram()<br />" + e);
+            throw e;
+        }
+        return false;
+    }
+
+
+	public boolean CBSCBRBadgesDisplayForFutureScheduleProgram() {
+		try {
+            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+
+            if (!mutvPageLocators.cbrBadgeEpgScheduleScreen.isEmpty() || !mutvPageLocators.cbsBadgeEpgScheduleScreen.isEmpty()) {
+                ExtentsReportManager.extentReportLogging("pass", "'Subscribe/Register to Watch' badge found after scrolling DOWn");
+                return true;
+            }
+
+
+            ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge not found after scrolling  DOWN");
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception in CBSCBRBadgesDisplayForPreviousScheduleProgram()<br />" + e);
+            throw e;
+        }
+        return false;
+	}
+
+
+		public boolean CBSCBRBadgesIsNotDisplayedForCurrentProgram() {
+		    try {
+		    	
+		    	WebElement element = driver.findElement(By.xpath("//android.widget.LinearLayout[2]/androidx.viewpager.widget.ViewPager/android.widget.RelativeLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]"));
+
+		    	String elementText = element.getText();
+
+		    	if (elementText.contains("Subscribe to watch") || elementText.contains("Register to watch")) {
+		    		ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge Text contains.'");
+		    	} else {
+		    		ExtentsReportManager.extentReportLogging("Pass", "CBS or CBR Video Is not displayed for current program");
+		    	}
+
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception in CBSCBRBadgesIsNotDisplayedForCurrentProgram()<br />" + e);
+		        throw e;
+		    }
+			return false;
+		}
+
+
+		public boolean CBSCBRBadgesIsNotDisplayedForCurrentPrograminIos() {
+			 try {
+			    	
+			    	WebElement element = driver.findElement(By.xpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]"));
+
+			    	String elementText = element.getText();
+
+			    	if (elementText.contains("Subscribe to watch") || elementText.contains("Register to watch")) {
+			    		ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge Text contains.'");
+			    	} else {
+			    		ExtentsReportManager.extentReportLogging("Pass", "CBS or CBR Is not displayed for current program");
+			    	}
+
+			    } catch (Exception e) {
+			        ExtentsReportManager.extentReportLogging("fail", "Exception in CBSCBRBadgesIsNotDisplayedForCurrentProgram()<br />" + e);
+			        throw e;
+			    }
+				return false;
+			
 		}
 }
 		

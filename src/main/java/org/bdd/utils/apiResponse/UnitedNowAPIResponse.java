@@ -199,11 +199,11 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			int size = js.getList("PageFilterResponse.response.docs").size();
 			System.out.println("size=" + size);
 			for (int i = 0; i < size; i++) {
-				playerPageFilters
-						.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
+				playerPageFilters.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t"));
 			}
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			System.out.println("playerPageFilters++++++"+playerPageFilters);
 			return playerPageFilters;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -321,7 +321,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String premierLeagueTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[11].doclist.docs[5].label_t").toUpperCase();
+					.getString("PageFilterResponse.grouped._parent.groups[15].doclist.docs[4].label_t").toUpperCase();
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return premierLeagueTextAPI;
@@ -337,7 +337,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String europaLeagueTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[11].doclist.docs[1].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[6].doclist.docs[2].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return europaLeagueTextAPI;
@@ -353,7 +353,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String womensSuperLeagueTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[5].doclist.docs[2].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[1].doclist.docs[3].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return womensSuperLeagueTextAPI;
@@ -369,7 +369,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String contenentalLeagueCupTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[5].doclist.docs[0].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[1].doclist.docs[1].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return contenentalLeagueCupTextAPI;
@@ -385,7 +385,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String premierLeague2TextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[14].doclist.docs[2].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[1].doclist.docs[1].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return premierLeague2TextAPI;
@@ -401,7 +401,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String eflTrophyTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[14].doclist.docs[1].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[5].doclist.docs[1].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return eflTrophyTextAPI;
@@ -417,7 +417,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String u18PremierLeagueTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[8].doclist.docs[2].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[5].doclist.docs[0].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return u18PremierLeagueTextAPI;
@@ -433,7 +433,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
 			String uefaYouthLeagueTextAPI = js
-					.getString("PageFilterResponse.grouped._parent.groups[8].doclist.docs[3].label_t");
+					.getString("PageFilterResponse.grouped._parent.groups[5].doclist.docs[1].label_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return uefaYouthLeagueTextAPI;
@@ -697,15 +697,14 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	public ArrayList<String> getPollCard(String endpoint) throws Exception {
 		try {
 			ArrayList<String> expPollCard = new ArrayList<>();
-			String contentTypePollCard = "poll";
+			String headline_tPollCard = "MAN OF THE MATCH";
 
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
 			for (int i = 0; i < size; i++) {
-				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t").equalsIgnoreCase(contentTypePollCard)) {
-					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].unitednowhighlightstitle_t"));
-
+				if (js.getString("ListingResponse.response.docs[" + i + "].headline_t").equalsIgnoreCase(headline_tPollCard)) {
+					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
 				}
 			}
 			ExtentsReportManager.extentReportLogging("info",

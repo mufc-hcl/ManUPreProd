@@ -20,7 +20,7 @@ public class ExplorePageLocators {
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[contains(@resource-id, \':id/framelayout_tabwidget_parent\')]")
 	public WebElement popScreen;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/navigation_bar_item_small_label_view\') and @text=\"My United\"]")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='My United']")
 	@iOSXCUITFindBy(accessibility = "My United, you are not logged in.")
 	public WebElement myUnitedButton;
 

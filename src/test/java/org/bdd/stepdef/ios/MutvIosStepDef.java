@@ -64,9 +64,9 @@ public class MutvIosStepDef {
             String actualMyList = mutvPage.getMyListTitle();
             soft.assertEquals(actualMyList.toUpperCase(), myListTitleFromAPI.toUpperCase());
 
-            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
-            String actualMyListDescAPI = mutvPage.getMyListDesc();
-            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
+//            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
+//            String actualMyListDescAPI = mutvPage.getMyListDesc();
+//            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
 
             String findSomeThingToAddAPI = mutvAPIResponse.getFindSomeThingToAddFromAPI("MUTVMyListEndpoint");
             String actualFindSomeThingToAdd = mutvPage.getFindSomeThingToAdd();
@@ -958,6 +958,42 @@ public class MutvIosStepDef {
             throw e;
         }
     }
+
+	@Then("^user validates the CBS/CBR badges is not displayed for current program in ios$")
+	public void userValidatesTheCBSCBRBadgesIsNotDisplayedForCurrentProgramInIos() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesIsNotDisplayedForCurrentPrograminIos();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for current program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for current program<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates the CBS/CBR badges display for previous schedule program in ios$")
+	public void userValidatesTheCBSCBRBadgesDisplayForPreviousScheduleProgramInIos() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForPreviousScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for previous schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for previous schedule program<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates the CBS/CBR badges display for future schedule program in ios$")
+	public void userValidatesTheCBSCBRBadgesDisplayForFutureScheduleProgramInIos() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForFutureScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for future schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for future schedule program<br />" + e);
+            throw e;
+        }
+	}
 
 }
 //

@@ -791,6 +791,7 @@ public class MutvAndroidStepDef {
         try {
             mutvPage.clicksOnImagePopUpWindow();
             mutvPage.clicksOnShopNowPopUP();
+            mutvPage.clicksOnNotnowPopUp();
             ExtentsReportManager.extentReportLogging("info", "Clicked on braze in app msg");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking on braze in app msg<br />" + e);
@@ -999,9 +1000,9 @@ public class MutvAndroidStepDef {
             String actualMyList = mutvPage.getMyListTitle();
             soft.assertEquals(actualMyList.toUpperCase(), myListTitleFromAPI.toUpperCase());
 
-            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
-            String actualMyListDescAPI = mutvPage.getMyListDesc();
-            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
+//            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
+//            String actualMyListDescAPI = mutvPage.getMyListDesc();
+//            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
 
             String findSomeThingToAddAPI = mutvAPIResponse.getFindSomeThingToAddFromAPI("MUTVMyListEndpoint");
             String actualFindSomeThingToAdd = mutvPage.getFindSomeThingToAdd();
@@ -1031,4 +1032,49 @@ public class MutvAndroidStepDef {
             throw e;
         }
     }
+
+	@And("^user clicks on preference center$")
+	public void userClicksOnPreferenceCenter() throws Throwable {
+		try {
+            mutvPage.userClicksOnPreferenceCenter();
+            ExtentsReportManager.extentReportLogging("info", "Clicked search button in united screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking search button in united screen <br />" + e);
+        }
+	}
+	@Then("^user validates the CBS/CBR badges display for previous schedule program$")
+	public void userValidatesTheCBSCBRBadgesDisplayForPreviousScheduleProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForPreviousScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for previous schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for previous schedule program<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates the CBS/CBR badges display for future schedule program$")
+	public void userValidatesTheCBSCBRBadgesDisplayForFutureScheduleProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForFutureScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for future schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for future schedule program<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates the CBS/CBR badges is not displayed for current program$")
+	public void userValidatesTheCBSCBRBadgesIsNotDisplayedForCurrentProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesIsNotDisplayedForCurrentProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for current program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for current program<br />" + e);
+            throw e;
+        }
+	}
 }

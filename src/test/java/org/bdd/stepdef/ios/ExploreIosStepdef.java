@@ -97,9 +97,11 @@ public class ExploreIosStepdef {
     }
 
     @And("user clicks on not now button in match appearance alert screen in ios")
-    public void userClicksOnNotNowButtonInMatchAppearanceAlertScreenInIos() {
+    public void userClicksOnNotNowButtonInMatchAppearanceAlertScreenInIos() throws Exception {
         try {
             mutvPage.clickOnNotNowButtonInMatchAppearanceAlertScreen();
+            explorePage.clickOnContinueButton();
+            explorePage.askAppNotToTrack();
             ExtentsReportManager.extentReportLogging("info",
                     "Clicked on not now button in match appearance alert screen in ios");
         } catch (AssertionError e) {
