@@ -316,6 +316,20 @@ public class MutvPageLocators {
 	
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"i0hp\"]")
 	public WebElement buyORshopNowInUnitedNowPopUp1;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Register to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Register to watch\"]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Subscribe to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to watch\"]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Register to watch\"])[1]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen1;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Subscribe to watch\"])[1]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen1;
 }
 
 

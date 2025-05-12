@@ -293,3 +293,24 @@ Feature: MUTV Feature
     Then user verify all carousel is displayed in mutv page using api
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
+
+    @Newscropt
+    Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user clicks on Mutv tab
+    And user clicks on explore icon
+    And user clicks on Schedule icon
+    Then user validates the CBS/CBR badges is not displayed for current program
+    Then user validates the CBS/CBR badges display for previous schedule program
+    Then user validates the CBS/CBR badges display for future schedule program
+    
+    
+    

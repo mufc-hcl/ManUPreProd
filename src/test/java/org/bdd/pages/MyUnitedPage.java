@@ -673,6 +673,7 @@ public class MyUnitedPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "Score this season");
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
 				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season ");
 				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
@@ -1025,7 +1026,7 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				//swipeWithCoordinates(985, 1189, 202, 1176, 200, "right", driver);
+//				swipeWithCoordinates(877, 947, 129, 947, 200, "left", driver);
 				waitForVisibilityFluentWait(myUnitedPageLocators.appearanceTitleFour, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returned appearance title in appearance card");
 				return myUnitedPageLocators.appearanceTitleFour.getText();
@@ -1205,7 +1206,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualDailyStreaks = myUnitedPageLocators.viewSeasonThree.getText();
+				actualDailyStreaks = myUnitedPageLocators.dailyStreaksSeasonThree.getText();
 				if (actualDailyStreaks.equalsIgnoreCase(expectedDailystreaks)) {
 					break;
 				} else {
@@ -1226,7 +1227,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-				actualAppearence = myUnitedPageLocators.viewSeasonFour.getText();
+				actualAppearence = myUnitedPageLocators.appearanceTitleFour.getText();
 				if (actualAppearence.equalsIgnoreCase(expectedAppearence)) {
 					break;
 				} else {
@@ -1716,7 +1717,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				if (myUnitedPageLocators.allPointsThisSeasonMYUnitedInIos.size() <= 0) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 				} else {
 					break;
 				}
@@ -2224,19 +2225,27 @@ public class MyUnitedPage extends Common {
 		}
 	}
 
-	public void scrollsRightToLeftToNavigateAppearenceCards() {
-		try {
-			swipeWithCoordinates(901, 916, 418, 921, 200, "left", driver);
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-scrollsRightToLeftToNavigateAppearenceCards()<br />" + e);
-				throw e;
-			}
-		
-	}
 
+	public void userScrollsRightToLeftToNavigateAppearence() {
+		            	String device = GlobalParams.getPlatformName();
+		        		try {
+		        			for (int i = 0; i < 5; i++) {
+		        				if (!(myUnitedPageLocators.viewSeasonFour1.size() > 0)) {
+		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.5);
+		        				} else {
+		        					break;
+		        				}
+		        			}
+		        			ExtentsReportManager.extentReportLogging("pass", "Returns Right To Left To Navigate Appearence Text");
+		        		} catch (Exception e) {
+		        			ExtentsReportManager.extentReportLogging("fail",
+		        					"Exception occurred in function-userScrollsRightToLeftToNavigateAppearence()<br />" + e);
+		        			throw e;
+		        		}
+//		        		return false;
+		                   
 	}
-	
+}
 		
 	
 

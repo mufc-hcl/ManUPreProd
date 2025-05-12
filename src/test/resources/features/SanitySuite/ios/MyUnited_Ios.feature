@@ -130,7 +130,7 @@ Feature: My United features
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-
+@member
   Scenario Outline: [My United]TC007 Click on the Primary and Secondary CTA buttons displayed below the jersey card section
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -186,7 +186,7 @@ Feature: My United features
     Examples:
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
-@rerd
+
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -212,25 +212,23 @@ Feature: My United features
       | my united total score |
       | MY UNITED TOTAL SCORE |
     And user clicks on back icon in total score card in ios
-     #And user scroll right to left to navigate daily streaks cards "<Daily streaks>"
     And user clicks on daily streaks card in my united screen in ios
     Then user validates content in daily streaks card in ios
       | daily streaks | share |
       | DAILY STREAKS | SHARE |
     And user clicks on back icon in daily streaks card in ios
-    #And user scrolls right to left to navigate appearence cards
-    #And user scroll right to left to navigate appearence cards "<Appearance>"
+    And user scrolls right to left to navigate appearence
     And user clicks on appearance card in my united screen in ios
-    #Then user validates content in appearance card in ios
-      #| appearance  | share |
-      #| APPEARANCES | SHARE |
+    Then user validates content in appearance card in ios
+      | appearance  | share |
+      | APPEARANCES | SHARE |
     And user clicks on back Icon in appearance card in ios
 
     Examples:
-      | username             | password | Appearance |
-      | manupreprod@yopmail.com | Manu@123 |1 APPEARANCES This Season View Button Double tap to activate|
+      | username             | password |
+      | manupreprod@yopmail.com | Manu@123 |
 
-@rerd
+
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -270,7 +268,7 @@ Feature: My United features
     Examples:
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
-  
+  @member
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -328,7 +326,7 @@ Feature: My United features
       #| deny_button        |
       
       
-
+@member
     Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

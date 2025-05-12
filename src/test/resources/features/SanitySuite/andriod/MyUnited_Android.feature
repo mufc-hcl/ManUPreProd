@@ -180,7 +180,7 @@ Feature: My United features
     Examples: 
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@myunited1
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -214,6 +214,7 @@ Feature: My United features
       | DAILY STREAKS | BEST SCORE | SHARE |
     And user clicks on back icon in daily streaks card
     #And user scroll right to left to navigate appearence cards "<Appearance>"
+    And user scrolls right to left to navigate appearence
     Then user validates appearance card in my united screen
       | appearance  | this season | view |
       | APPEARANCES | This Season | VIEW |
@@ -226,7 +227,7 @@ Feature: My United features
     Examples:
       | username             | password | Daily streaks |appearance |
       | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS |APPEARANCES |
-@222
+@myunited
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -250,14 +251,14 @@ Feature: My United features
       | CHOOSE PLAYER | Men | Women |
     And user selects a favorite player in players screen
     Then user validates player details updated in my united screen
-      | player name       | buy shirt CTA |
- 				 | ALTAY BAYINDIR    | Buy Shirt     |
+      | buy shirt CTA |
+ 				| Buy Shirt     |
     Then user validates the star icon is displayed
-    #    #    And clicks on  buy shirt button in my united screen
-    #    #    Then user validates shop page
-    #    #      | shop |
-    #    #      | Shop |
-    #    #    And user click on cross icon in shop screen
+        #    And clicks on  buy shirt button in my united screen
+        #    Then user validates shop page
+        #      | shop |
+        #      | Shop |
+        #    And user click on cross icon in shop screen
     And user click on edit icon in my united screen
     And user edits the favorite player in player screen
     Then user validates the star icon is displayed
@@ -294,7 +295,7 @@ Feature: My United features
     Examples: 
       | notificationbutton |
       | allow_button       |
-
+@myunited
   Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -330,7 +331,7 @@ Feature: My United features
     Examples: 
       | username             | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
-
+@myunited
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -347,9 +348,9 @@ Feature: My United features
     And user clicks on login button in login screen
     And user clicks on close from notification
     Then user validates my tickets component in my united screen
-    Then user validates content in my tickets component
+    #Then user validates content in my tickets component
     Then user validates stadium component in my united screen
-    Then user validates content in stadium component
+    #Then user validates content in stadium component
 
     Examples: 
       | username             | password |

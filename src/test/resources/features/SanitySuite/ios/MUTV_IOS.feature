@@ -234,3 +234,23 @@ Feature: MUTV IOS feature
     #And user clicks on explore icon in ios
     #And user clicks on view all in MUTV screen in ios
     #Then user validate list in EPC Ten MOST EMOTIONAL MOMENTS screen in ios
+    
+    
+@Newscropt
+    Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
+     Given user navigates to manu android application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user clicks on Mutv tab in ios
+    And user clicks on explore icon in ios
+    And user clicks on Schedule icon in ios
+    Then user validates the CBS/CBR badges is not displayed for current program in ios
+    Then user validates the CBS/CBR badges display for previous schedule program in ios
+    Then user validates the CBS/CBR badges display for future schedule program in ios
+    
+    
