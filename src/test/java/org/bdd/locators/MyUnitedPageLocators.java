@@ -526,4 +526,25 @@ public class MyUnitedPageLocators {
     //@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MY STICKERS\"]/../../../XCUIElementTypeCollectionView/XCUIElementTypeCell")
      public WebElement languageSwitchMyUnited;
     
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"title\") and contains(@text, \"PREFERENCE\")]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, \"preference\")]")
+	public WebElement preferenceCenterInMyUnited;
+    
+    @AndroidFindBy(xpath = "(//*[contains(@text,'PREFERENCE CENTRE')])[1]")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"PREFERENCE CENTRE\"])[2]")
+	public WebElement titleOfPreferenceCenter;
+    
+    @AndroidFindBy(xpath = "(//*[contains(@text,'Subscribe to all')])[1]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to all\"]")
+   	public WebElement selectingChecklistInPreferenceCenter;
+    
+    @AndroidFindBy(xpath = "(//*[contains(@text,'SAVE PREFERENCES')])[1]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE PREFERENCES\"]")
+   	public WebElement saveButtonInPreferenceCenter;
+    
+    @AndroidFindBy(xpath = "(//*[contains(@text,'Thank you, your preferences have been updated.')])")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Thank you, your preferences have been updated.\"]")
+   	public WebElement updatedPreferenceCenter;
+    
+    
 }

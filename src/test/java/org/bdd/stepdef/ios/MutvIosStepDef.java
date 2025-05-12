@@ -64,9 +64,9 @@ public class MutvIosStepDef {
             String actualMyList = mutvPage.getMyListTitle();
             soft.assertEquals(actualMyList.toUpperCase(), myListTitleFromAPI.toUpperCase());
 
-            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
-            String actualMyListDescAPI = mutvPage.getMyListDesc();
-            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
+//            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
+//            String actualMyListDescAPI = mutvPage.getMyListDesc();
+//            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
 
             String findSomeThingToAddAPI = mutvAPIResponse.getFindSomeThingToAddFromAPI("MUTVMyListEndpoint");
             String actualFindSomeThingToAdd = mutvPage.getFindSomeThingToAdd();

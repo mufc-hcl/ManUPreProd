@@ -2235,7 +2235,132 @@ public class MyUnitedPage extends Common {
 		
 	}
 
+	public void userClicksOnPreferenceCenterInIos() {
+		try {
+			if(myUnitedPageLocators.preferenceCenterInMyUnited.isDisplayed()){
+          elementToBeClickableFluentWait(myUnitedPageLocators.preferenceCenterInMyUnited,60);
+          myUnitedPageLocators.preferenceCenterInMyUnited.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      } else {
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.preferenceCenterInMyUnited,60);
+    	  myUnitedPageLocators.preferenceCenterInMyUnited.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-userClicksOnPreferenceCenter()<br />" + e);
+          throw e;
+      }
+  }
+
+	public String getsTheTitleOfThePreferenceCenterScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.titleOfPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned shop title of the preference center");
+				return myUnitedPageLocators.titleOfPreferenceCenter.getText();
+			} else {
+				waitForVisibilityFluentWait(myUnitedPageLocators.titleOfPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned shop title of the preference center");
+				return myUnitedPageLocators.titleOfPreferenceCenter.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getsTheTitleOfThePreferenceCenterScreen()<br />" + e);
+			throw e;
+		}
 	}
+
+	public void selectingOneOfTheChecklistInThePreferenceCenterScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+          elementToBeClickableFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter,60);
+          myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","selects the check list in My United");
+      } else {
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter,60);
+    	  myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","selects the check list in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-selectingOneOfTheChecklistInThePreferenceCenterScreen()<br />" + e);
+          throw e;
+      }
+  }
+	
+//		 try {
+//			 if(myUnitedPageLocators.selectingChecklistInPreferenceCenter.isDisplayed())
+//	            waitForVisibilityFluentWait(myUnitedPageLocators.selectingChecklistInPreferenceCenter, 60);
+//	            myUnitedPageLocators.selectingChecklistInPreferenceCenter.click();
+//	            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
+//		 } else {
+//			 
+//			 
+//	        } catch (Exception e) {
+//	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectingOneOfTheChecklistInThePreferenceCenterScreen()<br />" + e);
+//	            throw e;
+//
+//	        }
+//	    }
+
+	public void clicksOnSavePreferenceButton() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+          elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
+          myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+      } else {
+    	  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+    	  elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
+    	  myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
+          throw e;
+      }
+//		try {
+//            waitForVisibilityFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter, 60);
+//            myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+//            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
+//            throw e;
+//
+//        }
+		
+	}
+
+	public String validatesPreferenceUpdatedMessage() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.updatedPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned updated status of preference center");
+				return myUnitedPageLocators.updatedPreferenceCenter.getText();
+			} else {
+				waitForVisibilityFluentWait(myUnitedPageLocators.updatedPreferenceCenter, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned updated status of preference center");
+				return myUnitedPageLocators.updatedPreferenceCenter.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validatesPreferenceUpdatedMessage()<br />" + e);
+			throw e;
+		}
+	}
+		
+	}
+	
+		
+	
+
+	
 	
 		
 	

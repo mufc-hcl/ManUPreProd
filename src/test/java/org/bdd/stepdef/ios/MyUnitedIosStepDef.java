@@ -1429,7 +1429,73 @@ public class MyUnitedIosStepDef {
             throw e;
         }
 	}
+
+	@And("^user clicks on preference center in ios$")
+	public void userClicksOnPreferenceCenterInIos() throws Throwable {
+
+		try {
+			myUnitedPage.userClicksOnPreferenceCenterInIos();
+            ExtentsReportManager.extentReportLogging("info", "Clicked search button in united screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking search button in united screen <br />" + e);
+            throw e;
+        }
 	}
+
+	@Then("^user gets the title of the preference center screen in ios$")
+	public void userGetsTheTitleOfThePreferenceCenterScreenInIos(DataTable table) throws Throwable {
+		try {
+            String expPreferenceCenter = table.cell(1, 0);
+            String actualPreferenceCenter = myUnitedPage.getsTheTitleOfThePreferenceCenterScreen();
+            soft.assertEquals(actualPreferenceCenter.toUpperCase(), expPreferenceCenter.toUpperCase());
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "getting the title of the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in getting the title of the preference center screen<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user selecting one of the checklist in the preference center screen in ios$")
+	public void userSelectingOneOfTheChecklistInThePreferenceCenterScreenInIos() throws Throwable {
+		try {
+            myUnitedPage.selectingOneOfTheChecklistInThePreferenceCenterScreen();
+            ExtentsReportManager.extentReportLogging("info", "selected one of the checklist in the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "selecting one of the checklist in the preference center screen <br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user clicks on save preference button in ios$")
+	public void userClicksOnSavePreferenceButtonInIos() throws Throwable {
+		try {
+            myUnitedPage.clicksOnSavePreferenceButton();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates preference updated message in ios$")
+	public void userValidatesPreferenceUpdatedMessageInIos(DataTable table) throws Throwable {
+		try {
+            String expPrefUpdate = table.cell(1, 0);
+            String actualPrefUpdate = myUnitedPage.validatesPreferenceUpdatedMessage();
+            soft.assertEquals(actualPrefUpdate, expPrefUpdate);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "validated preference updated message");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating preference updated message<br />" + e);
+            throw e;
+        }
+	}
+	}
+	
+
+	
+	
 	
 	
 

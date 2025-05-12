@@ -226,7 +226,7 @@ Feature: My United features
     Examples:
       | username             | password | Daily streaks |appearance |
       | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS |APPEARANCES |
-@222
+
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -354,3 +354,37 @@ Feature: My United features
     Examples: 
       | username             | password |
       | manupreprod@yopmail.com | Manu@123 |
+      
+      
+     
+   Scenario Outline: Settings --> My Profile --> Preference Center navigation
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks on close from notification
+    And user click on setting icon on top righhand side
+    And user clicks on My profile icon
+    And user clicks on preference center
+    Then user gets the title of the preference center screen
+    |Preference Center|
+    |PREFERENCE CENTRE|
+    And user selecting one of the checklist in the preference center screen
+    And user clicks on save preference button
+    Then user validates preference updated message
+    |Thank you, your preferences have been updated.|
+    |Thank you, your preferences have been updated.|
+    
+     Examples: 
+      | username             | password |
+      | manupreprod@yopmail.com | Manu@123 |
+    

@@ -380,6 +380,7 @@ public class MutvPage extends Common {
 //			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
 //            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+        	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
             for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
 //                try {
 //                    if (mutvPageLocators.videosMutvPage.get(i)
@@ -1783,5 +1784,46 @@ public class MutvPage extends Common {
 			throw e;
 		}
 		}
-}
+
+
+	public void userClicksOnPreferenceCenter() {
+		try {
+			if(mutvPageLocators.preferenceCenterInMutv.isDisplayed()){
+          elementToBeClickableFluentWait(mutvPageLocators.preferenceCenterInMutv,60);
+          mutvPageLocators.preferenceCenterInMutv.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      } else {
+    	  elementToBeClickableFluentWait(mutvPageLocators.preferenceCenterInMutv,60);
+          mutvPageLocators.preferenceCenterInMutv.click();
+          ExtentsReportManager.extentReportLogging("pass","Clicks on preference center in My United");
+      }
+      }
+      catch (Exception e) {
+          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-userClicksOnPreferenceCenter()<br />" + e);
+          throw e;
+      }
+  }
+
+
+	public void clicksOnNotnowPopUp() {
+		try {
+			if (mutvPageLocators.notNowPopUpInMatchAlert.isDisplayed()) {
+					waitForVisibilityFluentWait(mutvPageLocators.notNowPopUpInMatchAlert, 60);
+					mutvPageLocators.notNowPopUpInMatchAlert.click();
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+			}
+			} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		}catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clicksOnNotnowPopUp()<br />" + e);
+			throw e;
+		}
+		}
+		
+	}
+		
+	
 		

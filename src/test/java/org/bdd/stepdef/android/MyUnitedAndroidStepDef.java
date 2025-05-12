@@ -1098,6 +1098,56 @@ public class MyUnitedAndroidStepDef {
         }
 
     }
+
+	@Then("^user gets the title of the preference center screen$")
+	public void userGetsTheTitleOfThePreferenceCenterScreen(DataTable table) throws Throwable {
+		try {
+            String expPreferenceCenter = table.cell(1, 0);
+            String actualPreferenceCenter = myUnitedPage.getsTheTitleOfThePreferenceCenterScreen();
+            soft.assertEquals(actualPreferenceCenter.toUpperCase(), expPreferenceCenter.toUpperCase());
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "getting the title of the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in getting the title of the preference center screen<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user selecting one of the checklist in the preference center screen$")
+	public void userSelectingOneOfTheChecklistInThePreferenceCenterScreen() throws Throwable {
+		try {
+            myUnitedPage.selectingOneOfTheChecklistInThePreferenceCenterScreen();
+            ExtentsReportManager.extentReportLogging("info", "selected one of the checklist in the preference center screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "selecting one of the checklist in the preference center screen <br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user clicks on save preference button$")
+	public void userClicksOnSavePreferenceButton() throws Throwable {
+		try {
+            myUnitedPage.clicksOnSavePreferenceButton();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates preference updated message$")
+	public void userValidatesPreferenceUpdatedMessage(DataTable table) throws Throwable {
+		try {
+            String expPrefUpdate = table.cell(1, 0);
+            String actualPrefUpdate = myUnitedPage.validatesPreferenceUpdatedMessage();
+            soft.assertEquals(actualPrefUpdate, expPrefUpdate);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "validated preference updated message");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating preference updated message<br />" + e);
+            throw e;
+        }
+	}
     }
 
 	

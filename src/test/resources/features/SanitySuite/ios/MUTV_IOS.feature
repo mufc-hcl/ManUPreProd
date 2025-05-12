@@ -1,7 +1,6 @@
 @Sanity_IOS @MUTV_IOS
 Feature: MUTV IOS feature
 
-
   Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List screen and tapping on back button should take user back to MUTV screen ,Verify "Find Something to Add" button along with "+" icon is displayed when there is no favorite item added to My List
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -118,7 +117,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username                  | password  |
-      | manupreprod@yopmail.com | Manu@123 |
+      | qastgtest@yopmail.com | Mu@12345 |
 
 
 
@@ -156,7 +155,7 @@ Feature: MUTV IOS feature
       | notificationbutton | username                  | password  |
       | allow_button       | manupreprod@yopmail.com | Manu@123 |
 
-@MUTV_PLUSIOCON
+
   Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
