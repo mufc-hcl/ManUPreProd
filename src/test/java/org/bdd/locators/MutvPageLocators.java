@@ -48,7 +48,7 @@ public class MutvPageLocators {
 	@iOSXCUITFindBy(accessibility = "Back")
 	public WebElement backIconSheduleScreenMutv;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/tertiary_text')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public WebElement notNowButtonMatchAppearanceAlert;
 
@@ -314,7 +314,7 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/navigation_bar_item_small_label_view\') and @text=\"United Now\"]")
 	public WebElement unitedNowTab;
 	
-	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"i0hp\"]")
+	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='i0hp']")
 	public WebElement buyORshopNowInUnitedNowPopUp1;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'tertiary_text')]")
@@ -324,6 +324,20 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"title\") and contains(@text, \"PREFERENCE\")]")
 	@iOSXCUITFindBy(accessibility = "Explore")
 	public WebElement preferenceCenterInMutv;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Register to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Register to watch\"]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Subscribe to watch\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to watch\"]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Register to watch\"])[1]")
+	public List<WebElement> cbrBadgeEpgScheduleScreen1;
+	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Subscribe to watch\"])[1]")
+	public List<WebElement> cbsBadgeEpgScheduleScreen1;
 }
 
 

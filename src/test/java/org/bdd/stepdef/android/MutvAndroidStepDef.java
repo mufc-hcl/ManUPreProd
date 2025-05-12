@@ -1040,8 +1040,41 @@ public class MutvAndroidStepDef {
             ExtentsReportManager.extentReportLogging("info", "Clicked search button in united screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking search button in united screen <br />" + e);
+        }
+	}
+	@Then("^user validates the CBS/CBR badges display for previous schedule program$")
+	public void userValidatesTheCBSCBRBadgesDisplayForPreviousScheduleProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForPreviousScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for previous schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for previous schedule program<br />" + e);
             throw e;
         }
 	}
 
+	@Then("^user validates the CBS/CBR badges display for future schedule program$")
+	public void userValidatesTheCBSCBRBadgesDisplayForFutureScheduleProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesDisplayForFutureScheduleProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for future schedule program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for future schedule program<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates the CBS/CBR badges is not displayed for current program$")
+	public void userValidatesTheCBSCBRBadgesIsNotDisplayedForCurrentProgram() throws Throwable {
+		try {
+            boolean flag = new MutvPage().CBSCBRBadgesIsNotDisplayedForCurrentProgram();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "Validated the CBR&CBS badges for current program");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating the CBR&CBS badges for current program<br />" + e);
+            throw e;
+        }
+	}
 }

@@ -214,17 +214,17 @@ Feature: My United features
       | daily streaks | share |
       | DAILY STREAKS | SHARE |
     And user clicks on back icon in daily streaks card in ios
-    #And user scrolls right to left to navigate appearence cards
-    #And user scroll right to left to navigate appearence cards "<Appearance>"
+    And user scrolls right to left to navigate appearence
     And user clicks on appearance card in my united screen in ios
-    #Then user validates content in appearance card in ios
-    #| appearance  | share |
-    #| APPEARANCES | SHARE |
+    Then user validates content in appearance card in ios
+      | appearance  | share |
+      | APPEARANCES | SHARE |
     And user clicks on back Icon in appearance card in ios
 
-    Examples: 
-      | username                | password | Appearance                                                   |
-      | manupreprod@yopmail.com | Manu@123 | 1 APPEARANCES This Season View Button Double tap to activate |
+    Examples:
+      | username             | password |
+      | manupreprod@yopmail.com | Manu@123 |
+
 
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu ios application
@@ -265,7 +265,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+      
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -321,7 +321,10 @@ Feature: My United features
   #Examples:
   #| notificationbutton |
   #| deny_button        |
-  Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
+  
+      
+
+    Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios

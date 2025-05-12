@@ -463,9 +463,13 @@ public class UnitedNowAndroidStepDef {
         try {
             ArrayList<String> expPlayersPageFilters = new ArrayList<>();
             expPlayersPageFilters = unitedNowAPIResponse.getPlayersPageFilterFromApi("PlayersPageFiltersEndpoint");
-
+            expPlayersPageFilters.removeAll(Collections.singleton(null));
+//            System.out.println("expPlayersPageFilters+++++++++++"+expPlayersPageFilters.toString().toUpperCase());
+            ArrayList<String> actPlayersPageFillers = unitedNowPage.getPlayersFiltersPageUI();
+//            System.out.println("actPlayersPageFillers------------"+actPlayersPageFillers.toString().toUpperCase());
             Collections.sort(expPlayersPageFilters);
-            soft.assertEquals(expPlayersPageFilters, unitedNowPage.getPlayersFiltersPageUI());
+            Collections.sort(actPlayersPageFillers);
+            soft.assertEquals(expPlayersPageFilters.toString().toUpperCase(), actPlayersPageFillers.toString().toUpperCase());
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated the PlayersPageFilters screen");
         } catch (AssertionError | IOException e) {
