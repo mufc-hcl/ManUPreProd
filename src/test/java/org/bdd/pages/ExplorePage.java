@@ -778,29 +778,29 @@ public class ExplorePage extends Common {
 			if (device.equalsIgnoreCase("android")) {
 				switchToWebView();
 //				if (!explorePageLocators.acceptAllInBuyTickets.isEmpty()) {
-////	              elementToBeClickableFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert);
+//              elementToBeClickableFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert);
 //					explorePageLocators.acceptAllInBuyTickets.get(0).click();
 //	              ExtentsReportManager.extentReportLogging("pass", "Clicks on Accept all cookies popup ");
 //	          }
-				
+				if (!explorePageLocators.acceptAllInBuyTickets.isEmpty()) {
 				for (WebElement element : explorePageLocators.acceptAllInBuyTickets) {
 	        	    if (element.isDisplayed()) {
 	        	    	 element.click();
 	        	        break;
 	        	    }
 	        	}
-				
-				//waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
+				}
+				waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
 				//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", explorePageLocators.ticketTitleTicketPage);
-				for (WebElement element : explorePageLocators.acceptAllInBuyTickets) {
-	        	    if (element.isDisplayed()) {
-	        	    	ticketPage = element.getText();
-	        	        break;
-	        	    }
-	        	}
+//				for (WebElement element : explorePageLocators.ticketTitleTicketPage) {
+//	        	    if (element.isDisplayed()) {
+//	        	    	ticketPage = element.getText();
+//	        	        break;
+//	        	    }
+//	        	}
 				ExtentsReportManager.extentReportLogging("pass", "Returns ticketTitleTicketPage Text");
 				//return explorePageLocators.ticketTitleTicketPage.getText();
-				return ticketPage;
+				return explorePageLocators.ticketTitleTicketPage.getText();
 			} else {
 				waitForVisibilityFluentWait(explorePageLocators.ticketTitleTicketPage, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns ticketTitleTicketPage Text");

@@ -158,8 +158,8 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(accessibility = "BUY TICKETS")
 	public WebElement buyTicketsCouroselSearchPage;
 
-	//@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_title\')]")
-	@FindBy(xpath = "(//*[contains(text(),'TICKETS')])[1]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
+	//@FindBy(xpath = "(//*[contains(text(),'TICKETS')])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS\"]")
 	public WebElement ticketTitleTicketPage;
 
@@ -257,16 +257,16 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"REJECT\"]")
 	public WebElement rejectBtnQA1;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/contextual_button\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/contextual_button')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MAKE YOUR PREDICTIONS\"]")
 	public List<WebElement> makeYourPredictionsUnitedNowScreen;
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/contextual_button\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/contextual_button')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MAKE YOUR PREDICTIONS\"]")
 	public WebElement makeYourPredictionsUnitedNowScreen1;
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/textview_heading\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/textview_heading')]")
 //		@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell/XCUIElementTypeStaticText")
 	public WebElement weUseCookiesTexts;
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'id/tertiary_text')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public List<WebElement> notNowButtonMatchAppearanceAlert1;
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
@@ -523,7 +523,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[4]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage")
 	public WebElement crestBImageInFixturesScreen;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/tertiary_cta\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/tertiary_cta')]")
 	public List<WebElement> ReggressionPopUpUniteNow;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/text_view_heading\')]")
@@ -582,8 +582,8 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
 	public WebElement clicksOnContinueButton;
 	
-	@FindBy(xpath = "(//*[contains(text(),'Accept all')])[1]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/tertiary_text')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Accept all\"]")
 	public List<WebElement> acceptAllInBuyTickets;
 	
 	@FindBy(xpath = "(//*[contains(text(),'TICKETS')])")
