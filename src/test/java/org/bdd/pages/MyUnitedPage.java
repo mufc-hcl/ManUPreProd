@@ -17,6 +17,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -2364,6 +2365,108 @@ public class MyUnitedPage extends Common {
 		        		}
 //		        		return false;
 		                   
+	}
+
+	public void switchToWebView() {
+		   AndroidGenericLibrary.switchToWebViewContext((AndroidDriver) driver);
+		
+	}
+
+	public void enterUsername(String usernameNew) {
+		 String device = GlobalParams.getPlatformName();
+	        try {
+	            if(device.equalsIgnoreCase("android")) {
+//	            elementToBeClickableFluentWait(idmPageLocators.emailTextBox);
+	                waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
+	                myUnitedPageLocators.newEmailTextBoxMyProfile.sendKeys(usernameNew);
+	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+	            }else{
+//	                Thread.sleep(1000);
+//	                elementToBeClickableFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
+	                waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
+	                myUnitedPageLocators.newEmailTextBoxMyProfile.sendKeys(usernameNew);
+	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+	            }
+
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterUsername()<br />" + e);
+//	           throw e;
+
+	        }
+		
+	}
+
+	public void enterPassword(String password) {
+		 try {
+	            waitForVisibilityFluentWait(myUnitedPageLocators.passwordTextBoxMyProfile,60);
+	            myUnitedPageLocators.passwordTextBoxMyProfile.sendKeys(password);
+	            AndroidGenericLibrary.hideKeyBoard(driver);
+	            ExtentsReportManager.extentReportLogging("pass","Enters Password");
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterPassword()<br />" + e);
+	           throw e;
+
+	        }
+		
+	}
+
+	public void enterConfirmUsername(String confirmusernameNew) {
+		 String device = GlobalParams.getPlatformName();
+	        try {
+	            if(device.equalsIgnoreCase("android")) {
+//	            elementToBeClickableFluentWait(idmPageLocators.emailTextBox);
+	                waitForVisibilityFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
+	                myUnitedPageLocators.confirmEmailTextBoxMyProfile.sendKeys(confirmusernameNew);
+	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+	            }else{
+//	                Thread.sleep(1000);
+//	                elementToBeClickableFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
+	                waitForVisibilityFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
+	                myUnitedPageLocators.confirmEmailTextBoxMyProfile.sendKeys(confirmusernameNew);
+	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+	            }
+
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterUsername()<br />" + e);
+//	           throw e;
+
+	        }
+		
+	}
+
+	public void clicksOnUpdateEmailAddressInMyProfile() {
+		try {
+			myUnitedPageLocators.updateEmailAddressInChangeEmail.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on update email change email page");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksOnUpdateEmailAddressInMyProfile()<br />" + e);
+			throw e;
+		}
+		
+	}
+
+	public String userValidatesEmailChangeSuccessfullyMessage() {
+		try {
+			waitForVisibilityFluentWait(myUnitedPageLocators.emailUpdateSuccessMessage, 60);
+			ExtentsReportManager.extentReportLogging("pass", "Returns Welcome text in chinese");
+			return myUnitedPageLocators.emailUpdateSuccessMessage.getText();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getWelcomeTextInChinese()<br />" + e);
+			throw e;
+		}
+	}
+
+	public void clicksOnCloseIconInEmailUpdateSuccessScreen() {
+		try {
+			myUnitedPageLocators.closeIconEmailUpdateScreen.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on update email change email page");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksOnUpdateEmailAddressInMyProfile()<br />" + e);
+			throw e;
+		}
 	}
 }
 		

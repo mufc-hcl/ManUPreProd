@@ -60,7 +60,7 @@ Feature: My United features
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
     And user click on My United in bottom tab
-      Then user validates My united text in myunited screen
+    Then user validates My united text in myunited screen
       | my united text |
       | MY UNITED      |
     And user clicks on log in button
@@ -75,7 +75,7 @@ Feature: My United features
     #| My United Stickers |
     #And user clicks on back button in inbox screen
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC004 Validate the Season card navigation
@@ -101,7 +101,7 @@ Feature: My United features
     And user clicks on back icon in season card screen
 
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
@@ -127,7 +127,7 @@ Feature: My United features
     Then user validates the sticker in Google lens page
 
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
@@ -150,7 +150,7 @@ Feature: My United features
     And user validate t shirt name is displayed
 
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC007 Click on the Primary and Secondary CTA buttons displayed below the jersey card section
@@ -178,9 +178,10 @@ Feature: My United features
     #And user click on buy shirt CTA button in my united screen
     #Then user validates shop now is displayed
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@myunited1
+
+  @myunited1
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -224,10 +225,9 @@ Feature: My United features
       | APPEARANCES | SHARE |
     And user clicks on back Icon in appearance card
 
-    Examples:
-      | username             | password | Daily streaks |appearance |
-      | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS |APPEARANCES |
-
+    Examples: 
+      | username                | password | Daily streaks | appearance  |
+      | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS | APPEARANCES |
 
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
@@ -253,20 +253,20 @@ Feature: My United features
     And user selects a favorite player in players screen
     Then user validates player details updated in my united screen
       | buy shirt CTA |
- 				| Buy Shirt     |
+      | Buy Shirt     |
     Then user validates the star icon is displayed
-        #    And clicks on  buy shirt button in my united screen
-        #    Then user validates shop page
-        #      | shop |
-        #      | Shop |
-        #    And user click on cross icon in shop screen
+    #    And clicks on  buy shirt button in my united screen
+    #    Then user validates shop page
+    #      | shop |
+    #      | Shop |
+    #    And user click on cross icon in shop screen
     And user click on edit icon in my united screen
     And user edits the favorite player in player screen
     Then user validates the star icon is displayed
     Then user validates edited player details in my united screen
 
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
@@ -296,7 +296,8 @@ Feature: My United features
     Examples: 
       | notificationbutton |
       | allow_button       |
-@myunited
+
+  @myunited
   Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -330,9 +331,10 @@ Feature: My United features
     And user validates the match alerts in match alerts screen
 
     Examples: 
-      | username             | password | notificationbutton |
+      | username                | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
-@myunited
+
+  @myunited
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -351,15 +353,13 @@ Feature: My United features
     Then user validates my tickets component in my united screen
     #Then user validates content in my tickets component
     Then user validates stadium component in my united screen
-    #Then user validates content in stadium component
 
+    #Then user validates content in stadium component
     Examples: 
-      | username             | password |
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-      
-      
-     
-   Scenario Outline:[My United]TC013 Settings --> My Profile --> Preference Center navigation
+
+  Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -378,15 +378,50 @@ Feature: My United features
     And user clicks on My profile icon
     And user clicks on preference center
     Then user gets the title of the preference center screen
-    |Preference Center|
-    |PREFERENCE CENTRE|
+      | Preference Center |
+      | PREFERENCE CENTRE |
     And user selecting one of the checklist in the preference center screen
     And user clicks on save preference button
     Then user validates preference updated message
-    |Thank you, your preferences have been updated.|
-    |Thank you, your preferences have been updated.|
-    
-     Examples: 
-      | username             | password |
+      | Thank you, your preferences have been updated. |
+      | Thank you, your preferences have been updated. |
+
+    Examples: 
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-    
+
+  @TC013MU
+  Scenario Outline: [My United]TC013 Settings --> My Profile --> Change email address for Login user
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks on close from notification
+    And user click on setting icon on top righhand side
+    And user clicks on My profile icon
+    And user clicks on change email address in my profile screen
+    And user enter the New email "<usernameNew>" and Confirm email"<confirmusernameNew>"valid password "<password>"
+    And user clicks on update email address in my profile
+    Then user validates email change successfully message
+      | EmailUpdate Success Message |
+      | CHANGE EMAIL ADDRESS        |
+    And user clicks on close icon in email update success screen
+    And user clicks on change email address in my profile screen
+    And user enters the old email"<username>" and confirm email"<confirmOldusername>"valid password "<password>"
+    And user clicks on update email address in my profile
+    Then user validates email change successfully message
+      | EmailUpdate Success Message |
+      | CHANGE EMAIL ADDRESS        |
+
+    Examples: 
+      | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
+      | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
