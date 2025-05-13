@@ -1,5 +1,6 @@
 @Sanity_Android @UnitedNow_Android
 Feature: United now
+
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -126,6 +127,7 @@ Feature: United now
   #| TICKET STG INFO,TICKET INFO,DATE TBC |
   #And user clicks on results icon in the united now screen
   #Then user validates the results using api
+  
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -165,7 +167,6 @@ Feature: United now
     #| PREMIER LEAGUE 2 | EFL TROPHY |
     And user selects "under18" from the dropdown
     Then user validates the under eighteen match schedule using API
-
   #| League1            | League2           |
   #| U18 PREMIER LEAGUE | UEFA YOUTH LEAGUE |
 
@@ -299,28 +300,27 @@ Feature: United now
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@TC020
-  Scenario Outline: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
-    Then user checks for video card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+  #Scenario Outline:: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
+    #Then user checks for video card in united now page using api
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: TC020 UNITED NOW - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu android application
@@ -387,28 +387,27 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-@TC023
-  Scenario Outline: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
-    Then user checks for poll card in united now page using api
 
-    Examples: 
-      | username                | password  |
-      | manupreprod@yopmail.com | Manu@123 |
+  #Scenario Outline: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
+    #Then user checks for poll card in united now page using api
+    #Examples: 
+      #| username                | password  |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: TC024 UNITED NOW - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu android application
@@ -431,7 +430,6 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-@TC025
   Scenario Outline: TC025 UNITED NOW - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two

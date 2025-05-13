@@ -181,7 +181,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @myunited1
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -297,7 +296,6 @@ Feature: My United features
       | notificationbutton |
       | allow_button       |
 
-  @myunited
   Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -334,7 +332,6 @@ Feature: My United features
       | username                | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
 
-  @myunited
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -390,7 +387,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @TC013MU
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu android application
     And user navigates to screen two
