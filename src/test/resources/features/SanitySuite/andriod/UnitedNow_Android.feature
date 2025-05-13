@@ -1,4 +1,4 @@
- @UnitedNow_Android
+@Sanity_Android @UnitedNow_Android
 Feature: United now
 
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
