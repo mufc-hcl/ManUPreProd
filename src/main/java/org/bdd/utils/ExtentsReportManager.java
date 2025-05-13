@@ -18,7 +18,8 @@ public class ExtentsReportManager {
     public static void extentReportLogging(String status, String message) {
         if (status.equalsIgnoreCase("pass")) {
             log.info(message);
-            ExtentReporter.getTest().log(Status.PASS, message, MediaEntityBuilder.createScreenCaptureFromBase64String(addScreenshot()).build());
+            //Commented passed taking snapshot
+//            ExtentReporter.getTest().log(Status.PASS, message, MediaEntityBuilder.createScreenCaptureFromBase64String(addScreenshot()).build());
             ExtentReporter.getTest().log(Status.PASS, message);
         } else if (status.equalsIgnoreCase("fail")) {
             log.error(message);
