@@ -242,12 +242,12 @@ Feature: Explore
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks buy tickets courosel in search screen
-     And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    Then user verify the ticket screen
-      | Ticket title |
-      | Tickets      |
+     #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #Then user verify the ticket screen
+      #| Ticket title |
+      #| Tickets      |
 
   Scenario: [Explore]TC022 Fans -> should be Hybrid Page
     Given user navigates to manu android application

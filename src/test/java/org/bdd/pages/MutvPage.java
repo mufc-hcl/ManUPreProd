@@ -2,6 +2,7 @@ package org.bdd.pages;
 
 import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -18,6 +19,8 @@ import org.bdd.utils.GlobalParams;
 import org.bdd.utils.IosGenericLibrary;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -468,30 +471,97 @@ public class MutvPage extends Common {
         }
     }
 
-    public void clicksOnTheHeroCarouselDotsInMutvScreen() {
-        if (mutvPageLocators.heroCarouselDotsMutvPage.size() > 0) {
-            for (int i = 0; i < mutvPageLocators.heroCarouselDotsMutvPage.size(); i++) {
-                mutvPageLocators.heroCarouselDotsMutvPage.get(i).click();
-                ExtentsReportManager.extentReportLogging("pass", "Clicks on heroCarouselDotsMutvPage ");
-            }
-        }
-    }
-
-    public void clicksOnTheHeroCarouselDotsInMutvScreenIos() {
+//    public void clicksOnTheHeroCarouselDotsInMutvScreen() {
+//        if (mutvPageLocators.heroCarouselDotsMutvPage.size() > 0) {
+//            for (int i = 0; i < mutvPageLocators.heroCarouselDotsMutvPage.size(); i++) {
+//                mutvPageLocators.heroCarouselDotsMutvPage.get(i).click();
+//                ExtentsReportManager.extentReportLogging("pass", "Clicks on heroCarouselDotsMutvPage ");
+//            }
+//        }
+//    }
+    
+    public boolean clicksOnTheHeroCarouselDotsInMutvScreen() {
         try {
-            if (mutvPageLocators.heroCarouselDotsMutvPage.size() > 0) {
-                for (int i = 0; i < mutvPageLocators.heroCarouselDotsMutvPage.size(); i++) {
-                    ExtentsReportManager.extentReportLogging("pass", "Swipes to heroCarouselDotsMutvPage ");
-                    System.out.println(mutvPageLocators.heroCarouselDotsMutvPage.get(i));
-                    swipeWithCoordinates(299, 297, 88, 310, 200, "left", driver);
+            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
+            if (dots == null || dots.isEmpty()) {
+                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
+                return false;
+            }
+
+            for (WebElement dot : dots) {
+                if (dot.isDisplayed()) {
+                    try {
+                        dot.click();
+                        ExtentsReportManager.extentReportLogging("pass", "Clicked on heroCarouselDotsMutvPage");
+                    } catch (Exception clickError) {
+                        ExtentsReportManager.extentReportLogging("fail", "Click failed on a visible heroCarouselDot: " + clickError);
+                        return false;
+                    }
+                } else {
+                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
+                    return false;
                 }
             }
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
-            throw e;
-        }
 
+            return true;
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging(
+                "fail",
+                "Exception in clicksOnTheHeroCarouselDotsInMutvScreen()<br />" + e
+            );
+            return false;
+        }
     }
+
+
+
+//    public void clicksOnTheHeroCarouselDotsInMutvScreenIos() {
+//        try {
+//            if (mutvPageLocators.heroCarouselDotsMutvPage.size() > 0) {
+//                for (int i = 0; i < mutvPageLocators.heroCarouselDotsMutvPage.size(); i++) {
+//                    ExtentsReportManager.extentReportLogging("pass", "Swipes to heroCarouselDotsMutvPage ");
+//                    System.out.println(mutvPageLocators.heroCarouselDotsMutvPage.get(i));
+//                    swipeWithCoordinates(299, 297, 88, 310, 200, "left", driver);
+//                }
+//            }
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
+//            throw e;
+//        }
+//
+//    }
+    
+    public boolean clicksOnTheHeroCarouselDotsInMutvScreenIos() {
+        try {
+            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
+            if (dots == null || dots.isEmpty()) {
+                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
+                return false;
+            }
+
+            for (WebElement dot : dots) {
+                if (dot.isDisplayed()) {
+                    try {
+                        ExtentsReportManager.extentReportLogging("pass", "Swiping to heroCarouselDot");
+                       // System.out.println(dot);
+                        swipeWithCoordinates(299, 297, 88, 310, 200, "left", driver);
+                    } catch (Exception swipeError) {
+                        ExtentsReportManager.extentReportLogging("fail", "Swipe failed for heroCarouselDot: " + swipeError);
+                        return false;
+                    }
+                } else {
+                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
+                    return false;
+                }
+            }
+
+            return true;
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception in clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
+            return false;
+        }
+    }
+
 
     public boolean validateTimeInScheduleScreen() {
         try {
@@ -1889,5 +1959,36 @@ public class MutvPage extends Common {
 				return false;
 			
 		}
+		
+		
+		public boolean validateHeroCarouselDisableInMutvPage() {
+			try {
+				String device = GlobalParams.getPlatformName();
+		        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		        List<WebElement> dots;
+		        try {
+		            if (device.equalsIgnoreCase("android")) {
+		                dots = shortWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		                    By.xpath("//android.widget.FrameLayout[contains(@resource-id, 'id/frame')]/android.widget.LinearLayout")));
+		            } else if (device.equalsIgnoreCase("ios")) {
+		                dots = shortWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		                    By.xpath("//XCUIElementTypeOther[2]//XCUIElementTypeCollectionView")));
+		            } 
+		        } catch (TimeoutException e) {
+		            ExtentsReportManager.extentReportLogging("Pass", "Hero carousel are not displayed – carousel is disabled as expected on CMS side ");
+		            return true;
+		        }
+
+		        // If elements are found
+		        ExtentsReportManager.extentReportLogging("fail", "Hero carousel are visible in MUTV page – should be disabled on CMS side " );
+		        return false;
+
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception in validateHeroCarouselDisableInMutvPage()<br />" + e);
+		        return false;
+		    }
+		}
+
+
 }
 		

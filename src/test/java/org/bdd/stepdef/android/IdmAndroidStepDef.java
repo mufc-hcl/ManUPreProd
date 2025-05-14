@@ -7,6 +7,8 @@ import org.bdd.pages.IdmPage;
 import org.bdd.utils.AppiumDriverManager;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
+import org.bdd.utils.PropertyFileManager;
 import org.bdd.utils.apiResponse.IdmAPIResponse;
 import org.bdd.utils.apiResponse.OnboardingAPIResponse;
 import org.testng.asserts.SoftAssert;
@@ -14,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class IdmAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
@@ -374,6 +377,15 @@ public class IdmAndroidStepDef {
     @And("user initiated the ios Session")
     public void userInitiatedTheIosSession() throws IOException {
         try {
+        	 AppiumDriverManager driverManager = new AppiumDriverManager();
+             if (driverManager.getAppiumDriver() != null) {
+                 driverManager.getAppiumDriver().quit();
+                 driverManager.setAppiumDriver(null);
+             }
+             Properties props = new PropertyFileManager().getProperties();
+             GlobalParams.setPlatformName(props.getProperty("ios_platformName"));
+             GlobalParams.setDeviceName(props.getProperty("ios_deviceName"));
+             GlobalParams.setOsversion(props.getProperty("ios_os_version"));
             new AppiumDriverManager().initializeIosDriver();
             ExtentsReportManager.extentReportLogging("info", "Initiated the ios session");
         } catch (AssertionError e) {

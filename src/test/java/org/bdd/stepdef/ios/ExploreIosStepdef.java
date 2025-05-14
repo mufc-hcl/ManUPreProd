@@ -602,7 +602,9 @@ public class ExploreIosStepdef {
     @And("^user clicks buy tickets courosel in search screen in ios$")
     public void userClicksBuyTicketsCouroselInSearchScreenInIos() throws Throwable {
         try {
-            explorePage.clicksBuyTicketsCouroselInSearchScreen();
+        	boolean buyTicket = explorePage.clicksBuyTicketsCouroselInSearchScreen();
+            soft.assertTrue(buyTicket,"Buy ticket carousel is not present in search screen");
+			soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Clicked on buy tickets courosel in search screen in ios");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail",

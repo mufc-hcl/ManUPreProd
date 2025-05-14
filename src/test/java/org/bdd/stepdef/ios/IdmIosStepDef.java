@@ -3,6 +3,8 @@ package org.bdd.stepdef.ios;
 import org.bdd.pages.*;
 import org.bdd.utils.AppiumDriverManager;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
+import org.bdd.utils.PropertyFileManager;
 import org.bdd.utils.apiResponse.IdmAPIResponse;
 import org.testng.asserts.SoftAssert;
 
@@ -13,6 +15,7 @@ import io.cucumber.java.en.Then;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class IdmIosStepDef {
 	public SoftAssert soft = new SoftAssert();
@@ -296,13 +299,23 @@ public class IdmIosStepDef {
 
 	@And("user initiates the android session")
 	public void userInitiatesTheAndroidSession() throws IOException {
-		try {
-			new AppiumDriverManager().initializeAndroidDriver();
-			ExtentsReportManager.extentReportLogging("info", "initiated the android session");
-		} catch (AssertionError e) {
-			ExtentsReportManager.extentReportLogging("fail", "Error in initiating the android session<br />" + e);
-			throw e;
-		}
+		 try {
+        	 AppiumDriverManager driverManager = new AppiumDriverManager();
+             if (driverManager.getAppiumDriver() != null) {
+                 driverManager.getAppiumDriver().quit();
+                 driverManager.setAppiumDriver(null);
+             }
+             Properties props = new PropertyFileManager().getProperties();
+             GlobalParams.setPlatformName(props.getProperty("android_platformName"));
+             GlobalParams.setDeviceName(props.getProperty("android_deviceName"));
+             GlobalParams.setOsversion(props.getProperty("android_os_version"));
+            new AppiumDriverManager().initializeAndroidDriver();
+            ExtentsReportManager.extentReportLogging("info", "initiated the android session");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail", "Error in initiating the android session<br />" + e);
+				throw e;
+			}
+		
 	}
 
 	@Then("user validates player name updated in my united screen in android")
@@ -400,5 +413,24 @@ public class IdmIosStepDef {
             throw e;
         }
     }
+	
+	@Then("user validates captured player name updated in my united screen in ios")
+	public void userValidatesCapturedPlayerNameInMyUnitedScreenInIos() {
+		try {
+			String expPlayerName  = GlobalParams.getPlayerName();
+			boolean isPlayerVisible = myUnitedPage.getPlayerNameInUnitedScreenInIos(expPlayerName);
+			 soft.assertTrue(isPlayerVisible);
+	    	  soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"validated player name updated in my united screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating player name updated in my united screen in ios<br />" + e);
+			throw e;
+		}
+	}
+	
+	
+
 
 }

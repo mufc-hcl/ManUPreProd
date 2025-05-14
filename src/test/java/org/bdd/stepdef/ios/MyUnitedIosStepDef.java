@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bdd.pages.*;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
 import org.bdd.utils.apiResponse.MyUnitedAPIResponse;
 import org.testng.asserts.SoftAssert;
 
@@ -939,7 +940,7 @@ public class MyUnitedIosStepDef {
             String expPlayerName = playerName2;
             String actualPlayerName = myUnitedPage.getEditedPlayerNameInMyUnitedScreen();
             String actualCountryFlag = myUnitedPage.getCountryFlagMyUnitedScreen();
-//            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player"+expPlayerName);
+            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player"+expPlayerName);
             soft.assertEquals(actualPlayerName.replaceAll(" ",""), expPlayerName.replaceAll(" ",""));
             if(!actualCountryFlag.equalsIgnoreCase("noFlag")) {
                 ExtentsReportManager.extentReportLogging("info", "Flag displayed for the player");
@@ -1480,6 +1481,36 @@ public class MyUnitedIosStepDef {
         }
 	
 	}
+	
+	@Then("^user validates the edited player details in my united screen in ios$")
+    public void userValidateEditedPlayerDetailsInMyUnitedScreenInIos() throws Throwable {
+        try {
+        	String expPlayerName  = GlobalParams.getPlayerName();
+            String actualPlayerName = myUnitedPage.getEditedPlayerNameInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player "+expPlayerName);
+            soft.assertEquals(actualPlayerName.replaceAll(" ",""), expPlayerName.replaceAll(" ",""));          
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info",
+                    "validated edited player details in my united screen in ios");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail","Error in validating edited player details in my united screen in ios<br />" + e);
+            throw e;
+        }
+    }
+	
+	 static String playerName1;
+    @And("^user edits a favorite player in player screen in ios$")
+    public void userEditsaFavoritePlayerInPlayerScreenInIos() throws Throwable {
+        try {
+        	playerName1=myUnitedPage.clickEditsTheFavoritePlayer1InPlayerScreen();
+            GlobalParams.setPlayerName(playerName1);
+            ExtentsReportManager.extentReportLogging("info", "edited the favorite player in player screen in ios: "+playerName1);
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail",
+                    "Error in editing the favorite player in player screen in ios<br />" + e);
+            throw e;
+        }
+    }
 }
 	
 
