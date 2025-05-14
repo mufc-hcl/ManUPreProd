@@ -558,5 +558,28 @@ public class MyUnitedPageLocators {
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Thank you, your preferences have been updated.\"]")
    	public WebElement updatedPreferenceCenter;
     
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"NewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"New email address\"]")
+   	public WebElement newEmailTextBoxMyProfile;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"ReenterNewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Confirm new email address\"]")
+   	public WebElement confirmEmailTextBoxMyProfile;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"Password\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@name=\"Password\"]")
+   	public WebElement passwordTextBoxMyProfile;
+    
+    @AndroidFindBy(xpath = "//android.widget.Button[@text=\"UPDATE EMAIL ADDRESS\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Thank you, your preferences have been updated.\"]")
+   	public WebElement updateEmailAddressInChangeEmail;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"CHANGE EMAIL ADDRESS\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"CHANGE EMAIL ADDRESS\"]")
+   	public WebElement emailUpdateSuccessMessage;
+    
+    @AndroidFindBy(accessibility = "Close")
+   	@iOSXCUITFindBy(accessibility = "Close")
+   	public WebElement closeIconEmailUpdateScreen;
     
 }
