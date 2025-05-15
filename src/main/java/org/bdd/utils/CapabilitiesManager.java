@@ -25,11 +25,11 @@ public class CapabilitiesManager {
             if (env.equalsIgnoreCase("stage")) {
             	android_app = props.getProperty("android_app_stage");
             	ios_app = props.getProperty("ios_app_stage");
-            	System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
+            	//System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
             } else if (env.equalsIgnoreCase("prod")) {
             	android_app = props.getProperty("android_app_preprod");
             	ios_app = props.getProperty("ios_app_preprod");
-            	System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
+            	//System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
             }
             switch (mobType) {
                 case "android":
