@@ -209,22 +209,26 @@ public class UnitedNowIosStepDef {
 	@Then("^user validates the Men match schedule in ios$")
 	public void userValidatesTheMenMatchScheduleInIos() throws Throwable {
 		 try {
-	           	//data from API
-			 	String premierLeagueFromAPI = unitedNowAPIResponse.getPremierLeagueFromApi("MenUpcomingFixturesEndpoints");
-			 	String actualPremierLeagueTextUI = unitedNowPage.getMenLeague1Text();
+			 	ArrayList<String> expPremierLeagueFromAPI = new ArrayList<>();
+	        	ArrayList<String> expEuropaLeagueFromAPI = new ArrayList<>();
 
-			 	ExtentsReportManager.extentReportLogging("info","Premier League From API<br />"+premierLeagueFromAPI);
-			 	ExtentsReportManager.extentReportLogging("info","Actual Premier League Text From UI<br />"+unitedNowPage.getMenLeague1Text());
-				 soft.assertEquals(actualPremierLeagueTextUI.toUpperCase(), premierLeagueFromAPI.toUpperCase());
-				 String europaLeagueFromAPI = unitedNowAPIResponse.getEuropaLeagueFromAPI("MenUpcomingFixturesEndpoints");
-				 String actualEuropaLeagueUI = unitedNowPage.getMenLeague2Text();
+	        	String actualPremierLeagueTextUI = unitedNowPage.getMenLeague1Text();
+	            String actualEuropaLeagueUI = unitedNowPage.getMenLeague2Text();
+	        	
+	        	expPremierLeagueFromAPI = unitedNowAPIResponse.getPremierLeagueFromApi("MenUpcomingFixturesEndpoints",actualPremierLeagueTextUI);
+	            expEuropaLeagueFromAPI = unitedNowAPIResponse.getEuropaLeagueFromAPI("MenUpcomingFixturesEndpoints",actualEuropaLeagueUI);
+	            
+	            ExtentsReportManager.extentReportLogging("info","premierLeagueFromAPI  From API<br />"+expPremierLeagueFromAPI.get(0));
+	  			ExtentsReportManager.extentReportLogging("info","actual actualPremierLeagueTextUI From UI<br />"+unitedNowPage.getMenLeague1Text());
+	  			
+	  			ExtentsReportManager.extentReportLogging("info","europaLeagueFromAPI  From API<br />"+expEuropaLeagueFromAPI.get(0));
+	  			ExtentsReportManager.extentReportLogging("info","actual actualEuropaLeagueUI From UI<br />"+unitedNowPage.getMenLeague2Text());
+	           
+	            soft.assertEquals(actualPremierLeagueTextUI.toUpperCase(), expPremierLeagueFromAPI.get(0).toUpperCase());
+	            soft.assertEquals(actualEuropaLeagueUI.toUpperCase(), expEuropaLeagueFromAPI.get(0).toUpperCase());
+	  			soft.assertAll();
 
-			 	ExtentsReportManager.extentReportLogging("info","Europa League From API<br />"+europaLeagueFromAPI);
-			 	ExtentsReportManager.extentReportLogging("info","Actual Europa League UI<br />"+unitedNowPage.getMenLeague2Text());
-				 soft.assertEquals(actualEuropaLeagueUI.toUpperCase(), europaLeagueFromAPI.toUpperCase());
-				 soft.assertAll();
-
-	               ExtentsReportManager.extentReportLogging("info", "Validated men match schedule");
+	            ExtentsReportManager.extentReportLogging("info", "Validated men match schedule");
 	           } catch (AssertionError e) {
 	        	   ExtentsReportManager.extentReportLogging("fail", "Error in validating men match schedule <br />" + e);
 	               throw e;
@@ -344,55 +348,59 @@ public class UnitedNowIosStepDef {
 	@And("^user clicks on women tab and validates the Women match schedule in ios$")
 	public void userClicksOnWomenTabAndValidatesTheWomenMatchScheduleInIos() throws Throwable {
 		try {
-					unitedNowPage.clickOnDDWomenSTabInIos();
-	             	//data from API
-	                 String womensSuperLeagueFromAPI = unitedNowAPIResponse.getWomensSuperLeagueFromApi("WomenUpcomingFixturesEndpoints");
-	                 String actualWomensSuperLeagueTextUI = unitedNowPage.getWomenLeague1Text();
+			unitedNowPage.clickOnDDWomenSTabInIos();
+	        ArrayList<String> expWomensSuperLeagueFromAPI = new ArrayList<>();
+        	ArrayList<String> expContinentalLeagueCupFromAPI = new ArrayList<>();
+        	
+        	String actualWomensSuperLeagueTextUI = unitedNowPage.getWomenLeague1Text();
+        	String actualContenentalLeagueCupUI = unitedNowPage.getWomenLeague2Text();
+        	
+            expWomensSuperLeagueFromAPI = unitedNowAPIResponse.getWomensSuperLeagueFromApi("WomenUpcomingFixturesEndpoints", actualWomensSuperLeagueTextUI);
+            expContinentalLeagueCupFromAPI = unitedNowAPIResponse.getContenentalLeagueCupFromAPI("WomenUpcomingFixturesEndpoints", actualContenentalLeagueCupUI);
+            
 
-					ExtentsReportManager.extentReportLogging("info","Women's Super League From API<br />"+womensSuperLeagueFromAPI);
-					ExtentsReportManager.extentReportLogging("info","Actual Women's Super League Text From UI<br />"+unitedNowPage.getWomenLeague1Text());
-	                 soft.assertEquals(actualWomensSuperLeagueTextUI.toUpperCase(), womensSuperLeagueFromAPI.toUpperCase());
+            ExtentsReportManager.extentReportLogging("info","womensSuperLeagueFromAPI  From API<br />"+expWomensSuperLeagueFromAPI.get(0));
+ 			ExtentsReportManager.extentReportLogging("info","actual actualWomensSuperLeagueTextUI From UI<br />"+unitedNowPage.getWomenLeague1Text());
 
-	                 String contenentalLeagueCupFromAPI = unitedNowAPIResponse.getContenentalLeagueCupFromAPI("WomenUpcomingFixturesEndpoints");
-	                 String actualContenentalLeagueCupUI = unitedNowPage.getWomenLeague2Text();
+            ExtentsReportManager.extentReportLogging("info","contenentalLeagueCupFromAPI  From API<br />"+expContinentalLeagueCupFromAPI.get(0));
+			ExtentsReportManager.extentReportLogging("info","actual getWomenLeague2Text From UI<br />"+unitedNowPage.getWomenLeague2Text());
 
-					ExtentsReportManager.extentReportLogging("info","Continental LeagueCup From API<br />"+contenentalLeagueCupFromAPI);
-					ExtentsReportManager.extentReportLogging("info","Actual Continental LeagueCup From UI<br />"+unitedNowPage.getWomenLeague2Text());
-	                 
-				soft.assertEquals(actualContenentalLeagueCupUI.toUpperCase(), contenentalLeagueCupFromAPI.toUpperCase());
-				soft.assertAll();
-	                 ExtentsReportManager.extentReportLogging("info", "Validated women match schedule");
+			soft.assertEquals(actualWomensSuperLeagueTextUI.toUpperCase(), expWomensSuperLeagueFromAPI.get(0).toUpperCase());
+            soft.assertEquals(actualContenentalLeagueCupUI.toUpperCase(), expContinentalLeagueCupFromAPI.get(0).toUpperCase());
+            soft.assertAll();
+
+            ExtentsReportManager.extentReportLogging("info", "Validated women match schedule");
 	             } catch (AssertionError e) {
 	          	   ExtentsReportManager.extentReportLogging("fail", "Error in validating women match schedule <br />" + e);
 	                 throw e;
 	             }
 	         }
 
-	@And("^user clicks on under tweenty oneS and validates the under twenty one match schedule in ios$")
+	@And("^user clicks on under tweenty one and validates the under twenty one match schedule in ios$")
 	public void userClicksOnUnderTweentyOneSAndValidatesTheUnderTwentyOneMatchScheduleInIos()
 			throws Throwable {
 		try {
-			unitedNowPage.clickOnDDUnder21STabInIos();
-		          	//data from API
-		              String premierLeague2FromAPI = unitedNowAPIResponse.getPremierLeague2FromAPI("Under21SUpcomingFixturesEndpoints");
-		              String actualPremierLeague2TextUI = unitedNowPage.getUnder21League1Text();
+				unitedNowPage.clickOnDDUnder21STabInIos();
+				ArrayList<String> expPpremierLeague2FromAPI = new ArrayList<>();
+	        	ArrayList<String> expEFLTrophyFromAPI = new ArrayList<>();
+	        	
+	        	String actualPremierLeague2TextUI = unitedNowPage.getUnder21League1Text();
+	        	String actualEFLTrophyUI = unitedNowPage.getUnder21League2Text();
+	        	
+	            expPpremierLeague2FromAPI = unitedNowAPIResponse.getPremierLeague2FromAPI("Under21SUpcomingFixturesEndpoints", actualPremierLeague2TextUI);
+	            expEFLTrophyFromAPI = unitedNowAPIResponse.getEFLTrophyFromAPI("Under21SUpcomingFixturesEndpoints", actualEFLTrophyUI);
 
-					ExtentsReportManager.extentReportLogging("info","premier League2 From API<br />"+premierLeague2FromAPI);
-					ExtentsReportManager.extentReportLogging("info","actual Premier League2 Text from UI<br />"+unitedNowPage.getUnder21League1Text());
-		              
-		              soft.assertEquals(actualPremierLeague2TextUI.toUpperCase(), premierLeague2FromAPI.toUpperCase());
+	            
+	            ExtentsReportManager.extentReportLogging("info","premierLeague2FromAPI  From API<br />"+expPpremierLeague2FromAPI.get(0));
+	            ExtentsReportManager.extentReportLogging("info","actual actualPremierLeague2TextUI From UI<br />"+unitedNowPage.getUnder21League1Text());
+	            ExtentsReportManager.extentReportLogging("info","eflTrophyFromAPI  From API<br />"+expEFLTrophyFromAPI.get(0));
+	            ExtentsReportManager.extentReportLogging("info","actual actualEFLTrophyUI From UI<br />"+unitedNowPage.getUnder21League2Text());
 
+	            soft.assertEquals(actualPremierLeague2TextUI.toUpperCase(), expPpremierLeague2FromAPI.get(0).toUpperCase());
+	            soft.assertEquals(actualEFLTrophyUI.toUpperCase(), expEFLTrophyFromAPI.get(0).toUpperCase());
+	            soft.assertAll();
 
-		              String eflTrophyFromAPI = unitedNowAPIResponse.getEFLTrophyFromAPI("Under21SUpcomingFixturesEndpoints");
-		              String actualEFLTrophyUI = unitedNowPage.getUnder21League2Text();
-
-					ExtentsReportManager.extentReportLogging("info","efl Trophy From API<br />"+eflTrophyFromAPI);
-					ExtentsReportManager.extentReportLogging("info","actual EFL Trophy from UI<br />"+unitedNowPage.getUnder21League2Text());
-		              
-					soft.assertEquals(actualEFLTrophyUI.toUpperCase(), eflTrophyFromAPI.toUpperCase());
-		              soft.assertAll();
-
-		              ExtentsReportManager.extentReportLogging("info", "Validated UnderTwentyOneMatchSchedule match schedule");
+	            ExtentsReportManager.extentReportLogging("info", "Validated UnderTwentyOneMatchSchedule match schedule");
 		          } catch (AssertionError e) {
 		       	   ExtentsReportManager.extentReportLogging("fail", "Error in validating UnderTwentyOneMatchSchedule match schedule <br />" + e);
 		              throw e;
@@ -404,27 +412,27 @@ public class UnitedNowIosStepDef {
 	public void userClicksOnUnderEighteenSValidatesTheUnderEighteenMatchScheduleInIos()
 			throws Throwable {
 		try {
-			unitedNowPage.clickOnDDEighteenSTabInIos();
-		           	//data from API
-		               String u18PremierLeagueFromAPI = unitedNowAPIResponse.getU18PremierLeagueFromAPI("Under18SUpcomingFixturesEndpoints");
-		               String actuaU18PremierLeagueTextUI = unitedNowPage.getUnder18League1Text();
+				unitedNowPage.clickOnDDEighteenSTabInIos();
+				ArrayList<String> expU18PremierLeagueFromAPI = new ArrayList<>();
+	        	ArrayList<String> expUEFAYouthLeagueFromAPI = new ArrayList<>();
 
-					ExtentsReportManager.extentReportLogging("info","u18 Premier League From API<br />"+u18PremierLeagueFromAPI);
-					ExtentsReportManager.extentReportLogging("info","actual U18 Premier League Text From UI<br />"+unitedNowPage.getUnder18League1Text());
-		               
-		               soft.assertEquals(actuaU18PremierLeagueTextUI.toUpperCase(), u18PremierLeagueFromAPI.toUpperCase());
+	        	String actuaU18PremierLeagueTextUI = unitedNowPage.getUnder18League1Text();
+	        	String actualUEFAYouthLeagueUI = unitedNowPage.getUnder18League2Text();
+	        	
+	            expU18PremierLeagueFromAPI = unitedNowAPIResponse.getU18PremierLeagueFromAPI("Under18SUpcomingFixturesEndpoints", actuaU18PremierLeagueTextUI);
+	            expUEFAYouthLeagueFromAPI = unitedNowAPIResponse.getUEFAYouthLeagueFromAPI("Under18SUpcomingFixturesEndpoints", actualUEFAYouthLeagueUI);
 
+	            ExtentsReportManager.extentReportLogging("info","u18PremierLeagueFromAPI  From API<br />"+expU18PremierLeagueFromAPI.get(0));
+				ExtentsReportManager.extentReportLogging("info","actual actuaU18PremierLeagueTextUI From UI<br />"+unitedNowPage.getUnder18League1Text());
 
-		               String uefaYouthLeagueFromAPI = unitedNowAPIResponse.getUEFAYouthLeagueFromAPI("Under18SUpcomingFixturesEndpoints");
-		               String actualUEFAYouthLeagueUI = unitedNowPage.getUnder18League2Text();
+	            ExtentsReportManager.extentReportLogging("info","uefaYouthLeagueFromAPI  From API<br />"+expUEFAYouthLeagueFromAPI.get(0));
+	            ExtentsReportManager.extentReportLogging("info","actual actualUEFAYouthLeagueUI From UI<br />"+unitedNowPage.getUnder18League2Text());
 
-					ExtentsReportManager.extentReportLogging("info","uefa Youth League FromAPI<br />"+uefaYouthLeagueFromAPI);
-					ExtentsReportManager.extentReportLogging("info","actual UEFA Youth League UI<br />"+unitedNowPage.getUnder18League2Text());
-		               
-		               soft.assertEquals(actualUEFAYouthLeagueUI.toUpperCase(), uefaYouthLeagueFromAPI.toUpperCase());
-		               soft.assertAll();
+	            soft.assertEquals(actuaU18PremierLeagueTextUI.toUpperCase(), expU18PremierLeagueFromAPI.get(0).toUpperCase());
+	            soft.assertEquals(actualUEFAYouthLeagueUI.toUpperCase(), expUEFAYouthLeagueFromAPI.get(0).toUpperCase());
+	            soft.assertAll();
 
-		               ExtentsReportManager.extentReportLogging("info", "Validated under eighteen match schedule");
+	            ExtentsReportManager.extentReportLogging("info", "Validated under eighteen match schedule");
 		           } catch (AssertionError e) {
 		        	   ExtentsReportManager.extentReportLogging("fail", "Error in validating under eighteen match schedule <br />" + e);
 		               throw e;

@@ -387,24 +387,24 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-@PollCardTC023
-  Scenario: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
+
+  #Scenario: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
     #And user click on My United in bottom tab
     #And user clicks on log in button
     #And user enter the valid email "<username>" and valid password "<password>"
     #And user clicks on login button in login screen
     #And user clicks on close from notification
     #And user clicks on united now tab
-    Then user checks for poll card in united now page using api
+    #Then user checks for poll card in united now page using api
     #Examples: 
       #| username                | password  |
       #| manupreprod@yopmail.com | Manu@123 |

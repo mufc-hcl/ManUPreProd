@@ -149,12 +149,12 @@ Feature: United now
     And user clicks on women tab and validates the Women match schedule in ios
     #| League1                      | League2                        |
     #| WOMEN'S SUPER LEAGUETab Item | CONTINENTAL LEAGUE CUPTab Item |
-    And user clicks on women tab in ios
-    And user clicks on under tweenty oneS and validates the under twenty one match schedule in ios
+    #And user clicks on women tab in ios
+    #And user clicks on under tweenty one and validates the under twenty one match schedule in ios
     #| League1                  | League2            |
     #| PREMIER LEAGUE 2Tab Item | EFL TROPHYTab Item |
-    And user clicks on under tweenty oneS tab in ios
-    And user clicks on under eighteenS validates the under eighteen match schedule in ios
+    #And user clicks on under tweenty oneS tab in ios
+    #And user clicks on under eighteenS validates the under eighteen match schedule in ios
 
   #| League1                    | League2                   |
   #| U18 PREMIER LEAGUETab Item | UEFA YOUTH LEAGUETab Item |

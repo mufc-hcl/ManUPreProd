@@ -753,7 +753,7 @@ public class UnitedNowPage extends Common {
 			} else if (value.equalsIgnoreCase("under18")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.under18MatchSchedulePage, 60);
 				unitedNowPageLocators.under18MatchSchedulePage.click();
-			} else if (value.equalsIgnoreCase("girls")) {
+			} else if (value.equalsIgnoreCase("Girls")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.girlsMatchSchedulePage, 60);
 				unitedNowPageLocators.girlsMatchSchedulePage.click();
 			}
@@ -850,17 +850,55 @@ public class UnitedNowPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				waitForVisibilityFluentWait(unitedNowPageLocators.under18League1TextScheduleScreen, 60);
+				waitForVisibilityFluentWait(unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns under18 league text");
-				return unitedNowPageLocators.under18League1TextScheduleScreen.getText();
+				return unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen.getText();
 			} else {
-				waitForVisibilityFluentWait(unitedNowPageLocators.under18League1TextScheduleScreen, 60);
+				waitForVisibilityFluentWait(unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns under18 league text");
-				return unitedNowPageLocators.under18League1TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-getUnder18League1Text()<br />" + e);
+			throw e;
+		}
+	}
+	
+	public String getEnglishPGAU16WomensCupText() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns PGAU16WomensCup league text");
+				return unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen.getText();
+			} else {
+				waitForVisibilityFluentWait(unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns PGAU16WomensCup league text");
+				return unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getEnglishPGAU16WomensCupText()<br />" + e);
+			throw e;
+		}
+	}
+	
+	public String getEnglishWomensSuperLeagueCupText() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.womenSuperLeagueInWomenTab, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns PGAU16WomensCup league text");
+				return unitedNowPageLocators.womenSuperLeagueInWomenTab.getText();
+			} else {
+				waitForVisibilityFluentWait(unitedNowPageLocators.womenSuperLeagueInWomenTab, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns englishWomensSuperLeague text");
+				return unitedNowPageLocators.womenSuperLeagueInWomenTab.getDomAttribute("label").replace("Tab Item", "").trim();
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getEnglishWomensSuperLeagueCupText()<br />" + e);
 			throw e;
 		}
 	}
