@@ -347,3 +347,29 @@ Feature: Explore
     Then user verify text in search screen in ios
       | All | Mutv | News | Videos |
       | All | MUTV | News | Videos |
+      
+      @EXPLORE_NEW
+  Scenario Outline: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
+Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on My United in bottom tab in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in login screen in ios
+    And user clicks on test continue and clicks on back icon
+    And user clicks on No tracking
+    And user clicks on united now in bottom tab in ios
+    And user clicks search button in united screen in ios
+    And user clicks latest courosel in search screen in ios
+    Then user validates hero card in Latest screen
+    
+    Examples: 
+      | username             | password |
+      | manupreprod@yopmail.com | Manu@123 |

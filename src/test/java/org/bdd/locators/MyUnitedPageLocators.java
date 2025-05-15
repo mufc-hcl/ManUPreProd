@@ -541,8 +541,8 @@ public class MyUnitedPageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"PREFERENCE CENTRE\"])[2]")
 	public WebElement titleOfPreferenceCenter;
     
-    @AndroidFindBy(xpath = "(//*[contains(@text,'Subscribe to all')])[1]")
-   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to all\"]")
+    @AndroidFindBy(xpath = "(//*[contains(@text,'SMS')])[1]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SMS\"]")
    	public WebElement selectingChecklistInPreferenceCenter;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'SAVE PREFERENCES')])[1]")

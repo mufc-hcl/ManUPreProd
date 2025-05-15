@@ -13,7 +13,7 @@ public class MutvPageLocators {
 	public WebElement mutvTabMutvScreen;
 
 	@AndroidFindBy(accessibility = "Explore")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"EXPLORE\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"EXPLORE\"]")
 	public WebElement exploreBtnMutvScreen;
 
 	@AndroidFindBy(accessibility = "My Library")
@@ -78,6 +78,18 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_player_cover_image\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeOther[1]/XCUIElementTypeOther")
 	public WebElement vedioTitleLinkInMyListScreen;
+	
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_player_cover_image\')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeOther[1]/XCUIElementTypeOther")
+	public List<WebElement> vedioTitleLinkInMyListScreen1;
+	
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_player_cover_image\')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[2]/XCUIElementTypeOther[4]")
+	public List<WebElement> vedioTitleLinkInMyListScreenPreprod1;
+	
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_player_cover_image\')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[2]/XCUIElementTypeOther[4]")
+	public WebElement vedioTitleLinkInMyListScreenPreprod;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_mylist_icon\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeStaticText/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeButton")

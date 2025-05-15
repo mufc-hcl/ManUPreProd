@@ -2301,14 +2301,15 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
+		  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
           elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
           myUnitedPageLocators.saveButtonInPreferenceCenter.click();
-          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+          ExtentsReportManager.extentReportLogging("pass","Clicks on clicksOnSavePreferenceButton");
       } else {
     	  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
     	  elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
     	  myUnitedPageLocators.saveButtonInPreferenceCenter.click();
-          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
+          ExtentsReportManager.extentReportLogging("pass","Clicks on clicksOnSavePreferenceButton");
       }
       }
       catch (Exception e) {

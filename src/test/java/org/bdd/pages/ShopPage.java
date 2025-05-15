@@ -900,11 +900,11 @@ public class ShopPage extends Common {
         try {
             if (device.equalsIgnoreCase("ios")) {
             	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
             	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
             	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
+//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
             	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
             	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
                 ExtentsReportManager.extentReportLogging("pass", "Returned title of the small carousel Text in store tab");

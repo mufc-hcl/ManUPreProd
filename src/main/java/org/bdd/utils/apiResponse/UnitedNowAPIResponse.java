@@ -1,23 +1,16 @@
 package org.bdd.utils.apiResponse;
 
-import static io.restassured.RestAssured.given;
-
-import static org.bdd.utils.PropertyFileManager.props;
-
 import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bdd.utils.ExtentsReportManager;
-import org.bdd.utils.PropertyFileManager;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 
 public class UnitedNowAPIResponse extends BaseApiService {
 	private static final Logger log = LogManager.getLogger(UnitedNowAPIResponse.class);
@@ -995,4 +988,49 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	        throw e;
 	    }
 	}
+
+	public ArrayList<String> getAllSponsorLogoFromAPI(String endpoint) throws Exception {
+	    ArrayList<String> allSponsorLogos = new ArrayList<>();
+	    try {
+	        Response res = getUrlEncodedResponse(endpoint);
+	        String[] expAllSponsorLogos = {"DXC", "Adidas", "MUTV", "Cadbury"};
+	        JsonPath js = new JsonPath(res.asString());
+
+	        List<Object> groups = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups");
+	        ExtentsReportManager.extentReportLogging( "info","Group count = " + groups.size());
+
+	        for (int i = 0; i < groups.size(); i++) {
+	            List<Object> docs = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs");
+	            ExtentsReportManager.extentReportLogging( "info","Docs in group " + i + " = " + docs.size());
+
+	            for (int j = 0; j < docs.size(); j++) {
+	                List<Object> sponsorDetails = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs[" + j + "].sponsordetailinfo_s");
+
+	                if (sponsorDetails != null) {
+	                    for (int k = 0; k < sponsorDetails.size(); k++) {
+	                        String actualName = js.getString(
+	                            "ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs[" + j + "].sponsordetailinfo_s[" + k + "].PartnerName"
+	                        );
+
+	                        for (String expectedLogo : expAllSponsorLogos) {
+	                            if (actualName != null && actualName.equalsIgnoreCase(expectedLogo)) {
+	                                if (!allSponsorLogos.contains(expectedLogo)) {
+	                                    allSponsorLogos.add(expectedLogo);
+	                                    ExtentsReportManager.extentReportLogging( "info","Found sponsor logo: " + expectedLogo);
+	                                }
+	                                break;
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.err.println("Error while fetching sponsor logos: " + e.getMessage());
+	        throw e;
+	    }
+
+	    return allSponsorLogos;
+	}
 }
+	

@@ -299,7 +299,7 @@ Feature: United now
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@TC020
+      
   Scenario Outline: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
     Given user navigates to manu android application
     And user navigates to screen two
@@ -387,7 +387,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-@TC023
+
   Scenario Outline: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -431,7 +431,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-@TC025
+      
   Scenario Outline: TC025 UNITED NOW - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -475,3 +475,15 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
+      
+   #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #Then user validates Sponsor logo in united now screen using API

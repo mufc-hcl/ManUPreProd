@@ -35,7 +35,7 @@ Feature: MUTV IOS feature
     Then user validate list containing schedules for next seven days in ios
     And user clicks on Back icon in ios
 
-
+@MUTV_bhh
   Scenario Outline: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -117,7 +117,7 @@ Feature: MUTV IOS feature
 
     Examples:
       | username                  | password  |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 
 
@@ -178,9 +178,9 @@ Feature: MUTV IOS feature
     And user clicks on login button in subscribe screen in ios
     #And user clicks on play Icon for CBS video
 
-    Examples:
-      | username             | password   |
-      | qastgtest@yopmail.com | Mu@12345 |
+     Examples:
+      | username                  | password  |
+      | manupreprod@yopmail.com | Manu@123 |
 
 
   Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen

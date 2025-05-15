@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bdd.pages.UnitedNowPage;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
@@ -19,6 +21,7 @@ public class UnitedNowIosStepDef {
 
 	public UnitedNowPage unitedNowPage = new UnitedNowPage();
 	public UnitedNowAPIResponse unitedNowAPIResponse = new UnitedNowAPIResponse();
+	 private static final Logger log = LogManager.getLogger(UnitedNowPage.class);
 
 	@Then("^user validates the current day and date in ios$")
 	public void userValidatesTheCurrentDayAndDateInIos() throws Throwable {
@@ -1717,5 +1720,27 @@ public class UnitedNowIosStepDef {
         }
         
     }
-}
+
+	@Then("^user validates Sponsor logo in united now screen using API in ios$")
+	public void userValidatesSponsorLogoInUnitedNowScreenUsingAPIInIos() throws Throwable {
+		 try {
+	            ArrayList<String> allSponsorLogoValues = new ArrayList<>();
+	            allSponsorLogoValues = unitedNowAPIResponse.getAllSponsorLogoFromAPI("getCarouselListEndPoint");
+	             ExtentsReportManager.extentReportLogging("info", "All Sponsor logos"+allSponsorLogoValues);
+	             
+	            Collections.sort(allSponsorLogoValues);
+	            boolean actualSponsorLogoValues = unitedNowPage.getSponsorLogoValuesInIOS(allSponsorLogoValues);
+	            ExtentsReportManager.extentReportLogging("info","Expected Sponsor logos from API" + allSponsorLogoValues);
+	            ExtentsReportManager.extentReportLogging("info","Actual Sponsor logo from UI" + unitedNowPage.getSponsorLogoValuesInIOS(allSponsorLogoValues));
+	            soft.assertTrue(actualSponsorLogoValues,"DXC");
+	            soft.assertAll();
+	            ExtentsReportManager.extentReportLogging("info", "validated Sponsor logo in united now screen");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "validation Sponsor logo in united now screen<br />" + e);
+	            throw e;
+	        }
+	}
+
+	}
+
 

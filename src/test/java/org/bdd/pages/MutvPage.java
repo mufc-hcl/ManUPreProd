@@ -307,27 +307,37 @@ public class MutvPage extends Common {
 
     public boolean getValidateVideoIsDisplayed() {
         try {
-            waitForVisibilityFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreen, 60);
-            ExtentsReportManager.extentReportLogging("pass", "Returns vedioTitleLinkInMyListScreen Text");
-            return mutvPageLocators.vedioTitleLinkInMyListScreen.isDisplayed();
-        } catch (Exception e) {
+        	if(mutvPageLocators.vedioTitleLinkInMyListScreenPreprod1.size()>0) {
+            waitForVisibilityFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreenPreprod, 60);
+            ExtentsReportManager.extentReportLogging("pass", "Returns vedioTitleLinkInMyListScreenPreprod Text");
+            return mutvPageLocators.vedioTitleLinkInMyListScreenPreprod.isDisplayed();
+        }else if(mutvPageLocators.vedioTitleLinkInMyListScreen1.size()>0){
+        	 waitForVisibilityFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreen, 60);
+             ExtentsReportManager.extentReportLogging("pass", "Returns vedioTitleLinkInMyListScreen Text");
+             return mutvPageLocators.vedioTitleLinkInMyListScreen.isDisplayed();
+        } }catch (Exception e) {
             ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getValidateVideoIsDisplayed()<br />" + e);
             throw e;
         }
+		return false;
     }
 
     public void clickOnVediTitleLink() {
-        try {
-            elementToBeClickableFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreen, 60);
-            mutvPageLocators.vedioTitleLinkInMyListScreen.click();
-            ExtentsReportManager.extentReportLogging("pass", "Clicks on vedioTitleLinkInMyListScreen ");
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clickOnVediTitleLink()<br />" + e);
-            throw e;
-
-        }
+    	 try {
+         	if(mutvPageLocators.vedioTitleLinkInMyListScreenPreprod1.size()>0) {
+             waitForVisibilityFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreenPreprod, 60);
+             ExtentsReportManager.extentReportLogging("pass", "Returns vedioTitleLinkInMyListScreenPreprod Text");
+           mutvPageLocators.vedioTitleLinkInMyListScreenPreprod.click();
+         }else if(mutvPageLocators.vedioTitleLinkInMyListScreen1.size()>0){
+         	 waitForVisibilityFluentWait(mutvPageLocators.vedioTitleLinkInMyListScreen, 60);
+              ExtentsReportManager.extentReportLogging("pass", "Returns vedioTitleLinkInMyListScreen Text");
+              mutvPageLocators.vedioTitleLinkInMyListScreen.click();
+         } }catch (Exception e) {
+             ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getValidateVideoIsDisplayed()<br />" + e);
+             throw e;
+         }
     }
-
+       
     public void clicksOnUncheckMylistIcon() {
         try {
             elementToBeClickableFluentWait(mutvPageLocators.tickSymbilMyList, 60);

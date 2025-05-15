@@ -170,10 +170,10 @@ Feature: MUTV Feature
 
     Examples:
       | username             | password   |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   
- @MUTV_AND
+ 
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -214,11 +214,10 @@ Feature: MUTV Feature
     Then validate close icon is displayed
     And user clicks in close icon in remainder set page
 
-    Examples:
+     Examples:
       | username             | password   |
-      | qastgtest@yopmail.com | Mu@12345 |
-
-
+      | manupreprod@yopmail.com | Manu@123 |
+      
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -244,9 +243,9 @@ Feature: MUTV Feature
     And user clicks on pause icon in the played video
     And user clicks on the close button in the played video
 
-   Examples:
+    Examples:
       | username             | password   |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
 
 
 #below two test caess added by Automation team and moving to regression pack
@@ -301,7 +300,7 @@ Feature: MUTV Feature
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
 
-    @Newscropt
+   
     Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
     Given user navigates to manu android application
     And user navigates to screen two

@@ -56,7 +56,6 @@ Feature: Explore
   #    Then user validates the success message
   #      | success message             |
   #      | Feedback sent successfully. |
-  
   Scenario: [Explore]TC007-TC012 Help --> Contact Us &CTA (Hybrid Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -181,13 +180,13 @@ Feature: Explore
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks membership courosel in search screen
-     Then user verify the membership screen
-      | official member     |
+    Then user verify the membership screen
+      | official member   |
       | UNITED MEMBERSHIP |
-    #Then user verify the membership screen
-      #| official member     | Description                                                               |
-      #| OFFICIAL MEMBERSHIP | Be part of the United family. 2024/25 Official Membership is now on sale. |
 
+  #Then user verify the membership screen
+  #| official member     | Description                                                               |
+  #| OFFICIAL MEMBERSHIP | Be part of the United family. 2024/25 Official Membership is now on sale. |
   Scenario: [Explore]TC018 My United -> should be Hybrid Page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -242,7 +241,7 @@ Feature: Explore
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks buy tickets courosel in search screen
-     And user clicks on ok button in cookies screen
+    And user clicks on ok button in cookies screen
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     Then user verify the ticket screen
@@ -303,7 +302,6 @@ Feature: Explore
   #    And user clicks on braze in app msg
   #    And user clicks search button in united screen
   #    Then user verify all carousel is displayed using api
-  
   Scenario Outline: [Explore]TC025 Global search screen testcases
     Given user navigates to manu android application
     And user navigates to screen two
@@ -321,6 +319,7 @@ Feature: Explore
     Then user verify all carousel is displayed using api
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
+
     Examples: 
       | ExploreSearchText | ImageContent | VideoContent | NewsContent | AllContent |
       | Bruno             | image        | video        | News        | All        |
@@ -340,22 +339,42 @@ Feature: Explore
     Then user validate no suggestion are displayed
     And user enters three character in search for "mut" in page filter
     Then user validate suggestion are displayed
-    
-    
-    #@AndroidTC027 - SwhichToVwebView not working evenafter implementation using SwhithcToVwebView as still it is Pointing to Native app
+
+  #@AndroidTC027 - SwhichToVwebView not working evenafter implementation using SwhithcToVwebView as still it is Pointing to Native app
   #Scenario Outline: [Explore]TC027 Validate the search results screen UI , Data and the filter functionality
-    #Given user navigates to manu android application
-    #And user navigates to screen two
-    #And user navigates to screen three
-    #And user navigates to screen four
-    #And user click on skip button in screen four
-    #And user clicks on ok button in cookies screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on not now button in match appearance alert screen
-    #And user clicks on braze in app msg
-    #And user clicks search button in united screen
-    #And user enters three character in search for "mut" in page filter
-    #And user select first item from suggestion
-    #Then user validate data in search screen
-    
-     
+  #Given user navigates to manu android application
+  #And user navigates to screen two
+  #And user navigates to screen three
+  #And user navigates to screen four
+  #And user click on skip button in screen four
+  #And user clicks on ok button in cookies screen
+  #And user clicks continue in MUApp popup
+  #And user clicks on not now button in match appearance alert screen
+  #And user clicks on braze in app msg
+  #And user clicks search button in united screen
+  #And user enters three character in search for "mut" in page filter
+  #And user select first item from suggestion
+  #Then user validate data in search screen
+  Scenario Outline: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks on close from notification
+    And user clicks on united now in bottom tab
+    And user clicks search button in united screen
+    And user clicks latest courosel in search screen
+    Then user validates hero card in Latest screen
+
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
