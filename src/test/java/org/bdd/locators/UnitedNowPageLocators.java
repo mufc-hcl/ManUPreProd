@@ -248,7 +248,7 @@ public class UnitedNowPageLocators {
     
 //    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/cv_comingUpCarousel\"])[1]/android.widget.LinearLayout")
     @AndroidFindBy(xpath = "(//android.widget.FrameLayout[contains(@resource-id, \":id/cv_comingUpCarousel\")])[1]/android.widget.LinearLayout")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United Stage App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]")
     public List<WebElement> comingUpCouroselUnitedNowPage;
     
 //    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/cv_comingUpCarousel\"])[1]/android.widget.LinearLayout")

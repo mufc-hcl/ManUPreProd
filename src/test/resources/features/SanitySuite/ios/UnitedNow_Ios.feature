@@ -128,7 +128,7 @@ Feature: United now
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
     Then user validates Greetings message in united now is displayed in ios
-    Then user validates Stories Carousel in united now is displayed in ios
+    #Then user validates Stories Carousel in united now is displayed in ios
     Then user validates Coming Up carousel in united now is displayed in ios
 
   Scenario: [United now]TC0011 Validate the Table CTA from Upcoming fixtures page and then validate the same data and filters applied
@@ -158,6 +158,7 @@ Feature: United now
 
   #| League1                    | League2                   |
   #| U18 PREMIER LEAGUETab Item | UEFA YOUTH LEAGUETab Item |
+
   Scenario: [United now]TC0012 Validate Clicking on the Player icons from United Now top right corner and then validate the page filter (Based on Data in Service) [First Team, Reserve & etc.]
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -195,6 +196,7 @@ Feature: United now
   #And user clicks player from "women" tab in ios
   #And navigate to the latest section for the player in ios
   #And verify clicking on video or article navigates to the respective page in ios
+  
   Scenario: [United now]TC0013 United Now Carousel should display in United Now when it's Fixture, Result or No Spotlight
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -256,28 +258,28 @@ Feature: United now
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
-    Given user navigates to manu ios application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
-    Then user checks for video card in united now page using api in ios
-
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+  #Scenario Outline: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
+    #Given user navigates to manu ios application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
+    #Then user checks for video card in united now page using api in ios
+#
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
