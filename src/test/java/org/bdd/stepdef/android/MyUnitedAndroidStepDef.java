@@ -6,6 +6,7 @@ import java.util.List;
 import org.bdd.pages.MyUnitedPage;
 import org.bdd.pages.UnitedNowPage;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
 import org.bdd.utils.apiResponse.MyUnitedAPIResponse;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
@@ -734,7 +735,7 @@ public class MyUnitedAndroidStepDef {
     static String playerName;
 
     @And("^user selects a favorite player in players screen$")
-    public void userSelectsAFavoritePlayerInPlayersScreen() {
+    public void userSelectAFavoritePlayerInPlayersScreen() {
         try {
             playerName = myUnitedPage.clickOnFavoritePlayerInPlayersScreen();
             ExtentsReportManager.extentReportLogging("info", "Selected a favourite player in players screen");
@@ -1158,9 +1159,128 @@ public class MyUnitedAndroidStepDef {
           throw e;
       }
 	}
-    }
 
 	
-   
+//    @And("^user selects a favorite player in players screen$")
+//    public void userSelectsAFavoritePlayerInPlayersScreen() {
+//        try {
+//            playerName = myUnitedPage.clickOnFavoritePlayerInPlayersScreen();
+//            GlobalParams.setPlayerName(playerName);
+//            System.out.println(playerName  +"  ****playerName***********");
+//            ExtentsReportManager.extentReportLogging("info", "Selected a favourite player in players screen");
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Error in selecting favourite players in players screen<br />" + e);
+//            throw e;
+//        }
+//    }
+
+    @And("^user edits a favorite player in player screen$")
+    public void userEditTheFavoritePlayerInPlayerScreen() {
+        try {
+            playerName2 = myUnitedPage.clickEditsTheFavoritePlayerInPlayerScreen();
+            GlobalParams.setPlayerName(playerName2);
+            System.out.println(playerName2  +"  ****playerName***********");
+            ExtentsReportManager.extentReportLogging("info", "Edited favourite player in player screen "+ playerName2);
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in editing favourite player in players screen<br />" + e);
+            throw e;
+        }
+
+    }
+    
+	@Then("^user validates the edited player details in my united screen$")
+    public void userValidatestheEditedPlayerDetailsInMyUnitedScreen() throws Throwable {
+        try {
+        	String expPlayerName  = GlobalParams.getPlayerName();
+            String actualPlayerName = myUnitedPage.getEditedPlayerNameInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player "+expPlayerName);
+            soft.assertEquals(actualPlayerName.replaceAll(" ",""), expPlayerName.replaceAll(" ",""));          
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info",
+                    "validated edited player details in my united screen in ios");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail","Error in validating edited player details in my united screen in ios<br />" + e);
+            throw e;
+        }
+    }
+//    @And("^user edits a favorite player in players screen$")
+//    public void userEditsAFavoritePlayerInPlayersScreen() {
+//        try {
+//            playerName = myUnitedPage.clickEditsAFavoritePlayerInPlayerScreen();
+//            GlobalParams.setPlayerName(playerName);
+//            System.out.println(playerName  +"  ****playerName***********");
+//            ExtentsReportManager.extentReportLogging("info", "Selected a favourite player in players screen");
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Error in selecting favourite players in players screen<br />" + e);
+//            throw e;
+//        }
+//    }
+
+	@And("user enter the New email {string} and Confirm email{string}valid password {string}")
+	public void userEnterTheNewEmailAndValidPassword(String usernameNew,String confirmusernameNew, String password) throws Throwable {
+		  try {
+			  myUnitedPage.switchToWebView();
+			  myUnitedPage.enterUsername(usernameNew);
+			  myUnitedPage.enterConfirmUsername(confirmusernameNew);
+			  myUnitedPage.enterPassword(password);
+	            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+	            throw e;
+	        }
+	}
+
+
+	@And("^user clicks on update email address in my profile$")
+	public void userClicksOnUpdateEmailAddressInMyProfile() throws Throwable {
+		try {
+            myUnitedPage.clicksOnUpdateEmailAddressInMyProfile();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates email change successfully message$")
+	public void userValidatesEmailChangeSuccessfullyMessage(DataTable table) throws Throwable {
+		try {
+            String expEmailUpdate = table.cell(1, 0);
+            String actualEmailUpdate = myUnitedPage.userValidatesEmailChangeSuccessfullyMessage();
+            soft.assertEquals(actualEmailUpdate, expEmailUpdate);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "validated preference updated message");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating preference updated message<br />" + e);
+            throw e;
+        }
+		
+	}
+
+	@And("^user clicks on close icon in email update success screen$")
+	public void userClicksOnCloseIconInEmailUpdateSuccessScreen() throws Throwable {
+		try {
+            myUnitedPage.clicksOnCloseIconInEmailUpdateSuccessScreen();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("user enters the old email{string} and confirm email{string}valid password {string}")
+	public void userEntersTheOldEmailAndConfirmEmailValidPassword(String username, String confirmOldusername, String password) throws Throwable {
+	  try {
+		  myUnitedPage.switchToWebView();
+		  myUnitedPage.enterUsername(username);
+		  myUnitedPage.enterConfirmUsername(confirmOldusername);
+		  myUnitedPage.enterPassword(password);
+            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+            throw e;
+        }
+	}
+}
 	
 

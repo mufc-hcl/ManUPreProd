@@ -12,6 +12,8 @@ import static org.bdd.utils.PropertyFileManager.props;
 
 public class CapabilitiesManager {
     private static final Logger log = LogManager.getLogger(CapabilitiesManager.class);
+	private String android_app;
+	private String ios_app;
 
     public DesiredCapabilities getCapabilities(String mobType) throws IOException {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -19,7 +21,16 @@ public class CapabilitiesManager {
             Properties props = new PropertyFileManager().getProperties();
             // android or ios selection
             HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
-
+            String env = Common.apiEnv();
+            if (env.equalsIgnoreCase("stage")) {
+            	android_app = props.getProperty("android_app_stage");
+            	ios_app = props.getProperty("ios_app_stage");
+            	System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
+            } else if (env.equalsIgnoreCase("prod")) {
+            	android_app = props.getProperty("android_app_preprod");
+            	ios_app = props.getProperty("ios_app_preprod");
+            	System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
+            }
             switch (mobType) {
                 case "android":
                     bstackOptions.put("userName", props.getProperty("browserstack.user"));
@@ -27,7 +38,7 @@ public class CapabilitiesManager {
                     caps.setCapability("platformName", GlobalParams.getPlatformName());
                     caps.setCapability("appium:platformVersion", GlobalParams.getOsversion());
                     caps.setCapability("appium:deviceName", GlobalParams.getDeviceName());
-                    caps.setCapability("appium:app", props.getProperty("android_app"));
+                    caps.setCapability("appium:app", android_app);
                     caps.setCapability("interactiveDebugging", props.getProperty("interactiveDebugging"));
                     caps.setCapability("browserstack.idleTimeout", props.getProperty("BROWSERSTACK_IDLE_TIMEOUT"));
                     caps.setCapability("setWebContentsDebuggingEnabled", "true");
@@ -39,7 +50,7 @@ public class CapabilitiesManager {
                     caps.setCapability("platformName", GlobalParams.getPlatformName());
                     caps.setCapability("appium:platformVersion", GlobalParams.getOsversion());
                     caps.setCapability("appium:deviceName", GlobalParams.getDeviceName());
-                    caps.setCapability("appium:app", props.getProperty("ios_app"));
+                    caps.setCapability("appium:app", ios_app);
                     caps.setCapability("interactiveDebugging", props.getProperty("interactiveDebugging"));
                     caps.setCapability("browserstack.idleTimeout", props.getProperty("BROWSERSTACK_IDLE_TIMEOUT"));
                     caps.setCapability("setWebContentsDebuggingEnabled", "true");

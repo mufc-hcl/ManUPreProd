@@ -249,7 +249,9 @@ public class MutvIosStepDef {
 	@And("^user clicks on the hero carousel dots in Mutv screen in ios$")
 	public void userClicksOnTheHeroCarouselDotsInMutvScreenInIos() throws Throwable {
 		try {
-			mutvPage.clicksOnTheHeroCarouselDotsInMutvScreenIos();
+			boolean heroCarousel = mutvPage.clicksOnTheHeroCarouselDotsInMutvScreenIos();
+            soft.assertTrue(heroCarousel,"Hero carousel is not present in mutv screen in ios");
+			soft.assertAll();
 			ExtentsReportManager.extentReportLogging("info", "Clicked on the hero carousel dots in Mutv screen in ios");
 		} catch (AssertionError e) {
 			ExtentsReportManager.extentReportLogging("fail",

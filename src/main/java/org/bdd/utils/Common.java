@@ -160,4 +160,8 @@ public class Common {
         int max = 20;
         return (int) (Math.random() * (max - min + 1) + min);
     }
+    
+    public static String apiEnv() {
+        return System.getProperty("env");
+    }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bdd.pages.*;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
 import org.bdd.utils.apiResponse.MyUnitedAPIResponse;
 import org.testng.asserts.SoftAssert;
 
@@ -939,7 +940,7 @@ public class MyUnitedIosStepDef {
             String expPlayerName = playerName2;
             String actualPlayerName = myUnitedPage.getEditedPlayerNameInMyUnitedScreen();
             String actualCountryFlag = myUnitedPage.getCountryFlagMyUnitedScreen();
-//            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player"+expPlayerName);
+            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player"+expPlayerName);
             soft.assertEquals(actualPlayerName.replaceAll(" ",""), expPlayerName.replaceAll(" ",""));
             if(!actualCountryFlag.equalsIgnoreCase("noFlag")) {
                 ExtentsReportManager.extentReportLogging("info", "Flag displayed for the player");
@@ -1480,6 +1481,105 @@ public class MyUnitedIosStepDef {
         }
 	
 	}
+
+	
+	@Then("^user validates the edited player details in my united screen in ios$")
+    public void userValidateEditedPlayerDetailsInMyUnitedScreenInIos() throws Throwable {
+        try {
+        	String expPlayerName  = GlobalParams.getPlayerName();
+            String actualPlayerName = myUnitedPage.getEditedPlayerNameInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info","Actual player "+actualPlayerName+"<br />Expected Player "+expPlayerName);
+            soft.assertEquals(actualPlayerName.replaceAll(" ",""), expPlayerName.replaceAll(" ",""));          
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info",
+                    "validated edited player details in my united screen in ios");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail","Error in validating edited player details in my united screen in ios<br />" + e);
+            throw e;
+        }
+    }
+	
+	 static String playerName1;
+    @And("^user edits a favorite player in player screen in ios$")
+    public void userEditsaFavoritePlayerInPlayerScreenInIos() throws Throwable {
+        try {
+        	playerName1=myUnitedPage.clickEditsTheFavoritePlayer1InPlayerScreen();
+            GlobalParams.setPlayerName(playerName1);
+            ExtentsReportManager.extentReportLogging("info", "edited the favorite player in player screen in ios: "+playerName1);
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail",
+                    "Error in editing the favorite player in player screen in ios<br />" + e);
+            throw e;
+        }
+    }
+
+
+	@And("user enter the New email {string} and Confirm email{string}valid password {string} in ios")
+	public void userEnterTheNewEmailAndConfirmEmailValidPasswordInIos(String usernameNew, String confirmusernameNew, String password)
+			throws Throwable {
+		try {
+//			  myUnitedPage.switchToWebView();
+			  myUnitedPage.enterUsername(usernameNew);
+			  myUnitedPage.enterConfirmUsername(confirmusernameNew);
+			  myUnitedPage.enterPassword(password);
+	            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+	            throw e;
+	        }
+	}
+
+	@And("^user clicks on update email address in my profile in ios$")
+	public void userClicksOnUpdateEmailAddressInMyProfileInIos() throws Throwable {
+		try {
+            myUnitedPage.clicksOnUpdateEmailAddressInMyProfile();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates email change successfully message in ios$")
+	public void userValidatesEmailChangeSuccessfullyMessageInIos(DataTable table) throws Throwable {
+		try {
+            String expEmailUpdate = table.cell(1, 0);
+            String actualEmailUpdate = myUnitedPage.userValidatesEmailChangeSuccessfullyMessage();
+            soft.assertEquals(actualEmailUpdate, expEmailUpdate);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "validated preference updated message");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating preference updated message<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user clicks on close icon in email update success screen in ios$")
+	public void userClicksOnCloseIconInEmailUpdateSuccessScreenInIos() throws Throwable {
+		try {
+            myUnitedPage.clicksOnCloseIconInEmailUpdateSuccessScreen();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("user enters the old email{string} and confirm email{string}valid password {string} in ios")
+	public void userEntersTheOldEmailAndConfirmEmailValidPasswordInIos(String username, String confirmOldusername, String password)
+			throws Throwable {
+		try {
+//			  myUnitedPage.switchToWebView();
+			  myUnitedPage.enterUsername(username);
+			  myUnitedPage.enterConfirmUsername(confirmOldusername);
+			  myUnitedPage.enterPassword(password);
+	            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+	            throw e;
+	        }
+	}
+
 }
 	
 

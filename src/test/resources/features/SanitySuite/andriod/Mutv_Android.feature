@@ -172,8 +172,6 @@ Feature: MUTV Feature
       | username             | password   |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
- 
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -300,7 +298,6 @@ Feature: MUTV Feature
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
 
-   
     Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
     Given user navigates to manu android application
     And user navigates to screen two

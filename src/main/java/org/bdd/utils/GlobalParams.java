@@ -4,8 +4,17 @@ public class GlobalParams {
     private static ThreadLocal<String> osversion = new ThreadLocal<String>();
     private static ThreadLocal<String> deviceName = new ThreadLocal<String>();
     private static final ThreadLocal<String> platformName = new ThreadLocal<>();
+    private static ThreadLocal<String> playerName = new ThreadLocal<>();
+    
+    public static String getPlayerName() {
+        return playerName.get();
+    }
 
-    public static String getPlatformName() {
+    public static void setPlayerName(String name) {
+        playerName.set(name);
+    }
+
+	public static String getPlatformName() {
         return platformName.get();
     }
 

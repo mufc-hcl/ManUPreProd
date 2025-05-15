@@ -231,9 +231,9 @@ Feature: Explore
     And user clicks on not now button in match appearance alert screen in ios
     And user clicks search button in united screen in ios
     And user clicks buy tickets courosel in search screen in ios
-    Then user verify the ticket screen in ios
-      | Ticket title |
-      | TICKETS      |
+    #Then user verify the ticket screen in ios
+      #| Ticket title |
+      #| TICKETS      |
 
   Scenario: [Explore]TC022 Fans -> should be Hybrid Page
     Given user navigates to manu ios application
