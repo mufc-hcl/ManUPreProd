@@ -25,7 +25,12 @@ public class OnboardingAndroidStepDef {
 
     @Given("user navigates to manu android application")
     public void userNavigatesToManuAndroidApplication() {
-
+    	 try {
+             ExtentsReportManager.extentReportLogging("info", "navigated to manu android application");
+         } catch (AssertionError e) {
+             ExtentsReportManager.extentReportLogging("fail", "Error navigates to manu android application<br />" + e);
+             throw e;
+         }
     }
 
     @Then("user validates all objects in screen one using api")

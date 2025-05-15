@@ -328,8 +328,9 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Women\"]")
     public WebElement womenIconFavoritePlayerScreen;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, 'textview2')])[1]")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"plus circle gray\"])[1]")
+    //@AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, 'textview2')])[1]")
+    @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@resource-id, 'textview2')])[2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='plus circle gray'])[1]")
     public WebElement selectPlayerNameFavoritePlayerScreen;
     						
     @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'id/star_player_img')]")
@@ -358,6 +359,10 @@ public class MyUnitedPageLocators {
     @AndroidFindBy(xpath = "(//android.widget.ImageButton[contains(@resource-id, ':id/ib_selection')])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText")
     public WebElement selectEditedPlayerScreen;
+    
+    @AndroidFindBy(xpath = "(//android.widget.ImageButton[contains(@resource-id, ':id/ib_selection')])[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText")
+    public WebElement selectEditedPlayerScreen1;
     							
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/edit_fav_player')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Edit\"]")
@@ -457,7 +462,7 @@ public class MyUnitedPageLocators {
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, ':id/com_braze_inappmessage_modal_text_layout')]")
     @iOSXCUITFindBy(accessibility = "BrandonWilliamsFROMEngland")
     public List<WebElement> mutvINAppPopUp;
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Close\"]")
+    @AndroidFindBy(xpath = "//*[@content-desc='CLOSE']")
     @iOSXCUITFindBy(accessibility = "BrandonWilliamsFROMEngland")
     public List<WebElement> closeIconMutvINAppPopUp;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United Stage App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther")

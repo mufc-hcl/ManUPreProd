@@ -719,12 +719,20 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clicksBuyTicketsCouroselInSearchScreen() {
+	public boolean clicksBuyTicketsCouroselInSearchScreen() {
 		try {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 			waitForVisibilityFluentWait(explorePageLocators.buyTicketsCouroselSearchPage, 60);
-			explorePageLocators.buyTicketsCouroselSearchPage.click();
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on buyTicketsCouroselSearchPage");
+			
+			if (explorePageLocators.buyTicketsCouroselSearchPage.isDisplayed()) {
+	            explorePageLocators.buyTicketsCouroselSearchPage.click();
+	            ExtentsReportManager.extentReportLogging("pass", "Clicked on buyTicketsCarouselSearchPage");
+	            return true;
+	        } else {
+	            ExtentsReportManager.extentReportLogging("info", "buyTicketsCarouselSearchPage not displayed.");
+	            return false;
+	        }
+			
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occured in function-clicksBuyTicketsCouroselInSearchScreen()<br />" + e);

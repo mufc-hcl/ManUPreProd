@@ -2105,8 +2105,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean validatesTheImageCardInIos() throws InterruptedException {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.imageCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2126,8 +2126,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForImageCardInUnitedNowPage() throws InterruptedException {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.imageCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2150,8 +2150,8 @@ public class UnitedNowPage extends Common {
 			if (unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.size() > 0) {
 				unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.get(0).click();
 			}
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.imageGalleryCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageGalleryCardUnitedNowPage.get(0).click();
 					int count = Integer
@@ -2179,8 +2179,8 @@ public class UnitedNowPage extends Common {
 			if (unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.size() > 0) {
 				unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.get(0).click();
 			}
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.imageGalleryCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageGalleryCardUnitedNowPage.get(0).click();
 					int count = Integer
@@ -2205,8 +2205,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean validatesTheVideoCardInIos() throws InterruptedException {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.playButtonVideoCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.playButtonVideoCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2227,8 +2227,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForVideoCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.playButtonVideoCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.playButtonVideoCardUnitedNowPage.get(0).click();
 					unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage.click();
@@ -2248,8 +2248,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForQuizCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.quizCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.quizCardVideoCardUnitedNowPage.get(0).getText().toLowerCase()
 								.contains("quiz")) {
@@ -2270,8 +2270,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean validatesTheQuizCardInIos() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.quizCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.quizCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.toLowerCase().contains("quiz")) {
@@ -2292,8 +2292,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForStatsCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.statsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.statsCardVideoCardUnitedNowPage.get(0).getText()
 								.equalsIgnoreCase("MATCH STATS")) {
@@ -2314,8 +2314,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean validatesTheStatsCardInIos() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.statsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.statsCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.equalsIgnoreCase("MATCH STATS")) {
@@ -2336,8 +2336,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean validatesTheCollectionsCardInIos() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.equalsIgnoreCase("collections")) {
@@ -2358,8 +2358,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForCollectionsCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.get(0).getText()
 								.equalsIgnoreCase("collections")) {
@@ -2400,8 +2400,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean navigatesToAdcardForInternalLinkInUnitedNowScreen() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLink.size() > 0) {
 					unitedNowPageLocators.adCardInternalLink.get(0).click();
 					return true;
@@ -2421,8 +2421,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean navigatesToAdcardForExternalLinkInUnitedNowScreen() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.adCardExternalLink.size() > 0) {
 					unitedNowPageLocators.adCardExternalLink.get(0).click();
 					return true;
@@ -2456,8 +2456,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean navigatesToAdcardForInternalLinkToNextGenInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLinkToNextGen.size() > 0) {
 					unitedNowPageLocators.adCardInternalLinkToNextGen.get(0).click();
 					return true;
@@ -2477,8 +2477,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean navigatesToAdcardForInternalLinkToHistoricalMatchNextGenInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLinkToHistoricalMatchNextGen.size() > 0) {
 					unitedNowPageLocators.adCardInternalLinkToHistoricalMatchNextGen.get(0).click();
 					return true;
@@ -2811,8 +2811,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksOnPollCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.pollCard.size() > 0) {
 					unitedNowPageLocators.pollCard.get(0).click();
 					return true;
@@ -2831,8 +2831,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksOnPollCardInUnitedNowPageios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.pollCard.size() > 0) {
 					unitedNowPageLocators.pollCard.get(0).click();
 					return true;
@@ -2851,8 +2851,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForQuoteCardAndModalInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.quoteCard.size() > 0
 						&& unitedNowPageLocators.quoteCard.get(0).getText().equalsIgnoreCase(
 								"Erik ten Hag will hold his pre-match press conference upon arrival in Portugal on Wednesday evening. Get the latest news and then watch it on-demand from 19:00 BST. ")) {
@@ -2873,8 +2873,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForQuoteCardAndModalInUnitedNowPageinios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.quoteCard.size() > 0
 						&& unitedNowPageLocators.quoteCard.get(0).getText().equalsIgnoreCase(
 								"Erik ten Hag will hold his pre-match press conference upon arrival in Portugal on Wednesday evening. Get the latest news and then watch it on-demand from 19:00 BST. ")) {
@@ -2895,8 +2895,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForViewTableCarddInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.fullTableView.size() > 0
 						&& unitedNowPageLocators.fullTableView.get(0).getText().equalsIgnoreCase("VIEW FULL TABLE")) {
 					unitedNowPageLocators.fullTableView.get(0).click();
@@ -2916,8 +2916,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForViewTableCarddInUnitedNowPageinios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.fullTableView.size() > 0 && unitedNowPageLocators.fullTableView.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("VIEW ALL TABLES")) {
 					unitedNowPageLocators.fullTableView.get(0).click();
@@ -2937,8 +2937,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForPlayerProfileCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.playerProfileCard.size() > 0
 						&& unitedNowPageLocators.playerProfileCard.get(0).getText().equalsIgnoreCase("VIEW PROFILE")) {
 					unitedNowPageLocators.playerProfileCard.get(0).click();
@@ -2958,8 +2958,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForPlayerProfileCardInUnitedNowPageios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.playerProfileCard.size() > 0 && unitedNowPageLocators.playerProfileCard.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("View Profile")) {
 					unitedNowPageLocators.playerProfileCard.get(0).click();
@@ -2979,8 +2979,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForAddCardInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.addCard.size() > 0) {
 					unitedNowPageLocators.addCard.get(0).click();
 					return true;
@@ -2999,8 +2999,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForUpcomingMatchFixturesInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.upcomingMatch.size() > 0
 						&& unitedNowPageLocators.upcomingMatch.get(0).getText().equalsIgnoreCase("MARCH 2025")) {
 					unitedNowPageLocators.upcomingMatch.get(0).getText().equalsIgnoreCase("MARCH 2025");
@@ -3020,8 +3020,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForOldMatchResultsInUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.oldMatch.size() > 0
 						&& unitedNowPageLocators.oldMatch.get(0).getText().equalsIgnoreCase("FEBRUARY 2025")) {
 					unitedNowPageLocators.oldMatch.get(0).getText().equalsIgnoreCase("FEBRUARY 2025");
@@ -3298,8 +3298,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean checksForUpSellUnitedNowPage() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.upSell.size() > 0
 						&& unitedNowPageLocators.upSell.get(0).getText().equalsIgnoreCase("Upsell stg automation")) {
 					unitedNowPageLocators.upSell.get(0).click();
@@ -3343,8 +3343,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForUpcomingMatchFixturesInUnitedNowPageinios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.upcomingMatch.size() > 0 && unitedNowPageLocators.upcomingMatch.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("MARCH 2025")) {
 					unitedNowPageLocators.upcomingMatch.get(0).getDomAttribute("label").toLowerCase()
@@ -3365,8 +3365,8 @@ public class UnitedNowPage extends Common {
 
 	public boolean userChecksForOldMatchResultsInUnitedNowPageinios() {
 		try {
-			int i = 1;
-			while (i > 0) {
+			int i = 0;
+            while (i < 20) {
 				if (unitedNowPageLocators.oldMatch.size() > 0 && unitedNowPageLocators.oldMatch.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("FEBRUARY 2025")) {
 					unitedNowPageLocators.oldMatch.get(0).getDomAttribute("label").toLowerCase()
@@ -3830,36 +3830,21 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			
 		}
 		
+		
 		public boolean getArticleCardFromUnitedNow(String expArticleCard) throws InterruptedException {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expArticleCard + "')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Article card" + expArticleCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expArticleCard);
 
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expArticleCard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expArticleCard + "\""));
 						if (e.size() > 0) {
@@ -3869,10 +3854,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Article Card d in united now page");
@@ -3883,77 +3868,101 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			}
 	        return false;
 	    }
+		
 		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expVideoCard+"')]"));
+		    String device = GlobalParams.getPlatformName();
+		    try {
+		        if (device.equalsIgnoreCase("android")) {
+		            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
+		            List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expVideoCard + "')]"));
+		            Thread.sleep(2000); 
+
+		            if (!e.isEmpty()) {
+		                waitForVisibilityFluentWait(e.get(0), 60);
+		                e.get(0).click();
+		                ExtentsReportManager.extentReportLogging("pass", "Video card '" + expVideoCard + "' displayed and clicked on Android.");
+		                return true;
+		            } else {
+		                ExtentsReportManager.extentReportLogging("fail", "Video card '" + expVideoCard + "' not found on Android.");
+		                return false;
+		            }
+
+		        } else { // iOS
+		        	 int i = 0;
+			            while (i < 20) {
+		                List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\""));
+		                if (!e.isEmpty()) {
+		                    e.get(0).click();
+		                    Thread.sleep(4000); // Consider replacing with WebDriverWait
+		                    ExtentsReportManager.extentReportLogging("pass", "Video card '" + expVideoCard + "' displayed and clicked on iOS.");
+		                    return true;
+		                } else {
+		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+		                    i++;
+		                }
+		            }
+		            ExtentsReportManager.extentReportLogging("fail", "Failing due to excessive scrolls. Unable to find the card '" + expVideoCard + "' on iOS.");
+		            return false;
+		        }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getVideoCardFromUnitedNow()<br />" + e);
+		        throw e;
+		    }
+		}
+//		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
+//			String device = GlobalParams.getPlatformName();
+//			try {
+//				if (device.equalsIgnoreCase("android")) {
+//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
+//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expVideoCard+"')]"));
+//					Thread.sleep(2000);
+//					waitForVisibilityFluentWait(e.get(0),60);
+//					e.get(0).click();
+//					return true;
+//				} else {
+//					int i = 20;
+//					while (i < 20) {
+//						String type = "name";
+//						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expVideoCard + "\""));
 //						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Video card" + expVideoCard + " displayed in united now page");
 //							e.get(0).click();
 //							Thread.sleep(4000);
 //							return true;
 //						} else {
 //							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 //							i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 //						}
-//
 //					}
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
-
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expVideoCard+"')]"));
-					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					int i = 1;
-					while (i > 0) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expVideoCard + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for video Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getVideoCardFromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
+//					ExtentsReportManager.extentReportLogging("pass", "Checks for video Card d in united now page");
+//				}
+//			} catch (Exception e) {
+//				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getVideoCardFromUnitedNow()<br />" + e);
+//				throw e;
+//			}
+//	        return false;
+//	    }
 		
 		public boolean getGalleryCardFromUnitedNow(String expGalleryCard) throws InterruptedException {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
 
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.toUpperCase()+"')]"));
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
 					Thread.sleep(2000);
 
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expGalleryCard.toUpperCase() + "\""));
+						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expGalleryCard.replaceAll("\\[|\\]", "") + "\""));
 						if (e.size() > 0) {
 							e.get(0).click();
 							Thread.sleep(4000);
@@ -3976,32 +3985,15 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuoteCard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Quote card" + expQuoteCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuoteCard);
-
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuoteCard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expQuoteCard + "\""));
 						if (e.size() > 0) {
@@ -4011,10 +4003,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Quote Card d in united now page");
@@ -4030,32 +4022,16 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuizCard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Quiz card" + expQuizCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuizCard);
-
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuizCard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
 
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expQuizCard.toString().toUpperCase()));
 						if (e.size() > 0) {
@@ -4065,10 +4041,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Quiz Card d in united now page");
@@ -4091,9 +4067,9 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
-						String type = "name ";
+					 int i = 0;
+			            while (i < 20) {
+//						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expPollCard));
 						if (e.size() > 0) {
 							ExtentsReportManager.extentReportLogging("pass", "Poll card" + expPollCard + " displayed in united now page");
@@ -4103,10 +4079,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Poll Card d in united now page");
@@ -4122,32 +4098,15 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expCompetitionCard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Competition card" + expCompetitionCard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expCompetitionCard);
-
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expCompetitionCard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expCompetitionCard + "\""));
 						if (e.size() > 0) {
@@ -4157,10 +4116,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Competition Card d in united now page");
@@ -4176,32 +4135,15 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expAdcard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Adcard card" + expAdcard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard);
-
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expAdcard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard + "\""));
 						if (e.size() > 0) {
@@ -4211,10 +4153,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Adcard Card d in united now page");
@@ -4230,32 +4172,15 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-//					int i = 1;
-//					while (i > 0) {
-//						List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expImageCcard+"')]"));
-//						if (e.size() > 0) {
-//							ExtentsReportManager.extentReportLogging("pass", "Image card" + expImageCcard + " displayed in united now page");
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
-//							i++;
-//						}
-//
-//					}
 					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expImageCcard+"')]"));
 					Thread.sleep(2000);
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
 				} else {
-					int i = 1;
-					while (i > 0) {
+					 int i = 0;
+			            while (i < 20) {
 						String type = "name";
 						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expImageCcard + "\""));
 						if (e.size() > 0) {
@@ -4266,10 +4191,10 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 						} else {
 							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
 							i++;
-							if(i>20){
-								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-								return false;
-							}
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
 						}
 					}
 					ExtentsReportManager.extentReportLogging("pass", "Checks for Image Card d in united now page");

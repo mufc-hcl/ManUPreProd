@@ -482,7 +482,9 @@ public class ExploreAndroidStepDef {
     @And("user clicks buy tickets courosel in search screen")
     public void userClicksBuyTicketsCouroselInSearchScreen() {
         try {
-            explorePage.clicksBuyTicketsCouroselInSearchScreen();
+            boolean buyTicket = explorePage.clicksBuyTicketsCouroselInSearchScreen();
+            soft.assertTrue(buyTicket,"Buy ticket carousel is not present in search screen");
+			soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Clicked buy tickets carousel in search screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking buy tickets carousel in search screen <br />" + e);

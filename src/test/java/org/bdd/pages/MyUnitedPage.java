@@ -16,6 +16,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -1338,13 +1339,13 @@ public class MyUnitedPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen, 60);
-				String name=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen1.getText().toUpperCase();
+				String name=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen2.getText();
 				myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicked on favourite player in players screen");
 				return name;
 			}else {
 				waitForVisibilityFluentWait(myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen, 60);
-				String name=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen1.getDomAttribute("label").replaceAll("[^A-Za-z]","").toUpperCase();
+				String name=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen2.getDomAttribute("label").replaceAll("[^A-Za-z]","").toUpperCase();
 				myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicked on favourite player in players screen");
 				return name;
@@ -1736,7 +1737,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				if (myUnitedPageLocators.favoritePlayerMYUnitedInIos.size() <= 0) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
 				} else {
 					break;
 				}
@@ -2364,6 +2365,73 @@ public class MyUnitedPage extends Common {
 		                   
 	}
 
+	
+	public boolean getPlayerNameInUnitedScreenInIos(String expPlayerName) {
+	    try {
+	        
+	        String playerName = expPlayerName.replace(" ", "");
+	        String xpath = "//XCUIElementTypeStaticText[starts-with(@name, '" + playerName + "')]";
+	        WebElement playerEle = driver.findElement(AppiumBy.xpath(xpath));
+	        waitForVisibilityFluentWait(playerEle, 60);
+	        ExtentsReportManager.extentReportLogging("pass", 
+	            "Player '" + expPlayerName + "' is displayed in United Now screen");
+
+	        return true;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", 
+	            "Exception in getPlayerNameInUnitedScreenInIos for player '" + expPlayerName + "'<br />" + e);
+	        return false; 
+	    }
+	}
+
+	public String clickEditsAFavoritePlayerInPlayerScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.selectEditedPlayerScreen, 60);
+				String playerName2=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen2.getText();
+				myUnitedPageLocators.selectEditedPlayerScreen.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on edit the favourite players in players screen");
+				return playerName2;
+			}else{
+				waitForVisibilityFluentWait(myUnitedPageLocators.selectEditedPlayerScreen, 60);
+				String playerName2=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen2.getText().replaceAll("[^A-Za-z]","");
+				myUnitedPageLocators.selectEditedPlayerScreen.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on edit the favourite players in players screen");
+				return playerName2;
+			}
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickEditsAFavoritePlayerInPlayerScreen()<br />" + e);
+			throw e;
+		}
+	}
+	
+	public String clickEditsTheFavoritePlayer1InPlayerScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.selectEditedPlayerScreen1, 60);
+				String playerName1=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen1.getText().toUpperCase();
+				myUnitedPageLocators.selectEditedPlayerScreen1.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on edit the favourite players in players screen");
+				return playerName1;
+			}else{
+				waitForVisibilityFluentWait(myUnitedPageLocators.selectEditedPlayerScreen1, 60);
+				String playerName1=myUnitedPageLocators.selectPlayerNameFavoritePlayerScreen1.getText().replaceAll("[^A-Za-z]","").toUpperCase();
+				myUnitedPageLocators.selectEditedPlayerScreen1.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on edit the favourite players in players screen");
+				return playerName1;
+			}
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickEditsTheFavoritePlayer1InPlayerScreen()<br />" + e);
+			throw e;
+		}
+
+	}
 	public void switchToWebView() {
 		   AndroidGenericLibrary.switchToWebViewContext((AndroidDriver) driver);
 		
@@ -2479,6 +2547,7 @@ public class MyUnitedPage extends Common {
 					"Exception occurred in function-clicksOnUpdateEmailAddressInMyProfile()<br />" + e);
 			throw e;
 		}
+
 	}
 }
 		

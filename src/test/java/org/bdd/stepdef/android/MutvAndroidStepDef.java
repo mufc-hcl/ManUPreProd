@@ -315,7 +315,9 @@ public class MutvAndroidStepDef {
     @And("^user clicks on the hero carousel dots in Mutv screen$")
     public void userClicksOnTheHeroCarouselDotsInMutvScreen() {
         try {
-            mutvPage.clicksOnTheHeroCarouselDotsInMutvScreen();
+            boolean heroCarousel = mutvPage.clicksOnTheHeroCarouselDotsInMutvScreen();
+            soft.assertTrue(heroCarousel,"Hero carousel is not present in mutv screen");
+			soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Clicked on hero carousel dots in mutv screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking hero carousel dots in mutv screen<br />" + e);
@@ -1077,4 +1079,18 @@ public class MutvAndroidStepDef {
             throw e;
         }
 	}
+	
+	@And("^user validates the MUTV hero carousel is not displayed when disabled from CMS$")
+	public void userValidatesMutvHeroCarouselIsNotDisplayedWhenDisabledFromCMS() {
+	    try {	        
+	    	  boolean isCarouselDisabled =  mutvPage.validateHeroCarouselDisableInMutvPage();
+	    	  soft.assertTrue(isCarouselDisabled);
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "MUTV hero carousel are not displayed when disabled from CMS");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Error in validating the disabled MUTV hero carousel validation.<br />" + e);
+	        throw e;
+	    }
+	}
+
 }
