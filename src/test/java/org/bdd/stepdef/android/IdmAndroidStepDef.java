@@ -22,6 +22,7 @@ public class IdmAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
     public IdmPage idmPage = new IdmPage();
     public IdmAPIResponse idmAPIResponse = new IdmAPIResponse();
+    
 
     @And("user clicks on log in button")
     public void userClicksOnLogInButton() {
@@ -74,6 +75,30 @@ public class IdmAndroidStepDef {
     @And("user enter the valid email {string} and valid password {string}")
     public void userEnterTheValidEmailAndValidPassword(String username, String password) throws Exception {
         try {
+            idmPage.switchToWebView();
+            idmPage.enterUsername(username);
+            idmPage.enterPassword(password);
+            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+            throw e;
+        }
+    }
+    
+    @And("user enter the valid email and valid password for subscribed user")
+    public void userEnterTheValidEmailAndValidPasswordsubscribeduser() throws Exception {
+        try {
+        	Properties props = new PropertyFileManager().getProperties();
+        	String username = null;
+        	String password = null;
+            if (Common.apiEnv().equalsIgnoreCase("stage")) {
+            	username = props.getProperty("username_stage");
+            	password = props.getProperty("password_stage");
+            }
+            else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+            	username = props.getProperty("username_preprod");
+            	password = props.getProperty("password_preprod");
+            }
             idmPage.switchToWebView();
             idmPage.enterUsername(username);
             idmPage.enterPassword(password);

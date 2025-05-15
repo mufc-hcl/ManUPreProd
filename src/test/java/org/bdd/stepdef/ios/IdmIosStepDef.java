@@ -2,6 +2,7 @@ package org.bdd.stepdef.ios;
 
 import org.bdd.pages.*;
 import org.bdd.utils.AppiumDriverManager;
+import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.GlobalParams;
 import org.bdd.utils.PropertyFileManager;
@@ -49,6 +50,29 @@ public class IdmIosStepDef {
 			throw e;
 		}
 	}
+	
+	@And("user enter the valid email and valid password for subscribed user in ios")
+    public void userEnterTheValidEmailAndValidPasswordsubscribeduserinios() throws Exception {
+        try {
+        	Properties props = new PropertyFileManager().getProperties();
+        	String username = null;
+        	String password = null;
+            if (Common.apiEnv().equalsIgnoreCase("stage")) {
+            	username = props.getProperty("username_stage");
+            	password = props.getProperty("password_stage");
+            }
+            else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+            	username = props.getProperty("username_preprod");
+            	password = props.getProperty("password_preprod");
+            }
+            idmPage.enterUsername(username);
+			idmPage.enterPasswordInIos(password);
+            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password in ios");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password in ios<br />" + e);
+            throw e;
+        }
+    }
 
 	@And("^user clicks on continue button in ios$")
 	public void userClicksOnContinueButtonInIos() throws Throwable {
