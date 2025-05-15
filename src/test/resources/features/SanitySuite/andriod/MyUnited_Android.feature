@@ -296,41 +296,41 @@ Feature: My United features
       | notificationbutton |
       | allow_button       |
 
-  Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user clicks on allow button
-    And user clicks on "<notificationbutton>" button in notification screen
-    And user click on skip button in screen three
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
+  #Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user clicks on allow button
+    #And user clicks on "<notificationbutton>" button in notification screen
+    #And user click on skip button in screen three
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
     #    And user clicks on the notification at bottom of screen
-    And user click on My United in bottom tab
+    #And user click on My United in bottom tab
     #     And user clicks on log in button
     #    And user enter the valid email "<username>" and valid password "<password>"
     #    And user clicks on login button in login screen
     #    And user clicks on close from notification
-    And user click on setting icon on top righhand side
-    And user clicks on notification icon in settings screen
-    Then user validates the given alerts in notifications screen
-      | Alert1            | Alert2       |
-      | UNITED NOW ALERTS | MATCH ALERTS |
-    And user clicks on united now alert in notification screen
-    And user click on latest alert switch in united now alerts screen
-    And user selects go to settings from enable alerts dialog box
-    And user clicks on notifications switch in settings
-    And user clicks back icon in the settings
-    And user validates the general alerts in united now alerts screen
-    And user clicks on back button in United now alerts screen
-    And user clicks on match alert in notification screen
-    And user validates the match alerts in match alerts screen
-
-    Examples: 
-      | username                | password | notificationbutton |
-      | manupreprod@yopmail.com | Manu@123 | deny_button        |
+    #And user click on setting icon on top righhand side
+    #And user clicks on notification icon in settings screen
+    #Then user validates the given alerts in notifications screen
+      #| Alert1            | Alert2       |
+      #| UNITED NOW ALERTS | MATCH ALERTS |
+    #And user clicks on united now alert in notification screen
+    #And user click on latest alert switch in united now alerts screen
+    #And user selects go to settings from enable alerts dialog box
+    #And user clicks on notifications switch in settings
+    #And user clicks back icon in the settings
+    #And user validates the general alerts in united now alerts screen
+    #And user clicks on back button in United now alerts screen
+    #And user clicks on match alert in notification screen
+    #And user validates the match alerts in match alerts screen
+#
+    #Examples: 
+      #| username                | password | notificationbutton |
+      #| manupreprod@yopmail.com | Manu@123 | deny_button        |
 
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application

@@ -2350,7 +2350,7 @@ public class MyUnitedPage extends Common {
 		        		try {
 		        			for (int i = 0; i < 5; i++) {
 		        				if (!(myUnitedPageLocators.viewSeasonFour1.size() > 0)) {
-		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.3);
+		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.7);
 		        				} else {
 		        					break;
 		        				}

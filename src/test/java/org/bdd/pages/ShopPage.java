@@ -1,5 +1,6 @@
 package org.bdd.pages;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,11 @@ import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -1438,6 +1442,34 @@ public class ShopPage extends Common {
          throw e;
         }
     }
+
+	public boolean validateAllTheTabsInShopScreenDisabledInMutvPage() {
+		try {
+			String device = GlobalParams.getPlatformName();
+	        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        List<WebElement> AllTabs;
+	        try {
+	            if (device.equalsIgnoreCase("android")) {
+	            	AllTabs = shortWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+	                    By.xpath("//android.widget.HorizontalScrollView//android.widget.LinearLayout//android.widget.LinearLayout//android.widget.TextView")));
+	            } else if (device.equalsIgnoreCase("ios")) {
+	            	AllTabs = shortWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+	                    By.xpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell//XCUIElementTypeStaticText")));
+	            } 
+	        } catch (TimeoutException e) {
+	            ExtentsReportManager.extentReportLogging("Pass", "All tabs in shop screen is not displayed – All tabs shop screen  is disabled as expected on CMS side ");
+	            return true;
+	        }
+
+	        // If elements are found
+	        ExtentsReportManager.extentReportLogging("fail", "All tabs in shop screen is displayed – should be disabled on CMS side " );
+	        return false;
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in validateAllTheTabsInShopScreenDisabledInMutvPage()<br />" + e);
+	        return false;
+	    }
+	}
 	}
 
 	
