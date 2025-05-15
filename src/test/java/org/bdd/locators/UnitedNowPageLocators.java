@@ -299,11 +299,11 @@ public class UnitedNowPageLocators {
     public WebElement under18League1TextScheduleScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"ENGLISH PGA U16 WOMENS CUP\"]")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "U18 PREMIER LEAGUETab Item")
     public WebElement englishPGAU16WomensCupGirlsTextScheduleScreen;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='U18 PREMIER LEAGUE']")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "U18 PREMIER LEAGUETab Item")
     public WebElement englishU18PREMIERLEAGUETextScheduleScreen;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='UEFA YOUTH LEAGUE']")
