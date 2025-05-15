@@ -181,7 +181,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @myunited1
+  
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -226,8 +226,8 @@ Feature: My United features
     And user clicks on back Icon in appearance card
 
     Examples: 
-      | username                | password | Daily streaks | appearance  |
-      | manupreprod@yopmail.com | Manu@123 | DAILY STREAKS | APPEARANCES |
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
@@ -297,7 +297,7 @@ Feature: My United features
       | notificationbutton |
       | allow_button       |
 
-  @myunited
+   
   Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -334,7 +334,7 @@ Feature: My United features
       | username                | password | notificationbutton |
       | manupreprod@yopmail.com | Manu@123 | deny_button        |
 
-  @myunited
+  
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -353,7 +353,6 @@ Feature: My United features
     Then user validates my tickets component in my united screen
     #Then user validates content in my tickets component
     Then user validates stadium component in my united screen
-
     #Then user validates content in stadium component
     Examples: 
       | username                | password |
@@ -390,8 +389,8 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @TC013MU
-  Scenario Outline: [My United]TC013 Settings --> My Profile --> Change email address for Login user
+  
+  Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three

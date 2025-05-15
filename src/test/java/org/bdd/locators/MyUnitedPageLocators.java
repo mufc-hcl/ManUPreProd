@@ -281,7 +281,7 @@ public class MyUnitedPageLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_description')]")
     public WebElement thisSeasonFour;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_view_button')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"appearance_view_button\")]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement viewSeasonFour;
     
@@ -509,6 +509,10 @@ public class MyUnitedPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
     public WebElement myTicketsComponentMyUnited;
     
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/ticket_card_title\")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
+    public WebElement myTicketsComponentMyUnitedPreProd;
+    
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name=\"My Tickets\"]")
      public WebElement myTicketsContentMyUnited;
@@ -520,6 +524,10 @@ public class MyUnitedPageLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'itemSecondTxt')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
      public WebElement stadiumComponentMyUnited;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/stadium_card_title\")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
+     public WebElement stadiumComponentMyUnitedPreProd;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/stadiumview_title')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText[1]")
@@ -541,12 +549,13 @@ public class MyUnitedPageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"PREFERENCE CENTRE\"])[2]")
 	public WebElement titleOfPreferenceCenter;
     
-    @AndroidFindBy(xpath = "(//*[contains(@text,'Subscribe to all')])[1]")
-   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Subscribe to all\"]")
+    @AndroidFindBy(xpath = "(//*[contains(@text,'SMS')])[1]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SMS\"]")
    	public WebElement selectingChecklistInPreferenceCenter;
     
+    
     @AndroidFindBy(xpath = "(//*[contains(@text,'SAVE PREFERENCES')])[1]")
-   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SAVE PREFERENCES\"]")
+   	@iOSXCUITFindBy(accessibility = "SAVE PREFERENCES")
    	public WebElement saveButtonInPreferenceCenter;
     
     @AndroidFindBy(xpath = "(//*[contains(@text,'Thank you, your preferences have been updated.')])")
@@ -557,21 +566,69 @@ public class MyUnitedPageLocators {
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"New email address\"]")
    	public WebElement newEmailTextBoxMyProfile;
     
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"NewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"New email address\"]")
+   	public List<WebElement> newEmailTextBoxMyProfile1;
+    						
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"NewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[2]")
+   	public List<WebElement> newEmailTextBoxMyProfilePreprod1;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"NewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[2]")
+   	public WebElement newEmailTextBoxMyProfilePreprod;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"ReenterNewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[3]")
+   	public WebElement confirmEmailTextBoxMyProfilePreprod;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"ReenterNewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[3]")
+   	public List<WebElement> confirmEmailTextBoxMyProfilePreprod1;
+    
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"ReenterNewLoginEmail\"]")
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Confirm new email address\"]")
    	public WebElement confirmEmailTextBoxMyProfile;
+   	
+   	@AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"ReenterNewLoginEmail\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Confirm new email address\"]")
+   	public List<WebElement> confirmEmailTextBoxMyProfile1;
     
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"Password\"]")
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@name=\"Password\"]")
    	public WebElement passwordTextBoxMyProfile;
     
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"Password\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@name=\"Password\"]")
+   	public List<WebElement> passwordTextBoxMyProfile1;
+    
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"Password\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
+   	public WebElement passwordTextBoxMyProfilePreprod;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"Password\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
+   	public List<WebElement> passwordTextBoxMyProfilePreprod1;
+    
     @AndroidFindBy(xpath = "//android.widget.Button[@text=\"UPDATE EMAIL ADDRESS\"]")
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Thank you, your preferences have been updated.\"]")
    	public WebElement updateEmailAddressInChangeEmail;
     
+    @AndroidFindBy(xpath = "//android.widget.Button[@text=\"UPDATE EMAIL ADDRESS\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Thank you, your preferences have been updated.\"]")
+   	public List<WebElement> updateEmailAddressInChangeEmail1;
+    
+    @AndroidFindBy(xpath = "//android.widget.Button[@text=\"UPDATE EMAIL ADDRESS\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"UPDATE EMAIL ADDRESS\"]")
+   	public WebElement updateEmailAddressInChangeEmailPreprod;
+    
+    @AndroidFindBy(xpath = "//android.widget.Button[@text=\"UPDATE EMAIL ADDRESS\"]")
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"UPDATE EMAIL ADDRESS\"]")
+   	public List<WebElement> updateEmailAddressInChangeEmailPreprod1;
+    
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"CHANGE EMAIL ADDRESS\"]")
    	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"CHANGE EMAIL ADDRESS\"]")
    	public WebElement emailUpdateSuccessMessage;
+    
     
     @AndroidFindBy(accessibility = "Close")
    	@iOSXCUITFindBy(accessibility = "Close")

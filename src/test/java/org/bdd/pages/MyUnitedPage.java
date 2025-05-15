@@ -673,8 +673,8 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "Score this season");
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+//				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "Score this season");
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
 				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season ");
 				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
@@ -1027,7 +1027,7 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-//				swipeWithCoordinates(877, 947, 129, 947, 200, "left", driver);
+				swipeWithCoordinates(877, 947, 129, 947, 200, "left", driver);
 				waitForVisibilityFluentWait(myUnitedPageLocators.appearanceTitleFour, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returned appearance title in appearance card");
 				return myUnitedPageLocators.appearanceTitleFour.getText();
@@ -1086,6 +1086,7 @@ public class MyUnitedPage extends Common {
 	public void clickOnViewButtonAppearancecard() {
 		try {
 			waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
+			myUnitedPageLocators.viewSeasonFour.click();
 			myUnitedPageLocators.viewSeasonFour.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicked on view button in appearance card");
 		} catch (Exception e) {
@@ -2068,9 +2069,17 @@ public class MyUnitedPage extends Common {
 	public boolean userValidatesMyTicketsComponentInMyUnitedScreen() {
 		try {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnitedPreProd, 60);
+			if (myUnitedPageLocators.myTicketsComponentMyUnitedPreProd.isDisplayed()) {
+				ExtentsReportManager.extentReportLogging("pass", "validates myTicketsComponentMyUnited preprod displayed ");
+				return myUnitedPageLocators.myTicketsComponentMyUnitedPreProd.isDisplayed();
+			}
+			
+			else {
 			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnited, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Returns My tickets text from My United Page ");
 			return myUnitedPageLocators.myTicketsComponentMyUnited.isDisplayed();
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-userValidatesMyTicketsComponentInMyUnitedScreen()<br />" + e);
@@ -2091,6 +2100,11 @@ public class MyUnitedPage extends Common {
 
 	public boolean userValidatesStadiumComponentInMyUnitedScreen() {
 		try {
+			waitForVisibilityFluentWait(myUnitedPageLocators.stadiumComponentMyUnitedPreProd, 60);
+			if (myUnitedPageLocators.stadiumComponentMyUnitedPreProd.isDisplayed()) {
+				ExtentsReportManager.extentReportLogging("pass", "validates stadiumComponentMyUnitedPreProd preprod displayed ");
+				return myUnitedPageLocators.stadiumComponentMyUnitedPreProd.isDisplayed();
+			}
 			waitForVisibilityFluentWait(myUnitedPageLocators.stadiumComponentMyUnited, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Returns My tickets text from My United Page ");
 			return myUnitedPageLocators.stadiumComponentMyUnited.isDisplayed();
@@ -2299,32 +2313,15 @@ public class MyUnitedPage extends Common {
 //	    }
 
 	public void clicksOnSavePreferenceButton() {
-		String device = GlobalParams.getPlatformName();
 		try {
-			if (device.equalsIgnoreCase("android")) {
-          elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
-          myUnitedPageLocators.saveButtonInPreferenceCenter.click();
-          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
-      } else {
-    	  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-    	  elementToBeClickableFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter,60);
-    	  myUnitedPageLocators.saveButtonInPreferenceCenter.click();
-          ExtentsReportManager.extentReportLogging("pass","Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen");
-      }
-      }
-      catch (Exception e) {
-          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
-          throw e;
-      }
-//		try {
-//            waitForVisibilityFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter, 60);
-//            myUnitedPageLocators.saveButtonInPreferenceCenter.click();
-//            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
-//        } catch (Exception e) {
-//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
-//            throw e;
-//
-//        }
+            waitForVisibilityFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter, 60);
+            myUnitedPageLocators.saveButtonInPreferenceCenter.click();
+            ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnSavePreferenceButton()<br />" + e);
+            throw e;
+
+        }
 		
 	}
 
@@ -2352,7 +2349,7 @@ public class MyUnitedPage extends Common {
 		        		try {
 		        			for (int i = 0; i < 5; i++) {
 		        				if (!(myUnitedPageLocators.viewSeasonFour1.size() > 0)) {
-		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.5);
+		        					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.RIGHT, 0.3);
 		        				} else {
 		        					break;
 		        				}
@@ -2373,21 +2370,16 @@ public class MyUnitedPage extends Common {
 	}
 
 	public void enterUsername(String usernameNew) {
-		 String device = GlobalParams.getPlatformName();
-	        try {
-	            if(device.equalsIgnoreCase("android")) {
-//	            elementToBeClickableFluentWait(idmPageLocators.emailTextBox);
-	                waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
-	                myUnitedPageLocators.newEmailTextBoxMyProfile.sendKeys(usernameNew);
+		try {
+			if (myUnitedPageLocators.newEmailTextBoxMyProfile1.size() > 0) {
+			 waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
+             myUnitedPageLocators.newEmailTextBoxMyProfile.sendKeys(usernameNew);
+             ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+			} else if (myUnitedPageLocators.newEmailTextBoxMyProfilePreprod1.size() > 0) {
+				 waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfilePreprod,60);
+	                myUnitedPageLocators.newEmailTextBoxMyProfilePreprod.sendKeys(usernameNew);
 	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
-	            }else{
-//	                Thread.sleep(1000);
-//	                elementToBeClickableFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
-	                waitForVisibilityFluentWait(myUnitedPageLocators.newEmailTextBoxMyProfile,60);
-	                myUnitedPageLocators.newEmailTextBoxMyProfile.sendKeys(usernameNew);
-	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
-	            }
-
+			}
 	        } catch (Exception e) {
 	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterUsername()<br />" + e);
 //	           throw e;
@@ -2398,10 +2390,17 @@ public class MyUnitedPage extends Common {
 
 	public void enterPassword(String password) {
 		 try {
+			 if (myUnitedPageLocators.passwordTextBoxMyProfile1.size() > 0) {
 	            waitForVisibilityFluentWait(myUnitedPageLocators.passwordTextBoxMyProfile,60);
 	            myUnitedPageLocators.passwordTextBoxMyProfile.sendKeys(password);
 	            AndroidGenericLibrary.hideKeyBoard(driver);
 	            ExtentsReportManager.extentReportLogging("pass","Enters Password");
+		 }else if (myUnitedPageLocators.passwordTextBoxMyProfilePreprod1.size() > 0) {
+		 waitForVisibilityFluentWait(myUnitedPageLocators.passwordTextBoxMyProfilePreprod,60);
+         myUnitedPageLocators.passwordTextBoxMyProfilePreprod.sendKeys(password);
+//         AndroidGenericLibrary.hideKeyBoard(driver);
+         ExtentsReportManager.extentReportLogging("pass","Enters Password preprod");
+		 }
 	        } catch (Exception e) {
 	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterPassword()<br />" + e);
 	           throw e;
@@ -2411,19 +2410,16 @@ public class MyUnitedPage extends Common {
 	}
 
 	public void enterConfirmUsername(String confirmusernameNew) {
-		 String device = GlobalParams.getPlatformName();
 	        try {
-	            if(device.equalsIgnoreCase("android")) {
+	            if(myUnitedPageLocators.confirmEmailTextBoxMyProfile1.size() > 0) {
 //	            elementToBeClickableFluentWait(idmPageLocators.emailTextBox);
 	                waitForVisibilityFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
 	                myUnitedPageLocators.confirmEmailTextBoxMyProfile.sendKeys(confirmusernameNew);
-	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
-	            }else{
-//	                Thread.sleep(1000);
-//	                elementToBeClickableFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
-	                waitForVisibilityFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfile,60);
-	                myUnitedPageLocators.confirmEmailTextBoxMyProfile.sendKeys(confirmusernameNew);
-	                ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+	                ExtentsReportManager.extentReportLogging("pass","enters confirm email");
+	            }else if (myUnitedPageLocators.confirmEmailTextBoxMyProfilePreprod1.size() > 0) {
+	                waitForVisibilityFluentWait(myUnitedPageLocators.confirmEmailTextBoxMyProfilePreprod,60);
+	                myUnitedPageLocators.confirmEmailTextBoxMyProfilePreprod.sendKeys(confirmusernameNew);
+	                ExtentsReportManager.extentReportLogging("pass","enters confirm email preprod");
 	            }
 
 	        } catch (Exception e) {
@@ -2436,8 +2432,17 @@ public class MyUnitedPage extends Common {
 
 	public void clicksOnUpdateEmailAddressInMyProfile() {
 		try {
-			myUnitedPageLocators.updateEmailAddressInChangeEmail.click();
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on update email change email page");
+			if(myUnitedPageLocators.updateEmailAddressInChangeEmail1.size() > 0) {
+//	            elementToBeClickableFluentWait(idmPageLocators.emailTextBox);
+	                waitForVisibilityFluentWait(myUnitedPageLocators.updateEmailAddressInChangeEmail,60);
+	                myUnitedPageLocators.updateEmailAddressInChangeEmail.click();
+	                ExtentsReportManager.extentReportLogging("pass","Clicks on update email change email page");
+	            }else if (myUnitedPageLocators.updateEmailAddressInChangeEmailPreprod1.size() > 0) {
+	            	  waitForVisibilityFluentWait(myUnitedPageLocators.updateEmailAddressInChangeEmailPreprod,60);
+		                myUnitedPageLocators.updateEmailAddressInChangeEmailPreprod.click();
+	                ExtentsReportManager.extentReportLogging("pass","enters confirm email preprod");
+	            }
+			
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-clicksOnUpdateEmailAddressInMyProfile()<br />" + e);
@@ -2448,14 +2453,21 @@ public class MyUnitedPage extends Common {
 
 	public String userValidatesEmailChangeSuccessfullyMessage() {
 		try {
+			if(myUnitedPageLocators.emailUpdateSuccessMessage.isDisplayed()) {
 			waitForVisibilityFluentWait(myUnitedPageLocators.emailUpdateSuccessMessage, 60);
-			ExtentsReportManager.extentReportLogging("pass", "Returns Welcome text in chinese");
+			ExtentsReportManager.extentReportLogging("pass", "Returns userValidates Email Change SuccessfullyMessage");
 			return myUnitedPageLocators.emailUpdateSuccessMessage.getText();
+			}else if (myUnitedPageLocators.emailUpdateSuccessMessage.isDisplayed()) {
+				waitForVisibilityFluentWait(myUnitedPageLocators.emailUpdateSuccessMessage, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns userValidates Email Change SuccessfullyMessage preprod");
+				return myUnitedPageLocators.emailUpdateSuccessMessage.getText();
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-getWelcomeTextInChinese()<br />" + e);
 			throw e;
 		}
+		return null;
 	}
 
 	public void clicksOnCloseIconInEmailUpdateSuccessScreen() {
