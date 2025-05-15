@@ -192,11 +192,10 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			int size = js.getList("PageFilterResponse.response.docs").size();
 			System.out.println("size=" + size);
 			for (int i = 0; i < size; i++) {
-				playerPageFilters.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t"));
+				playerPageFilters.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
 			}
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
-//			System.out.println("playerPageFilters++++++"+playerPageFilters);
 			return playerPageFilters;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",

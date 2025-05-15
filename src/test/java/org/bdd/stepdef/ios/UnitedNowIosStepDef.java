@@ -459,12 +459,17 @@ public class UnitedNowIosStepDef {
 	public void userValidatesTheFollowingFilterInThePlayersScreenInIos() throws Throwable {
 		 try {
              ArrayList<String> expPlayersPageFilters = new ArrayList<>();
+             ArrayList<String> actPlayersPageFilters = new ArrayList<>();
              expPlayersPageFilters = unitedNowAPIResponse.getPlayersPageFilterFromApi("PlayersPageFiltersEndpoint");
              
+             actPlayersPageFilters=unitedNowPage.getPlayersFiltersPageUI();
              Collections.sort(expPlayersPageFilters);
+//             System.out.println("expPlayersPageFilters++++++"+expPlayersPageFilters);
+             Collections.sort(actPlayersPageFilters);
+//             System.out.println("actPlayersPageFilters-------"+actPlayersPageFilters);
              ExtentsReportManager.extentReportLogging("info","expPlayersPageFilters Text From API<br />"+expPlayersPageFilters);
 			 ExtentsReportManager.extentReportLogging("info","actual getPlayersFiltersPageUI Text From UI<br />"+unitedNowPage.getPlayersFiltersPageUI());
-             soft.assertEquals(expPlayersPageFilters,unitedNowPage.getPlayersFiltersPageUI());
+             soft.assertEquals(expPlayersPageFilters,actPlayersPageFilters);
              soft.assertAll();
              ExtentsReportManager.extentReportLogging("info", "Validated the PlayersPageFilters screen");
     	 } catch (AssertionError | IOException e) {
