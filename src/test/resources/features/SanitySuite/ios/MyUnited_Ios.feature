@@ -155,7 +155,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure1
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -382,7 +382,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-      @Settings1
+     
     Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

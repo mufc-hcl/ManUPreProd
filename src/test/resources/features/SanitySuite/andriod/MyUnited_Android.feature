@@ -19,7 +19,7 @@ Feature: My United features
     Then user validate google play
       | googlePlay Text                                                       |
       | Sign in to find the latest Android apps, games, movies, music, & more |
-
+@AWSFailure
   Scenario: [My United]TC002 Settings --> General-Language --> Change to Chinese / English and validate if the changes are applied
     Given user navigates to manu android application
     And user navigates to screen two
@@ -77,7 +77,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: [My United]TC004 Validate the Season card navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -103,7 +103,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -152,7 +152,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: [My United]TC007 Click on the Primary and Secondary CTA buttons displayed below the jersey card section
     Given user navigates to manu android application
     And user navigates to screen two
@@ -227,7 +227,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -386,7 +386,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
+  @AWSFailure
   Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu android application
     And user navigates to screen two

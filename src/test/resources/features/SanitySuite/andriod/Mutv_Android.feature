@@ -36,7 +36,7 @@ Feature: MUTV Feature
     And user validate MUTV Today Schecule description using api
     Then user validate list containing schedules for next seven days
     And user clicks on Back icon
-
+@AWSFailure
   Scenario: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -69,7 +69,7 @@ Feature: MUTV Feature
     And user click on greater than symbol button in my list screen
     And user clicks on MyList icon
     Then user validate no videos in mylist screen
-
+@AWSFailure
   Scenario Outline: [MUTV]TC008 Verify that CBS badges display for  subscribe display
     Given user navigates to manu android application
     And user navigates to screen two
@@ -162,7 +162,7 @@ Feature: MUTV Feature
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two

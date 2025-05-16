@@ -1,6 +1,6 @@
 @Sanity_IOS @Explore_IOS
 Feature: Explore
-
+@AWSFailure1
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -56,7 +56,7 @@ Feature: Explore
     And user enters below details in the feedback screen in ios
       | email address | subject      | feedback      |
       | test@test.com | Test Subject | Test Feedback |
-
+@AWSFailure1
   Scenario: [Explore]TC007 to TC012 Help --> Contact Us &CTA (Hybrid Page)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

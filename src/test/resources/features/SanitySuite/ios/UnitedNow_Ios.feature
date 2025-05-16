@@ -280,7 +280,7 @@ Feature: United now
     #Examples: 
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure1
   Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

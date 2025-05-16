@@ -278,7 +278,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC0018 UNITED NOW - Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -339,7 +339,7 @@ Feature: United now
     #Examples: 
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC020 UNITED NOW - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -361,7 +361,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC021 UNITED NOW - Validate the functionality of the Quote card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -383,7 +383,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC022 UNITED NOW - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -444,7 +444,7 @@ Feature: United now
     #Examples: 
       #| username                | password  |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC024 UNITED NOW - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two

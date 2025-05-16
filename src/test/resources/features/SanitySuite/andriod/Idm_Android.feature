@@ -127,7 +127,8 @@ Feature: IDM
   #    Examples:
   #      | username                | password |
   #      | manusocial080@gmail.com | Manu@123 |
-  Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on Android for a user and the same favorite player details are displayed on IOS for the same user
+  @AWSFailure
+  Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on android for a user and the same favorite player details are displayed on IOS for the same user
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -287,7 +288,7 @@ Feature: IDM
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @idm_11
+  
   Scenario: [IDM]TC0010 Verify the updated favorite player details on Android for a user and the same favorite player details are displayed on iOS for the same user
     Given user navigates to manu android application
     And user initiated the ios Session
