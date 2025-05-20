@@ -583,10 +583,13 @@ public class ExplorePageLocators {
 	public WebElement clicksOnContinueButton;
 	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/tertiary_text')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Accept all\"]")
+	@iOSXCUITFindBy(xpath = "//*[@name='Accept all']")
 	public List<WebElement> acceptAllInBuyTickets;
 	
 	@FindBy(xpath = "(//*[contains(text(),'TICKETS')])")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TICKETS\"]")
+	@iOSXCUITFindBy(xpath = "//*[@name='TICKETS']")
 	public List<WebElement> ticketTitleTicketPages;
+	
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/framelayout_tabwidget_parent')]")
+	public List<WebElement> notificationUnitedNowBottomScreen;
 }

@@ -373,7 +373,7 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clicksSearchInUnitedScreen() {
+	public void clicksSearchInUnitedScreen1() {
 		try {
 			elementToBeClickableFluentWait(explorePageLocators.searchButtonUnitedPage, 60);
 			explorePageLocators.searchButtonUnitedPage.click();
@@ -390,7 +390,50 @@ public class ExplorePage extends Common {
 
 	}
 
-	// Search screeen
+	public void clicksSearchInUnitedScreen() throws Exception {
+		String device = GlobalParams.getPlatformName();
+		By searchButtonLocator;
+		if (device.equalsIgnoreCase("android")) {
+			 searchButtonLocator = AppiumBy.accessibilityId("Search"); 
+//			 if (!explorePageLocators.notificationUnitedNowBottomScreen.isEmpty()) {
+//				 explorePageLocators.notificationUnitedNowBottomScreen.get(0).click();
+//	                ExtentsReportManager.extentReportLogging("pass", "Clicks on notificationUnitedNowBottomScreen ");
+//	            }
+		}
+		else
+		{
+			 searchButtonLocator = AppiumBy.accessibilityId("Explore"); 
+		}  
+
+	    int maxRetries = 5;
+	    int attempts = 0;
+
+	    while (attempts < maxRetries) {
+	        try {
+	             driver.getPageSource();
+	             WebElement searchButton = driver.findElement(searchButtonLocator);
+          	    elementToBeClickableFluentWait(searchButton, 60);
+	            //WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(searchButtonLocator));
+
+	            // Click it
+	            searchButton.click();
+
+	            ExtentsReportManager.extentReportLogging("pass", "Clicked on Search button in United screen");
+	            return;
+
+	        } catch ( WebDriverException e) {
+	            System.out.println("Attempt " + (attempts + 1) + ": Element issue (stale/not interactable). Retrying...");
+	            attempts++;
+	            Thread.sleep(1000);
+	        }
+	    }
+
+	    ExtentsReportManager.extentReportLogging("fail",
+	            "Failed to click Search button in United screen after " + maxRetries + " retries");
+	    throw new Exception("Element not clickable after retries.");
+	}
+
+	// Search screen
 	public void clicksHelpCouroselInSearchPage() {
 		try {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
