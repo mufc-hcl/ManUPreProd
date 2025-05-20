@@ -281,6 +281,7 @@ public class IdmAndroidStepDef {
     @And("user changes the following textbox in edit profile screen")
     public void userChangesTheFollowingTextboxInEditProfileScreen(DataTable table) {
         try {
+        	idmPage.switchToWebView();
             idmPage.enterAddressLineOne(table.cell(1, 0));
             idmPage.enterAddressLinetwo(table.cell(1, 1));
             idmPage.enterAddressLineThree(table.cell(1, 2));
@@ -296,6 +297,7 @@ public class IdmAndroidStepDef {
     @And("user clicks save details in edit profile screen")
     public void userClicksSaveDetailsInEditProfileScreen() {
         try {
+        	idmPage.switchToWebView();
             idmPage.clicksSaveDetailsInEditProfileScreen();
             ExtentsReportManager.extentReportLogging("info", "Clicked save details in edit profile screen");
         } catch (AssertionError e) {

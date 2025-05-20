@@ -48,7 +48,7 @@ public class MutvPageLocators {
 	@iOSXCUITFindBy(accessibility = "Back")
 	public WebElement backIconSheduleScreenMutv;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/tertiary_text')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"tertiary_text\")]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public WebElement notNowButtonMatchAppearanceAlert;
 
@@ -158,7 +158,7 @@ public class MutvPageLocators {
 	public WebElement currentPlayTimeVideoMutvPage;
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/end_time\')]")
 	public WebElement totalPlayTimeVideoMutvPage;
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/tertiary_text\')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"tertiary_text\")]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Not now\"]")
 	public List<WebElement> notNowButtonMatchAppearanceAlert1;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage")

@@ -227,7 +227,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@AWSFailure
+
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -386,7 +386,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @AWSFailure
+  
   Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -421,3 +421,43 @@ Feature: My United features
     Examples: 
       | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
       | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
+      
+      @runtesr
+  Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #    And user clicks on the notification at bottom of screen
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    And user click on setting icon on top righhand side
+    And user clicks on My profile icon
+        And user clicks on edit profile button
+    #Then user validates the firstname,surname,email,dob is displayed and not editable in edit profile screen
+     #And user clears all data in textbox in edit profile screen in ios
+     And user clicks save details in edit profile screen
+    #And user changes the following textbox in edit profile screen in ios
+      #| Addr1      | Addr2      | Addr3      | Town      | pincode   |
+      #| Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
+    #And user clicks save details in edit profile screen in ios
+    #Then user validates the success message in edit profile in ios
+      #| Success Message                 |
+      #| Your details have been updated. |
+    #Then user validates the given data in edit profile screen in ios
+      #| Addr1      | Addr2      | Addr3      | Town      | pincode   |
+      #| Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
+     
+
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |

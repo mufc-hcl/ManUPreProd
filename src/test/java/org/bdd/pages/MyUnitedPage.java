@@ -2549,8 +2549,176 @@ public class MyUnitedPage extends Common {
 		}
 
 	}
+
+	public void enterAddressLineOne(String addr1) {
+		IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+        try {
+        	myUnitedPageLocators.addLineOneEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile,60);
+            myUnitedPageLocators.addLineOneEditProfile.sendKeys(addr1);
+            ExtentsReportManager.extentReportLogging("pass","Enters addressLineOneEditProfilePage");
+        } catch (Exception e) {
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineOne()<br />" + e);
+           throw e;
+
+        }
+    }
+
+    public void enterAddressLinetwo(String addr2) {
+        try {
+        	myUnitedPageLocators.addLineTwoEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.addLineTwoEditProfile,60);
+            myUnitedPageLocators.addLineTwoEditProfile.sendKeys(addr2);
+            ExtentsReportManager.extentReportLogging("pass","Enters addressLineTwoEditProfilePage");
+        } catch (Exception e) {
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLinetwo()<br />" + e);
+           throw e;
+
+        }
+    }
+
+    public void enterAddressLineThree(String addr3) {
+        try {
+        	myUnitedPageLocators.addLineThreeEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.addLineThreeEditProfile,60);
+            myUnitedPageLocators.addLineThreeEditProfile.sendKeys(addr3);
+            ExtentsReportManager.extentReportLogging("pass","Enters addressLineThreeEditProfilePage");
+        } catch (Exception e) {
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineThree()<br />" + e);
+           throw e;
+
+        }
+    }
+
+    public void enterAddressLineTown(String town) {
+        try {
+        	myUnitedPageLocators.townOrcityEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.townOrcityEditProfile,60);
+            myUnitedPageLocators.townOrcityEditProfile.sendKeys(town);
+            ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");
+        } catch (Exception e) {
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineTown()<br />" + e);
+           throw e;
+
+        }
+    }
+
+
+	public String validateSuccessMessageInEditProfile() {
+		try {
+			waitForVisibilityFluentWait(myUnitedPageLocators.successMessageInEditProfile, 60);
+			ExtentsReportManager.extentReportLogging("pass", "Displayed Successs message");
+			return myUnitedPageLocators.successMessageInEditProfile.getText();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validateSuccessMessageInEditProfile()<br />"
+							+ e);
+			throw e;
+		}
 }
+
+	public void enterPinCode(String Test12345) {
+		try {
+			 myUnitedPageLocators.pinCodeInEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.pinCodeInEditProfile,60);
+            myUnitedPageLocators.pinCodeInEditProfile.sendKeys(Test12345);
+            ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");
+        } catch (Exception e) {
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineTown()<br />" + e);
+           throw e;
+
+        }
 		
+	}
+
+	public String getAddr1Text() {
+		 try {
+			 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
+	            waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile1,60);
+	            ExtentsReportManager.extentReportLogging("pass","Returns townEditProfilePage  Text ");
+	            return myUnitedPageLocators.addLineOneEditProfile1.getText();
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-getTownText()<br />" + e);
+	           throw e;
+	        }
+	}
+
+	public String getAddr2Text() {
+		 try {
+	            waitForVisibilityFluentWait(myUnitedPageLocators.addLineTwoEditProfile1,60);
+	            ExtentsReportManager.extentReportLogging("pass","Returns townEditProfilePage  Text ");
+	            return myUnitedPageLocators.addLineTwoEditProfile1.getText();
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-getTownText()<br />" + e);
+	           throw e;
+	        }
+	}
+
+	public String getAddr3Text() {
+		 try {
+	            waitForVisibilityFluentWait(myUnitedPageLocators.addLineThreeEditProfile1,60);
+	            ExtentsReportManager.extentReportLogging("pass","Returns townEditProfilePage  Text ");
+	            return myUnitedPageLocators.addLineThreeEditProfile1.getText();
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-getTownText()<br />" + e);
+	           throw e;
+	        }
+	}
+
+	public String getTownText() {
+		 try {
+			 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+	            waitForVisibilityFluentWait(myUnitedPageLocators.townOrcityEditProfile1,60);
+	            ExtentsReportManager.extentReportLogging("pass","Returns townEditProfilePage  Text ");
+	            return myUnitedPageLocators.townOrcityEditProfile1.getText();
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-getTownText()<br />" + e);
+	           throw e;
+	        }
+	}
+
+	public String getPincodeText() {
+		 try {
+	            waitForVisibilityFluentWait(myUnitedPageLocators.pinCodeInEditProfile1,60);
+	            ExtentsReportManager.extentReportLogging("pass","Returns townEditProfilePage  Text ");
+	            return myUnitedPageLocators.pinCodeInEditProfile1.getText();
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-getTownText()<br />" + e);
+	           throw e;
+	        }
+	}
+
+	public void ClearsAllDataInTextboxInEditProfileScreen() {
+		 try {
+			 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+			 waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile1,60);
+			 clearIfDisplayed(myUnitedPageLocators.addLineOneEditProfile1);
+			    clearIfDisplayed(myUnitedPageLocators.addLineTwoEditProfile1);
+			    clearIfDisplayed(myUnitedPageLocators.addLineThreeEditProfile1);
+			    clearIfDisplayed(myUnitedPageLocators.townOrcityEditProfile1);
+			    clearIfDisplayed(myUnitedPageLocators.pinCodeInEditProfile1);
+		 } catch (NoSuchElementException ns) {
+	            System.out.println("element is not displayed hence skipped");
+	        } catch (StaleElementReferenceException se) {
+	            System.out.println("stale element exception");
+	        } catch (Exception e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-ClearsAllDataInTextboxInEditProfileScreen()<br />" + e);
+	            throw e;
+	        }   
+		 }
+	private void clearIfDisplayed(WebElement element) {
+	    try {
+	        if (element.isDisplayed()) {
+	            element.clear();
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("Element not found, skipping: " + element);
+	    } catch (Exception e) {
+	        System.out.println("Error while clearing element: " + element + " - " + e.getMessage());
+	    }
+	}
+		
+}
 	
 
 	

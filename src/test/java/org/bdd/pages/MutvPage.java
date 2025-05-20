@@ -208,7 +208,7 @@ public class MutvPage extends Common {
     public void clickOnNotNowButtonInMatchAppearanceAlertScreen() {
         try {
             if (!mutvPageLocators.notNowButtonMatchAppearanceAlert1.isEmpty()) {
-//                elementToBeClickableFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert);
+               waitForVisibilityFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert, 60);
                 mutvPageLocators.notNowButtonMatchAppearanceAlert.click();
                 ExtentsReportManager.extentReportLogging("pass", "Clicks on notNowButtonMatchAppearanceAlert ");
             }
@@ -389,43 +389,56 @@ public class MutvPage extends Common {
     }
 
     public void selectsTheVideoAndCheckCBSBadge() {
-        try {
-//			List<WebElement>e=driver.findElements(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/parentLayout"));
-//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
-//            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
-        	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-            for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
-//                try {
-//                    if (mutvPageLocators.videosMutvPage.get(i)
-//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                            .isDisplayed()
-//                            && mutvPageLocators.videosMutvPage.get(i)
-//                            .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                            .getText().contains("Subscribe to watch")) {
-//                        mutvPageLocators.videosMutvPage.get(i)
-//                                .findElement(AppiumBy.id("com.mu.muclubapp.staging_mu_dxc:id/subscription_status"))
-//                                .click();
-//                        break;
-//                    }
-//                } 
-            	try {
-            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
-            	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
+    	try {
+            for (int scrolls = 0; scrolls < 5; scrolls++) {
+                for (WebElement video : mutvPageLocators.videosMutvPage) {
+                    try {
+                        WebElement subscriptionStatus = video.findElement(
+                            By.xpath(".//*[contains(@resource-id, 'subscription_status') and contains(@text, 'Subscribe to watch')]")
+                        );
 
-            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
-            	        subscriptionStatus.click();
-            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage");
-            	        break;
-            	    }
-            	} 
-            	catch (NoSuchElementException n) {
-                    System.out.println("subscribtion not found to this video");
+                        if (subscriptionStatus.isDisplayed()) {
+                            subscriptionStatus.click();
+                            ExtentsReportManager.extentReportLogging("pass", "Clicked on video with 'Subscribe to watch'");
+                            return;
+                        }
+                    } catch (NoSuchElementException e) {
+                        // Skip this video if no subscription badge is found
+                    }
                 }
+
+                // Scroll down and try again
+                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
             }
+
+            ExtentsReportManager.extentReportLogging("info", "No 'Subscribe to watch' video found after scrolling.");
         } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectsTheVideoAndCheckCBSBadge()<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in selectsTheVideoAndCheckCBSBadge()<br />" + e);
             throw e;
         }
+    	
+//        try {
+////            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "ALL PREMIER LEAGUE GAMES");
+//        	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+//            for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
+//            	try {
+//            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
+//            	        .findElement(By.xpath("//*[contains(@resource-id, 'subscription_status') and contains(@text, 'Register')]"));
+//
+//            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Subscribe to watch")) {
+//            	        subscriptionStatus.click();
+//            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage");
+//            	        break;
+//            	    }
+//            	} 
+//            	catch (NoSuchElementException n) {
+//                    System.out.println("subscribtion not found to this video");
+//                }
+//            }
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectsTheVideoAndCheckCBSBadge()<br />" + e);
+//            throw e;
+//        }
 
     }
 
@@ -446,28 +459,57 @@ public class MutvPage extends Common {
     }
 
     public void selectsTheVideoAndChecksCBRBadge() {
-        try {
-            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
-            for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
-            	try {
-            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
-            	        .findElement(By.xpath("//*[contains(@resource-id, ':id/subscription_status')]"));
+    	   try {
+    	        for (int scrolls = 0; scrolls < 5; scrolls++) {
+    	            for (WebElement video : mutvPageLocators.videosMutvPage) {
+    	                try {
+    	                    WebElement subscriptionStatus = video.findElement(
+    	                        By.xpath(".//*[contains(@resource-id, 'subscription_status') and contains(@text, 'Register to watch')]")
+    	                    );
 
-            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
-            	        subscriptionStatus.click();
-            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
-            	        break;
-            	    }
-            	} 
-            	catch (NoSuchElementException n) {
-                    System.out.println("subscribtion not found to this video");
-                }
-            }
+    	                    if (subscriptionStatus.isDisplayed()) {
+    	                        subscriptionStatus.click();
+    	                        ExtentsReportManager.extentReportLogging("pass", "Clicked on video with 'Register to watch'");
+    	                        return;
+    	                    }
+    	                } catch (NoSuchElementException e) {
+    	                    // No badge found in this video card, continue
+    	                }
+    	            }
 
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectsTheVideoAndChecksCBRBadge()<br />" + e);
-            throw e;
-        }
+    	            // Scroll down and try next set
+    	            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+    	        }
+
+    	        ExtentsReportManager.extentReportLogging("info", "No video found with 'Register to watch' after scrolling.");
+    	    } catch (Exception e) {
+    	        ExtentsReportManager.extentReportLogging("fail", "Exception in selectsTheVideoAndChecksCBRBadge()<br />" + e);
+    	        throw e;
+    	    }
+    	
+    	
+//        try {
+//            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+//            for (int i = 0; i < mutvPageLocators.videosMutvPage.size(); i++) {
+//            	try {
+//            	    WebElement subscriptionStatus = mutvPageLocators.videosMutvPage.get(i)
+//            	        .findElement(By.xpath("//*[contains(@resource-id, 'subscription_status') and contains(@text, 'Subscribe')]"));
+//
+//            	    if (subscriptionStatus.isDisplayed() && subscriptionStatus.getText().contains("Register to watch")) {
+//            	        subscriptionStatus.click();
+//            	        ExtentsReportManager.extentReportLogging("pass", "Clicks on videosMutvPage ");
+//            	        break;
+//            	    }
+//            	} 
+//            	catch (NoSuchElementException n) {
+//                    System.out.println("subscribtion not found to this video");
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-selectsTheVideoAndChecksCBRBadge()<br />" + e);
+//            throw e;
+//        }
     }
 
     public boolean validateRegisterScreenIsDisplayed() {

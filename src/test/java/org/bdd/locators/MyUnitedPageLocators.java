@@ -639,4 +639,35 @@ public class MyUnitedPageLocators {
    	@iOSXCUITFindBy(accessibility = "Close")
    	public WebElement closeIconEmailUpdateScreen;
     
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"House/apartment number and street name\"]")
+   	public WebElement addLineOneEditProfile;
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test Addr1\"]")
+   	public WebElement addLineOneEditProfile1;
+    
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[3]/XCUIElementTypeTextField[5]")
+   	public WebElement addLineTwoEditProfile;
+   	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test Addr2\"]")
+   	public WebElement addLineTwoEditProfile1;
+    
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[3]/XCUIElementTypeTextField[6]")
+   	public WebElement addLineThreeEditProfile;
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test Addr3\"]")
+   	public WebElement addLineThreeEditProfile1;
+    
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[3]/XCUIElementTypeTextField[7]")
+   	public WebElement townOrcityEditProfile;
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test Town\"]")
+   	public WebElement townOrcityEditProfile1;
+ 	
+ 	@iOSXCUITFindBy(accessibility = "Your details have been updated.")
+   	public WebElement successMessageInEditProfile;
+    
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[3]/XCUIElementTypeTextField[8]")
+   	public WebElement pinCodeInEditProfile;
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test12345\"]")
+   	public WebElement pinCodeInEditProfile1;
+    
+    
+    
+    
 }
