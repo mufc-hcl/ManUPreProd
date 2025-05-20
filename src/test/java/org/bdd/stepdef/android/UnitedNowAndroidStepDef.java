@@ -1895,10 +1895,10 @@ public class UnitedNowAndroidStepDef {
 	             ExtentsReportManager.extentReportLogging("info", "All Sponsor logos"+allSponsorLogoValues);
 	             
 	            Collections.sort(allSponsorLogoValues);
-	            ArrayList<String> actualSponsorLogoValues = unitedNowPage.getSponsorLogoValues();
+	            boolean actualSponsorLogoValues = unitedNowPage.getSponsorLogoValues();
 	            ExtentsReportManager.extentReportLogging("info","Expected Sponsor logos from API" + allSponsorLogoValues);
 	            ExtentsReportManager.extentReportLogging("info","Actual Sponsor logo from UI" + unitedNowPage.getSponsorLogoValues());
-	            soft.assertEquals(actualSponsorLogoValues,actualSponsorLogoValues);
+	            soft.assertTrue(actualSponsorLogoValues, "Sponsor logo available in united now");
 	            soft.assertAll();
 	            ExtentsReportManager.extentReportLogging("info", "validated Sponsor logo in united now screen");
 	        } catch (AssertionError e) {

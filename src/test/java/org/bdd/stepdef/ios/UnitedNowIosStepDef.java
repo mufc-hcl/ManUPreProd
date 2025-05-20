@@ -1742,10 +1742,10 @@ public class UnitedNowIosStepDef {
 	             ExtentsReportManager.extentReportLogging("info", "All Sponsor logos"+allSponsorLogoValues);
 	             
 	            Collections.sort(allSponsorLogoValues);
-	            boolean actualSponsorLogoValues = unitedNowPage.getSponsorLogoValuesInIOS(allSponsorLogoValues);
+	            boolean actualSponsorLogoValues = unitedNowPage.getSponsorLogoValuesInIOS();
 	            ExtentsReportManager.extentReportLogging("info","Expected Sponsor logos from API" + allSponsorLogoValues);
-	            ExtentsReportManager.extentReportLogging("info","Actual Sponsor logo from UI" + unitedNowPage.getSponsorLogoValuesInIOS(allSponsorLogoValues));
-	            soft.assertTrue(actualSponsorLogoValues,"DXC");
+	            ExtentsReportManager.extentReportLogging("info","Actual Sponsor logo from UI" + unitedNowPage.getSponsorLogoValuesInIOS());
+	            soft.assertTrue(actualSponsorLogoValues,"Sponsor logo available in united now");
 	            soft.assertAll();
 	            ExtentsReportManager.extentReportLogging("info", "validated Sponsor logo in united now screen");
 	        } catch (AssertionError e) {

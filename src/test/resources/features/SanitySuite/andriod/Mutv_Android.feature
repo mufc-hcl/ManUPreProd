@@ -85,7 +85,8 @@ Feature: MUTV Feature
     And user selects the video and check CBS badge
     Then validate subscribe screen is displayed
     And user clicks on log in button in subscribe page
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -145,7 +146,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification

@@ -197,7 +197,7 @@ public class ShopPageLocators {
 	public List<WebElement> springSaleMerchTab;
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Spring Sale\"]")
-	public WebElement springSaleMerchTabInIOS;
+	public List<WebElement> springSaleMerchTabInIOS;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Shop By Category\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Shop By Category\"]")
@@ -295,5 +295,9 @@ public class ShopPageLocators {
 	@AndroidFindBy(accessibility = "go back")
 	@iOSXCUITFindBy(accessibility = "go back")
 	public WebElement backArrowInWishlistScreen;
+	
+	@AndroidFindBy(xpath = "//android.view.View[@resource-id=\"__nuxt\"]/android.view.View[2]/android.view.View[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[1]")
+	public WebElement heroCardInShopScreen;
 
 }
