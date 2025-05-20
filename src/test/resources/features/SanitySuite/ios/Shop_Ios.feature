@@ -1,8 +1,10 @@
 @Sanity_IOS @Shop_IOS
 Feature: Shop features
 
-
-  Scenario: [Shop]TC001 Click on the shop tab and navigate to the shop screen with all the shop filters if enabled from CMS
+@Shop_Test
+  Scenario: [Shop]TC001 Click on the shop tab and navigate to the shop screen with all the shop filters if enabled from CMS,Validate the shop screen when there are only small card carousels enabled from CMS-Stickers - Colletable,
+  Validate the shop screen only when hero carousel is enabled from CMS-Merch - Membership,Validate the shop screen when both hero and small card carousels are enabled from CMS-Tickets - Store
+   
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -85,18 +87,20 @@ Feature: Shop features
     #And user clicks on Merch tab in shop screen in ios
     #Then user validates small card carousels in Merch tab in ios
     #And user clicks on the hero card dots in merch screen in ios
-#
-#@ftftfffttfft
-#Scenario: TC007 Validate the shop tab hero carousels
-    #Given user navigates to manu ios application
-    #And user clicks on cancel button in apple id screen
-    #And user clicks lets go button in screen one in ios
-    #And user clicks on ask me later in screen two in ios
-    #And user clicks skip button in screen three in ios
-    #And user click on skip button in screen four in ios
-    #And user clicks on ok in the cookies screen in ios
-    #And user clicks on not now button in match appearance alert screen in ios
-    #And user click on shop tab in bottom tab in ios
+
+
+Scenario: TC007 Validate the shop tab hero carousels
+    Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on shop tab in bottom tab in ios
+    Then user validates hero card in shop screen in ios
+    
     #And user clicks on Merch tab in shop screen in ios
     #Then user validates hero card is displayed in shop screen in merch tab in ios
     #And user clicks on Membership tab in shop screen in ios

@@ -469,6 +469,18 @@ public class ShopIosStepDef {
 	        throw e;
 	    }
 	}
+
+	@Then("^user validates hero card in shop screen in ios$")
+	public void userValidatesHeroCardInShopScreenInIos() throws Throwable {
+		 try {
+	            boolean flag =shopPage.validatesHeroCardInShopScreenInIos();
+	            soft.assertTrue(flag);
+	            ExtentsReportManager.extentReportLogging("info", "validated hero card in Latest screen");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in validates hero card in Latest screen<br />" + e);
+	            throw e;
+	        }
+	}
 	}
 
 
