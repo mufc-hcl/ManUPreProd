@@ -398,7 +398,7 @@ public class ExploreIosStepdef {
     }
 
     @And("user clicks search button in united screen in ios")
-    public void userClicksSearchButtonInUnitedScreenInIos() {
+    public void userClicksSearchButtonInUnitedScreenInIos() throws Exception {
         try {
             explorePage.clicksSearchInUnitedScreen();
             ExtentsReportManager.extentReportLogging("info", "Clicked on search button in united screen in ios");

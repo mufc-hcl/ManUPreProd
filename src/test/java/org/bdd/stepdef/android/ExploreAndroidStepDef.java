@@ -278,7 +278,7 @@ public class ExploreAndroidStepDef {
     }
 
     @And("^user clicks search button in united screen$")
-    public void userClicksSearchButtonInUnitedScreen() {
+    public void userClicksSearchButtonInUnitedScreen() throws Exception {
         try {
             explorePage.clicksSearchInUnitedScreen();
             ExtentsReportManager.extentReportLogging("info", "Clicked search button in united screen");
