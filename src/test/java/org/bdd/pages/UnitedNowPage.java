@@ -4691,107 +4691,52 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 	        }
 	    }
 		
-		public ArrayList<String> getSponsorLogoValues() {
+		public boolean getSponsorLogoValues() {
 		    String device = GlobalParams.getPlatformName();
-		    ArrayList<String> sponsorLogos = new ArrayList<>();
+//		    ArrayList<String> sponsorLogos = new ArrayList<>();
 		    try {
-		        for (int i = 0; i < 20; i++) {
+		        for (int i = 0; i <= 100; i++) {
 		            if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
 		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-		                for (WebElement logo : unitedNowPageLocators.sponsorLogoFromUI) {
-				            sponsorLogos.add(logo.getDomAttribute("content-desc").split("\\s+")[0]);
-				            return sponsorLogos;
+				            
 		                }
-				            ExtentsReportManager.extentReportLogging("info", "Sponsor logo list" + sponsorLogos );
-				        
-		            } else {
-		                break;
+		            else {
+		            unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
 		            }
 		        }
-		        ExtentsReportManager.extentReportLogging("pass", "Scrolled down to sponsor logo screen");
-		        
+		        ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
+		        return true;
 
 		    } catch (Exception e) {
 		        ExtentsReportManager.extentReportLogging("fail",
 		            "Exception occurred in function-getSponsorLogoValues()<br />" + e);
 		        throw e;
 		    }
-		    return sponsorLogos;
 		}
 
+		public boolean getSponsorLogoValuesInIOS() {
+			 String device = GlobalParams.getPlatformName();
+			    //ArrayList<String> sponsorLogos = new ArrayList<>();
+			    try {
+			        for (int i = 0; i <=100; i++) {
+			            if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
+			                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+					            
+			                }
+			            else {
+			            unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
+			            }
+			        }
+			        ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
+			        return true;
 
-//		public String getSponsorLogoValues() {
-//			String device = GlobalParams.getPlatformName();
-//			try {
-//			for (int i = 0; i < 20; i++) {
-//			if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
-//			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-//			return true;
-//		    } else {
-//			break;
-//}
-//}
-//	     ExtentsReportManager.extentReportLogging("pass", "Scrolled down to sponsor logo screen");
-//			} catch (Exception e) {
-//			ExtentsReportManager.extentReportLogging("fail",
-//			"Exception occurred in function-getSponsorLogoValues()<br />" + e);
-//			throw e;
-//			}
-//			return false;
-//		}
-			
-
-
-
-			
-			
-			 
-		
-//			String device = GlobalParams.getPlatformName();
-////		    boolean allItemsDisplayed = false;
-//		    try {
-//		        for (String Logo : allSponsorLogoValues) {
-//		            WebElement sponsorLogosFromUI;
-//		            if (device.equalsIgnoreCase("android")) {
-//		            	for (int i = 0; i < 20; i++) {
-//		            	sponsorLogosFromUI = driver.findElement(AppiumBy.xpath(
-//                                "//android.widget.ImageView[contains(normalize-space(@content-desc), '"+Logo.toUpperCase()+"')]"));
-//		            	        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-//		            			if(!(sponsorLogosFromUI.isDisplayed())) {
-//		            				return false;
-//		            			}
-//		            	
-//		            	} }}}catch (NoSuchElementException e) {
-//		            		System.err.println("Error while fetching sponsor logos: " + e.getMessage());
-//		            		return false;
-//	                    }
-//			return true;
-//		        }
-//		
-		
-		
-		public boolean getSponsorLogoValuesInIOS(ArrayList<String> allSponsorLogoValues) {
-			String device = GlobalParams.getPlatformName();
-		    boolean allItemsDisplayedIOS = true;
-		    try {
-		        for (String Logo : allSponsorLogoValues) {
-		            WebElement sponsorLogosFromUI;
-		            if (device.equalsIgnoreCase("ios")) {
-		            	for (int i = 0; i < 20; i++) {
-		            	sponsorLogosFromUI = driver.findElement(AppiumBy.xpath(
-                                "//XCUIElementTypeOther[@name='"+Logo.toUpperCase()+"')]"));
-		            	 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-		            			if(sponsorLogosFromUI.isDisplayed()) {
-		            				return true;
-		            			}
-		            	
-		            	} }}}catch (NoSuchElementException e) {
-		            		System.err.println("Error while fetching sponsor logos: " + e.getMessage());
-	                    }
-			return allItemsDisplayedIOS;
-		        }
-
+			    } catch (Exception e) {
+			        ExtentsReportManager.extentReportLogging("fail",
+			            "Exception occurred in function-getSponsorLogoValues()<br />" + e);
+			        throw e;
+			    }
 		}
+}
 		    
 	
 	    

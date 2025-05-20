@@ -901,44 +901,22 @@ public class ShopPage extends Common {
 	}
 	public boolean userValidatesSmallCardCarouselsInMerchTabInIOS() {
 		String device = GlobalParams.getPlatformName();
-        try {
-            if (device.equalsIgnoreCase("ios")) {
-            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
-            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
-            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
-            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-            	waitForVisibility(shopPageLocators.springSaleMerchTabInIOS, 15);
-                ExtentsReportManager.extentReportLogging("pass", "Returned title of the small carousel Text in store tab");
-                return true;
-            
-            }
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-userValidatesSmallCardCarouselsInMerchTabInIOS()<br />" + e);
-            throw e;
-        }
+		try {
+			for (int i = 0; i < 20; i++) {
+				if (!(shopPageLocators.springSaleMerchTabInIOS.size() > 0)) {
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+				} else {
+					break;
+				}
+			}
+			ExtentsReportManager.extentReportLogging("pass", "Returns merch tab small carousals names Text");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-userValidatesSmallCardCarouselsInMerchTabUsingApi()<br />" + e);
+			throw e;
+		}
 		return false;
 	}
-//		String device = GlobalParams.getPlatformName();
-//		try {
-//			for (int i = 0; i < 20; i++) {
-//				if (!(shopPageLocators.springSaleMerchTab.size() > 0)) {
-//					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-//				} else {
-//					break;
-//				}
-//			}
-//			ExtentsReportManager.extentReportLogging("pass", "Returns merch tab small carousals names Text");
-//		} catch (Exception e) {
-//			ExtentsReportManager.extentReportLogging("fail",
-//					"Exception occured in function-userValidatesSmallCardCarouselsInMerchTabUsingApi()<br />" + e);
-//			throw e;
-//		}
-//		return false;
-           
-	
 
 	public boolean userValidatesHeroCardIsDisplayedInShopScreenInMerchTab() {
 			try {
@@ -1469,6 +1447,28 @@ public class ShopPage extends Common {
 	        ExtentsReportManager.extentReportLogging("fail", "Exception in validateAllTheTabsInShopScreenDisabledInMutvPage()<br />" + e);
 	        return false;
 	    }
+	}
+
+	public boolean validatesHeroCardInShopScreen() {
+		try {
+			ExtentsReportManager.extentReportLogging("pass", "Returns latestCardInLatestScreen Text ");
+			return shopPageLocators.heroCardInShopScreen.isDisplayed();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validatesHeroCardInShopScreen()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean validatesHeroCardInShopScreenInIos() {
+		try {
+			ExtentsReportManager.extentReportLogging("pass", "Returns latestCardInLatestScreen Text ");
+			return shopPageLocators.heroCardInShopScreen.isDisplayed();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validatesHeroCardInShopScreen()<br />" + e);
+			throw e;
+		}
 	}
 	}
 

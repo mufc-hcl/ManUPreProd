@@ -588,6 +588,18 @@ public class ShopAndroidStepDef {
 	        throw e;
 	    }
 	}
+
+	@Then("^user validates hero card in shop screen$")
+	public void userValidatesHeroCardInShopScreen() throws Throwable {
+		try {
+            boolean flag = shopPage.validatesHeroCardInShopScreen();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "validated hero card in Latest screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validates hero card in Latest screen<br />" + e);
+            throw e;
+        }
+	}
 	}
 	
 	
