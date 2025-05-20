@@ -12,9 +12,11 @@ import org.bdd.locators.ExplorePageLocators;
 import org.bdd.locators.UnitedNowPageLocators;
 import org.bdd.utils.*;
 import org.bdd.utils.apiResponse.UnitedNowAPIResponse;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -272,7 +274,7 @@ public class UnitedNowPage extends Common {
 		}
 	}
 
-	public void clickCalenderIcon() {
+	public void clickCalenderIcon1() {
 		try {
 			elementToBeClickableFluentWait(unitedNowPageLocators.calenderIconUnitedPage, 60);
 			unitedNowPageLocators.calenderIconUnitedPage.click();
@@ -287,6 +289,44 @@ public class UnitedNowPage extends Common {
 		}
 
 	}
+	
+	public void clickCalenderIcon() throws Exception {
+	    String device = GlobalParams.getPlatformName();
+	    By calenderIconLocator;
+
+	    // Use correct locator based on platform
+	    if (device.equalsIgnoreCase("android")) {
+	        calenderIconLocator = AppiumBy.xpath("//android.widget.ImageView[contains(@resource-id, ':id/image_left')]");
+	    } else {
+	        calenderIconLocator = AppiumBy.xpath("//XCUIElementTypeButton[@name='Fixtures']");
+	    }
+
+	    int maxRetries = 5;
+	    int attempts = 0;
+
+	    while (attempts < maxRetries) {
+	        try {
+	            // Force page refresh 
+	            driver.getPageSource();
+	            WebElement calendarButton = driver.findElement(calenderIconLocator);
+	            elementToBeClickableFluentWait(calendarButton, 60);
+	            calendarButton.click();
+
+	            ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon");
+	            return; 
+
+	        } catch (Exception e) {
+	            System.out.println("Attempt " + (attempts + 1) + ": Calendar icon not ready. Retrying...");
+	            attempts++;
+	            Thread.sleep(1000);
+	        }
+	    }
+	    ExtentsReportManager.extentReportLogging("fail",
+	            "Failed to click Calendar icon after " + maxRetries + " retries");
+	    throw new Exception("Calendar icon not clickable after retries.");
+	}
+
+
 
 	public String getUnitedText() {
 		String device = GlobalParams.getPlatformName();
