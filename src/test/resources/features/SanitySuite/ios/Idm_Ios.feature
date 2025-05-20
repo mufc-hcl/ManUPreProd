@@ -110,10 +110,6 @@ Feature: IDM
     And user scrolls down to favorite player screen in ios
     And user click on edit icon in my united screen in ios
     And user edits a favorite player in player screen in ios
-    #And user click on setting icon on top righhand side in ios
-    #And user clicks on My profile icon in ios
-    #And user clicks on Logout icon in ios
-    #And user selects a favorite player in players screen in ios
     And user initiates the android session
     Given user navigates to manu android application
     And user navigates to screen two
@@ -192,7 +188,7 @@ Feature: IDM
     And user enters the following details in forget password screen in ios
       | email             | dob | mob | yob  |
       | testmail@test.com |   1 | May | 2015 |
-@AWSFailure1
+
   Scenario Outline: [IDM]TC0015 Verify that user able to naviagte to Change email screen post log in natively and in change password email user should be able to change email sucessfully, also an email should get triggered with expected email template to confirm the email. Post email confirmation if user try to relogin user should be able to log in using new changed email.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu ios application
@@ -220,9 +216,3 @@ Feature: IDM
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
-  
-  Scenario: [IDM]TC0010 Verify the updated favorite player details on Android for a user and the same favorite player details are displayed on iOS for the same user
-    Given user navigates to manu ios application
-    And user initiates the android session
-    Given user navigates to manu android application

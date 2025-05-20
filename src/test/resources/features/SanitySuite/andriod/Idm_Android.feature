@@ -127,7 +127,7 @@ Feature: IDM
   #    Examples:
   #      | username                | password |
   #      | manusocial080@gmail.com | Manu@123 |
-  @AWSFailure
+
   Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on android for a user and the same favorite player details are displayed on IOS for the same user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -146,15 +146,8 @@ Feature: IDM
     And user clicks continue in MUApp popup
     And user clicks on close from notification
     And user scrolls down to favorite player screen
-    #And user validates player image in my united screen
     And user clicks on edit button in my united screen
-    #And user selects a favorite player in players screen
     And user edits a favorite player in player screen
-    #And user edits the favorite player in player screen
-    #And user click on setting icon on top righhand side
-    #And user clicks on My profile icon
-    #And user clicks on Logout icon
-    #And user selects yes from the want to logout alert box
     And user clicks on not now button in match appearance alert screen
     And user initiated the ios Session
     Given user navigates to manu ios application
@@ -173,29 +166,6 @@ Feature: IDM
     And user scrolls down to favorite player screen in ios
     Then user validates the edited player details in my united screen in ios
 
-    #steps for editing in ios and validating deatils in android
-    #Then user validates captured player name updated in my united screen in ios
-    #And user click on edit icon in my united screen in ios
-    #And user edits a favorite player in player screen in ios
-    #And user initiates the android session
-    #Given user navigates to manu android application
-    #And user navigates to screen two
-    #And user navigates to screen three
-    #And user navigates to screen four
-    #And user click on skip button in screen four
-    #And user clicks on ok button in cookies screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on not now button in match appearance alert screen
-    #And user clicks on braze in app msg
-    #And user clicks on the notification at bottom of screen
-    #And user click on My United in bottom tab
-    #And user clicks on log in button
-    #And user enter the valid email "<username>" and valid password "<password>"
-    #And user clicks on login button in login screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on close from notification
-    #And user scrolls down to favorite player screen
-    #Then user validates the edited player details in my united screen
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
@@ -287,21 +257,3 @@ Feature: IDM
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
-  
-  Scenario: [IDM]TC0010 Verify the updated favorite player details on Android for a user and the same favorite player details are displayed on iOS for the same user
-    Given user navigates to manu android application
-    And user initiated the ios Session
-    Given user navigates to manu ios application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user initiates the android session
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
