@@ -37,7 +37,7 @@ public class ExploreIosStepdef {
     }
 
     @And("user clicks on cancel button in apple id screen")
-    public void userClicksOnCancelButtonInAppleIdScreen() {
+    public void userClicksOnCancelButtonInAppleIdScreen() throws Exception {
         try {
             onboardingPage.clicksOnCancelButtonInAppleIdScreen();
             ExtentsReportManager.extentReportLogging("info", "Clicked on cancel button in apple id screen");
