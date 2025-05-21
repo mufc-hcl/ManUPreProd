@@ -103,7 +103,7 @@ public class UnitedNowAndroidStepDef {
     }
 
     @And("^user click on calender icon$")
-    public void userClickOnCalenderIcon() {
+    public void userClickOnCalenderIcon() throws Exception {
         try {
             unitedNowPage.clickCalenderIcon();
             ExtentsReportManager.extentReportLogging("info", "Clicked on calendar icon ");
