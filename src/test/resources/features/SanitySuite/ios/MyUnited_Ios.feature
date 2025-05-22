@@ -221,10 +221,9 @@ Feature: My United features
       | APPEARANCES | SHARE |
     And user clicks on back Icon in appearance card in ios
 
-    Examples:
-      | username             | password |
+    Examples: 
+      | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
 
   Scenario Outline: [My United]TC009 Add / Edit Favourite Player from Profile for Login user
     Given user navigates to manu ios application
@@ -265,7 +264,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-      
+
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -321,10 +320,7 @@ Feature: My United features
   #Examples:
   #| notificationbutton |
   #| deny_button        |
-  
-      
-
-    Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
+  Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -348,7 +344,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
- 
+
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -371,19 +367,19 @@ Feature: My United features
     Then user gets the title of the preference center screen in ios
       | Preference Center |
       | PREFERENCE CENTRE |
+
     #save preference buttonelement is not visible, Appium/WebDriver cannot click it directly
     #And user selecting one of the checklist in the preference center screen in ios
     #And user clicks on save preference button in ios
     #Then user validates preference updated message in ios
-      #| Thank you, your preferences have been updated. |
-      #| Thank you, your preferences have been updated. |
-
+    #| Thank you, your preferences have been updated. |
+    #| Thank you, your preferences have been updated. |
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-      @Settings1
-    Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
+  @Settings1
+  Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -418,4 +414,30 @@ Feature: My United features
     Examples: 
       | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
       | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
-      
+
+  # social login less than 13 is not possible in Manu app- Under 13 registrations are not allowed to be linked to a social account
+  #Social Login >13 covered in [IDM]TC008 &TC009
+  @ios1
+  Scenario Outline: [My United] TC015 -Native Login [>13 and <13] and Social Login
+    Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on My United in bottom tab in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in login screen in ios
+    And user clicks on test continue and clicks on back icon
+    And user clicks on No tracking
+    And user validate t shirt name is displayed as "<Name>"
+
+    #<13 (manutesting13)  and >13 (manupreprod) native app
+    Examples: 
+      | username                  | password | Name      |
+      | manutesting13@yopmail.com | Manu@123 | TESTING13 |
+      | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
