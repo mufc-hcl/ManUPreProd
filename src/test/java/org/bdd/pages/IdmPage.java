@@ -352,9 +352,9 @@ public class IdmPage extends Common {
         try {
             elementToBeClickableFluentWait(idmPageLocators.editProfileMyProfilePage,60);
             idmPageLocators.editProfileMyProfilePage.click();
-            ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+            ExtentsReportManager.extentReportLogging("pass","Clicks on EditProfile ");
             idmPageLocators.editProfilePageHeadingMyProfilePage.click();
-            ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+            ExtentsReportManager.extentReportLogging("pass","Clicks on EditProfile ");
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clickOnContactUs()<br />" + e);throw e;
         }

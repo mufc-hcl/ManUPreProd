@@ -310,10 +310,9 @@ public class MyUnitedPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 
-//				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "FAVOURITE PLAYER");
-                do {
-                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
-                } while (myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.size() <= 0);
+				do {
+				    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+				} while (myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.size() == 0);
 				waitForVisibilityFluentWait(myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0), 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns points this season cars text");
 				return myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0).getText();
@@ -671,25 +670,26 @@ public class MyUnitedPage extends Common {
 	}
 
 	public String getScoredCardThisSeason() {
-		String device = GlobalParams.getPlatformName();
 		try {
-			if (device.equalsIgnoreCase("android")) {
-//				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "Score this season");
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
+		 if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
 				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season ");
 				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
-			} else {
+		 }
+				else if (Common.apiEnv().equalsIgnoreCase("prod")) {
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season");
-				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getDomAttribute("label");
-			}
+				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
+				}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-getScoredCardThisSeason()<br />" + e);
 			throw e;
 		}
+		return null;
 	}
 
 	public String getMyUnitedThisSeason() {
@@ -1251,13 +1251,22 @@ public class MyUnitedPage extends Common {
 
 	public void scrollsDownToFavoritePlayerScreen() {
 		try {
+			  if (Common.apiEnv().equalsIgnoreCase("stage")) {
 		for (int i = 0; i < 20; i++) {
 			if (myUnitedPageLocators.pickYourfavoritePlayerMyUnitedScreen.size() <= 0) {
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
 			} else {
 				break;
+			}}
 			}
-		}
+			  else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+					for (int i = 0; i < 20; i++) {
+						if (myUnitedPageLocators.pickYourfavoritePlayerMyUnitedScreen.size() <= 0) {
+							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+						} else {
+							break;
+						}
+			}}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-scrollsDownToFavoritePlayerScreen()<br />" + e);
@@ -2069,23 +2078,26 @@ public class MyUnitedPage extends Common {
 
 	public boolean userValidatesMyTicketsComponentInMyUnitedScreen() {
 		try {
+			 if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnitedPreProd, 60);
-			if (myUnitedPageLocators.myTicketsComponentMyUnitedPreProd.isDisplayed()) {
+			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnited, 60);
+			if (myUnitedPageLocators.myTicketsComponentMyUnited.isDisplayed()) {
 				ExtentsReportManager.extentReportLogging("pass", "validates myTicketsComponentMyUnited preprod displayed ");
-				return myUnitedPageLocators.myTicketsComponentMyUnitedPreProd.isDisplayed();
+				return myUnitedPageLocators.myTicketsComponentMyUnited.isDisplayed();
 			}
 			
-			else {
-			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnited, 60);
+			else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+			waitForVisibilityFluentWait(myUnitedPageLocators.myTicketsComponentMyUnitedPreProd, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Returns My tickets text from My United Page ");
-			return myUnitedPageLocators.myTicketsComponentMyUnited.isDisplayed();
+			return myUnitedPageLocators.myTicketsComponentMyUnitedPreProd.isDisplayed();
 			}
+			 }
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-userValidatesMyTicketsComponentInMyUnitedScreen()<br />" + e);
 			throw e;
 		}
+		return false;
 	}
 
 	public void userClicksOnMyTicketsComponentInMyUnitedScreen() {
@@ -2101,19 +2113,24 @@ public class MyUnitedPage extends Common {
 
 	public boolean userValidatesStadiumComponentInMyUnitedScreen() {
 		try {
-			waitForVisibilityFluentWait(myUnitedPageLocators.stadiumComponentMyUnitedPreProd, 60);
-			if (myUnitedPageLocators.stadiumComponentMyUnitedPreProd.isDisplayed()) {
-				ExtentsReportManager.extentReportLogging("pass", "validates stadiumComponentMyUnitedPreProd preprod displayed ");
-				return myUnitedPageLocators.stadiumComponentMyUnitedPreProd.isDisplayed();
-			}
+			 if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			waitForVisibilityFluentWait(myUnitedPageLocators.stadiumComponentMyUnited, 60);
+			if (myUnitedPageLocators.stadiumComponentMyUnited.isDisplayed()) {
+				ExtentsReportManager.extentReportLogging("pass", "validates stadiumComponentMyUnitedPreProd preprod displayed ");
+				return myUnitedPageLocators.stadiumComponentMyUnited.isDisplayed();
+			}
+			 }
+			else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+			waitForVisibilityFluentWait(myUnitedPageLocators.stadiumComponentMyUnitedPreProd, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Returns My tickets text from My United Page ");
-			return myUnitedPageLocators.stadiumComponentMyUnited.isDisplayed();
+			return myUnitedPageLocators.stadiumComponentMyUnitedPreProd.isDisplayed();
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-userValidatesStadiumComponentInMyUnitedScreen()<br />" + e);
 			throw e;
 		}
+		return false;
 	}
 
 	public void userClicksOnStadiumComponentInMyUnitedScreen() {
@@ -2551,12 +2568,22 @@ public class MyUnitedPage extends Common {
 	}
 
 	public void enterAddressLineOne(String addr1) {
-		IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-        try {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+    				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+//        	myUnitedPageLocators.addLineOneEditProfile1.clear();
+            waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile,60);
+            myUnitedPageLocators.addLineOneEditProfile.sendKeys(addr1);
+            ExtentsReportManager.extentReportLogging("pass","Enters addressLineOneEditProfilePage");
+            }
+            else {		
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
         	myUnitedPageLocators.addLineOneEditProfile1.clear();
             waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile,60);
             myUnitedPageLocators.addLineOneEditProfile.sendKeys(addr1);
             ExtentsReportManager.extentReportLogging("pass","Enters addressLineOneEditProfilePage");
+            }
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineOne()<br />" + e);
            throw e;
@@ -2565,11 +2592,20 @@ public class MyUnitedPage extends Common {
     }
 
     public void enterAddressLinetwo(String addr2) {
-        try {
-        	myUnitedPageLocators.addLineTwoEditProfile1.clear();
+        	String device = GlobalParams.getPlatformName();
+    		try {
+    			if (device.equalsIgnoreCase("android")) {
+//        	myUnitedPageLocators.addLineTwoEditProfile1.clear();
             waitForVisibilityFluentWait(myUnitedPageLocators.addLineTwoEditProfile,60);
             myUnitedPageLocators.addLineTwoEditProfile.sendKeys(addr2);
             ExtentsReportManager.extentReportLogging("pass","Enters addressLineTwoEditProfilePage");
+    			}
+            else {
+            	myUnitedPageLocators.addLineTwoEditProfile1.clear();
+                waitForVisibilityFluentWait(myUnitedPageLocators.addLineTwoEditProfile,60);
+                myUnitedPageLocators.addLineTwoEditProfile.sendKeys(addr2);
+                ExtentsReportManager.extentReportLogging("pass","Enters addressLineTwoEditProfilePage");
+            }
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLinetwo()<br />" + e);
            throw e;
@@ -2578,11 +2614,20 @@ public class MyUnitedPage extends Common {
     }
 
     public void enterAddressLineThree(String addr3) {
-        try {
-        	myUnitedPageLocators.addLineThreeEditProfile1.clear();
+    	String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+//        	myUnitedPageLocators.addLineThreeEditProfile1.clear();
             waitForVisibilityFluentWait(myUnitedPageLocators.addLineThreeEditProfile,60);
             myUnitedPageLocators.addLineThreeEditProfile.sendKeys(addr3);
             ExtentsReportManager.extentReportLogging("pass","Enters addressLineThreeEditProfilePage");
+			}
+			else {
+				myUnitedPageLocators.addLineThreeEditProfile1.clear();
+	            waitForVisibilityFluentWait(myUnitedPageLocators.addLineThreeEditProfile,60);
+	            myUnitedPageLocators.addLineThreeEditProfile.sendKeys(addr3);
+	            ExtentsReportManager.extentReportLogging("pass","Enters addressLineThreeEditProfilePage");
+			}
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineThree()<br />" + e);
            throw e;
@@ -2591,11 +2636,20 @@ public class MyUnitedPage extends Common {
     }
 
     public void enterAddressLineTown(String town) {
-        try {
-        	myUnitedPageLocators.townOrcityEditProfile1.clear();
+        	String device = GlobalParams.getPlatformName();
+    		try {
+    			if (device.equalsIgnoreCase("android")) {
+//        	myUnitedPageLocators.townOrcityEditProfile1.clear();
             waitForVisibilityFluentWait(myUnitedPageLocators.townOrcityEditProfile,60);
             myUnitedPageLocators.townOrcityEditProfile.sendKeys(town);
             ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");
+    			}
+    			else {
+    				myUnitedPageLocators.townOrcityEditProfile1.clear();
+    	            waitForVisibilityFluentWait(myUnitedPageLocators.townOrcityEditProfile,60);
+    	            myUnitedPageLocators.townOrcityEditProfile.sendKeys(town);
+    	            ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");	
+    			}
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineTown()<br />" + e);
            throw e;
@@ -2605,10 +2659,18 @@ public class MyUnitedPage extends Common {
 
 
 	public String validateSuccessMessageInEditProfile() {
-		try {
+			String device = GlobalParams.getPlatformName();
+    		try {
+    			if (device.equalsIgnoreCase("android")) {
 			waitForVisibilityFluentWait(myUnitedPageLocators.successMessageInEditProfile, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Displayed Successs message");
 			return myUnitedPageLocators.successMessageInEditProfile.getText();
+    			}
+    			else {
+    				waitForVisibilityFluentWait(myUnitedPageLocators.successMessageInEditProfile, 60);
+    				ExtentsReportManager.extentReportLogging("pass", "Displayed Successs message");
+    				return myUnitedPageLocators.successMessageInEditProfile.getText();
+    			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-validateSuccessMessageInEditProfile()<br />"
@@ -2618,11 +2680,20 @@ public class MyUnitedPage extends Common {
 }
 
 	public void enterPinCode(String Test12345) {
-		try {
+			String device = GlobalParams.getPlatformName();
+    		try {
+    			if (device.equalsIgnoreCase("android")) {
 			 myUnitedPageLocators.pinCodeInEditProfile1.clear();
             waitForVisibilityFluentWait(myUnitedPageLocators.pinCodeInEditProfile,60);
             myUnitedPageLocators.pinCodeInEditProfile.sendKeys(Test12345);
             ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");
+    			}
+    			else {
+    				 myUnitedPageLocators.pinCodeInEditProfile1.clear();
+    		            waitForVisibilityFluentWait(myUnitedPageLocators.pinCodeInEditProfile,60);
+    		            myUnitedPageLocators.pinCodeInEditProfile.sendKeys(Test12345);
+    		            ExtentsReportManager.extentReportLogging("pass","Enters townEditProfilePage");
+    			}
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-enterAddressLineTown()<br />" + e);
            throw e;
@@ -2689,36 +2760,107 @@ public class MyUnitedPage extends Common {
 	}
 
 	public void ClearsAllDataInTextboxInEditProfileScreen() {
-		 try {
-			 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-			 waitForVisibilityFluentWait(myUnitedPageLocators.addLineOneEditProfile1,60);
-			 clearIfDisplayed(myUnitedPageLocators.addLineOneEditProfile1);
-			    clearIfDisplayed(myUnitedPageLocators.addLineTwoEditProfile1);
-			    clearIfDisplayed(myUnitedPageLocators.addLineThreeEditProfile1);
-			    clearIfDisplayed(myUnitedPageLocators.townOrcityEditProfile1);
-			    clearIfDisplayed(myUnitedPageLocators.pinCodeInEditProfile1);
-		 } catch (NoSuchElementException ns) {
-	            System.out.println("element is not displayed hence skipped");
-	        } catch (StaleElementReferenceException se) {
-	            System.out.println("stale element exception");
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-ClearsAllDataInTextboxInEditProfileScreen()<br />" + e);
-	            throw e;
-	        }   
-		 }
-	private void clearIfDisplayed(WebElement element) {
-	    try {
-	        if (element.isDisplayed()) {
-	            element.clear();
+		try {
+	        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+
+	        if (myUnitedPageLocators.addLineOneEditProfile1.isDisplayed()) {
+	            myUnitedPageLocators.addLineOneEditProfile1.clear();
 	        }
+
+	        if (myUnitedPageLocators.addLineTwoEditProfile1.isDisplayed()) {
+	            myUnitedPageLocators.addLineTwoEditProfile1.clear();
+	        }
+
+	        if (myUnitedPageLocators.addLineThreeEditProfile1.isDisplayed()) {
+	            myUnitedPageLocators.addLineThreeEditProfile1.clear();
+	        }
+
+	        if (myUnitedPageLocators.townOrcityEditProfile1.isDisplayed()) {
+	            myUnitedPageLocators.townOrcityEditProfile1.clear();
+	        }
+
+
 	    } catch (NoSuchElementException e) {
-	        System.out.println("Element not found, skipping: " + element);
+	        System.out.println("Element not displayed, skipping: " + e.getMessage());
+	    } catch (StaleElementReferenceException e) {
+	        System.out.println("Stale element, skipping: " + e.getMessage());
 	    } catch (Exception e) {
-	        System.out.println("Error while clearing element: " + element + " - " + e.getMessage());
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in ClearsAllDataInTextboxInEditProfileScreen()<br />" + e);
+	        throw e;
 	    }
+	}		
+
+public void navigatesToAboutYouInMyUnitedScreen() {
+	try {
+		for (int i = 0; i < 20; i++) {
+			if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
+			} else {
+				break;
+			}
+		}
+		ExtentsReportManager.extentReportLogging("pass", "Navigated to point screen");
+	} catch (Exception e) {
+		ExtentsReportManager.extentReportLogging("fail",
+				"Exception occurred in function-navigatesPointsScreenInIos()<br />" + e);
+		throw e;
 	}
-		
+
 }
+
+public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
+	try {
+	    String aboutYouText = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/desc_textView")).getText();
+
+	    if (aboutYouText.contains("ManuPreprod") && aboutYouText.contains("Preprod")
+	    		&& aboutYouText.contains("30 Apr 2025") && aboutYouText.contains("India") 
+	    		&& aboutYouText.contains("24")) {
+	        ExtentsReportManager.extentReportLogging("pass", "Name and DOJ are correctly displayed in the description.");
+	    } else {
+	        ExtentsReportManager.extentReportLogging("fail", "Mismatch in Name or DOJ in the description.");
+	    }
+
+	} catch (Exception e) {
+	    ExtentsReportManager.extentReportLogging("fail", "Exception occurred while validating About You section<br />" + e);
+	    throw e;
+	}
+	
+}
+
+public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios() {
+	try {
+	    String aboutYouText = driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'Manupreprod') and contains(@name, 'India') and contains(@name, '24 year-old') and contains(@name, 'App Debut')]")).getText();
+	    if (aboutYouText.contains("ManuPreprod") && aboutYouText.contains("Preprod")
+	    		&& aboutYouText.contains("30 Apr 2025") && aboutYouText.contains("India") 
+	    		&& aboutYouText.contains("24")) {
+	        ExtentsReportManager.extentReportLogging("pass", "Name and DOJ are correctly displayed in the description.");
+	    } else {
+	        ExtentsReportManager.extentReportLogging("fail", "Mismatch in Name or DOJ in the description.");
+	    }
+	} catch (Exception e) {
+	    ExtentsReportManager.extentReportLogging("fail", "Exception occurred while validating About You section<br />" + e);
+	    throw e;
+	}
+	
+}
+
+public String getUserPersonalizedDescription() {
+	  String device = GlobalParams.getPlatformName();
+	    try {
+	        waitForVisibilityFluentWait(myUnitedPageLocators.descAboutYouMyuniteScreen, 60);
+	        ExtentsReportManager.extentReportLogging("pass", "Returned personalized user description text");
+
+	        if (device.equalsIgnoreCase("android")) {
+	            return myUnitedPageLocators.descAboutYouMyuniteScreen.getText();
+	        } else {
+	            return myUnitedPageLocators.descAboutYouMyuniteScreen.getDomAttribute("label");
+	        }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	            "Exception occurred in function-getUserPersonalizedDescription()<br />" + e);
+	        throw e;
+	    }
+}}
 	
 
 	

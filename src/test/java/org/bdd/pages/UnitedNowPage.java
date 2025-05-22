@@ -274,7 +274,7 @@ public class UnitedNowPage extends Common {
 		}
 	}
 
-	public void clickCalenderIcon1() {
+	public void clickCalenderIcon() {
 		try {
 			elementToBeClickableFluentWait(unitedNowPageLocators.calenderIconUnitedPage, 60);
 			unitedNowPageLocators.calenderIconUnitedPage.click();
@@ -290,7 +290,7 @@ public class UnitedNowPage extends Common {
 
 	}
 	
-	public void clickCalenderIcon() throws Exception {
+	public void clickCalenderIcon1() throws Exception {
 	    String device = GlobalParams.getPlatformName();
 	    By calenderIconLocator;
 
