@@ -1288,7 +1288,7 @@ public class MyUnitedAndroidStepDef {
             String actualtshirt = myUnitedPage.getTshirtNames();
             soft.assertTrue(actualtshirt.equalsIgnoreCase(exptShirt),"T shirt name is not matching with expected " +exptShirt);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Validated actual t shirt name "+ actualtshirt +" with expected "+exptShirt);
+            ExtentsReportManager.extentReportLogging("info", "Validated actual t shirt name "+ actualtshirt.toUpperCase() +" with expected "+exptShirt);
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in validating t shirt name  <br />" + e);
             throw e;
