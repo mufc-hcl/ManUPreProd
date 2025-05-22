@@ -373,7 +373,7 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clicksSearchInUnitedScreen1() {
+	public void clicksSearchInUnitedScreen() {
 		try {
 			elementToBeClickableFluentWait(explorePageLocators.searchButtonUnitedPage, 60);
 			explorePageLocators.searchButtonUnitedPage.click();
@@ -390,11 +390,11 @@ public class ExplorePage extends Common {
 
 	}
 
-	public void clicksSearchInUnitedScreen() throws Exception {
+	public void clicksSearchInUnitedScreen1() throws Exception {
 		String device = GlobalParams.getPlatformName();
 		By searchButtonLocator;
 		if (device.equalsIgnoreCase("android")) {
-			 searchButtonLocator = AppiumBy.accessibilityId("Search"); 
+			 searchButtonLocator = AppiumBy.xpath("//android.widget.ImageView[@content-desc='Search']"); 
 //			 if (!explorePageLocators.notificationUnitedNowBottomScreen.isEmpty()) {
 //				 explorePageLocators.notificationUnitedNowBottomScreen.get(0).click();
 //	                ExtentsReportManager.extentReportLogging("pass", "Clicks on notificationUnitedNowBottomScreen ");
@@ -412,7 +412,7 @@ public class ExplorePage extends Common {
 	        try {
 	             driver.getPageSource();
 	             WebElement searchButton = driver.findElement(searchButtonLocator);
-          	    elementToBeClickableFluentWait(searchButton, 60);
+          	    elementToBeClickableFluentWait(searchButton, 10);
 	            //WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(searchButtonLocator));
 
 	            // Click it
@@ -422,7 +422,7 @@ public class ExplorePage extends Common {
 	            return;
 
 	        } catch ( WebDriverException e) {
-	            System.out.println("Attempt " + (attempts + 1) + ": Element issue (stale/not interactable). Retrying...");
+	            System.out.println("Attempt " + (attempts + 1) + ": Element issue (stale/not interactable). Retrying Clicking on search button...");
 	            attempts++;
 	            Thread.sleep(1000);
 	        }
