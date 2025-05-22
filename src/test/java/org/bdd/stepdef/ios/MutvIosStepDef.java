@@ -997,7 +997,43 @@ public class MutvIosStepDef {
         }
 	}
 
-}
+	@And("^user checks for UTD Podcast in MUTV in ios$")
+	public void userChecksForUTDPodcastInMUTVInIos() throws Throwable {
+		try {	        
+	    	   mutvPage.checksForUTDProdcastInMUTVInIos();
+	        ExtentsReportManager.extentReportLogging("info", "checked for UTD Prodcast in MUTV");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "checking for UTD Prodcast in MUTV.<br />" + e);
+	        throw e;
+	    }
+	}
+
+	@Then("^user clicks on first podcast in MUTV in ios$")
+	public void userClicksOnFirstPodcastInMUTVInIos() throws Throwable {
+		try {
+            mutvPage.clicksOnFirstPodcastInMUTV();
+            ExtentsReportManager.extentReportLogging("info", "clicked on first podcast in MUTV");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on first podcast in MUTV <br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates play button in podcast audio screen in ios$")
+	public void userValidatesPlayButtonInPodcastAudioScreenInIos() throws Throwable {
+		try {	        
+			boolean isValid  =mutvPage.validatesPlayButtonInPodcastAudioScreen();
+			soft.assertTrue(isValid);
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "validated play button in podcast audio screen");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "validating play button in podcast audio screen.<br />" + e);
+	        throw e;
+	    }
+	}
+	}
+
+
 //
 //    @And("user clicks on not now button in match appearance alert screen")
 //    public void userClicksOnNotNowButtonInMatchAppearanceAlertScreen() {

@@ -532,38 +532,47 @@ public class MutvPage extends Common {
 //        }
 //    }
     
-    public boolean clicksOnTheHeroCarouselDotsInMutvScreen() {
-        try {
-            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
-            if (dots == null || dots.isEmpty()) {
-                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
-                return false;
-            }
-
-            for (WebElement dot : dots) {
-                if (dot.isDisplayed()) {
-                    try {
-                        dot.click();
-                        ExtentsReportManager.extentReportLogging("pass", "Clicked on heroCarouselDotsMutvPage");
-                    } catch (Exception clickError) {
-                        ExtentsReportManager.extentReportLogging("fail", "Click failed on a visible heroCarouselDot: " + clickError);
-                        return false;
-                    }
-                } else {
-                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
-                    return false;
-                }
-            }
-
-            return true;
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging(
-                "fail",
-                "Exception in clicksOnTheHeroCarouselDotsInMutvScreen()<br />" + e
-            );
-            return false;
-        }
+    public boolean clicksOnTheHeroCarouselInMutvScreen() {
+    	try {
+			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
+			return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validatesHeroCardInShopScreen()<br />" + e);
+			throw e;
+		}
     }
+//        try {
+//            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
+//            if (dots == null || dots.isEmpty()) {
+//                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
+//                return false;
+//            }
+//
+//            for (WebElement dot : dots) {
+//                if (dot.isDisplayed()) {
+//                    try {
+//                        dot.click();
+//                        ExtentsReportManager.extentReportLogging("pass", "Clicked on heroCarouselDotsMutvPage");
+//                    } catch (Exception clickError) {
+//                        ExtentsReportManager.extentReportLogging("fail", "Click failed on a visible heroCarouselDot: " + clickError);
+//                        return false;
+//                    }
+//                } else {
+//                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
+//                    return false;
+//                }
+//            }
+//
+//            return true;
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging(
+//                "fail",
+//                "Exception in clicksOnTheHeroCarouselDotsInMutvScreen()<br />" + e
+//            );
+//            return false;
+//        }
+//    }
 
 
 
@@ -584,35 +593,43 @@ public class MutvPage extends Common {
 //    }
     
     public boolean clicksOnTheHeroCarouselDotsInMutvScreenIos() {
-        try {
-            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
-            if (dots == null || dots.isEmpty()) {
-                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
-                return false;
-            }
-
-            for (WebElement dot : dots) {
-                if (dot.isDisplayed()) {
-                    try {
-                        ExtentsReportManager.extentReportLogging("pass", "Swiping to heroCarouselDot");
-                       // System.out.println(dot);
-                        swipeWithCoordinates(299, 297, 88, 310, 200, "left", driver);
-                    } catch (Exception swipeError) {
-                        ExtentsReportManager.extentReportLogging("fail", "Swipe failed for heroCarouselDot: " + swipeError);
-                        return false;
-                    }
-                } else {
-                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
-                    return false;
-                }
-            }
-
-            return true;
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception in clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
-            return false;
-        }
+    	try {
+			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
+			return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validatesHeroCardInShopScreen()<br />" + e);
+			throw e;
+		}
     }
+//            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
+//            if (dots == null || dots.isEmpty()) {
+//                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
+//                return false;
+//            }
+//
+//            for (WebElement dot : dots) {
+//                if (dot.isDisplayed()) {
+//                    try {
+//                        ExtentsReportManager.extentReportLogging("pass", "Swiping to heroCarouselDot");
+//                       // System.out.println(dot);
+//                        swipeWithCoordinates(299, 297, 88, 310, 200, "left", driver);
+//                    } catch (Exception swipeError) {
+//                        ExtentsReportManager.extentReportLogging("fail", "Swipe failed for heroCarouselDot: " + swipeError);
+//                        return false;
+//                    }
+//                } else {
+//                    ExtentsReportManager.extentReportLogging("fail", "heroCarouselDot is not displayed.");
+//                    return false;
+//                }
+//            }
+//
+//            return true;
+//        } catch (Exception e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Exception in clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
+//            return false;
+//        }
+//    }
 
 
     public boolean validateTimeInScheduleScreen() {
@@ -2042,5 +2059,112 @@ public class MutvPage extends Common {
 		}
 
 
-}
+		public void checksForUTDProdcastInMUTV() {
+			try {
+				for (int i = 0; i < 20; i++) {
+					if (!(mutvPageLocators.uTDPodcastMUTV.size() > 0)) {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					} else {
+						break;
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "found UTD PODCAST in MUTV");
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Exception occured in function-checksForUTDProdcastInMUTV()<br />" + e);
+				throw e;
+			}
+			
+		}
+
+
+		public void clicksOnFirstPodcastInMUTV() {
+			try {
+				if(mutvPageLocators.podcastInMUTV.isDisplayed()){
+	          elementToBeClickableFluentWait(mutvPageLocators.podcastInMUTV,60);
+	          mutvPageLocators.podcastInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      } else {
+	    	  elementToBeClickableFluentWait(mutvPageLocators.podcastInMUTV,60);
+	          mutvPageLocators.podcastInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      }
+	      }
+	      catch (Exception e) {
+	          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnFirstPodcastInMUTV()<br />" + e);
+	          throw e;
+	      }
+			
+		}
+
+
+		public boolean validatesPlayButtonInPodcastAudioScreen() {
+		    String device = GlobalParams.getPlatformName();
+		    try {
+		        if (device.equalsIgnoreCase("android")) {
+		            if (mutvPageLocators.playButtonInPodcastAudioScreen.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast video in MUTV");
+		                return true;
+		            }
+		        } else {
+		            if (mutvPageLocators.playButtonInPodcastAudioScreen.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast video in MUTV");
+		                return true;
+		            }
+		        }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validatesPlayButtonInPodcastAudioScreen()<br />" + e);
+		        return false;
+		    }
+		    return false; 
+		}
+			
+			
+		
+
+
+		public void checksForUTDProdcastInMUTVInIos() {
+			try {
+				for (int i = 0; i < 20; i++) {
+					if (!(mutvPageLocators.uTDPodcastMUTV.size() > 0)) {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					} else {
+						break;
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "found UTD PODCAST in MUTV");
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Exception occured in function-checksForUTDProdcastInMUTV()<br />" + e);
+				throw e;
+			}
+			
+		}
+
+
+		public void clicksOnFirstPodcastInMUTVInIos() {
+			try {
+				if(mutvPageLocators.podcastInMUTV.isDisplayed()){
+	          elementToBeClickableFluentWait(mutvPageLocators.podcastInMUTV,60);
+	          mutvPageLocators.podcastInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      } else {
+	    	  elementToBeClickableFluentWait(mutvPageLocators.podcastInMUTV,60);
+	          mutvPageLocators.podcastInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      }
+	      }
+	      catch (Exception e) {
+	          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnFirstPodcastInMUTV()<br />" + e);
+	          throw e;
+	      }
+			
+		}
+		}
+
+
+		
+
+
+
 		

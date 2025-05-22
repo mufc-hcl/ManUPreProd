@@ -413,7 +413,8 @@ public class ShopAndroidStepDef {
 	            ArrayList<String> expectedShopMenuItems = new ArrayList<>();
 	            expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("shopMenuItesmEndPoint");
 	            shopPage.clicksOnOkButtonInCookiesScreenInShop();
-	            shopPage.clickingOnTabs(expectedShopMenuItems);
+	             boolean flag =shopPage.clickingOnTabs(expectedShopMenuItems);
+	             soft.assertTrue(flag,"shop tab content is not displayed");
 	            soft.assertAll();
 	            ExtentsReportManager.extentReportLogging("info", "validated shop tabs and content in it using API");
 

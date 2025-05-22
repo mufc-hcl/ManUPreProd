@@ -8,7 +8,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class MutvPageLocators {
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \':id/navigation_bar_item_small_label_view\') and @text=\"MUTV\"]")
+	@AndroidFindBy(xpath = "(//android.widget.FrameLayout[@resource-id[contains(., \"navigation_bar_item_icon_container\")]])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"MUTV\"]")
 	public WebElement mutvTabMutvScreen;
 
@@ -113,9 +113,10 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/header\')]")
 	public List<WebElement> headerCBRCBSPage1;
 
-	@AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[contains(@resource-id, \':id/tabDots\')]/android.widget.LinearLayout/android.widget.LinearLayout")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
-	public List<WebElement> heroCarouselDotsMutvPage;
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, 'mutv_view_pager_container')]/android.widget.LinearLayout")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]")
+	public WebElement heroCarouselInMutvPage;
+	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/epg_time\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
 	public WebElement epgTimeSchedulePage;
@@ -350,6 +351,18 @@ public class MutvPageLocators {
 	
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Subscribe to watch\"])[1]")
 	public List<WebElement> cbsBadgeEpgScheduleScreen1;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, \"PODCAST\")]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UTD PODCAST\"]")
+	public List<WebElement> uTDPodcastMUTV;
+	
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/image_thumnial\"])[4]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name, \"UTD Podcast\")]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
+	public WebElement podcastInMUTV;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Watch Now Button\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Pause\"]")
+	public WebElement playButtonInPodcastAudioScreen;
 }
 
 

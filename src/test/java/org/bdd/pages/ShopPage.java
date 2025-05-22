@@ -886,6 +886,7 @@ public class ShopPage extends Common {
 			for (int i = 0; i < 20; i++) {
 				if (!(shopPageLocators.springSaleMerchTab.size() > 0)) {
 					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					return true;
 				} else {
 					break;
 				}
@@ -905,6 +906,7 @@ public class ShopPage extends Common {
 			for (int i = 0; i < 20; i++) {
 				if (!(shopPageLocators.springSaleMerchTabInIOS.size() > 0)) {
 					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					return true;
 				} else {
 					break;
 				}
@@ -954,10 +956,9 @@ public class ShopPage extends Common {
 			}
 				}
 
-	public void clickingOnTabs(ArrayList<String> expectedShopMenuItems) throws Exception {
+	public boolean clickingOnTabs(ArrayList<String> expectedShopMenuItems) throws Exception {
 		 String device = GlobalParams.getPlatformName();
-	        ;
-	        
+		 boolean flag = false;
 	        try {
 	        	for(String menuItem:expectedShopMenuItems) {
 	        		
@@ -968,14 +969,18 @@ public class ShopPage extends Common {
 	                                        + menuItem.toUpperCase() + "']"))
 	                        .click();
 	                if(menuItem.equalsIgnoreCase("STORE")||menuItem.equalsIgnoreCase("MERCH")) {
-	                	userValidatesSmallCardCarouselsInMerchTab();
+	                return	userValidatesSmallCardCarouselsInMerchTab();
+	                
 	                }
 	                if(menuItem.equalsIgnoreCase("MEMBERSHIP")) {
 	                	String expKitsTextFromAPI = shopAPI.getCarosel1ForKitsTextApi("ShopMembershipCarouselEndPoint");
 	                    String actualKitsTextFromAPI = getTextforCarosel1ForKits(expKitsTextFromAPI);
-	                   // soft.assertEquals(actualKitsTextFromAPI.toUpperCase(), expKitsTextFromAPI.toUpperCase());
+	                     flag= actualKitsTextFromAPI.equalsIgnoreCase(expKitsTextFromAPI);
+//	                    soft.assertEquals(actualKitsTextFromAPI.toUpperCase(), expKitsTextFromAPI.toUpperCase());
 	                }
+	                
 	                ExtentsReportManager.extentReportLogging("pass", "Clicks on Shop Tabs ");
+	                return flag;
 	            } else {
 	                //driver.findElement(AppiumBy.accessibilityId(menuItem ))
 	                        //.click();
@@ -984,11 +989,12 @@ public class ShopPage extends Common {
                                     + menuItem.toUpperCase() + "')]"))
                     .click();
 	                if(menuItem.equalsIgnoreCase("STORE")||menuItem.equalsIgnoreCase("MERCH")) {
-	                	userValidatesSmallCardCarouselsInMerchTabInIOS();
+	                return	userValidatesSmallCardCarouselsInMerchTabInIOS();
 	                }
 	                if(menuItem.equalsIgnoreCase("MEMBERSHIP")) {
 	                	String expKitsTextFromAPI = shopAPI.getCarosel1ForKitsTextApi("ShopMembershipCarouselEndPoint");
 	                    String actualKitsTextFromAPI = getTextforCarosel1ForKits(expKitsTextFromAPI);
+	                    flag= actualKitsTextFromAPI.equalsIgnoreCase(expKitsTextFromAPI);
 	                   // soft.assertEquals(actualKitsTextFromAPI.toUpperCase(), expKitsTextFromAPI.toUpperCase());
 	                }
 	                ExtentsReportManager.extentReportLogging("pass", "Clicks on Shop Tabs ");
@@ -998,6 +1004,7 @@ public class ShopPage extends Common {
 	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clickingOnTabs()<br />" + e);
 	            throw e;
 	        }
+			return flag;
 	    }
 
 	public void clicksOnOkButtonInCookiesScreenInShop() throws Exception {

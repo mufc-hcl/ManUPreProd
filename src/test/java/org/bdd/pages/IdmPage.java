@@ -48,7 +48,7 @@ public class IdmPage extends Common {
             idmPageLocators.loginButton.click();
             ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
         } catch (Exception e) {
-           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clickOnContactUs()<br />" + e);
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnLogInButton()<br />" + e);
            throw e;
         }
     }

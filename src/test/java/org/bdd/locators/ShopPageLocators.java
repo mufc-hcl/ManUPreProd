@@ -17,7 +17,7 @@ import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
 public class ShopPageLocators {
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'navigation_bar_item_small_label_view') and contains(@text, 'Shop')]")
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \"navigation_bar_item_icon_view\")])[3]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Shop\"]")
 	public WebElement shopTabIcon;
 
