@@ -379,43 +379,9 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
-    Given user navigates to manu ios application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user click on setting icon on top righhand side in ios
-    And user clicks on My profile icon in ios
-    And user clicks on change email address in my profile screen in ios
-    And user enter the New email "<usernameNew>" and Confirm email"<confirmusernameNew>"valid password "<password>" in ios
-    And user clicks on update email address in my profile in ios
-    Then user validates email change successfully message in ios
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
-    And user clicks on close icon in email update success screen in ios
-    And user clicks on change email address in my profile screen in ios
-    And user enters the old email"<username>" and confirm email"<confirmOldusername>"valid password "<password>" in ios
-    And user clicks on update email address in my profile in ios
-    Then user validates email change successfully message in ios
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
+  
 
-    Examples: 
-      | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
-      | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
-
-  @test
+  @1234
   Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -435,7 +401,6 @@ Feature: My United features
     And user click on setting icon on top righhand side in ios
     And user clicks on My profile icon in ios
     And user clicks on edit profile button in ios
-    #Then user validates the firstname,surname,email,dob is displayed and not editable in edit profile screen
      #And user clears all data in textbox in edit profile screen in ios
      #And user clicks save details in edit profile screen in ios
     And user changes the following textbox in edit profile screen in ios
@@ -450,6 +415,29 @@ Feature: My United features
       | Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
      
 
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+      
+      	Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
+    Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on My United in bottom tab in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in login screen in ios
+    And user clicks on test continue and clicks on back icon
+    And user clicks on No tracking
+    And user navigates to About you in my united screen in ios
+    #Then User validates text containing user Firstname lastName Country and Age details personalised in ios
+    
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |

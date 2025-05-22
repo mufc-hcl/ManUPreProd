@@ -1648,6 +1648,29 @@ public class MyUnitedIosStepDef {
         }
 	}
 
+	@And("^user navigates to About you in my united screen in ios$")
+	public void userNavigatesToAboutYouInMyUnitedScreenInIos() throws Throwable {
+		try {
+            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^User validates text containing user Firstname lastName Country and Age details personalised in ios$")
+	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalisedInIos()
+			throws Throwable {
+		try {
+            myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
 }
 	
 

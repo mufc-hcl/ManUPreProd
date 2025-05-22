@@ -666,6 +666,14 @@ public class MyUnitedPageLocators {
    	public WebElement pinCodeInEditProfile;
  	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Test12345\"]")
    	public WebElement pinCodeInEditProfile1;
+ 	
+ 	 @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"txt_abt_me\")]")
+ 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ABOUT YOU\"]")
+   	public List<WebElement> aboutYouMyUnitedScreen;
+ 	 
+ 	 @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"txt_abt_me\")]")
+  	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ABOUT YOU\"]")
+    	public WebElement descAboutYouMyuniteScreen;
     
     
     

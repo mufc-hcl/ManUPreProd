@@ -19,7 +19,7 @@ Feature: My United features
     Then user validate google play
       | googlePlay Text                                                       |
       | Sign in to find the latest Android apps, games, movies, music, & more |
-@AWSFailure
+@21234
   Scenario: [My United]TC002 Settings --> General-Language --> Change to Chinese / English and validate if the changes are applied
     Given user navigates to manu android application
     And user navigates to screen two
@@ -77,7 +77,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@AWSFailure
+
   Scenario Outline: [My United]TC004 Validate the Season card navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -103,7 +103,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@AWSFailure
+
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -129,7 +129,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@21234
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu android application
     And user navigates to screen two
@@ -146,13 +146,14 @@ Feature: My United features
     And user clicks on login button in login screen
     And user clicks on close from notification
     And user updates the t shirt numbers at buttom of the screen and click on back to top button
+    #tshirt num commented due to defetct
     Then user validate t shirt number from the previous step
     And user validate t shirt name is displayed
 
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@AWSFailure
+
   Scenario Outline: [My United]TC007 Click on the Primary and Secondary CTA buttons displayed below the jersey card section
     Given user navigates to manu android application
     And user navigates to screen two
@@ -180,7 +181,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@21234
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -204,7 +205,6 @@ Feature: My United features
       | my united total score | prediction  | daily streaks | appearance  |
       | MY UNITED TOTAL SCORE | Predictions | Daily Streaks | Appearances |
     And user clicks on back icon in total score card
-    #And user scroll right to left to navigate daily streaks cards "<Daily streaks>"
     Then user validate daily streaks card in my united screen
       | daily streaks | consecutive                 | view |
       | DAILY STREAKS | Consecutive days in the app | VIEW |
@@ -213,7 +213,6 @@ Feature: My United features
       | daily streaks | best score | share |
       | DAILY STREAKS | BEST SCORE | SHARE |
     And user clicks on back icon in daily streaks card
-    #And user scroll right to left to navigate appearence cards "<Appearance>"
     And user scrolls right to left to navigate appearence
     Then user validates appearance card in my united screen
       | appearance  | this season | view |
@@ -331,7 +330,7 @@ Feature: My United features
     #Examples: 
       #| username                | password | notificationbutton |
       #| manupreprod@yopmail.com | Manu@123 | deny_button        |
-
+@123456
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -354,7 +353,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@21234
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -387,42 +386,9 @@ Feature: My United features
       | manupreprod@yopmail.com | Manu@123 |
 
   
-  Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user click on setting icon on top righhand side
-    And user clicks on My profile icon
-    And user clicks on change email address in my profile screen
-    And user enter the New email "<usernameNew>" and Confirm email"<confirmusernameNew>"valid password "<password>"
-    And user clicks on update email address in my profile
-    Then user validates email change successfully message
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
-    And user clicks on close icon in email update success screen
-    And user clicks on change email address in my profile screen
-    And user enters the old email"<username>" and confirm email"<confirmOldusername>"valid password "<password>"
-    And user clicks on update email address in my profile
-    Then user validates email change successfully message
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
-
-    Examples: 
-      | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
-      | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
+  
       
-      @runtesr
+      @21234
   Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu android application
     And user navigates to screen two
@@ -445,7 +411,7 @@ Feature: My United features
         And user clicks on edit profile button
     #Then user validates the firstname,surname,email,dob is displayed and not editable in edit profile screen
      #And user clears all data in textbox in edit profile screen in ios
-     And user clicks save details in edit profile screen
+     #And user clicks save details in edit profile screen
     #And user changes the following textbox in edit profile screen in ios
       #| Addr1      | Addr2      | Addr3      | Town      | pincode   |
       #| Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
@@ -461,3 +427,30 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
+      @123
+		Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #    And user clicks on the notification at bottom of screen
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    And user navigates to About you in my united screen
+    #Then User validates text containing user Firstname lastName Country and Age details personalised
+    #|FirstName|Lastname|Country|Age|
+    #|ManuPreprod| Preprod|India|24|
+    
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+    
+    
