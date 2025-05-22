@@ -2436,7 +2436,7 @@ public class ExplorePage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				
-				List<WebElement> allData = driver.findElements(By.xpath("//*[@id='component-tabs']"));
+				List<WebElement> allData = driver.findElements(By.xpath("//android.widget.FrameLayout[contains(@resource-id, \"ripple_view_background\")]"));
 				if (allData.size() > 0) {
 					ExtentsReportManager.extentReportLogging("pass", "Data found from suggestion in search screen");
 					return true;

@@ -341,21 +341,21 @@ Feature: Explore
     And user enters three character in search for "mut" in page filter
     Then user validate suggestion are displayed
 
-  #@AndroidTC027 - SwhichToVwebView not working evenafter implementation using SwhithcToVwebView as still it is Pointing to Native app
-  #Scenario Outline: [Explore]TC027 Validate the search results screen UI , Data and the filter functionality
-  #Given user navigates to manu android application
-  #And user navigates to screen two
-  #And user navigates to screen three
-  #And user navigates to screen four
-  #And user click on skip button in screen four
-  #And user clicks on ok button in cookies screen
-  #And user clicks continue in MUApp popup
-  #And user clicks on not now button in match appearance alert screen
-  #And user clicks on braze in app msg
-  #And user clicks search button in united screen
-  #And user enters three character in search for "mut" in page filter
-  #And user select first item from suggestion
-  #Then user validate data in search screen
+  Scenario Outline: [Explore]TC027 Validate the search results screen UI , Data and the filter functionality
+  Given user navigates to manu android application
+  And user navigates to screen two
+  And user navigates to screen three
+  And user navigates to screen four
+  And user click on skip button in screen four
+  And user clicks on ok button in cookies screen
+  And user clicks continue in MUApp popup
+  And user clicks on not now button in match appearance alert screen
+  And user clicks on braze in app msg
+  And user clicks search button in united screen
+  And user enters three character in search for "mutv" in page filter
+  And user select first item from suggestion
+  Then user validate data in search screen
+  
   Scenario Outline: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
     Given user navigates to manu android application
     And user navigates to screen two
