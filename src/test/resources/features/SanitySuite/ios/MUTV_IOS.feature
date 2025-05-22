@@ -144,7 +144,7 @@ Feature: MUTV IOS feature
 
     Examples: 
       | notificationbutton | username                | password |
-      | allow_button       | manupreprod@yopmail.com | Manu@123 |
+      | allow_button       | qastgtest@yopmail.com | Mu@12345 |
 
   Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
     Given user navigates to manu android application
@@ -168,9 +168,9 @@ Feature: MUTV IOS feature
     And user clicks on login button in subscribe screen in ios
 
     #And user clicks on play Icon for CBS video
-    Examples: 
+     Examples: 
       | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+      | qastgtest@yopmail.com | Mu@12345 |
 
   Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen
     Given user navigates to manu android application
@@ -238,3 +238,27 @@ Feature: MUTV IOS feature
     Then user validates the CBS/CBR badges is not displayed for current program in ios
     Then user validates the CBS/CBR badges display for previous schedule program in ios
     Then user validates the CBS/CBR badges display for future schedule program in ios
+    
+     Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+    Given user navigates to manu android application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user clicks on Mutv tab in ios
+    And user clicks on explore icon in ios
+    And user checks for UTD Podcast in MUTV in ios
+    Then user clicks on first podcast in MUTV in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in subscribe screen in ios
+    Then user validates play button in podcast audio screen in ios
+    
+     Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+    

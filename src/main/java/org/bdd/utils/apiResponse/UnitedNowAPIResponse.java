@@ -1129,11 +1129,11 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	        JsonPath js = new JsonPath(res.asString());
 
 	        List<Object> groups = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups");
-	        ExtentsReportManager.extentReportLogging( "info","Group count = " + groups.size());
+//	        ExtentsReportManager.extentReportLogging( "info","Group count = " + groups.size());
 
 	        for (int i = 0; i < groups.size(); i++) {
 	            List<Object> docs = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs");
-	            ExtentsReportManager.extentReportLogging( "info","Docs in group " + i + " = " + docs.size());
+//	            ExtentsReportManager.extentReportLogging( "info","Docs in group " + i + " = " + docs.size());
 
 	            for (int j = 0; j < docs.size(); j++) {
 	                List<Object> sponsorDetails = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs[" + j + "].sponsordetailinfo_s");

@@ -1,6 +1,6 @@
 @Sanity_Android @Explore_Android
 Feature: Explore
-
+@AWSFailure
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -56,6 +56,7 @@ Feature: Explore
   #    Then user validates the success message
   #      | success message             |
   #      | Feedback sent successfully. |
+  @AWSFailure
   Scenario: [Explore]TC007-TC012 Help --> Contact Us &CTA (Hybrid Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -154,7 +155,7 @@ Feature: Explore
     And user clicks search button in united screen
     And user clicks shop courosel in search screen
     Then user validates all the tabs names in shop screen using API
-
+@AWSFailure
   Scenario: [Explore]TC016 My Tickets -> should be Hybrid Page
     Given user navigates to manu android application
     And user navigates to screen two

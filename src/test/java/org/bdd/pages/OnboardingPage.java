@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bdd.locators.OnboardingPageLocators;
 import org.bdd.utils.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -709,15 +710,34 @@ public class OnboardingPage extends Common {
         }
     }
 
-    public void clicksOnCancelButtonInAppleIdScreen() {
-        try {
-            elementToBeClickableFluentWait(onboardingPageLocators.cancelButtonAppleIdScreen, 60);
-            onboardingPageLocators.cancelButtonAppleIdScreen.click();
-            ExtentsReportManager.extentReportLogging("pass", "Clicks on cancel button in apple id");
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-clicksOnCancelButtonInAppleIdScreen()<br />" + e);
-            throw e;
-        }
+    public void clicksOnCancelButtonInAppleIdScreen() throws Exception {
+    	try {
+//          waitForVisibilityFluentWait(explorePageLocators.weUseCookiesTexts);
+			if (onboardingPageLocators.cancelButtonAppleIdScreen.isDisplayed()) {
+//              waitForVisibilityFluentWait(explorePageLocators.okButtonCookiesScreen);
+				onboardingPageLocators.cancelButtonAppleIdScreen.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on cancel button in IOS");
+			}
+			Thread.sleep(1000);
+		} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clicksOnCancelButtonInAppleIdScreen()<br />" + e);
+			throw e;
+		}
+		/*
+		 * try { elementToBeClickableFluentWait(onboardingPageLocators.
+		 * cancelButtonAppleIdScreen, 60);
+		 * onboardingPageLocators.cancelButtonAppleIdScreen.click();
+		 * ExtentsReportManager.extentReportLogging("pass",
+		 * "Clicks on cancel button in apple id"); } catch (Exception e) {
+		 * ExtentsReportManager.extentReportLogging("fail",
+		 * "Exception occurred in function-clicksOnCancelButtonInAppleIdScreen()<br />"
+		 * + e); throw e; }
+		 */
     }
 
     public String selectFavoritePlayerIos(String expectedPlayerName,int size) {

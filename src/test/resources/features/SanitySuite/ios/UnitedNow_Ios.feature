@@ -280,7 +280,7 @@ Feature: United now
     #Examples: 
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure1
   Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -465,13 +465,14 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen in ios
     Then user validates upsell functionality is displayed united now screen in ios using API
     
-     #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
-     #Given user navigates to manu ios application
-    #And user clicks on cancel button in apple id screen
-    #And user clicks lets go button in screen one in ios
-    #And user clicks on ask me later in screen two in ios
-    #And user clicks skip button in screen three in ios
-    #And user click on skip button in screen four in ios
-    #And user clicks on ok in the cookies screen in ios
-    #And user clicks on not now button in match appearance alert screen in ios
-    #Then user validates Sponsor logo in united now screen using API in ios
+    @Sponsor_Logo
+     Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
+     Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    Then user validates Sponsor logo in united now screen using API in ios

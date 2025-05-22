@@ -36,8 +36,9 @@ Feature: MUTV Feature
     And user validate MUTV Today Schecule description using api
     Then user validate list containing schedules for next seven days
     And user clicks on Back icon
+    
 
-  Scenario: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
+  Scenario Outline: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -49,7 +50,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email and valid password for subscribed user
+    And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -69,7 +71,11 @@ Feature: MUTV Feature
     And user click on greater than symbol button in my list screen
     And user clicks on MyList icon
     Then user validate no videos in mylist screen
-
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+    
+@AWSFailure
   Scenario Outline: [MUTV]TC008 Verify that CBS badges display for  subscribe display
     Given user navigates to manu android application
     And user navigates to screen two
@@ -85,7 +91,8 @@ Feature: MUTV Feature
     And user selects the video and check CBS badge
     Then validate subscribe screen is displayed
     And user clicks on log in button in subscribe page
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -118,6 +125,7 @@ Feature: MUTV Feature
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
+
   Scenario: [MUTV]TC010 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
     Given user navigates to manu android application
     And user navigates to screen two
@@ -145,7 +153,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -162,7 +171,8 @@ Feature: MUTV Feature
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+      
+@MUTV_bbbb
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -175,6 +185,7 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
+    #And user enter the valid email and valid password for subscribed user
     And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
@@ -205,7 +216,8 @@ Feature: MUTV Feature
 
     Examples: 
       | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+      | qastgtest@yopmail.com | Mu@12345 |
+      
 
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
@@ -232,9 +244,9 @@ Feature: MUTV Feature
     And user clicks on pause icon in the played video
     And user clicks on the close button in the played video
 
-    Examples: 
+     Examples: 
       | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+      | qastgtest@yopmail.com | Mu@12345 |
 
   #below two test caess added by Automation team and moving to regression pack
   #@APITestAndroid
@@ -266,6 +278,7 @@ Feature: MUTV Feature
   #And user clicks on explore icon
   #And user clicks on view all in MUTV screen in ios
   #Then user validate list in EPC Ten MOST EMOTIONAL MOMENTS screen
+  
   Scenario: :[Explore]TC017 Mutv search screen testcases
     Given user navigates to manu android application
     And user navigates to screen two
@@ -302,3 +315,29 @@ Feature: MUTV Feature
     Then user validates the CBS/CBR badges is not displayed for current program
     Then user validates the CBS/CBR badges display for previous schedule program
     Then user validates the CBS/CBR badges display for future schedule program
+    
+    @MUTV_Test
+    Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+     Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user clicks on Mutv tab
+    And user clicks on explore icon
+    And user checks for UTD Podcast in MUTV
+    Then user clicks on first podcast in MUTV
+    And user clicks on log in button in subscribe page
+    And user enter the valid email "<username>" and valid password "<password>"
+     And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    Then user validates play button in podcast audio screen
+    
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |

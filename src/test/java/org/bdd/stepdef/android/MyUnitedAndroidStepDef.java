@@ -1294,6 +1294,50 @@ public class MyUnitedAndroidStepDef {
             throw e;
         }
     }
+
+	@And("^user navigates to About you in my united screen$")
+	public void userNavigatesToAboutYouInMyUnitedScreen() throws Throwable {
+		try {
+            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^User validates text containing user Firstname lastName Country and Age details personalised$")
+	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalised(DataTable table) throws Throwable {
+		try {
+	        String firstName = table.cell(1, 0);
+	        String lastName = table.cell(1, 1);
+	        String country = table.cell(1, 2);
+	        String age = table.cell(1, 3);
+
+	        String expectedFullName = firstName + " " + lastName;
+	        String expectedAge = age + " year-old";
+
+	        String actualDescription = myUnitedPage.getUserPersonalizedDescription();
+
+	        soft.assertTrue(actualDescription.contains(expectedFullName), "Full name not present in description");
+	        soft.assertTrue(actualDescription.contains(country), "Country not present in description");
+	        soft.assertTrue(actualDescription.contains(expectedAge), "Age not present or incorrect in description");
+
+	        soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "Validated user personalized description");
+	    } catch (AssertionError e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Error validating user personalized description<br />" + e);
+	        throw e;
+	    }
+		
+		//		try {
+//            myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
+//            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+//            throw e;
+        }
+//	}
 }
 	
 

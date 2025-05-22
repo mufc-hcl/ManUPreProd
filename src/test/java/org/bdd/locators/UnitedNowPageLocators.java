@@ -999,9 +999,14 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(id = "Planned matchWednesday5MarchDummy Test SiteCore 11022025")
     public List<WebElement> dummyTestSiteCore;
     
-    
-    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(normalize-space(@content-desc), 'DXC') or contains(normalize-space(@content-desc), 'Adidas') or contains(normalize-space(@content-desc), 'MUTV') or contains(normalize-space(@content-desc), 'Cadbury')]")
-//    @iOSXCUITFindBy(xpath = "//XCUIElementTypePopover//XCUIElementTypeOther[2]//XCUIElementTypeButton")
+  
+    @AndroidFindBy(xpath ="//android.widget.ImageView[@content-desc=\" DXC   opens external window\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"DXC\"]")
     public List<WebElement> sponsorLogoFromUI;
+    
+    @AndroidFindBy(xpath ="//android.widget.ImageView[@content-desc=\" DXC   opens external window\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"DXC\"]")
+     public WebElement sponsorLogoFromUI1;
+     
 
 }

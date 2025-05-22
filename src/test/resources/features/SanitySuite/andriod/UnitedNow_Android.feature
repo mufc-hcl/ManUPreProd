@@ -278,7 +278,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC0018 UNITED NOW - Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -339,7 +339,7 @@ Feature: United now
     #Examples: 
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC020 UNITED NOW - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -361,7 +361,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC021 UNITED NOW - Validate the functionality of the Quote card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -383,7 +383,7 @@ Feature: United now
     Examples: 
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC022 UNITED NOW - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -444,7 +444,7 @@ Feature: United now
     #Examples: 
       #| username                | password  |
       #| manupreprod@yopmail.com | Manu@123 |
-
+@AWSFailure
   Scenario Outline: TC024 UNITED NOW - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
@@ -510,14 +510,16 @@ Feature: United now
       | username                | password  |
       | manupreprod@yopmail.com | Manu@123 |
       
-   #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
-    #Given user navigates to manu android application
-    #And user navigates to screen two
-    #And user navigates to screen three
-    #And user navigates to screen four
-    #And user click on skip button in screen four
-    #And user clicks on ok button in cookies screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on not now button in match appearance alert screen
-    #And user clicks on braze in app msg
-    #Then user validates Sponsor logo in united now screen using API
+      @Sponsor_logo
+   Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+     #And user clicks on united now tab
+    Then user validates Sponsor logo in united now screen using API

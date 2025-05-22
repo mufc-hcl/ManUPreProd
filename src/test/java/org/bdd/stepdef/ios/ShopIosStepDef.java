@@ -18,8 +18,8 @@ import io.cucumber.java.en.Then;
 public class ShopIosStepDef {
 	public SoftAssert soft = new SoftAssert();
 	public ShopPage shopPage = new ShopPage();
-    public ShopAPIResponse shopAPI =new ShopAPIResponse();
-    private static final Logger log = LogManager.getLogger(ShopPage.class);
+	public ShopAPIResponse shopAPI = new ShopAPIResponse();
+	private static final Logger log = LogManager.getLogger(ShopPage.class);
 
 	@And("^user click on shop tab in bottom tab in ios$")
 	public void userClickOnShopTabInBottomTabInIos() throws Throwable {
@@ -28,19 +28,21 @@ public class ShopIosStepDef {
 
 	@Then("^user validates all the tabs names in shop screen using API in ios$")
 	public void userValidatesAllTheTabsNamesInShopScreenUsingAPIInIos() throws Throwable {
-		 try {
-	            ArrayList<String> expectedShopMenuItems = new ArrayList<>();
-	            expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("SelectAllTextEndPoint");
-	            ExtentsReportManager.extentReportLogging("info","Expected Shop menu items"+ expectedShopMenuItems);
-	            ExtentsReportManager.extentReportLogging("info","Actual Shop menu items"+ shopPage.getShopTabText());
-	            soft.assertEquals(expectedShopMenuItems, shopPage.getShopTabText());
-	            soft.assertAll();
-	            ExtentsReportManager.extentReportLogging("info", "Clicked on Mens drop down and validated the dropdown values");
+		try {
+			ArrayList<String> expectedShopMenuItems = new ArrayList<>();
+			expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("SelectAllTextEndPoint");
+			ExtentsReportManager.extentReportLogging("info", "Expected Shop menu items" + expectedShopMenuItems);
+			ExtentsReportManager.extentReportLogging("info", "Actual Shop menu items" + shopPage.getShopTabText());
+			soft.assertEquals(expectedShopMenuItems, shopPage.getShopTabText());
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"Clicked on Mens drop down and validated the dropdown values");
 
-	        } catch (AssertionError | IOException e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Clicks on Mens drop down and error in validation of dropdown values<br />" + e);
-	            throw e;
-	        }
+		} catch (AssertionError | IOException e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Clicks on Mens drop down and error in validation of dropdown values<br />" + e);
+			throw e;
+		}
 	}
 
 	@And("^user clicks on Membership tab in shop screen in ios$")
@@ -88,15 +90,17 @@ public class ShopIosStepDef {
 
 	@Then("^user validates small card carousels in ios in Tickets tab using Api$")
 	public void userValidatesHeroCarouselsAndSmallCardCarouselsInIos() throws Throwable {
-		 try {
-	        	//data from API
-	            String expCarosel1ForKits = shopAPI.getCarosel1ForKitsTexFromCollectiblestApi("ShopTicketsTabEndPoint");
-	            String actualCarosel1ForKits = shopPage.getTextforCarosel1ForKitsCollectibles();
-	            ExtentsReportManager.extentReportLogging("info", "CAROUSEL 1 FOR KITS from API <br />"+expCarosel1ForKits);
-	            ExtentsReportManager.extentReportLogging("info", "CAROUSEL 1 FOR KITS from UI <br />"+actualCarosel1ForKits);
-	            ExtentsReportManager.extentReportLogging("info", "Verified CAROUSEL 1 FOR KITS from UI with API");
-	            soft.assertEquals(actualCarosel1ForKits.toUpperCase(), expCarosel1ForKits.toUpperCase());
-	            
+		try {
+			// data from API
+			String expCarosel1ForKits = shopAPI.getCarosel1ForKitsTexFromCollectiblestApi("ShopTicketsTabEndPoint");
+			String actualCarosel1ForKits = shopPage.getTextforCarosel1ForKitsCollectibles();
+			ExtentsReportManager.extentReportLogging("info",
+					"CAROUSEL 1 FOR KITS from API <br />" + expCarosel1ForKits);
+			ExtentsReportManager.extentReportLogging("info",
+					"CAROUSEL 1 FOR KITS from UI <br />" + actualCarosel1ForKits);
+			ExtentsReportManager.extentReportLogging("info", "Verified CAROUSEL 1 FOR KITS from UI with API");
+			soft.assertEquals(actualCarosel1ForKits.toUpperCase(), expCarosel1ForKits.toUpperCase());
+
 //	            String expMembershipBenifits = shopAPI.getCollectiblesClaimYoursTextFromCollectiblesApi("ShopCollectiblesCarouselEndPoint");
 //	            String actualMembershipBenifits = shopPage.getTextforCollectiblesClaimYoursCollectibles();
 //	            ExtentsReportManager.extentReportLogging("info", "COLLECTIBLES CLAIM YOURS from API <br />"+expMembershipBenifits);
@@ -110,17 +114,17 @@ public class ShopIosStepDef {
 //	            ExtentsReportManager.extentReportLogging("info", "COLLECTIONS & REWARDS from UI <br />"+actualHelpAndInfo);
 //	            ExtentsReportManager.extentReportLogging("info", "Verified COLLECTIONS & REWARDS from UI with API");
 //	            soft.assertEquals(actualHelpAndInfo.toUpperCase(), expHelpAndInfo.toUpperCase());
-	            
-	            soft.assertAll();
-	            
-	            ExtentsReportManager.extentReportLogging("info", "Validated hero carousel and small card carousel");
-	        } catch (AssertionError e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Error in validating hero carousel and small card carousel<br />" + e);
-	           throw e;
-	       }
-	   }
 
-	
+			soft.assertAll();
+
+			ExtentsReportManager.extentReportLogging("info", "Validated hero carousel and small card carousel");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating hero carousel and small card carousel<br />" + e);
+			throw e;
+		}
+	}
+
 //		try {
 //			shopPage.ValidatesHeroCarouselsShopTab();
 //			String expTicket = table.cell(1, 0);
@@ -231,8 +235,6 @@ public class ShopIosStepDef {
 //
 //		}
 
-	
-
 //	@And("^user clicks on Tickets tab in shop screen in ios$")
 //	public void userClicksOnTicketsTabInShopScreenInIos() throws Throwable {
 //		try {
@@ -304,23 +306,24 @@ public class ShopIosStepDef {
 
 	@Then("^user validates small card carousels in Shop tab in ios using Api$")
 	public void userValidatesSmallCardCarouselsInStoreTabInIosUsingApi() throws Throwable {
-		 try {
-	        	//data from API
-	            String expCarosel1ForKits = shopAPI.getCarosel1ForKitsTexFromStoretApi("ShopStoreCarouselEndPoint");
-	            String actualCarosel1ForKits = shopPage.getTextforCarosel1ForKitsStore();
-	            ExtentsReportManager.extentReportLogging("info", "CAROUSEL 1 FOR KITS from API <br />"+expCarosel1ForKits);
-	            ExtentsReportManager.extentReportLogging("info", "CAROUSEL 1 FOR KITS from UI <br />"+actualCarosel1ForKits);
-	            ExtentsReportManager.extentReportLogging("info", "Verified CAROUSEL 1 FOR KITS from UI with API");
-	            soft.assertEquals(actualCarosel1ForKits.toUpperCase(), expCarosel1ForKits.toUpperCase());
-	            
-	            
-	            String expPlayers = shopAPI.getPlayersTextFromCollectiblesApi("ShopStoreCarouselEndPoint");
-	            String actualPlayers = shopPage.getTextforPlayersStore();
-	            ExtentsReportManager.extentReportLogging("info", "PLAYERS API <br />"+expPlayers);
-	            ExtentsReportManager.extentReportLogging("info", "PLAYERS UI <br />"+actualPlayers);
-	            ExtentsReportManager.extentReportLogging("info", "Verified PLAYERS from UI with API");
-	            soft.assertEquals(actualPlayers.toUpperCase(), expPlayers.toUpperCase());
-	            
+		try {
+			// data from API
+			String expCarosel1ForKits = shopAPI.getCarosel1ForKitsTexFromStoretApi("ShopStoreCarouselEndPoint");
+			String actualCarosel1ForKits = shopPage.getTextforCarosel1ForKitsStore();
+			ExtentsReportManager.extentReportLogging("info",
+					"CAROUSEL 1 FOR KITS from API <br />" + expCarosel1ForKits);
+			ExtentsReportManager.extentReportLogging("info",
+					"CAROUSEL 1 FOR KITS from UI <br />" + actualCarosel1ForKits);
+			ExtentsReportManager.extentReportLogging("info", "Verified CAROUSEL 1 FOR KITS from UI with API");
+			soft.assertEquals(actualCarosel1ForKits.toUpperCase(), expCarosel1ForKits.toUpperCase());
+
+			String expPlayers = shopAPI.getPlayersTextFromCollectiblesApi("ShopStoreCarouselEndPoint");
+			String actualPlayers = shopPage.getTextforPlayersStore();
+			ExtentsReportManager.extentReportLogging("info", "PLAYERS API <br />" + expPlayers);
+			ExtentsReportManager.extentReportLogging("info", "PLAYERS UI <br />" + actualPlayers);
+			ExtentsReportManager.extentReportLogging("info", "Verified PLAYERS from UI with API");
+			soft.assertEquals(actualPlayers.toUpperCase(), expPlayers.toUpperCase());
+
 //	            String expTicketsAndHospitality = shopAPI.getTicketsAndHospitalityTextFromStoreApi("ShopStoreCarouselEndPoint");
 //	            String actualTicketsAndHospitality = shopPage.getTextforTicketsAndHospitalityStore();
 //	            ExtentsReportManager.extentReportLogging("info", "TICKETS & HOSPITALITY  from API <br />"+expTicketsAndHospitality);
@@ -348,135 +351,154 @@ public class ShopIosStepDef {
 //	            ExtentsReportManager.extentReportLogging("info", "COLLECTIONS from UI <br />"+actualCollections);
 //	            ExtentsReportManager.extentReportLogging("info", "Verified COLLECTIONS from UI with API");
 //	            soft.assertEquals(actualCollections.toUpperCase(), expCollections.toUpperCase());
-	            
-	            soft.assertAll();
-	            
-	            ExtentsReportManager.extentReportLogging("info", "Validated hero carousel and small card carousel");
-	        } catch (AssertionError e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Error in validating hero carousel and small card carousel<br />" + e);
-	           throw e;
-	       }
-	   }
+
+			soft.assertAll();
+
+			ExtentsReportManager.extentReportLogging("info", "Validated hero carousel and small card carousel");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating hero carousel and small card carousel<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates hero card is displayed in shop screen in membership tab using Api in ios$")
 	public void userValidatesHeroCardIsDisplayedInShopScreenInMembershipTabUsingApiInIos() throws Throwable {
-		 try {
-	            boolean enableHeroCarousel = shopAPI.getHeroCarouselStatusAPI("HeroCarouselEnableEndPointMembership");
-	            String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselMembership();
-	            System.out.println(titleOfTheHeroCarouselTextFromUI);
-	            if (!enableHeroCarousel) {
-	                String expTitleTextFromApi = shopAPI.getTitleOfHeroCarouselMembershipFromApi("HeroCarouselEnableEndPointMembership");
-	                soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
-	                ExtentsReportManager.extentReportLogging("info", "validated hero card is displayed in shop screen using Api");
-	            } 
-	            soft.assertAll();
+		try {
+			boolean enableHeroCarousel = shopAPI.getHeroCarouselStatusAPI("HeroCarouselEnableEndPointMembership");
+			String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselMembership();
+			System.out.println(titleOfTheHeroCarouselTextFromUI);
+			if (!enableHeroCarousel) {
+				String expTitleTextFromApi = shopAPI
+						.getTitleOfHeroCarouselMembershipFromApi("HeroCarouselEnableEndPointMembership");
+				soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
+				ExtentsReportManager.extentReportLogging("info",
+						"validated hero card is displayed in shop screen using Api");
+			}
+			soft.assertAll();
 
-	        } catch (AssertionError e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Error in validation hero card is displayed in shop screen using Api<br />" + e);
-	            throw e;
-	        }
-	    }
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validation hero card is displayed in shop screen using Api<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates hero card is displayed in shop screen in Store tab using Api in ios$")
 	public void userValidatesHeroCardIsDisplayedInShopScreenInStoreTabUsingApiInIos() throws Throwable {
-		 try {
-	            boolean enableHeroCarousel = shopAPI.getHeroCarouselStatusStoreAPI("HeroCarouselEnableEndPointStore");
-	            String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselStore();
-	            System.out.println(titleOfTheHeroCarouselTextFromUI);
-	            if (!enableHeroCarousel) {
-	                String expTitleTextFromApi = shopAPI.getTitleOfHeroCarouselStoreFromApi("HeroCarouselEnableEndPointStore");
-	                soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
-	                ExtentsReportManager.extentReportLogging("info", "validated hero card is displayed in shop screen in Store tab using Api");
-	            } 
-	            soft.assertAll();
+		try {
+			boolean enableHeroCarousel = shopAPI.getHeroCarouselStatusStoreAPI("HeroCarouselEnableEndPointStore");
+			String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselStore();
+			System.out.println(titleOfTheHeroCarouselTextFromUI);
+			if (!enableHeroCarousel) {
+				String expTitleTextFromApi = shopAPI
+						.getTitleOfHeroCarouselStoreFromApi("HeroCarouselEnableEndPointStore");
+				soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
+				ExtentsReportManager.extentReportLogging("info",
+						"validated hero card is displayed in shop screen in Store tab using Api");
+			}
+			soft.assertAll();
 
-	        } catch (AssertionError e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Error in validation hero card is displayed in shop screen in Store tab using Api<br />" + e);
-	            throw e;
-	        }
-	    }
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validation hero card is displayed in shop screen in Store tab using Api<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates hero card is displayed in shop screen in Collectibles using Api in ios$")
 	public void userValidatesHeroCardIsDisplayedInShopScreenInCollectiblesUsingApiInIos() throws Throwable {
 		try {
-            boolean enableHeroCarousel = shopAPI.getHeroCarouselStatusCollectiblesAPI("HeroCarouselEnableEndPointCollectibles");
-            String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselCollectibles();
-            System.out.println(titleOfTheHeroCarouselTextFromUI);
-            if (!enableHeroCarousel) {
-                String expTitleTextFromApi = shopAPI.getTitleOfHeroCarouselCollectiblesFromApi("HeroCarouselEnableEndPointCollectibles");
-                soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
-                ExtentsReportManager.extentReportLogging("info", "validated hero card is displayed in shop screen in Store tab using Api");
-            } 
-            soft.assertAll();
+			boolean enableHeroCarousel = shopAPI
+					.getHeroCarouselStatusCollectiblesAPI("HeroCarouselEnableEndPointCollectibles");
+			String titleOfTheHeroCarouselTextFromUI = shopPage.getTitleOfHeroCarouselCollectibles();
+			System.out.println(titleOfTheHeroCarouselTextFromUI);
+			if (!enableHeroCarousel) {
+				String expTitleTextFromApi = shopAPI
+						.getTitleOfHeroCarouselCollectiblesFromApi("HeroCarouselEnableEndPointCollectibles");
+				soft.assertEquals(titleOfTheHeroCarouselTextFromUI, expTitleTextFromApi.toUpperCase());
+				ExtentsReportManager.extentReportLogging("info",
+						"validated hero card is displayed in shop screen in Store tab using Api");
+			}
+			soft.assertAll();
 
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in validation hero card is displayed in shop screen in Store tab using Api<br />" + e);
-            throw e;
-        }
-}
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validation hero card is displayed in shop screen in Store tab using Api<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates small card carousels in Merch tab in ios$")
 	public void userValidatesSmallCardCarouselsInMerchTabInIos() throws Throwable {
 		try {
-            boolean flag = shopPage.userValidatesSmallCardCarouselsInMerchTab();
-            soft.assertTrue(flag);
-            soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "validated small card carousels in Merch tab ");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in validating small card carousels in Merch tab<br />" + e);
-            throw e;
-        }
+			boolean flag = shopPage.userValidatesSmallCardCarouselsInMerchTab();
+			soft.assertTrue(flag);
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "validated small card carousels in Merch tab ");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating small card carousels in Merch tab<br />" + e);
+			throw e;
+		}
 	}
 
 	@Then("^user validates hero card is displayed in shop screen in merch tab in ios$")
 	public void userValidatesHeroCardIsDisplayedInShopScreenInMerchTabInIos() throws Throwable {
 		try {
-            boolean flag = shopPage.userValidatesHeroCardIsDisplayedInShopScreenInMerchTabInIos();
-            soft.assertTrue(flag);
-            soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "validated hero card is displayed in shop screen in merch tab");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in validating hero card is displayed in shop screen in merch tab<br />" + e);
-            throw e;
-        }
-    }
+			boolean flag = shopPage.userValidatesHeroCardIsDisplayedInShopScreenInMerchTabInIos();
+			soft.assertTrue(flag);
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"validated hero card is displayed in shop screen in merch tab");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating hero card is displayed in shop screen in merch tab<br />" + e);
+			throw e;
+		}
+	}
 
 	@And("^user validates shop tabs and content in it using API in ios$")
 	public void userValidatesShopTabsAndContentInItUsingAPIInIos() throws Throwable {
-		 try {
-	            ArrayList<String> expectedShopMenuItems = new ArrayList<>();
-	            expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("shopMenuItesmEndPoint");
-	            shopPage.clicksOnOkButtonInCookiesScreenInShop();
-	            shopPage.clickingOnTabs(expectedShopMenuItems);
-	            soft.assertAll();
-	            ExtentsReportManager.extentReportLogging("info", "validated shop tabs and content in it using API");
+		try {
+			ArrayList<String> expectedShopMenuItems = new ArrayList<>();
+			expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("shopMenuItesmEndPoint");
+			shopPage.clicksOnOkButtonInCookiesScreenInShop();
+			boolean flag = shopPage.clickingOnTabs(expectedShopMenuItems);
+			soft.assertTrue(flag, "shop tab content is not displayed");
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "validated shop tabs and content in it using API");
 
-	        } catch (Exception  e) {
-	            ExtentsReportManager.extentReportLogging("fail", "validates shop tabs and content in it using API<br />" + e);
-	            throw e;
-	        }
-	    }
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"validates shop tabs and content in it using API<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates all the tabs in shop screen not displayed when disabled from CMS in ios$")
 	public void userValidatesAllTheTabsInShopScreenNotDisplayedWhenDisabledFromCMSInIos() throws Throwable {
-		try {	        
-	    	  boolean isAllTabsDisabled =  shopPage.validateAllTheTabsInShopScreenDisabledInMutvPage();
-	    	  soft.assertTrue(isAllTabsDisabled);
-	    	  soft.assertAll();
-	        ExtentsReportManager.extentReportLogging("info", "all the tabs in shop screen should be disabled from CMS");
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Error in validating the disabled all the tabs in shop.<br />" + e);
-	        throw e;
-	    }
+		try {
+			boolean isAllTabsDisabled = shopPage.validateAllTheTabsInShopScreenDisabledInMutvPage();
+			soft.assertTrue(isAllTabsDisabled);
+			soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info", "all the tabs in shop screen should be disabled from CMS");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating the disabled all the tabs in shop.<br />" + e);
+			throw e;
+		}
 	}
+
+	@Then("^user validates hero card in shop screen in ios$")
+	public void userValidatesHeroCardInShopScreenInIos() throws Throwable {
+		try {
+			boolean flag = shopPage.validatesHeroCardInShopScreenInIos();
+			soft.assertTrue(flag);
+			ExtentsReportManager.extentReportLogging("info", "validated hero card in Latest screen");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in validates hero card in Latest screen<br />" + e);
+			throw e;
+		}
 	}
-
-
-			
-	
-
-	
-
-
-	
-
+}

@@ -10,6 +10,7 @@ import org.bdd.pages.MutvPage;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.apiResponse.MUTVAPIResponse;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
@@ -315,7 +316,7 @@ public class MutvAndroidStepDef {
     @And("^user clicks on the hero carousel dots in Mutv screen$")
     public void userClicksOnTheHeroCarouselDotsInMutvScreen() {
         try {
-            boolean heroCarousel = mutvPage.clicksOnTheHeroCarouselDotsInMutvScreen();
+            boolean heroCarousel = mutvPage.clicksOnTheHeroCarouselInMutvScreen();
             soft.assertTrue(heroCarousel,"Hero carousel is not present in mutv screen");
 			soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Clicked on hero carousel dots in mutv screen");
@@ -1089,6 +1090,41 @@ public class MutvAndroidStepDef {
 	        ExtentsReportManager.extentReportLogging("info", "MUTV hero carousel are not displayed when disabled from CMS");
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail", "Error in validating the disabled MUTV hero carousel validation.<br />" + e);
+	        throw e;
+	    }
+	}
+
+	@And("^user checks for UTD Podcast in MUTV$")
+	public void userChecksForUTDProdcastInMUTV() throws Throwable {
+		try {	        
+	    	   mutvPage.checksForUTDProdcastInMUTV();
+	        ExtentsReportManager.extentReportLogging("info", "checked for UTD Prodcast in MUTV");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "checking for UTD Prodcast in MUTV.<br />" + e);
+	        throw e;
+	    }
+	}
+
+	@Then("^user clicks on first podcast in MUTV$")
+	public void userClicksOnFirstPodcastInMUTV() throws Throwable {
+		try {
+            mutvPage.clicksOnFirstPodcastInMUTV();
+            ExtentsReportManager.extentReportLogging("info", "clicked on first podcast in MUTV");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on first podcast in MUTV <br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates play button in podcast audio screen$")
+	public void userValidatesPlayButtonInPodcastAudioScreen() throws Throwable {
+	    try {
+	        boolean isValid = mutvPage.validatesPlayButtonInPodcastAudioScreen();
+	        soft.assertTrue(isValid,"play button in podcast audio is not displayed");
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "Validated play button in podcast audio screen");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception while validating play button in podcast audio screen.<br />" + e);
 	        throw e;
 	    }
 	}

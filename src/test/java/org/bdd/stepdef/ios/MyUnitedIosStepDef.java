@@ -1580,6 +1580,97 @@ public class MyUnitedIosStepDef {
 	        }
 	}
 
+	@And("^user changes the following textbox in edit profile screen in ios$")
+	public void userChangesTheFollowingTextboxInEditProfileScreenInIos(DataTable table) throws Throwable {
+		  try {
+			  myUnitedPage.enterAddressLineOne(table.cell(1, 0));
+			  myUnitedPage.enterAddressLinetwo(table.cell(1, 1));
+			  myUnitedPage.enterAddressLineThree(table.cell(1, 2));
+			  myUnitedPage.enterAddressLineTown(table.cell(1, 3));
+			  myUnitedPage.enterPinCode(table.cell(1, 4));
+	            ExtentsReportManager.extentReportLogging("info", "Changed the textbox in edit profile screen");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in changing the textbox in edit profile screen<br />" + e);
+	            throw e;
+	        }
+	}
+
+	@Then("^user validates the success message in edit profile in ios$")
+	public void userValidatesTheSuccessMessageInEditProfileInIos(DataTable table) throws Throwable {
+			try {
+	            String expSuccessMessage = table.cell(1, 0);
+	            String actualSuccessMessage = myUnitedPage.validateSuccessMessageInEditProfile();
+	            soft.assertEquals(actualSuccessMessage, expSuccessMessage);
+	            soft.assertAll();
+	            ExtentsReportManager.extentReportLogging("info", "validated the success message in edit profile in ios");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail",
+	                    "Error in validating success message in edit profile in ios<br />" + e);
+	            throw e;
+	        }
+	}
+
+	@Then("^user validates the given data in edit profile screen in ios$")
+	public void userValidatesTheGivenDataInEditProfileScreenInIos(DataTable table) throws Throwable {
+		 try {
+	            String expectedAddr1 = table.cell(1, 0);
+	            String expectedAddr2 = table.cell(1, 1);
+	            String expectedAddr3 = table.cell(1, 2);
+	            String expectedTown = table.cell(1, 3);
+	            String expectedCountry = table.cell(1, 4);
+
+	            String actualAddr1 = myUnitedPage.getAddr1Text();
+	            String actualAddr2 = myUnitedPage.getAddr2Text();
+	            String actualAddr3 = myUnitedPage.getAddr3Text();
+	            String actualTown = myUnitedPage.getTownText();
+	            String actualCountry = myUnitedPage.getPincodeText();
+
+	            soft.assertEquals(actualAddr1, expectedAddr1);
+	            soft.assertEquals(actualAddr2, expectedAddr2);
+	            soft.assertEquals(actualAddr3, expectedAddr3);
+	            soft.assertEquals(actualTown, expectedTown);
+	            soft.assertEquals(actualCountry, expectedCountry);
+	            ExtentsReportManager.extentReportLogging("info", "Verified given data in edit profile screen");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in given data in edit profile screen<br />" + e);
+	            throw e;
+	        }
+	}
+
+	@And("^user clears all data in textbox in edit profile screen in ios$")
+	public void userClearsAllDataInTextboxInEditProfileScreenInIos() throws Throwable {
+		try {
+            myUnitedPage.ClearsAllDataInTextboxInEditProfileScreen();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user navigates to About you in my united screen in ios$")
+	public void userNavigatesToAboutYouInMyUnitedScreenInIos() throws Throwable {
+		try {
+            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^User validates text containing user Firstname lastName Country and Age details personalised in ios$")
+	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalisedInIos()
+			throws Throwable {
+		try {
+            myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios();
+            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            throw e;
+        }
+	}
+
 }
 	
 

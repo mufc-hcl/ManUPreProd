@@ -156,6 +156,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
+  @AWSFailure1
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -378,8 +379,10 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @Settings1
-  Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
+  
+
+  @1234
+  Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -397,28 +400,26 @@ Feature: My United features
     And user clicks on No tracking
     And user click on setting icon on top righhand side in ios
     And user clicks on My profile icon in ios
-    And user clicks on change email address in my profile screen in ios
-    And user enter the New email "<usernameNew>" and Confirm email"<confirmusernameNew>"valid password "<password>" in ios
-    And user clicks on update email address in my profile in ios
-    Then user validates email change successfully message in ios
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
-    And user clicks on close icon in email update success screen in ios
-    And user clicks on change email address in my profile screen in ios
-    And user enters the old email"<username>" and confirm email"<confirmOldusername>"valid password "<password>" in ios
-    And user clicks on update email address in my profile in ios
-    Then user validates email change successfully message in ios
-      | EmailUpdate Success Message |
-      | CHANGE EMAIL ADDRESS        |
+    And user clicks on edit profile button in ios
+     #And user clears all data in textbox in edit profile screen in ios
+     #And user clicks save details in edit profile screen in ios
+    And user changes the following textbox in edit profile screen in ios
+      | Addr1      | Addr2      | Addr3      | Town      | pincode   |
+      | Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
+    And user clicks save details in edit profile screen in ios
+    Then user validates the success message in edit profile in ios
+      | Success Message                 |
+      | Your details have been updated. |
+    Then user validates the given data in edit profile screen in ios
+      | Addr1      | Addr2      | Addr3      | Town      | pincode   |
+      | Test Addr1 | Test Addr2 | Test Addr3 | Test Town | Test12345 |
+     
 
     Examples: 
-      | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
-      | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
-
-  # social login less than 13 is not possible in Manu app- Under 13 registrations are not allowed to be linked to a social account
-  #Social Login >13 covered in [IDM]TC008 &TC009
-  @ios1
-  Scenario Outline: [My United] TC015 -Native Login [>13 and <13] and Social Login
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+      
+      	Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -434,10 +435,9 @@ Feature: My United features
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
-    And user validate t shirt name is displayed as "<Name>"
-
-    #<13 (manutesting13)  and >13 (manupreprod) native app
+    And user navigates to About you in my united screen in ios
+    #Then User validates text containing user Firstname lastName Country and Age details personalised in ios
+    
     Examples: 
-      | username                  | password | Name      |
-      | manutesting13@yopmail.com | Manu@123 | TESTING13 |
-      | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |

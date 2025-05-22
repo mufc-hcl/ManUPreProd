@@ -95,6 +95,8 @@ Feature: IDM
       | username                 | password |
       | manutesting123@gmail.com | Manu@123 |
 
+
+  
   Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on IOS for a user and the same favorite player details are displayed on android for the same user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

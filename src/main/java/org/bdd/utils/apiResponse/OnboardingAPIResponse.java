@@ -28,7 +28,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String welcomeHeading=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingwelcomescreenheading_t");
+			String welcomeHeading=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingwelcomescreenheading_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return welcomeHeading;
 		} catch (Exception e) {
@@ -42,7 +42,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String quote=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingwelcomescreentitle_t");
+			String quote=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingwelcomescreentitle_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return quote;
 		} catch (Exception e) {
@@ -57,7 +57,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String description=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingwelcomescreendesc_t");
+			String description=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingwelcomescreendesc_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return description;
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String letsGo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingwelcomescreenbutton_t");
+			String letsGo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingwelcomescreenbutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return letsGo;
 		} catch (Exception e) {
@@ -84,7 +84,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String neverMissAThing=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingnotificationscreenheading_t");
+			String neverMissAThing=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingnotificationscreenheading_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return neverMissAThing;
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String unitedNotification=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingnotificationscreentitle_t");
+			String unitedNotification=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingnotificationscreentitle_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return unitedNotification;
 		} catch (Exception e) {
@@ -112,7 +112,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String descriptionScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingnotificationsscreendesc_t");
+			String descriptionScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingnotificationsscreendesc_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return descriptionScTwo;
 		} catch (Exception e) {
@@ -125,7 +125,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String allowButtonScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingnotificationscreenprimarybutton_t");
+			String allowButtonScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingnotificationscreenprimarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return allowButtonScTwo;
 		} catch (Exception e) {
@@ -138,7 +138,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String askMeLaterButtonScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingnotificationscreensecondarybutton_t");
+			String askMeLaterButtonScTwo=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingnotificationscreensecondarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return askMeLaterButtonScTwo;
 		} catch (Exception e) {
@@ -151,7 +151,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String whoIsFavPlayerScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingfavouriteplayerheading_t");
+			String whoIsFavPlayerScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingfavouriteplayerheading_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return whoIsFavPlayerScThree;
 		} catch (Exception e) {
@@ -200,7 +200,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String swipeToSelectScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingfavouriteplayertitle_t");
+			String swipeToSelectScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingfavouriteplayertitle_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return swipeToSelectScThree;
 		} catch (Exception e) {
@@ -213,7 +213,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String selectFavPlayerScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingfavouriteplayerdesc_t");
+			String selectFavPlayerScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingfavouriteplayerdesc_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return selectFavPlayerScThree;
 		} catch (Exception e) {
@@ -226,7 +226,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String confirmButtonScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingfavouriteplayerprimarybutton_t");
+			String confirmButtonScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingfavouriteplayerprimarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return confirmButtonScThree;
 		} catch (Exception e) {
@@ -239,7 +239,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String skipButtonScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingfavouriteplayersecondarybutton_t");
+			String skipButtonScThree=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingfavouriteplayersecondarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return skipButtonScThree;
 		} catch (Exception e) {
@@ -252,7 +252,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String signForUnitedScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingsignupscreenheading_t");
+			String signForUnitedScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreenheading_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return signForUnitedScFour;
 		} catch (Exception e) {
@@ -270,7 +270,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 			System.out.println("size=" + size);
 			for (int i = 0; i < size; i++) {
 				signUpThreeTabs.add(
-						js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[" + i + "].onboardingsignupscreentextbox_t").toUpperCase());
+						js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[" + i + "].onboardingsignupscreentextbox_t").toUpperCase());
 			}
 			ExtentsReportManager.extentReportLogging("info", "Getting the signup tabs" + signUpThreeTabs);
 			ExtentsReportManager.extentReportLogging("info",
@@ -287,7 +287,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String unitedPredictionsdScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[1].onboardingsignupscreentextbox_t");
+			String unitedPredictionsdScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[1].onboardingsignupscreentextbox_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return unitedPredictionsdScFour;
 		} catch (Exception e) {
@@ -300,7 +300,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString()); 
-			String offersAndReviewsScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[2].onboardingsignupscreentextbox_t");
+			String offersAndReviewsScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[2].onboardingsignupscreentextbox_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return offersAndReviewsScFour;
 		} catch (Exception e) {
@@ -313,7 +313,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getExclusiveAccessScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingsignupscreentitle_t");
+			String getExclusiveAccessScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreentitle_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return getExclusiveAccessScFour;
 		} catch (Exception e) {
@@ -326,7 +326,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String descriptionScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingsignupscreendesc_t");
+			String descriptionScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreendesc_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return descriptionScFour;
 		} catch (Exception e) {
@@ -339,7 +339,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String signForUnitedButtonScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingsignupscreenprimarybutton_t");
+			String signForUnitedButtonScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreenprimarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return signForUnitedButtonScFour;
 		} catch (Exception e) {
@@ -352,7 +352,7 @@ public class OnboardingAPIResponse extends BaseApiService {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String skipButtonScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[0].doclist.docs[0].onboardingsignupscreensecondarybutton_t");
+			String skipButtonScFour=js.getString("ApponboardingResponse.grouped.contenttype_t.groups[1].doclist.docs[0].onboardingsignupscreensecondarybutton_t");
 			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
 		return skipButtonScFour;
 		} catch (Exception e) {

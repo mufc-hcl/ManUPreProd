@@ -413,7 +413,8 @@ public class ShopAndroidStepDef {
 	            ArrayList<String> expectedShopMenuItems = new ArrayList<>();
 	            expectedShopMenuItems = shopAPI.getShopTabMenuItemsFromApi("shopMenuItesmEndPoint");
 	            shopPage.clicksOnOkButtonInCookiesScreenInShop();
-	            shopPage.clickingOnTabs(expectedShopMenuItems);
+	             boolean flag =shopPage.clickingOnTabs(expectedShopMenuItems);
+	             soft.assertTrue(flag,"shop tab content is not displayed");
 	            soft.assertAll();
 	            ExtentsReportManager.extentReportLogging("info", "validated shop tabs and content in it using API");
 
@@ -587,6 +588,18 @@ public class ShopAndroidStepDef {
 	        ExtentsReportManager.extentReportLogging("fail", "Error in validating the disabled all the tabs in shop.<br />" + e);
 	        throw e;
 	    }
+	}
+
+	@Then("^user validates hero card in shop screen$")
+	public void userValidatesHeroCardInShopScreen() throws Throwable {
+		try {
+            boolean flag = shopPage.validatesHeroCardInShopScreen();
+            soft.assertTrue(flag);
+            ExtentsReportManager.extentReportLogging("info", "validated hero card in Latest screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validates hero card in Latest screen<br />" + e);
+            throw e;
+        }
 	}
 	}
 	

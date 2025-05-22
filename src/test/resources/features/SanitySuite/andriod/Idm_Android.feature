@@ -101,7 +101,7 @@ Feature: IDM
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @andorid1
+
   Scenario Outline: [IDM]TC008 &TC009 Verify that user is able to Login using valid credentials using social channel,User should Not see Change email & change password in seeting screen however user should see Edit profile, Preference center and Log out and Social Login [>13 ]
     #added Social Login more than 13 and less than 13 social login is not possible in Manu (Under 13 registrations are not allowed to be linked to a social account)
     Given user navigates to manu android application
@@ -127,6 +127,7 @@ Feature: IDM
     Examples: 
       | username                 | password |
       | manutesting123@gmail.com | Manu@123 |
+  
 
   Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on android for a user and the same favorite player details are displayed on IOS for the same user
     Given user navigates to manu android application
