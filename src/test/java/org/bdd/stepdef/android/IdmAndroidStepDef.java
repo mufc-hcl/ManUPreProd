@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.bdd.pages.IdmPage;
+import org.bdd.pages.MyUnitedPage;
 import org.bdd.utils.AppiumDriverManager;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
@@ -22,7 +23,7 @@ public class IdmAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
     public IdmPage idmPage = new IdmPage();
     public IdmAPIResponse idmAPIResponse = new IdmAPIResponse();
-    
+    public MyUnitedPage myUnitedPage = new MyUnitedPage();
 
     @And("user clicks on log in button")
     public void userClicksOnLogInButton() {
@@ -366,7 +367,7 @@ public class IdmAndroidStepDef {
             idmPage.clickNextButtonSignInScreen();
             idmPage.entersTheValidPasswordInGoogleScreen(password);
 //        idmPage.clickNextButtonPasswordSignInScreen();
-            idmPage.clickOnAdvancedButton();
+           // idmPage.clickOnAdvancedButton();
             ExtentsReportManager.extentReportLogging("info", "Entered valid email and password in google screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in entering valid email and password in google screen <br />" + e);
@@ -377,28 +378,37 @@ public class IdmAndroidStepDef {
 
     @And("user clicks on continue alert")
     public void userClicksOnContinueAlert() throws Exception {
-        try {
-            idmPage.clicksOnContinueAlert();
-            ExtentsReportManager.extentReportLogging("info", "Clicked on continue alert ");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking continue alert<br />" + e);
-            throw e;
-        }
+    	if (Common.apiEnv().equalsIgnoreCase("stage")) {
+	    	try {
+	    		idmPage.clickOnAdvancedButton();
+	            idmPage.clicksOnContinueAlert();
+	            myUnitedPage.clicksContinueInMUAppPopup();
+	            ExtentsReportManager.extentReportLogging("info", "Clicked on continue alert ");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in clicking continue alert<br />" + e);
+	            throw e;
+	        }
+    	}
+    	else if (Common.apiEnv().equalsIgnoreCase("prod")) 
+    	{
+    		idmPage.clicksOnContinueAlert();
+    	}
     }
 
-    @Then("user validates change password an email is not displayed")
-    public void userValidatesChangePasswordAnEmailIsNotDisplayed() {
+    @Then("user validates change password and email is not displayed but Edit profile, Preference center and Log out is displayed")
+    public void userValidatesChangePasswordAndEmailIsNotDisplayed() {
         try {
-            boolean flag = idmPage.validatesChangePasswordAnEmailIsNotDisplayed();
+            boolean flag = idmPage.validatesChangePasswordAnEmailIsNotDisplayedandEditprofilePreferencecenterandLogoutisdisplayed();
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Validated change password  ");
+            ExtentsReportManager.extentReportLogging("info", "Validated change password and email is not displayed but Edit profile, Preference center and Log out is displayed  ");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in validating change password<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating validates change password and email is not displayed but Edit profile, Preference center and Log out is displayed<br />" + e);
             throw e;
         }
     }
 
+    
     @And("user initiated the ios Session")
     public void userInitiatedTheIosSession() throws IOException {
         try {

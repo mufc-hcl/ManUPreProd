@@ -1281,6 +1281,19 @@ public class MyUnitedAndroidStepDef {
             throw e;
         }
 	}
+	
+    @And("user validate t shirt name is displayed as {string}")
+    public void userValidateTShirtNameIsDisplayedas(String exptShirt) {
+        try {
+            String actualtshirt = myUnitedPage.getTshirtNames();
+            soft.assertTrue(actualtshirt.equalsIgnoreCase(exptShirt),"T shirt name is not matching with expected " +exptShirt);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "Validated actual t shirt name "+ actualtshirt +" with expected "+exptShirt);
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in validating t shirt name  <br />" + e);
+            throw e;
+        }
+    }
 }
 	
 

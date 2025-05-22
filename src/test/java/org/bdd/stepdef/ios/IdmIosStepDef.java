@@ -297,12 +297,19 @@ public class IdmIosStepDef {
 
 	@And("user clicks on show details in ios")
 	public void userClicksOnShowDetailsInIos() throws Exception {
-		try {
-			idmPage.clicksOnShowDetailsInIos();
-			ExtentsReportManager.extentReportLogging("info", "Clicked on show details in ios");
-		} catch (AssertionError e) {
-			ExtentsReportManager.extentReportLogging("fail", "Error in clicking on show details in ios<br />" + e);
-			throw e;
+		if (Common.apiEnv().equalsIgnoreCase("stage")) {
+			try {
+				idmPage.clicksOnShowDetailsInIos();
+				 myUnitedPage.ClicksOnTestContinue();
+				 // myUnitedPage.clicksOnNoTracking();
+				 idmPage.clicksOnLogInButton();
+				 idmPage.clicksOnContinueButton();
+				 idmPage.clicksOnSignInWithGoogleButton();
+				ExtentsReportManager.extentReportLogging("info", "Clicked on show details in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail", "Error in clicking on show details in ios<br />" + e);
+				throw e;
+			}
 		}
 	}
 

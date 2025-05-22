@@ -64,34 +64,38 @@ Feature: IDM
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  #not feasible due to multi factor authentication
-  #  Scenario Outline: [IDM]TC008 &TC009 Verify that user is able to Login using valid credentials using social channel,User should Not see Change email & change password in seeting screen however user should see Edit profile, Preference center and Log out.
-  #    Given user navigates to manu ios application
-  #    And user clicks on cancel button in apple id screen
-  #    And user clicks lets go button in screen one in ios
-  #    And user clicks on ask me later in screen two in ios
-  #    And user clicks skip button in screen three in ios
-  #    And user click on skip button in screen four in ios
-  #    And user clicks on ok in the cookies screen in ios
-  #    And user clicks on not now button in match appearance alert screen in ios
-  #    And user click on My United in bottom tab in ios
-  #    And user clicks on log in button in ios
-  #    And user clicks on continue button in ios
-  #    And user clicks on sign in with google button
-  #    And user enters the valid email "<username>" and valid password "<password>" in google screen in ios
-  #    And user clicks on show details in ios
-  #     And user clicks on test continue and clicks on back icon
-  #      And user clicks on No tracking
-  #      And user click on My United in bottom tab in ios
-  #    And user click on setting icon on top righhand side
-  #    And user clicks on My profile icon
-  #    Then user validates change password an email is not displayed
-  #
-  #    Examples:
-  #      | username                | password |
-  #      | manusocial080@gmail.com |          |
-  
-  Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on IOS for a user and the same favorite player details are displayed on Android for the same user
+
+  Scenario Outline: [IDM]TC008 &TC009 Verify that user is able to Login using valid credentials using social channel,User should Not see Change email & change password in seeting screen however user should see Edit profile, Preference center and Log out and Social Login [>13 ]
+      #added Social Login more than 13 and less than 13 social login is not possible in Manu (Under 13 registrations are not allowed to be linked to a social account)
+    Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on My United in bottom tab in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user clicks on sign in with google button
+    And user enters the valid email "<username>" and valid password "<password>" in google screen in ios
+    And user clicks on show details in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user clicks on sign in with google button
+    And user click on setting icon on top righhand side
+    And user clicks on My profile icon
+    Then user validates change password and email is not displayed but Edit profile, Preference center and Log out is displayed
+
+    Examples: 
+      | username                 | password |
+      | manutesting123@gmail.com | Manu@123 |
+
+  Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on IOS for a user and the same favorite player details are displayed on android for the same user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -110,10 +114,6 @@ Feature: IDM
     And user scrolls down to favorite player screen in ios
     And user click on edit icon in my united screen in ios
     And user edits a favorite player in player screen in ios
-    #And user click on setting icon on top righhand side in ios
-    #And user clicks on My profile icon in ios
-    #And user clicks on Logout icon in ios
-    #And user selects a favorite player in players screen in ios
     And user initiates the android session
     Given user navigates to manu android application
     And user navigates to screen two
@@ -193,6 +193,7 @@ Feature: IDM
       | email             | dob | mob | yob  |
       | testmail@test.com |   1 | May | 2015 |
 
+  @idm15
   Scenario Outline: [IDM]TC0015 Verify that user able to naviagte to Change email screen post log in natively and in change password email user should be able to change email sucessfully, also an email should get triggered with expected email template to confirm the email. Post email confirmation if user try to relogin user should be able to log in using new changed email.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu ios application
@@ -220,9 +221,3 @@ Feature: IDM
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
-  @idm_12
-  Scenario: [IDM]TC0010 Verify the updated favorite player details on Android for a user and the same favorite player details are displayed on iOS for the same user
-    Given user navigates to manu ios application
-    And user initiates the android session
-    Given user navigates to manu android application

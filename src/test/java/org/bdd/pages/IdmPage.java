@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.nativekey.KeyEventMetaModifier;
 import io.cucumber.datatable.DataTable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -656,28 +657,32 @@ public class IdmPage extends Common {
         try {
             if (device.equalsIgnoreCase("android")) {
                 Thread.sleep(5000);
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.M));
+               // ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.M));//Manu@123
+                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.M).withMetaModifier(KeyEventMetaModifier.SHIFT_ON));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.A));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.N));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.U));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.S));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.C));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.O));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.C));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.I));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.A));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.L));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.AT));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_1));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_2));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_3));
-                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_4));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
+                //MANUSOCIAL@1234
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.S));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.C));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.O));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.C));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.I));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.A));
+//                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.L));
+                
+               // ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_4));
+                
             } else {
                 elementToBeClickableFluentWait(idmPageLocators.passwordTextFieldSignInScreen,60);
                 idmPageLocators.passwordTextFieldSignInScreen.click();
                 ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
-                idmPageLocators.passwordTextFieldSignInScreen.sendKeys("manuscocial@1234");
+                idmPageLocators.passwordTextFieldSignInScreen.sendKeys(password);
                 idmPageLocators.doneButtonKeyBoard.click();
                 ExtentsReportManager.extentReportLogging("pass","Clicks on doneButtonKeyBoard ");
             }
@@ -717,7 +722,13 @@ public class IdmPage extends Common {
     }
 
     public void clicksOnContinueAlert() throws Exception {
-        try {
+    	
+    	try {
+    		if (Common.apiEnv().equalsIgnoreCase("prod")) 
+        	{
+        		 switchToNativeView(((AndroidDriver) driver));
+        	}
+        	else {
             switchToNativeView(((AndroidDriver) driver));
             Thread.sleep(2000);
             elementToBeClickableFluentWait(idmPageLocators.continueButtonGoogleLogin,60);
@@ -726,24 +737,27 @@ public class IdmPage extends Common {
             new MyUnitedPage().clicksContinueInMUAppPopup();
             clicksOnLogInButton();
             clicksOnSignInWithGoogleButton();
-
+        	}
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnContinueAlert()<br />" + e);
            throw e;
         }
+        
     }
 
-    public boolean validatesChangePasswordAnEmailIsNotDisplayed() {
+    public boolean validatesChangePasswordAnEmailIsNotDisplayedandEditprofilePreferencecenterandLogoutisdisplayed () {
         try {
             if (idmPageLocators.editProfileMyProfilePage.isDisplayed() && idmPageLocators.changePasswordMyProfilePage1.isEmpty()
                     && idmPageLocators.changeEmailAddressMyProfilePage1.isEmpty() && idmPageLocators.preferenceCentreMyProfilePage.isDisplayed()
-                    && idmPageLocators.LogoutIconMyProfilePage.isDisplayed())
-            	ExtentsReportManager.extentReportLogging("pass","Returns ChangePasswordAnEmail Text ");
+                    && idmPageLocators.LogoutIconMyProfilePage.isDisplayed()) {
+            	ExtentsReportManager.extentReportLogging("pass","Validated change password and email is not displayed but Edit profile, Preference center and Log out is displayed");
                 return true;
+            }
         } catch (Exception e) {
-           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-validatesChangePasswordAnEmailIsNotDisplayed()<br />" + e);
+           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-validatesChangePasswordAnEmailIsNotDisplayedandEditprofilePreferencecenterandLogoutisdisplayed()<br />" + e);
            throw e;
         }
+		return false;
     }
 
     public void clicksOnShowDetailsInIos() throws Exception {
@@ -756,6 +770,10 @@ public class IdmPage extends Common {
             idmPageLocators.visitWebsiteButton.click();
             elementToBeClickableFluentWait(idmPageLocators.backButtonPrivateLink,60);
             idmPageLocators.backButtonPrivateLink.click();
+             if (!idmPageLocators.cancelInGmailPage.isEmpty()) {
+            	 idmPageLocators.cancelInGmailPage.get(0).click();				
+				ExtentsReportManager.extentReportLogging("pass", "clicked on cancel in gmail ");
+			}
             Thread.sleep(5000);
             ExtentsReportManager.extentReportLogging("pass","Clicks on ShowDetailsInIos ");
         } catch (Exception e) {

@@ -38,7 +38,7 @@ public class IdmPageLocators {
 	public WebElement loginButtonLoginScreen;
 	@AndroidFindBy(accessibility = "Close")
 	public WebElement closeButtonLevelNotification;
-	//android.widget.TextView[contains(@resource-id, ':id/mLatestNewsTxt')]
+	// android.widget.TextView[contains(@resource-id, ':id/mLatestNewsTxt')]
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/first_header')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"DAILY STREAKS\"]")
 	public WebElement dailyStreaksText;
@@ -118,7 +118,8 @@ public class IdmPageLocators {
 	public WebElement saveDetailsEditProfilePage;
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Your details have been updated.\"]")
 	public WebElement successMessageEditProfilePage;
-	//@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/ok_btn\"]")
+	// @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,
+	// ':id/ok_btn\"]")
 
 //	public WebElement okButton;
 //	// @iOSXCUITFindBy(xpath ="")
@@ -160,6 +161,8 @@ public class IdmPageLocators {
 	public WebElement visitWebsiteButton;
 	@iOSXCUITFindBy(accessibility = "BackButton")
 	public WebElement backButtonPrivateLink;
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Cancel']")
+	public List<WebElement> cancelInGmailPage;
 	@AndroidFindBy(xpath = "//android.widget.HorizontalScrollView[contains(@resource-id, ':id/tabDots\')]/android.widget.LinearLayout/android.widget.LinearLayout")
 	public List<WebElement> screenCount;
 	@FindBy(id = "Relationship")
@@ -199,23 +202,21 @@ public class IdmPageLocators {
 	@AndroidFindBy(accessibility = "log in Button")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOG IN\"]")
 	public List<WebElement> loginButtonRegisterPage;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.ListView//android.widget.LinearLayout//android.widget.RelativeLayout//android.widget.TextView")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell//XCUIElementTypeStaticText[1]")
 	public List<WebElement> myProfileContent;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/first_score\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"4\"]")
-	public WebElement  dailStreaksIDM;
-	
+	public WebElement dailStreaksIDM;
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/third_score\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"33\"]")
-	public WebElement  appearencesIDM;
+	public WebElement appearencesIDM;
 
 	@FindBy(xpath = "(//*[contains(text(),'Privacy Policy')])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Privacy Policy\"]")
 	public WebElement privacyPolicyText1;
-	
-	
-	
+
 }

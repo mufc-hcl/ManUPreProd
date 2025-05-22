@@ -1856,7 +1856,7 @@ public class MyUnitedPage extends Common {
 				waitForVisibilityFluentWait(myUnitedPageLocators.backIconMyUnitedAppTest, 60);
 				myUnitedPageLocators.backIconMyUnitedAppTest.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicked on back icon in my united app test");
-			} else if (!myUnitedPageLocators.brazeINAppPopUp.isEmpty()) {
+			} 	else if (!myUnitedPageLocators.brazeINAppPopUp.isEmpty()) {
 				myUnitedPageLocators.brazeINAppPopUp1.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicked on braze in app popup ");
 			} else if (!myUnitedPageLocators.inAppMessageTestMyUnitedPage1.isEmpty()) {
@@ -2548,6 +2548,27 @@ public class MyUnitedPage extends Common {
 			throw e;
 		}
 
+	}
+	
+	public String getTshirtNames() {
+		String device = GlobalParams.getPlatformName();
+		String tShirtName;
+		try {
+			if (device.equalsIgnoreCase("android")) {				
+				waitForVisibilityFluentWait(myUnitedPageLocators.tShirtNameMyUnitedScreen, 60);
+				tShirtName = myUnitedPageLocators.tShirtNameMyUnitedScreen.getText();
+				ExtentsReportManager.extentReportLogging("pass", "Returns t shirt name in my united screen "+tShirtName);
+				return tShirtName;
+			} else {
+				tShirtName = myUnitedPageLocators.tShirtNameMyUnitedScreen.getDomAttribute("name");
+				ExtentsReportManager.extentReportLogging("pass", "Returns t shirt name in my united screen "+tShirtName);
+				return tShirtName;
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getTshirtNames()<br />" + e);
+			throw e;
+		}
 	}
 }
 		

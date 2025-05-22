@@ -297,41 +297,40 @@ Feature: My United features
       | allow_button       |
 
   #Scenario Outline: [My United]TC011 Settings --> Notifications --> Both United and Match alerts on and off toggles(deny notification)
-    #Given user navigates to manu android application
-    #And user navigates to screen two
-    #And user clicks on allow button
-    #And user clicks on "<notificationbutton>" button in notification screen
-    #And user click on skip button in screen three
-    #And user click on skip button in screen four
-    #And user clicks on ok button in cookies screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on not now button in match appearance alert screen
-    #And user clicks on braze in app msg
-    #    And user clicks on the notification at bottom of screen
-    #And user click on My United in bottom tab
-    #     And user clicks on log in button
-    #    And user enter the valid email "<username>" and valid password "<password>"
-    #    And user clicks on login button in login screen
-    #    And user clicks on close from notification
-    #And user click on setting icon on top righhand side
-    #And user clicks on notification icon in settings screen
-    #Then user validates the given alerts in notifications screen
-      #| Alert1            | Alert2       |
-      #| UNITED NOW ALERTS | MATCH ALERTS |
-    #And user clicks on united now alert in notification screen
-    #And user click on latest alert switch in united now alerts screen
-    #And user selects go to settings from enable alerts dialog box
-    #And user clicks on notifications switch in settings
-    #And user clicks back icon in the settings
-    #And user validates the general alerts in united now alerts screen
-    #And user clicks on back button in United now alerts screen
-    #And user clicks on match alert in notification screen
-    #And user validates the match alerts in match alerts screen
-#
-    #Examples: 
-      #| username                | password | notificationbutton |
-      #| manupreprod@yopmail.com | Manu@123 | deny_button        |
-
+  #Given user navigates to manu android application
+  #And user navigates to screen two
+  #And user clicks on allow button
+  #And user clicks on "<notificationbutton>" button in notification screen
+  #And user click on skip button in screen three
+  #And user click on skip button in screen four
+  #And user clicks on ok button in cookies screen
+  #And user clicks continue in MUApp popup
+  #And user clicks on not now button in match appearance alert screen
+  #And user clicks on braze in app msg
+  #    And user clicks on the notification at bottom of screen
+  #And user click on My United in bottom tab
+  #     And user clicks on log in button
+  #    And user enter the valid email "<username>" and valid password "<password>"
+  #    And user clicks on login button in login screen
+  #    And user clicks on close from notification
+  #And user click on setting icon on top righhand side
+  #And user clicks on notification icon in settings screen
+  #Then user validates the given alerts in notifications screen
+  #| Alert1            | Alert2       |
+  #| UNITED NOW ALERTS | MATCH ALERTS |
+  #And user clicks on united now alert in notification screen
+  #And user click on latest alert switch in united now alerts screen
+  #And user selects go to settings from enable alerts dialog box
+  #And user clicks on notifications switch in settings
+  #And user clicks back icon in the settings
+  #And user validates the general alerts in united now alerts screen
+  #And user clicks on back button in United now alerts screen
+  #And user clicks on match alert in notification screen
+  #And user validates the match alerts in match alerts screen
+  #
+  #Examples:
+  #| username                | password | notificationbutton |
+  #| manupreprod@yopmail.com | Manu@123 | deny_button        |
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -350,6 +349,7 @@ Feature: My United features
     Then user validates my tickets component in my united screen
     #Then user validates content in my tickets component
     Then user validates stadium component in my united screen
+
     #Then user validates content in stadium component
     Examples: 
       | username                | password |
@@ -386,7 +386,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
   Scenario Outline: [My United]TC014 Settings --> My Profile --> Change email address for Login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -421,3 +420,31 @@ Feature: My United features
     Examples: 
       | username             | confirmOldusername   | usernameNew          | confirmusernameNew   | password |
       | oldemail@yopmail.com | oldemail@yopmail.com | emailnew@yopmail.com | emailnew@yopmail.com | Manu@123 |
+
+  Scenario Outline: [My United] TC015 -Native Login [>13 and <13] and Social Login
+    # social login less than 13 is not possible in Manu app- Under 13 registrations are not allowed to be linked to a social account
+    #Social Login >13 covered in [IDM]TC008 &TC009
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #    And user clicks on the notification at bottom of screen
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    #native login <13 and >13
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    And user validate t shirt name is displayed as "<Name>"
+
+    #<13 (manutesting13)  and >13 (manupreprod) native app
+    Examples: 
+      | username                  | password | Name      |
+      | manutesting13@yopmail.com | Manu@123 | TESTING13 |
+      | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
