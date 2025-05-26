@@ -9,13 +9,13 @@
             <class name="org.bdd.runners.FailedRun1"/>
         </classes>
     </test>
-    <test name="Rerun failed app tests ios_device1">
+    <!--<test name="Rerun failed app tests ios_device1">
         <parameter name="platformName" value="ios"/>
         <parameter name="deviceName" value="iPhone 15 Pro"/>
         <parameter name="os_version" value="17"/>
         <classes>
             <class name="org.bdd.runners.FailedRun2"/>
         </classes>
-    </test>
+    </test>-->
 
 </suite>
