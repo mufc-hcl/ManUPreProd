@@ -192,7 +192,10 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			int size = js.getList("PageFilterResponse.response.docs").size();
 			System.out.println("size=" + size);
 			for (int i = 0; i < size; i++) {
+				if(js.getString("PageFilterResponse.response.docs[" + i + "].label_t")!=null) 
+				{
 				playerPageFilters.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
+				}
 			}
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
@@ -680,7 +683,6 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			ArrayList<String> expGalleryCard = new ArrayList<>();
 			String contentTypeGalleryCard = "gallery";
-
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
@@ -688,7 +690,6 @@ public class UnitedNowAPIResponse extends BaseApiService {
 				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
 						.equalsIgnoreCase(contentTypeGalleryCard)) {
 					expGalleryCard.add(js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t"));
-
 				}
 			}
 			ExtentsReportManager.extentReportLogging("info",
@@ -704,7 +705,6 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			ArrayList<String> expQuoteCard = new ArrayList<>();
 			String contentTypeQuoteCard = "quote";
-
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();

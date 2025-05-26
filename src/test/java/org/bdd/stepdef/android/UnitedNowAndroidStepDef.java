@@ -485,9 +485,9 @@ public class UnitedNowAndroidStepDef {
             ArrayList<String> expPlayersPageFilters = new ArrayList<>();
             expPlayersPageFilters = unitedNowAPIResponse.getPlayersPageFilterFromApi("PlayersPageFiltersEndpoint");
             expPlayersPageFilters.removeAll(Collections.singleton(null));
-//            System.out.println("expPlayersPageFilters+++++++++++"+expPlayersPageFilters.toString().toUpperCase());
+            System.out.println("expPlayersPageFilters+++++++++++"+expPlayersPageFilters.toString().toUpperCase());
             ArrayList<String> actPlayersPageFillers = unitedNowPage.getPlayersFiltersPageUI();
-//            System.out.println("actPlayersPageFillers------------"+actPlayersPageFillers.toString().toUpperCase());
+            System.out.println("actPlayersPageFillers------------"+actPlayersPageFillers.toString().toUpperCase());
             Collections.sort(expPlayersPageFilters);
             Collections.sort(actPlayersPageFillers);
             soft.assertEquals(expPlayersPageFilters.toString().toUpperCase(), actPlayersPageFillers.toString().toUpperCase());
@@ -884,9 +884,9 @@ public class UnitedNowAndroidStepDef {
     	 ArrayList<String> expectedGalleryCard = new ArrayList<>();
          try {
         	 expectedGalleryCard = unitedNowAPIResponse.getGalleryCard("getAllCardsFromUnitedNow");
-             ExtentsReportManager.extentReportLogging("info", "Quiz Card from API"+expectedGalleryCard);
+             ExtentsReportManager.extentReportLogging("info", "Gallery Card from API"+expectedGalleryCard.get(1));
              if(!expectedGalleryCard.isEmpty()) {
-                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
+                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(1)));
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
              }else {
@@ -1269,9 +1269,9 @@ public class UnitedNowAndroidStepDef {
         	expectedPollCard = unitedNowAPIResponse.getPollCard("getAllCardsFromUnitedNow");
             ExtentsReportManager.extentReportLogging("info", "Poll Card from API"+expectedPollCard);
             if(!expectedPollCard.isEmpty()) {
-                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
+                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(1)));
                 soft.assertAll();
-                ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(0)+"is available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(1)+"is available in united now page");
             }else {
                 ExtentsReportManager.extentReportLogging("info", "Poll card not available in united now page");
             }

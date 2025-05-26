@@ -443,7 +443,7 @@ public class UnitedNowPage extends Common {
 	public void clickOnTheGivenFilter(String filter) throws Exception {
 		elementToBeClickableFluentWait(unitedNowPageLocators.allRadioBtnUnitedPage, 60);
 		try {
-			if (filter.equalsIgnoreCase("All 2024/25")) {
+			if (filter.equalsIgnoreCase("All 2025/26")) {
 				unitedNowPageLocators.allRadioBtnUnitedPage.click();
 			} else if (filter.equalsIgnoreCase("Premier League")) {
 				unitedNowPageLocators.premierRadioBtnUnitedPage.click();
@@ -4028,11 +4028,11 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
-
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
+//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
+//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.toUpperCase()+"')]"));
 					Thread.sleep(2000);
-
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
 					return true;
@@ -4100,8 +4100,8 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuizCard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuizCard+"')]"));
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuizCard.toUpperCase());
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuizCard.toUpperCase()+"')]"));
 					Thread.sleep(2000);
 
 					waitForVisibilityFluentWait(e.get(0),60);
@@ -4138,8 +4138,8 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 			String device = GlobalParams.getPlatformName();
 			try {
 				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text,\""+expPollCard+"\")]"));
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard.toUpperCase());
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text,\""+expPollCard.toUpperCase()+"\")]"));
 					Thread.sleep(2000);
 					waitForVisibilityFluentWait(e.get(0),60);
 					e.get(0).click();
