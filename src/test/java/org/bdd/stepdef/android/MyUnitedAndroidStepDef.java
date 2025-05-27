@@ -1305,39 +1305,30 @@ public class MyUnitedAndroidStepDef {
             throw e;
         }
 	}
-
-	@Then("^User validates text containing user Firstname lastName Country and Age details personalised$")
-	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalised(DataTable table) throws Throwable {
+	@Then("^user validates text containing user Firstname lastName Country and Age details personalised$")
+	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalised()
+			throws Throwable {
 		try {
-	        String firstName = table.cell(1, 0);
-	        String lastName = table.cell(1, 1);
-	        String country = table.cell(1, 2);
-	        String age = table.cell(1, 3);
+			myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
+            ExtentsReportManager.extentReportLogging("info", "Validates About you details");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Validates About you details<br />" + e);
+            throw e;
+         }
+	}
 
-	        String expectedFullName = firstName + " " + lastName;
-	        String expectedAge = age + " year-old";
-
-	        String actualDescription = myUnitedPage.getUserPersonalizedDescription();
-
-	        soft.assertTrue(actualDescription.contains(expectedFullName), "Full name not present in description");
-	        soft.assertTrue(actualDescription.contains(country), "Country not present in description");
-	        soft.assertTrue(actualDescription.contains(expectedAge), "Age not present or incorrect in description");
-
-	        soft.assertAll();
-	        ExtentsReportManager.extentReportLogging("info", "Validated user personalized description");
-	    } catch (AssertionError e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Error validating user personalized description<br />" + e);
-	        throw e;
-	    }
-		
-		//		try {
-//            myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
-//            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
-//        } catch (AssertionError e) {
-//            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
-//            throw e;
-        }
-//	}
-}
-	
+	@Then("^user validates the background colour of profile screen$")
+	public void userValidatesTheBackgroundColourOfProfileScreen() throws Throwable {
+		 try {
+		        myUnitedPage.validateBackgroundColor();
+		        ExtentsReportManager.extentReportLogging("pass", "Background color validated successfully");
+		    } catch (AssertionError e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Background color validation failed<br />" + e);
+		        throw e;
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception during background color validation<br />" + e);
+		        throw e;
+		    }
+	}
+	}
 

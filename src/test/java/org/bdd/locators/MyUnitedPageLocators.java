@@ -671,8 +671,8 @@ public class MyUnitedPageLocators {
  	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ABOUT YOU\"]")
    	public List<WebElement> aboutYouMyUnitedScreen;
  	 
- 	 @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"txt_abt_me\")]")
-  	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ABOUT YOU\"]")
+ 	 @AndroidFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Manupreprod Preprod is one of our most dedicated fans from India. The 24 year-old's App Debut came on 30 Apr 2025. Manupreprod's favourite Player is Tom Heaton. Thanks for your continued incredible support!\"]")
+  	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Manupreprod Preprod is one of our most dedicated fans from India. The 24 year-old's App Debut came on 30 Apr 2025. Manupreprod's favourite Player is Tom Heaton. Thanks for your continued incredible support!\"]")
     	public WebElement descAboutYouMyuniteScreen;
     
     

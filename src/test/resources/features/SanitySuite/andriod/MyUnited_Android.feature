@@ -333,7 +333,7 @@ Feature: My United features
   #Examples:
   #| username                | password | notificationbutton |
   #| manupreprod@yopmail.com | Manu@123 | deny_button        |
-  @123456
+  @failure
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -358,7 +358,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @21234
+  @failure
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -429,8 +429,9 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @123
+  
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
+    Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
     And user navigates to screen four
@@ -447,10 +448,8 @@ Feature: My United features
     And user clicks continue in MUApp popup
     And user clicks on close from notification
     And user navigates to About you in my united screen
-
-    #Then User validates text containing user Firstname lastName Country and Age details personalised
-    #|FirstName|Lastname|Country|Age|
-    #|ManuPreprod| Preprod|India|24|
+		Then user validates text containing user Firstname lastName Country and Age details personalised
+		
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
@@ -481,3 +480,27 @@ Feature: My United features
       | username                  | password | Name      |
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
+      
+      @testinhgf
+      Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
+   Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #    And user clicks on the notification at bottom of screen
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    Then user validates the background colour of profile screen
+		
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |

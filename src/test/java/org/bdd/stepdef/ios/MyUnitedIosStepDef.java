@@ -1651,7 +1651,7 @@ public class MyUnitedIosStepDef {
 	@And("^user navigates to About you in my united screen in ios$")
 	public void userNavigatesToAboutYouInMyUnitedScreenInIos() throws Throwable {
 		try {
-            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            myUnitedPage.navigatesToAboutYouInMyUnitedScreenIos();
             ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
@@ -1664,11 +1664,25 @@ public class MyUnitedIosStepDef {
 			throws Throwable {
 		try {
             myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios();
-            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+            ExtentsReportManager.extentReportLogging("info", "validates textFirstname lastName Country and Age details personalised");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "validates textFirstname lastName Country and Age details personalised<br />" + e);
             throw e;
         }
+	}
+
+	@Then("^user validates the background colour of profile screen in ios$")
+	public void userValidatesTheBackgroundColourOfProfileScreenInIos() throws Throwable {
+		 try {
+		        myUnitedPage.validateBackgroundColorInIos();
+		        ExtentsReportManager.extentReportLogging("pass", "Background color validated successfully");
+		    } catch (AssertionError e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Background color validation failed<br />" + e);
+		        throw e;
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception during background color validation<br />" + e);
+		        throw e;
+		    }
 	}
 
 }
