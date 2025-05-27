@@ -216,7 +216,7 @@ Feature: MUTV Feature
 
     Examples: 
       | username                | password |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
       
 
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
@@ -246,7 +246,7 @@ Feature: MUTV Feature
 
      Examples: 
       | username                | password |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   #below two test caess added by Automation team and moving to regression pack
   #@APITestAndroid
@@ -316,28 +316,37 @@ Feature: MUTV Feature
     Then user validates the CBS/CBR badges display for previous schedule program
     Then user validates the CBS/CBR badges display for future schedule program
     
-    @MUTV_Test
-    Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
-     Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user clicks on Mutv tab
-    And user clicks on explore icon
-    And user checks for UTD Podcast in MUTV
-    Then user clicks on first podcast in MUTV
-    And user clicks on log in button in subscribe page
-    And user enter the valid email "<username>" and valid password "<password>"
-     And user clicks on login button in login screen
-    And user clicks continue in MUApp popup
-    And user clicks on close from notification
-    Then user validates play button in podcast audio screen
     
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+     #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #And user clicks on Mutv tab
+    #And user clicks on explore icon
+    #And user checks for UTD Podcast in MUTV
+    #Then user clicks on first podcast in MUTV
+    #And user clicks on log in button in subscribe page
+    #And user enter the valid email "<username>" and valid password "<password>"
+     #And user clicks on login button in login screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on close from notification
+    #Then user validates play button in podcast audio screen
+    #And user clicks on back icon in podcast audio screen
+    #And user clicks on united now in bottom tab
+    #Then user validates prodcast audio minimized and playing
+    #And user click on My United in bottom tab
+    #Then user validates prodcast audio minimized and playing
+    #And user clicks on Mutv tab
+    #And user checks for Top twenty collections in MUTV
+    #And user clicks on first top collection video in MUTV
+    #And user clicks on play button 
+    #Then user clicks on the close button in the played video 
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |

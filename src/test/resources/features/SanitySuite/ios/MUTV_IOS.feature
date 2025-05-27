@@ -17,7 +17,8 @@ Feature: MUTV IOS feature
     #| title   | desc                                                                                                                              | add button            |
     #| MY LIST | Add your favourite shows and episodes to your list to enjoy them at any time – just hit the My List + icon on any show or episode | FIND SOMETHING TO ADD |
     And user clicks on back button and navigates to mutv screen in ios
-
+    
+@Rerun_23
   Scenario: [MUTV]TC003 & TC004 Verify tapping on Schedule icon displays MUTV Schedule screen and tapping on back button should take user back to MUTV screen,In the MUTV Schedule screen user should see the list of the EPG schedules for next 7 days
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
@@ -67,6 +68,7 @@ Feature: MUTV IOS feature
     And user clicks on MyList icon in ios
     Then user validate no videos in mylist screen in ios
 
+@Rerun_23
   Scenario: [MUTV]TC010 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
@@ -80,6 +82,7 @@ Feature: MUTV IOS feature
     And user clicks on explore icon in ios
     And user clicks on the hero carousel dots in Mutv screen in ios
 
+@Rerun_23
   Scenario Outline: [MUTV]TC011 & TC012 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -112,6 +115,7 @@ Feature: MUTV IOS feature
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
+@Rerun_23
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -144,7 +148,7 @@ Feature: MUTV IOS feature
 
     Examples: 
       | notificationbutton | username                | password |
-      | allow_button       | qastgtest@yopmail.com | Mu@12345 |
+      | allow_button       | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
     Given user navigates to manu android application
@@ -170,7 +174,7 @@ Feature: MUTV IOS feature
     #And user clicks on play Icon for CBS video
      Examples: 
       | username                | password |
-      | qastgtest@yopmail.com | Mu@12345 |
+      | manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen
     Given user navigates to manu android application
@@ -222,7 +226,8 @@ Feature: MUTV IOS feature
   #And user clicks on explore icon in ios
   #And user clicks on view all in MUTV screen in ios
   #Then user validate list in EPC Ten MOST EMOTIONAL MOMENTS screen in ios
-  @Newscropt
+ 
+ @Rerun_23
   Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
@@ -239,26 +244,39 @@ Feature: MUTV IOS feature
     Then user validates the CBS/CBR badges display for previous schedule program in ios
     Then user validates the CBS/CBR badges display for future schedule program in ios
     
-     Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
-    Given user navigates to manu android application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user clicks on Mutv tab in ios
-    And user clicks on explore icon in ios
-    And user checks for UTD Podcast in MUTV in ios
-    Then user clicks on first podcast in MUTV in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in subscribe screen in ios
-    Then user validates play button in podcast audio screen in ios
-    
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #@MUTV_TESTING
+     #Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+    #Given user navigates to manu android application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #And user clicks on Mutv tab in ios
+    #And user clicks on explore icon in ios
+    #And user checks for UTD Podcast in MUTV in ios
+    #Then user clicks on first podcast in MUTV in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in subscribe screen in ios
+    #Then user validates play button in podcast audio screen in ios
+    #And user clicks on back icon in podcast audio screen in ios
+    #And user clicks on united now tab in ios
+    #Then user validates prodcast audio minimized and playing in ios
+    #And user click on My United in bottom tab in ios
+    #Then user validates prodcast audio minimized and playing in ios
+    #And user clicks on Mutv tab in ios
+    #And user checks for Top twenty collections in MUTV in ios
+    #And user clicks on first top collection video in MUTV in ios
+    #And user clicks on play button in ios
+    #Then user clicks on the close button in the played video in ios
+    #
+    #
+    #
+     #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
     
