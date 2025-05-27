@@ -857,7 +857,8 @@ public class MutvPage extends Common {
     public void clicksOnTheCloseButtonInThePlayedVideo() {
         clicksOnCloseButton();
     }
-
+    
+   
     public void clicksOnTheTickIconInIos() {
         try {
             elementToBeClickableFluentWait(mutvPageLocators.tickIconMutvSchedulePage, 60);
@@ -2085,6 +2086,7 @@ public class MutvPage extends Common {
 	          mutvPageLocators.podcastInMUTV.click();
 	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
 	      } else {
+	    	  IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 	    	  elementToBeClickableFluentWait(mutvPageLocators.podcastInMUTV,60);
 	          mutvPageLocators.podcastInMUTV.click();
 	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
@@ -2127,7 +2129,7 @@ public class MutvPage extends Common {
 			try {
 				for (int i = 0; i < 20; i++) {
 					if (!(mutvPageLocators.uTDPodcastMUTV.size() > 0)) {
-						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
 					} else {
 						break;
 					}
@@ -2159,6 +2161,145 @@ public class MutvPage extends Common {
 	          throw e;
 	      }
 			
+		}
+
+
+		public void clicksOnBackIconInPodcastAudioScreen() {
+			try {
+				if(mutvPageLocators.backButtonInPodcastAudioScreen.isDisplayed()){
+	          elementToBeClickableFluentWait(mutvPageLocators.backButtonInPodcastAudioScreen,60);
+	          mutvPageLocators.backButtonInPodcastAudioScreen.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      } else {
+	    	  elementToBeClickableFluentWait(mutvPageLocators.backButtonInPodcastAudioScreen,60);
+	          mutvPageLocators.backButtonInPodcastAudioScreen.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on podcast in MUTV");
+	      }
+	      }
+	      catch (Exception e) {
+	          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnFirstPodcastInMUTV()<br />" + e);
+	          throw e;
+	      }
+			
+			
+		}
+
+
+		public boolean validatesProdcastAudioMinimizedAndPlaying() {
+			String device = GlobalParams.getPlatformName();
+		    try {
+		        if (device.equalsIgnoreCase("android")) {
+		            if (mutvPageLocators.audioMinimizedAndPlaying.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
+		                return true;
+		            }
+		        } else {
+		            if (mutvPageLocators.audioMinimizedAndPlaying.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
+		                return true;
+		            }
+		        }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validatesProdcastAudioMinimizedAndPlayinge ()<br />" + e);
+		        return false;
+		    }
+		    return false; 
+		}
+
+
+		public void checksForTopTwentyCollectionsInMUTV() {
+			String device = GlobalParams.getPlatformName();
+			try {
+				for (int i = 0; i < 20; i++) {
+					if (!(mutvPageLocators.topTwentyCollectionsInMutv.size() > 0)) {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					} else {
+						break;
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "found TOP 20 COLLECTION in MUTV");
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Exception occured in function-checksForTopTwentyCollectionsInMUTV()<br />" + e);
+				throw e;
+			}
+			
+		}
+
+
+		public void clicksOnFirstTopCollectionVideoInMUTV() {
+			try {
+				if(mutvPageLocators.firstVideoInTopTwentyCollectionInMUTV.isDisplayed()){
+	          elementToBeClickableFluentWait(mutvPageLocators.firstVideoInTopTwentyCollectionInMUTV,60);
+	          mutvPageLocators.firstVideoInTopTwentyCollectionInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on video in top twenty collections in MUTV");
+	      } else {
+	    	  elementToBeClickableFluentWait(mutvPageLocators.firstVideoInTopTwentyCollectionInMUTV,60);
+	          mutvPageLocators.firstVideoInTopTwentyCollectionInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on video in top twenty collections in MUTV");
+	      }
+	      }
+	      catch (Exception e) {
+	          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnFirstTopCollectionVideoInMUTV()<br />" + e);
+	          throw e;
+	      }
+		}
+
+
+		public void clicksOnPlayButton() {
+			try {
+				if(mutvPageLocators.playButtonInMUTV.isDisplayed()){
+	          elementToBeClickableFluentWait(mutvPageLocators.playButtonInMUTV,60);
+	          mutvPageLocators.playButtonInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on play button in MUTV");
+	      } else {
+	    	  elementToBeClickableFluentWait(mutvPageLocators.playButtonInMUTV,60);
+	          mutvPageLocators.playButtonInMUTV.click();
+	          ExtentsReportManager.extentReportLogging("pass","Clicks on play button in MUTV");
+	      }
+	      }
+	      catch (Exception e) {
+	          ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnPlayButton()<br />" + e);
+	          throw e;
+	      }
+			
+		}
+
+
+		public void clicksOnTheCloseButtonInThePlayedVideoInMUTV() {
+			clicksOnCloseButtonInMUTV();
+			
+		}
+
+
+		private void clicksOnCloseButtonInMUTV() {
+			 try {
+		            elementToBeClickableFluentWait(mutvPageLocators.closeButtonVideoInMUTV, 60);
+		            mutvPageLocators.closeButtonVideoInMUTV.click();
+		            ExtentsReportManager.extentReportLogging("pass", "Clicks on closeButtonVideo in MUTV ");
+		        } catch (Exception e) {
+		            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnCloseButtonInMUTV()<br />" + e);
+		            throw e;
+		        }
+			
+		}
+
+
+		public void clicksOnFirstPodcastInMUTVInIOS() {
+			try {
+				for (int i = 0; i < 20; i++) {
+					if (!(mutvPageLocators.podcastInMUTV1.size() > 0)) {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+					} else {
+						break;
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "found UTD PODCAST in MUTV");
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Exception occured in function-checksForUTDProdcastInMUTV()<br />" + e);
+				throw e;
+			}
 		}
 		}
 
