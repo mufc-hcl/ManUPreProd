@@ -569,6 +569,17 @@ public class MutvAndroidStepDef {
             throw e;
         }
     }
+    
+    @And("user clicks on the close button in the played video in MUTV")
+    public void userClicksOnTheCloseButtonInThePlayedVideoInMUTV() {
+        try {
+            mutvPage.clicksOnTheCloseButtonInThePlayedVideoInMUTV();
+            ExtentsReportManager.extentReportLogging("info", "Clicked on close button in played video");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking close button in played video<br />" + e);
+            throw e;
+        }
+    }
 
     @And("user clicks on log in button in subscribe page")
     public void userClicksOnLogInButtonInSubscribePage() {
@@ -1127,6 +1138,63 @@ public class MutvAndroidStepDef {
 	        ExtentsReportManager.extentReportLogging("fail", "Exception while validating play button in podcast audio screen.<br />" + e);
 	        throw e;
 	    }
+	}
+
+	@And("^user clicks on back icon in podcast audio screen$")
+	public void userClicksOnBackIconInPodcastAudioScreen() throws Throwable {
+		try {
+            mutvPage.clicksOnBackIconInPodcastAudioScreen();
+            ExtentsReportManager.extentReportLogging("info", "clicked on back icon in podcast audio screen");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on back icon in podcast audio screen <br />" + e);
+            throw e;
+        }
+	}
+
+	@Then("^user validates prodcast audio minimized and playing$")
+	public void userValidatesProdcastAudioMinimizedAndPlaying() throws Throwable {
+		try {
+	        boolean isValid = mutvPage.validatesProdcastAudioMinimizedAndPlaying();
+	        soft.assertTrue(isValid,"play button in podcast audio is not displayed");
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "validated prodcast audio minimized and playing");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception while validating prodcast audio minimized and playing.<br />" + e);
+	        throw e;
+	    }
+	}
+
+	@And("^user checks for Top twenty collections in MUTV$")
+	public void userChecksForTopTwentyCollectionsInMUTV() throws Throwable {
+		try {	        
+	    	   mutvPage.checksForTopTwentyCollectionsInMUTV();
+	        ExtentsReportManager.extentReportLogging("info", "checked for top 20 collections in MUTV");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "checked for top 20 collections in MUTV.<br />" + e);
+	        throw e;
+	    }
+	}
+
+	@Then("^user clicks on first top collection video in MUTV$")
+	public void userClicksOnFirstTopCollectionVideoInMUTV() throws Throwable {
+		try {
+            mutvPage.clicksOnFirstTopCollectionVideoInMUTV();
+            ExtentsReportManager.extentReportLogging("info", "clicked on first top collection video in MUTV");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on first top collection video in MUTV <br />" + e);
+            throw e;
+        }
+	}
+
+	@And("^user clicks on play button$")
+	public void userClicksOnPlayButton() throws Throwable {
+		try {
+            mutvPage.clicksOnPlayButton();
+            ExtentsReportManager.extentReportLogging("info", "clicked on play button");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on play button <br />" + e);
+            throw e;
+        }
 	}
 
 }
