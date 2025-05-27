@@ -35,6 +35,8 @@ public class BaseApiService {
                 token = props.getProperty("stage_token");
             } else if (env.equalsIgnoreCase("prod")) {
                 token = props.getProperty("prod_token");
+            } else if (env.equalsIgnoreCase("qa")) {
+                token = props.getProperty("qa_token");
             }
             headers.put("x-api-key", token);
         } catch (Exception e) {
@@ -54,6 +56,8 @@ public class BaseApiService {
                  baseUri = props.getProperty("baseUri_stage");
             }else if (apiEnv().equalsIgnoreCase("prod")) {
                 baseUri = props.getProperty("baseUri_prod");
+            }else if (apiEnv().equalsIgnoreCase("qa")) {
+                baseUri = props.getProperty("baseUri_qa");
             }
             String endPt = props.getProperty(endPoint);
             return baseUri + endPt;
@@ -76,7 +80,11 @@ public class BaseApiService {
             } else if (apiEnv().equalsIgnoreCase("prod")) {
                 env = "prod";
                 baseUri = props.getProperty("baseUri_prod");
+            }else if (apiEnv().equalsIgnoreCase("qa")) {
+            	env = "qa";
+                baseUri = props.getProperty("baseUri_qa");
             }
+            
             RestAssured.config= RestAssuredConfig.config().httpClient(HttpClientConfig.httpClientConfig().
                     setParam("http.connection.timeout",200000).
                     setParam("http.socket.timeout",200000).
@@ -102,6 +110,9 @@ public class BaseApiService {
             } else if (apiEnv().equalsIgnoreCase("prod")) {
                 env = "prod";
                 baseUri = props.getProperty("baseUri_prod");
+            }else if (apiEnv().equalsIgnoreCase("qa")) {
+            	env = "qa";
+                baseUri = props.getProperty("baseUri_qa");
             }
             RestAssured.config=RestAssuredConfig.config().httpClient(HttpClientConfig.httpClientConfig().
                     setParam("http.connection.timeout",200000).
