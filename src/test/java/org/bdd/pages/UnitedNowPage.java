@@ -85,7 +85,7 @@ public class UnitedNowPage extends Common {
 
 	public void clickFilterIconIos() {
 		try {
-			if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size()>0) {
+			if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 //                    if (!(explorePageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText().equalsIgnoreCase("LIVE MATCH CENTRE")))
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 			}
@@ -196,7 +196,7 @@ public class UnitedNowPage extends Common {
 					}
 				}
 			}
-			ExtentsReportManager.extentReportLogging("pass", "Validation of Filter selection :"+filterFeed);
+			ExtentsReportManager.extentReportLogging("pass", "Validation of Filter selection :" + filterFeed);
 			return flag;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -219,7 +219,7 @@ public class UnitedNowPage extends Common {
 					}
 				}
 			}
-			ExtentsReportManager.extentReportLogging("pass", "Validation of filter selection :"+filterFeed);
+			ExtentsReportManager.extentReportLogging("pass", "Validation of filter selection :" + filterFeed);
 			return flag;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -289,44 +289,43 @@ public class UnitedNowPage extends Common {
 		}
 
 	}
-	
+
 	public void clickCalenderIcon1() throws Exception {
-	    String device = GlobalParams.getPlatformName();
-	    By calenderIconLocator;
+		String device = GlobalParams.getPlatformName();
+		By calenderIconLocator;
 
-	    // Use correct locator based on platform
-	    if (device.equalsIgnoreCase("android")) {
-	        calenderIconLocator = AppiumBy.xpath("//android.widget.ImageView[contains(@resource-id, ':id/image_left')]");
-	    } else {
-	        calenderIconLocator = AppiumBy.xpath("//XCUIElementTypeButton[@name='Fixtures']");
-	    }
+		// Use correct locator based on platform
+		if (device.equalsIgnoreCase("android")) {
+			calenderIconLocator = AppiumBy
+					.xpath("//android.widget.ImageView[contains(@resource-id, ':id/image_left')]");
+		} else {
+			calenderIconLocator = AppiumBy.xpath("//XCUIElementTypeButton[@name='Fixtures']");
+		}
 
-	    int maxRetries = 5;
-	    int attempts = 0;
+		int maxRetries = 5;
+		int attempts = 0;
 
-	    while (attempts < maxRetries) {
-	        try {
-	            // Force page refresh 
-	            driver.getPageSource();
-	            WebElement calendarButton = driver.findElement(calenderIconLocator);
-	            elementToBeClickableFluentWait(calendarButton, 60);
-	            calendarButton.click();
+		while (attempts < maxRetries) {
+			try {
+				// Force page refresh
+				driver.getPageSource();
+				WebElement calendarButton = driver.findElement(calenderIconLocator);
+				elementToBeClickableFluentWait(calendarButton, 60);
+				calendarButton.click();
 
-	            ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon");
-	            return; 
+				ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon");
+				return;
 
-	        } catch (Exception e) {
-	            System.out.println("Attempt " + (attempts + 1) + ": Calendar icon not ready. Retrying...");
-	            attempts++;
-	            Thread.sleep(1000);
-	        }
-	    }
-	    ExtentsReportManager.extentReportLogging("fail",
-	            "Failed to click Calendar icon after " + maxRetries + " retries");
-	    throw new Exception("Calendar icon not clickable after retries.");
+			} catch (Exception e) {
+				System.out.println("Attempt " + (attempts + 1) + ": Calendar icon not ready. Retrying...");
+				attempts++;
+				Thread.sleep(1000);
+			}
+		}
+		ExtentsReportManager.extentReportLogging("fail",
+				"Failed to click Calendar icon after " + maxRetries + " retries");
+		throw new Exception("Calendar icon not clickable after retries.");
 	}
-
-
 
 	public String getUnitedText() {
 		String device = GlobalParams.getPlatformName();
@@ -401,7 +400,8 @@ public class UnitedNowPage extends Common {
 				ExtentsReportManager.extentReportLogging("pass", "Returns mens dropdown values");
 			} else {
 				for (int i = 0; i < unitedNowPageLocators.menDropDownUnitedPage.size(); i++) {
-					menDropDownList.add(unitedNowPageLocators.menDropDownUnitedPage.get(i).getDomAttribute("label").split(", ")[0]);
+					menDropDownList.add(
+							unitedNowPageLocators.menDropDownUnitedPage.get(i).getDomAttribute("label").split(", ")[0]);
 				}
 				ExtentsReportManager.extentReportLogging("pass", "Returns mens dropdown values");
 			}
@@ -440,26 +440,108 @@ public class UnitedNowPage extends Common {
 
 	}
 
+	public boolean clickingRadioButton(ArrayList<String> expectedRadioButtons) throws Exception {
+		String device = GlobalParams.getPlatformName();
+		try {
+			for (String radioButton : expectedRadioButtons) {
+
+				if (device.equalsIgnoreCase("android")) {
+					WebElement radioOptions = driver
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + radioButton + "']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + radioButton + " body");
+					return validateContentInTheRadioOptions();
+
+				}
+				else{
+					WebElement radioOptions = driver.findElement(
+							AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + radioButton + ", selected, radio\"]"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + radioButton + " body");
+					return validateContentInTheRadioOptionsIOnIOS();
+
+					
+				}
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingRadioButton()<br />" + e);
+			throw e;
+		}
+		return true;
+	}
+
 	public void clickOnTheGivenFilter(String filter) throws Exception {
-		elementToBeClickableFluentWait(unitedNowPageLocators.allRadioBtnUnitedPage, 60);
+//		elementToBeClickableFluentWait(unitedNowPageLocators.allRadioBtnUnitedPage, 60);
 		try {
 			if (filter.equalsIgnoreCase("All 2025/26")) {
-				unitedNowPageLocators.allRadioBtnUnitedPage.click();
+				ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+				allLeagueFiltersDropDownValues = unitedNowAPIResponse
+						.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+				Collections.sort(allLeagueFiltersDropDownValues);
+				WebElement all = driver.findElement(AppiumBy
+						.xpath("//android.widget.TextView[@text='" + allLeagueFiltersDropDownValues.get(0) + "']"));
+//				unitedNowPageLocators.allRadioBtnUnitedPage.click();
+				elementToBeClickableFluentWait(all, 60);
+				all.click();
 			} else if (filter.equalsIgnoreCase("Premier League")) {
-				unitedNowPageLocators.premierRadioBtnUnitedPage.click();
+				ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+				allLeagueFiltersDropDownValues = unitedNowAPIResponse
+						.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+				Collections.sort(allLeagueFiltersDropDownValues);
+				WebElement premierLeague = driver.findElement(AppiumBy
+						.xpath("//android.widget.TextView[@text='" + allLeagueFiltersDropDownValues.get(4) + "']"));
+//				unitedNowPageLocators.allRadioBtnUnitedPage.click();
+				elementToBeClickableFluentWait(premierLeague, 60);
+				premierLeague.click();
+
+//				unitedNowPageLocators.premierRadioBtnUnitedPage.click();
 			} else if (filter.equalsIgnoreCase("FA Cup")) {
-				elementToBeClickableFluentWait(unitedNowPageLocators.faCupRadioBtnUnitedPage, 60);
-				unitedNowPageLocators.faCupRadioBtnUnitedPage.click();
+				ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+				allLeagueFiltersDropDownValues = unitedNowAPIResponse
+						.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+				Collections.sort(allLeagueFiltersDropDownValues);
+
+				WebElement faCup = driver.findElement(AppiumBy
+						.xpath("//android.widget.TextView[@text='" + allLeagueFiltersDropDownValues.get(1) + "']"));
+				elementToBeClickableFluentWait(faCup, 60);
+				faCup.click();
+
+//				elementToBeClickableFluentWait(unitedNowPageLocators.faCupRadioBtnUnitedPage, 60);
+//				unitedNowPageLocators.faCupRadioBtnUnitedPage.click();
 			} else if (filter.equalsIgnoreCase("League Cup")) {
-				unitedNowPageLocators.leagueCupRadioBtnUnitedPage.click();
+				ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+				allLeagueFiltersDropDownValues = unitedNowAPIResponse
+						.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+				Collections.sort(allLeagueFiltersDropDownValues);
+
+				WebElement leagueCup = driver.findElement(AppiumBy
+						.xpath("//android.widget.TextView[@text='" + allLeagueFiltersDropDownValues.get(3) + "']"));
+				elementToBeClickableFluentWait(leagueCup, 60);
+				leagueCup.click();
+
+//				unitedNowPageLocators.leagueCupRadioBtnUnitedPage.click();
 			} else if (filter.equalsIgnoreCase("Europa League")) {
 				unitedNowPageLocators.europeLegueRadioBtnUnitedPage.click();
 			} else if (filter.equalsIgnoreCase("Friendly")) {
-				unitedNowPageLocators.friendlyRadioBtnUnitedPage.click();
-			}else if (filter.equalsIgnoreCase("FA Community Shield")) {
-					unitedNowPageLocators.fACommunityShieldRadioBtnUnitedPage.click();
-			} 
-			else {
+				ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+				allLeagueFiltersDropDownValues = unitedNowAPIResponse
+						.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+				Collections.sort(allLeagueFiltersDropDownValues);
+
+				WebElement friendly = driver.findElement(AppiumBy
+						.xpath("//android.widget.TextView[@text='" + allLeagueFiltersDropDownValues.get(2) + "']"));
+				elementToBeClickableFluentWait(friendly, 60);
+				friendly.click();
+
+//				unitedNowPageLocators.friendlyRadioBtnUnitedPage.click();
+			} else if (filter.equalsIgnoreCase("FA Community Shield")) {
+				unitedNowPageLocators.fACommunityShieldRadioBtnUnitedPage.click();
+			} else {
 				throw new Exception("Invalid selection");
 			}
 			ExtentsReportManager.extentReportLogging("pass",
@@ -500,23 +582,27 @@ public class UnitedNowPage extends Common {
 
 	}
 
-	public List<String> getLeagueFilterRadioBtnValues(){
+	public List<String> getLeagueFilterRadioBtnValues() {
 		String device = GlobalParams.getPlatformName();
 		ArrayList<String> menDropDownList = new ArrayList<>();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 //				Thread.sleep(1000);
-			waitForVisibilityFluentWait(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(0), 60);
-			for (int i = 0; i < unitedNowPageLocators.leagueRadioBtnUnitedPage.size(); i++) {
-				menDropDownList.add(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(i).getText().trim());
-			}
-			}else {
+				waitForVisibilityFluentWait(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(0), 60);
 				for (int i = 0; i < unitedNowPageLocators.leagueRadioBtnUnitedPage.size(); i++) {
-					menDropDownList.add(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(i).getDomAttribute("label").replace(", selected, radio", "").split(", ")[0]);
+					menDropDownList.add(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(i).getText().trim());
+				}
+			} else {
+				for (int i = 0; i < unitedNowPageLocators.leagueRadioBtnUnitedPage.size(); i++) {
+					menDropDownList.add(unitedNowPageLocators.leagueRadioBtnUnitedPage.get(i).getDomAttribute("label")
+							.replace(", selected, radio", "").split(", ")[0]);
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Returns the league filter radio button list");
 			}
-			ExtentsReportManager.extentReportLogging("pass", "Returns the league filter radio button list");
-			}
-			 Collections.sort(menDropDownList);
+			Collections.sort(menDropDownList);
+			menDropDownList.removeIf(item -> item.equalsIgnoreCase("2024-25") || item.equalsIgnoreCase("2025-26")
+					|| item.equalsIgnoreCase("League Table") || item.equalsIgnoreCase("FA Community Shield")
+					|| item.equalsIgnoreCase("Europa League"));
 			return menDropDownList;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -675,27 +761,27 @@ public class UnitedNowPage extends Common {
 
 	public String validateUpcomingResults() {
 		WebElement ele = null;
-	      String device = GlobalParams.getPlatformName();
-	      try {
-	            if (device.equalsIgnoreCase("android")) {
-	                waitForVisibilityFluentWait(unitedNowPageLocators.textFixtureAndResults, 60);
-	                ele = unitedNowPageLocators.textFixtureAndResults;
-	                ExtentsReportManager.extentReportLogging("pass", "Returned UpcomingResults");
-	                return ele.getText();
-	            } else {
-	            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
-	            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
-					waitForVisibilityFluentWait(unitedNowPageLocators.textFixtureAndResults, 60);
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.textFixtureAndResults, 60);
+				ele = unitedNowPageLocators.textFixtureAndResults;
+				ExtentsReportManager.extentReportLogging("pass", "Returned UpcomingResults");
+				return ele.getText();
+			} else {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
+				waitForVisibilityFluentWait(unitedNowPageLocators.textFixtureAndResults, 60);
 
-	                ExtentsReportManager.extentReportLogging("pass", "Returned UpcomingResults ");
-	                return unitedNowPageLocators.textFixtureAndResults.getDomAttribute("label");
-	            }
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validateUpcomingResults()<br />" + e);
-	            throw e;
-	        }
+				ExtentsReportManager.extentReportLogging("pass", "Returned UpcomingResults ");
+				return unitedNowPageLocators.textFixtureAndResults.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validateUpcomingResults()<br />" + e);
+			throw e;
+		}
 	}
-	      
 
 	public void clickOnResults() {
 		try {
@@ -750,7 +836,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.menLeague1TextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns mens league text");
-				return unitedNowPageLocators.menLeague1TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.menLeague1TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -771,7 +858,8 @@ public class UnitedNowPage extends Common {
 				waitForVisibilityFluentWait(unitedNowPageLocators.menLeague2TextScheduleScreen, 60);
 				unitedNowPageLocators.menLeague2TextScheduleScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Returns mens league text");
-				return unitedNowPageLocators.menLeague2TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.menLeague2TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -816,7 +904,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.womenLeague1TextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns womens league text");
-				return unitedNowPageLocators.womenLeague1TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.womenLeague1TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -837,7 +926,8 @@ public class UnitedNowPage extends Common {
 				waitForVisibilityFluentWait(unitedNowPageLocators.womenLeague2TextScheduleScreen, 60);
 				unitedNowPageLocators.womenLeague2TextScheduleScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Returns womens league text");
-				return unitedNowPageLocators.womenLeague2TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.womenLeague2TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -856,7 +946,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.under21League1TextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns under21 league text");
-				return unitedNowPageLocators.under21League1TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.under21League1TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -877,7 +968,8 @@ public class UnitedNowPage extends Common {
 				waitForVisibilityFluentWait(unitedNowPageLocators.under21League2TextScheduleScreen, 60);
 				unitedNowPageLocators.under21League2TextScheduleScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Returns under21 league text");
-				return unitedNowPageLocators.under21League2TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.under21League2TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -896,7 +988,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns under18 league text");
-				return unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.englishU18PREMIERLEAGUETextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -904,7 +997,7 @@ public class UnitedNowPage extends Common {
 			throw e;
 		}
 	}
-	
+
 	public String getEnglishPGAU16WomensCupText() {
 		String device = GlobalParams.getPlatformName();
 		try {
@@ -915,7 +1008,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns PGAU16WomensCup league text");
-				return unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.englishPGAU16WomensCupGirlsTextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -923,7 +1017,7 @@ public class UnitedNowPage extends Common {
 			throw e;
 		}
 	}
-	
+
 	public String getEnglishWomensSuperLeagueCupText() {
 		String device = GlobalParams.getPlatformName();
 		try {
@@ -934,7 +1028,8 @@ public class UnitedNowPage extends Common {
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.womenSuperLeagueInWomenTab, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returns englishWomensSuperLeague text");
-				return unitedNowPageLocators.womenSuperLeagueInWomenTab.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.womenSuperLeagueInWomenTab.getDomAttribute("label").replace("Tab Item", "")
+						.trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -955,7 +1050,8 @@ public class UnitedNowPage extends Common {
 				waitForVisibilityFluentWait(unitedNowPageLocators.under18League2TextScheduleScreen, 60);
 				unitedNowPageLocators.under18League2TextScheduleScreen.click();
 				ExtentsReportManager.extentReportLogging("pass", "Returns under18 league text");
-				return unitedNowPageLocators.under18League2TextScheduleScreen.getDomAttribute("label").replace("Tab Item", "").trim();
+				return unitedNowPageLocators.under18League2TextScheduleScreen.getDomAttribute("label")
+						.replace("Tab Item", "").trim();
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -1255,9 +1351,9 @@ public class UnitedNowPage extends Common {
 			ExtentsReportManager.extentReportLogging("pass", "Displayed greeting message");
 			return unitedNowPageLocators.greetingsMsgUnitedNowPage.isDisplayed();
 		} catch (NoSuchElementException ns) {
-            System.out.println("element is not displayed hence skipped");
-        } catch (StaleElementReferenceException se) {
-            System.out.println("stale element exception");
+			System.out.println("element is not displayed hence skipped");
+		} catch (StaleElementReferenceException se) {
+			System.out.println("stale element exception");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-validatesGreetingsMessageInUnitedNowIsDisplayed()<br />" + e);
@@ -1304,7 +1400,6 @@ public class UnitedNowPage extends Common {
 		return false;
 	}
 
-
 	public ArrayList<String> validatesComingUpCarouselInUnitedNowIsDisplayed() {
 		String device = GlobalParams.getPlatformName();
 		ArrayList<String> comingUpcarousal = new ArrayList<>();
@@ -1314,27 +1409,30 @@ public class UnitedNowPage extends Common {
 					if (!(unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText()
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
 						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-						//waitForVisibilityFluentWait(unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0), 60);
-						//return unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0).isDisplayed();
+						// waitForVisibilityFluentWait(unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0),
+						// 60);
+						// return
+						// unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0).isDisplayed();
 						return comingUpcarousal;
 					}
 				} else {
 					waitForVisibilityFluentWait(unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0), 60);
-					//return unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0).isDisplayed();
+					// return
+					// unitedNowPageLocators.comingUpCouroselUnitedNowPage.get(0).isDisplayed();
 				}
 			} else {
 				if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 					if (!(unitedNowPageLocators.liveMatchCenterUnitedNowScreen.get(0).getDomAttribute("label")
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
 						waitForVisibilityFluentWait(unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0), 60);
-						//return unitedNowPageLocators.storiesCouroselUnitedNowPage.isDisplayed();
+						// return unitedNowPageLocators.storiesCouroselUnitedNowPage.isDisplayed();
 						return comingUpcarousal;
 					}
 				} else if (unitedNowPageLocators.liveMatchCenterUnitedNowScreen.size() > 0) {
 
 				} else {
 					waitForVisibilityFluentWait(unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0), 60);
-					//return unitedNowPageLocators.storiesCouroselUnitedNowPage.isDisplayed();
+					// return unitedNowPageLocators.storiesCouroselUnitedNowPage.isDisplayed();
 					return comingUpcarousal;
 				}
 			}
@@ -1345,9 +1443,8 @@ public class UnitedNowPage extends Common {
 			throw e;
 		}
 		return comingUpcarousal;
-		
-	}
 
+	}
 
 	public String getMenInDropDownText() {
 		String device = GlobalParams.getPlatformName();
@@ -1736,12 +1833,12 @@ public class UnitedNowPage extends Common {
 				if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 					if (!(unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText()
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
-						if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size()>0) {
+						if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() > 0) {
 							unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0).click();
 						}
 					}
 				} else {
-					if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size()>0) {
+					if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() > 0) {
 						unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0).click();
 					}
 				}
@@ -1749,14 +1846,14 @@ public class UnitedNowPage extends Common {
 				if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 					if (!(unitedNowPageLocators.liveMatchCenterUnitedNowScreen.get(0).getDomAttribute("label")
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
-						if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size()>0) {
+						if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() > 0) {
 							unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0).click();
 						}
 					}
 				} else if (unitedNowPageLocators.liveMatchCenterUnitedNowScreen.size() > 0) {
 
 				} else {
-					if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size()>0) {
+					if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() > 0) {
 						unitedNowPageLocators.storiesCouroselUnitedNowPage.get(0).click();
 					}
 				}
@@ -2180,11 +2277,10 @@ public class UnitedNowPage extends Common {
 		}
 	}
 
-
 	public boolean validatesTheImageCardInIos() throws InterruptedException {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.imageCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2205,7 +2301,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForImageCardInUnitedNowPage() throws InterruptedException {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.imageCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2229,7 +2325,7 @@ public class UnitedNowPage extends Common {
 				unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.get(0).click();
 			}
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.imageGalleryCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageGalleryCardUnitedNowPage.get(0).click();
 					int count = Integer
@@ -2258,7 +2354,7 @@ public class UnitedNowPage extends Common {
 				unitedNowPageLocators.closeButtonLiveStreamUnitedNowPage.get(0).click();
 			}
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.imageGalleryCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.imageGalleryCardUnitedNowPage.get(0).click();
 					int count = Integer
@@ -2284,7 +2380,7 @@ public class UnitedNowPage extends Common {
 	public boolean validatesTheVideoCardInIos() throws InterruptedException {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.playButtonVideoCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.playButtonVideoCardUnitedNowPage.get(0).click();
 					Thread.sleep(1000);
@@ -2306,7 +2402,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForVideoCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.playButtonVideoCardUnitedNowPage.size() > 0) {
 					unitedNowPageLocators.playButtonVideoCardUnitedNowPage.get(0).click();
 					unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage.click();
@@ -2327,7 +2423,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForQuizCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.quizCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.quizCardVideoCardUnitedNowPage.get(0).getText().toLowerCase()
 								.contains("quiz")) {
@@ -2349,7 +2445,7 @@ public class UnitedNowPage extends Common {
 	public boolean validatesTheQuizCardInIos() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.quizCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.quizCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.toLowerCase().contains("quiz")) {
@@ -2371,7 +2467,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForStatsCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.statsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.statsCardVideoCardUnitedNowPage.get(0).getText()
 								.equalsIgnoreCase("MATCH STATS")) {
@@ -2393,7 +2489,7 @@ public class UnitedNowPage extends Common {
 	public boolean validatesTheStatsCardInIos() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.statsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.statsCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.equalsIgnoreCase("MATCH STATS")) {
@@ -2415,7 +2511,7 @@ public class UnitedNowPage extends Common {
 	public boolean validatesTheCollectionsCardInIos() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.get(0).getDomAttribute("label")
 								.equalsIgnoreCase("collections")) {
@@ -2437,7 +2533,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForCollectionsCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.size() > 0
 						&& unitedNowPageLocators.collectionsCardVideoCardUnitedNowPage.get(0).getText()
 								.equalsIgnoreCase("collections")) {
@@ -2479,7 +2575,7 @@ public class UnitedNowPage extends Common {
 	public boolean navigatesToAdcardForInternalLinkInUnitedNowScreen() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLink.size() > 0) {
 					unitedNowPageLocators.adCardInternalLink.get(0).click();
 					return true;
@@ -2500,7 +2596,7 @@ public class UnitedNowPage extends Common {
 	public boolean navigatesToAdcardForExternalLinkInUnitedNowScreen() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.adCardExternalLink.size() > 0) {
 					unitedNowPageLocators.adCardExternalLink.get(0).click();
 					return true;
@@ -2535,7 +2631,7 @@ public class UnitedNowPage extends Common {
 	public boolean navigatesToAdcardForInternalLinkToNextGenInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLinkToNextGen.size() > 0) {
 					unitedNowPageLocators.adCardInternalLinkToNextGen.get(0).click();
 					return true;
@@ -2556,7 +2652,7 @@ public class UnitedNowPage extends Common {
 	public boolean navigatesToAdcardForInternalLinkToHistoricalMatchNextGenInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.adCardInternalLinkToHistoricalMatchNextGen.size() > 0) {
 					unitedNowPageLocators.adCardInternalLinkToHistoricalMatchNextGen.get(0).click();
 					return true;
@@ -2890,7 +2986,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksOnPollCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.pollCard.size() > 0) {
 					unitedNowPageLocators.pollCard.get(0).click();
 					return true;
@@ -2910,7 +3006,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksOnPollCardInUnitedNowPageios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.pollCard.size() > 0) {
 					unitedNowPageLocators.pollCard.get(0).click();
 					return true;
@@ -2930,7 +3026,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForQuoteCardAndModalInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.quoteCard.size() > 0
 						&& unitedNowPageLocators.quoteCard.get(0).getText().equalsIgnoreCase(
 								"Erik ten Hag will hold his pre-match press conference upon arrival in Portugal on Wednesday evening. Get the latest news and then watch it on-demand from 19:00 BST. ")) {
@@ -2952,7 +3048,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForQuoteCardAndModalInUnitedNowPageinios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.quoteCard.size() > 0
 						&& unitedNowPageLocators.quoteCard.get(0).getText().equalsIgnoreCase(
 								"Erik ten Hag will hold his pre-match press conference upon arrival in Portugal on Wednesday evening. Get the latest news and then watch it on-demand from 19:00 BST. ")) {
@@ -2974,7 +3070,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForViewTableCarddInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.fullTableView.size() > 0
 						&& unitedNowPageLocators.fullTableView.get(0).getText().equalsIgnoreCase("VIEW FULL TABLE")) {
 					unitedNowPageLocators.fullTableView.get(0).click();
@@ -2995,7 +3091,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForViewTableCarddInUnitedNowPageinios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.fullTableView.size() > 0 && unitedNowPageLocators.fullTableView.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("VIEW ALL TABLES")) {
 					unitedNowPageLocators.fullTableView.get(0).click();
@@ -3016,7 +3112,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForPlayerProfileCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.playerProfileCard.size() > 0
 						&& unitedNowPageLocators.playerProfileCard.get(0).getText().equalsIgnoreCase("VIEW PROFILE")) {
 					unitedNowPageLocators.playerProfileCard.get(0).click();
@@ -3037,7 +3133,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForPlayerProfileCardInUnitedNowPageios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.playerProfileCard.size() > 0 && unitedNowPageLocators.playerProfileCard.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("View Profile")) {
 					unitedNowPageLocators.playerProfileCard.get(0).click();
@@ -3058,7 +3154,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForAddCardInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.addCard.size() > 0) {
 					unitedNowPageLocators.addCard.get(0).click();
 					return true;
@@ -3078,7 +3174,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForUpcomingMatchFixturesInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.upcomingMatch.size() > 0
 						&& unitedNowPageLocators.upcomingMatch.get(0).getText().equalsIgnoreCase("MARCH 2025")) {
 					unitedNowPageLocators.upcomingMatch.get(0).getText().equalsIgnoreCase("MARCH 2025");
@@ -3099,7 +3195,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForOldMatchResultsInUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.oldMatch.size() > 0
 						&& unitedNowPageLocators.oldMatch.get(0).getText().equalsIgnoreCase("FEBRUARY 2025")) {
 					unitedNowPageLocators.oldMatch.get(0).getText().equalsIgnoreCase("FEBRUARY 2025");
@@ -3377,7 +3473,7 @@ public class UnitedNowPage extends Common {
 	public boolean checksForUpSellUnitedNowPage() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.upSell.size() > 0
 						&& unitedNowPageLocators.upSell.get(0).getText().equalsIgnoreCase("Upsell stg automation")) {
 					unitedNowPageLocators.upSell.get(0).click();
@@ -3422,7 +3518,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForUpcomingMatchFixturesInUnitedNowPageinios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.upcomingMatch.size() > 0 && unitedNowPageLocators.upcomingMatch.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("MARCH 2025")) {
 					unitedNowPageLocators.upcomingMatch.get(0).getDomAttribute("label").toLowerCase()
@@ -3444,7 +3540,7 @@ public class UnitedNowPage extends Common {
 	public boolean userChecksForOldMatchResultsInUnitedNowPageinios() {
 		try {
 			int i = 0;
-            while (i < 20) {
+			while (i < 20) {
 				if (unitedNowPageLocators.oldMatch.size() > 0 && unitedNowPageLocators.oldMatch.get(0)
 						.getDomAttribute("label").toLowerCase().equalsIgnoreCase("FEBRUARY 2025")) {
 					unitedNowPageLocators.oldMatch.get(0).getDomAttribute("label").toLowerCase()
@@ -3462,53 +3558,55 @@ public class UnitedNowPage extends Common {
 		}
 		return false;
 	}
-    public void clicksOnTeamTabInTableCTAPageinios(String category) {
-        try {
-            if (category.equalsIgnoreCase("men")) {
-                elementToBeClickableFluentWait(unitedNowPageLocators.menDropDowntableCTA, 60);
-                unitedNowPageLocators.menDropDowntableCTA.click();
-                waitForVisibilityFluentWait(unitedNowPageLocators.menTabInTableCTA, 60);
-                unitedNowPageLocators.menTabInTableCTA.click();
-            } else if (category.equalsIgnoreCase("women")) {
-                elementToBeClickableFluentWait(unitedNowPageLocators.womenDropDowntableCTA, 60);
-                unitedNowPageLocators.womenDropDowntableCTA.click();
-                waitForVisibilityFluentWait(unitedNowPageLocators.womenTabInTableCTA, 60);
-                unitedNowPageLocators.womenTabInTableCTA.click();
-            } else if (category.equalsIgnoreCase("under21")) {
-                elementToBeClickableFluentWait(unitedNowPageLocators.under21sDropDowntableCTA, 60);
-                unitedNowPageLocators.under21sDropDowntableCTA.click();
-                waitForVisibilityFluentWait(unitedNowPageLocators.under21sTabInTableCTA, 60);
-                unitedNowPageLocators.under21sTabInTableCTA.click();
-            } else if (category.equalsIgnoreCase("under18")) {
-                elementToBeClickableFluentWait(unitedNowPageLocators.under18sDropDowntableCTA, 60);
-                unitedNowPageLocators.under18sDropDowntableCTA.click();
-                waitForVisibilityFluentWait(unitedNowPageLocators.under18sTabInTableCTA, 60);
-                unitedNowPageLocators.under18sTabInTableCTA.click();
-            } else if (category.equalsIgnoreCase("girls")) {
-                elementToBeClickableFluentWait(unitedNowPageLocators.girlsDropDowntableCTA, 60);
-                unitedNowPageLocators.girlsDropDowntableCTA.click();
-                waitForVisibilityFluentWait(unitedNowPageLocators.girlsTabInTableCTA, 60);
-                unitedNowPageLocators.girlsTabInTableCTA.click();
-            }
-            ExtentsReportManager.extentReportLogging("pass", "Clicks on players from the tab");
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-clicksPlayerFromTab()" + e);
-            throw e;
-        }
-    }
 
+	public void clicksOnTeamTabInTableCTAPageinios(String category) {
+		try {
+			if (category.equalsIgnoreCase("men")) {
+				elementToBeClickableFluentWait(unitedNowPageLocators.menDropDowntableCTA, 60);
+				unitedNowPageLocators.menDropDowntableCTA.click();
+				waitForVisibilityFluentWait(unitedNowPageLocators.menTabInTableCTA, 60);
+				unitedNowPageLocators.menTabInTableCTA.click();
+			} else if (category.equalsIgnoreCase("women")) {
+				elementToBeClickableFluentWait(unitedNowPageLocators.womenDropDowntableCTA, 60);
+				unitedNowPageLocators.womenDropDowntableCTA.click();
+				waitForVisibilityFluentWait(unitedNowPageLocators.womenTabInTableCTA, 60);
+				unitedNowPageLocators.womenTabInTableCTA.click();
+			} else if (category.equalsIgnoreCase("under21")) {
+				elementToBeClickableFluentWait(unitedNowPageLocators.under21sDropDowntableCTA, 60);
+				unitedNowPageLocators.under21sDropDowntableCTA.click();
+				waitForVisibilityFluentWait(unitedNowPageLocators.under21sTabInTableCTA, 60);
+				unitedNowPageLocators.under21sTabInTableCTA.click();
+			} else if (category.equalsIgnoreCase("under18")) {
+				elementToBeClickableFluentWait(unitedNowPageLocators.under18sDropDowntableCTA, 60);
+				unitedNowPageLocators.under18sDropDowntableCTA.click();
+				waitForVisibilityFluentWait(unitedNowPageLocators.under18sTabInTableCTA, 60);
+				unitedNowPageLocators.under18sTabInTableCTA.click();
+			} else if (category.equalsIgnoreCase("girls")) {
+				elementToBeClickableFluentWait(unitedNowPageLocators.girlsDropDowntableCTA, 60);
+				unitedNowPageLocators.girlsDropDowntableCTA.click();
+				waitForVisibilityFluentWait(unitedNowPageLocators.girlsTabInTableCTA, 60);
+				unitedNowPageLocators.girlsTabInTableCTA.click();
+			}
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on players from the tab");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksPlayerFromTab()" + e);
+			throw e;
+		}
+	}
 
-    public boolean validatesTheCrestImageInFixturesScreeninios() {
-        try {
-            if (unitedNowPageLocators.crestAImageInFixturesScreen.isDisplayed() && unitedNowPageLocators.crestBImageInFixturesScreen.isDisplayed())
-                ExtentsReportManager.extentReportLogging("pass","Returns crestAImageInFixturesScreen Text");
-            return true;
-        } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clickOnGeneral()<br />" + e);
-            throw e;
-        }
-    }
-
+	public boolean validatesTheCrestImageInFixturesScreeninios() {
+		try {
+			if (unitedNowPageLocators.crestAImageInFixturesScreen.isDisplayed()
+					&& unitedNowPageLocators.crestBImageInFixturesScreen.isDisplayed())
+				ExtentsReportManager.extentReportLogging("pass", "Returns crestAImageInFixturesScreen Text");
+			return true;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickOnGeneral()<br />" + e);
+			throw e;
+		}
+	}
 
 	public void clicksOnTableCTAInFixuturesPageInIos() {
 		try {
@@ -3520,77 +3618,78 @@ public class UnitedNowPage extends Common {
 					"Exception occurred in function-clicksOnMatchReviewInFixturesPage()" + e);
 			throw e;
 		}
-		
+
 	}
 
-
 	public void clicksOnTableCTAInFixuturesPage() {
-			try {
-				elementToBeClickableFluentWait(unitedNowPageLocators.tableIconSchedulePage1, 60);
-				unitedNowPageLocators.tableIconSchedulePage1.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on matchReview UnitedNow");
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-clicksOnMatchReviewInFixturesPage()" + e);
-				throw e;
-			}
-			
+		try {
+			elementToBeClickableFluentWait(unitedNowPageLocators.tableIconSchedulePage1, 60);
+			unitedNowPageLocators.tableIconSchedulePage1.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on matchReview UnitedNow");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksOnMatchReviewInFixturesPage()" + e);
+			throw e;
 		}
 
+	}
+
 	public ArrayList<String> getPlayersFiltersPageUI() {
-			String device = GlobalParams.getPlatformName();
-			ArrayList<String> playersPageFilterList = new ArrayList<>();
-			try {
-				if (device.equalsIgnoreCase("android")) {
+		String device = GlobalParams.getPlatformName();
+		ArrayList<String> playersPageFilterList = new ArrayList<>();
+		try {
+			if (device.equalsIgnoreCase("android")) {
 //					if(!unitedNowPageLocators.matchStats.isEmpty()){
 //						unitedNowPageLocators.playerIconUnitedNowPage.click();
 //					}
 //	            waitForVisibilityFluentWait(unitedNowPageLocators.menUnitedPage,60);
-					for (int i = 0; i < unitedNowPageLocators.playersPageFilters.size(); i++) {
-						playersPageFilterList.add(unitedNowPageLocators.playersPageFilters.get(i).getText());
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Returns playersPageFilters values");
-				} else {
-					if(!unitedNowPageLocators.matchStats.isEmpty()){
-						unitedNowPageLocators.playerIconUnitedNowPage.click();
-					}
-					for (int i = 0; i < unitedNowPageLocators.playersPageFilters.size(); i++) {
-						 String label = unitedNowPageLocators.playersPageFilters.get(i).getDomAttribute("label").replace("Tab Item", ""); 
-
-                if (!label.isEmpty()) {
-                    playersPageFilterList.add(label);
-                }
-					}
-//						playersPageFilterList.add(unitedNowPageLocators.playersPageFilters.get(i).getDomAttribute("label").replace("Tab Item", ""));
-					ExtentsReportManager.extentReportLogging("pass", "Returns playersPageFilters values");
+				for (int i = 0; i < unitedNowPageLocators.playersPageFilters.size(); i++) {
+					playersPageFilterList.add(unitedNowPageLocators.playersPageFilters.get(i).getText());
 				}
-				 Collections.sort(playersPageFilterList);
-				return playersPageFilterList;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getPlayersFiltersPageUI()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Returns playersPageFilters values");
+			} else {
+				if (!unitedNowPageLocators.matchStats.isEmpty()) {
+					unitedNowPageLocators.playerIconUnitedNowPage.click();
+				}
+				for (int i = 0; i < unitedNowPageLocators.playersPageFilters.size(); i++) {
+					String label = unitedNowPageLocators.playersPageFilters.get(i).getDomAttribute("label")
+							.replace("Tab Item", "");
+
+					if (!label.isEmpty()) {
+						playersPageFilterList.add(label);
+					}
+				}
+//						playersPageFilterList.add(unitedNowPageLocators.playersPageFilters.get(i).getDomAttribute("label").replace("Tab Item", ""));
+				ExtentsReportManager.extentReportLogging("pass", "Returns playersPageFilters values");
 			}
+			Collections.sort(playersPageFilterList);
+			return playersPageFilterList;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getPlayersFiltersPageUI()<br />" + e);
+			throw e;
 		}
+	}
 
 	public String getSelectAllIconTextFromUI() {
 		WebElement ele = null;
-	      String device = GlobalParams.getPlatformName();
-	      try {
-	            if (device.equalsIgnoreCase("android")) {
-	                waitForVisibilityFluentWait(unitedNowPageLocators.selectAllIconFiltersUnitedNowPage, 60);
-	                ele = unitedNowPageLocators.selectAllIconFiltersUnitedNowPage;
-	                ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI");
-	                return ele.getText();
-	            } else {
-	                waitForVisibilityFluentWait(unitedNowPageLocators.selectAllIconFiltersUnitedNowPage, 60);
-	                ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI ");
-	                return unitedNowPageLocators.selectAllIconFiltersUnitedNowPage.getDomAttribute("label");
-	            }
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-SelectAllIconTextFromUI()<br />" + e);
-	            throw e;
-	        }
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.selectAllIconFiltersUnitedNowPage, 60);
+				ele = unitedNowPageLocators.selectAllIconFiltersUnitedNowPage;
+				ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI");
+				return ele.getText();
+			} else {
+				waitForVisibilityFluentWait(unitedNowPageLocators.selectAllIconFiltersUnitedNowPage, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI ");
+				return unitedNowPageLocators.selectAllIconFiltersUnitedNowPage.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-SelectAllIconTextFromUI()<br />" + e);
+			throw e;
+		}
 	}
 
 	public void clicksOnSelectAllIcon() {
@@ -3603,76 +3702,78 @@ public class UnitedNowPage extends Common {
 					"Exception occurred in function-clicksOnSelectAllIcon()" + e);
 			throw e;
 		}
-		
+
 	}
 
 	public String getClearAllIconTextFromUI() {
 		WebElement ele = null;
-	      String device = GlobalParams.getPlatformName();
-	      try {
-	            if (device.equalsIgnoreCase("android")) {
-	                waitForVisibilityFluentWait(unitedNowPageLocators.clearAllIconFiltersUnitedNowPage, 60);
-	                ele = unitedNowPageLocators.clearAllIconFiltersUnitedNowPage;
-	                ExtentsReportManager.extentReportLogging("pass", "Returned clearAllIconTextFromUI");
-	                return ele.getText();
-	            } else {
-	                waitForVisibilityFluentWait(unitedNowPageLocators.clearAllIconFiltersUnitedNowPage, 60);
-	                ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI ");
-	                return unitedNowPageLocators.clearAllIconFiltersUnitedNowPage.getDomAttribute("label");
-	            }
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-SelectAllIconTextFromUI()<br />" + e);
-	            throw e;
-	        }
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.clearAllIconFiltersUnitedNowPage, 60);
+				ele = unitedNowPageLocators.clearAllIconFiltersUnitedNowPage;
+				ExtentsReportManager.extentReportLogging("pass", "Returned clearAllIconTextFromUI");
+				return ele.getText();
+			} else {
+				waitForVisibilityFluentWait(unitedNowPageLocators.clearAllIconFiltersUnitedNowPage, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returned SelectAllIconTextFromUI ");
+				return unitedNowPageLocators.clearAllIconFiltersUnitedNowPage.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-SelectAllIconTextFromUI()<br />" + e);
+			throw e;
+		}
 	}
 
-		public ArrayList<String> getFilterFeedsFromUI() {
-			String device = GlobalParams.getPlatformName();
-			ArrayList<String> filterFeedsList = new ArrayList<>();
-			try {
-				if (device.equalsIgnoreCase("android")) {
+	public ArrayList<String> getFilterFeedsFromUI() {
+		String device = GlobalParams.getPlatformName();
+		ArrayList<String> filterFeedsList = new ArrayList<>();
+		try {
+			if (device.equalsIgnoreCase("android")) {
 //	            waitForVisibilityFluentWait(unitedNowPageLocators.menUnitedPage,60);
-					for (int i = 0; i < unitedNowPageLocators.filterFeedInUnitedNowScreen.size(); i++) {
-						filterFeedsList.add(unitedNowPageLocators.filterFeedInUnitedNowScreen.get(i).getText().trim());
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Returns FilterFeedsFromUI values");
-				} else {
-					for (int i = 0; i < unitedNowPageLocators.filterFeedInUnitedNowScreen.size(); i++) {
-						filterFeedsList.add(unitedNowPageLocators.filterFeedInUnitedNowScreen.get(i).getDomAttribute("label").toUpperCase());
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Returns FilterFeedsFromUI values");
+				for (int i = 0; i < unitedNowPageLocators.filterFeedInUnitedNowScreen.size(); i++) {
+					filterFeedsList.add(unitedNowPageLocators.filterFeedInUnitedNowScreen.get(i).getText().trim());
 				}
-				 Collections.sort(filterFeedsList);
-				return filterFeedsList;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getFilterFeedsFromUI()<br />" + e);
-				throw e;
-			}
-		}
-
-		public String getDateTBCUpcomingFixturesUi() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-
-					waitForVisibilityFluentWait(unitedNowPageLocators.dateTBCFixturesUnitedPage1, 60);
-					ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
-					return unitedNowPageLocators.dateTBCFixturesUnitedPage1.getText();
-
-				} else {
-					waitForVisibility(unitedNowPageLocators.matchDayInAllUnitedNow, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
-					return unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label");
+				ExtentsReportManager.extentReportLogging("pass", "Returns FilterFeedsFromUI values");
+			} else {
+				for (int i = 0; i < unitedNowPageLocators.filterFeedInUnitedNowScreen.size(); i++) {
+					filterFeedsList.add(unitedNowPageLocators.filterFeedInUnitedNowScreen.get(i)
+							.getDomAttribute("label").toUpperCase());
 				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getUpcomingFixturesUi()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Returns FilterFeedsFromUI values");
 			}
+			Collections.sort(filterFeedsList);
+			return filterFeedsList;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getFilterFeedsFromUI()<br />" + e);
+			throw e;
 		}
+	}
 
-		public String getTicketInfoUpcomingFixturesUi() {
+	public String getDateTBCUpcomingFixturesUi() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+
+				waitForVisibilityFluentWait(unitedNowPageLocators.dateTBCFixturesUnitedPage1, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
+				return unitedNowPageLocators.dateTBCFixturesUnitedPage1.getText();
+
+			} else {
+				waitForVisibility(unitedNowPageLocators.matchDayInAllUnitedNow, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
+				return unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getUpcomingFixturesUi()<br />" + e);
+			throw e;
+		}
+	}
+
+	public String getTicketInfoUpcomingFixturesUi() {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
@@ -3690,124 +3791,118 @@ public class UnitedNowPage extends Common {
 			throw e;
 		}
 	}
-		
-		public String validateMatchDayLiveFromUi() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
 
-					waitForVisibilityFluentWait(unitedNowPageLocators.matchDayInAllUnitedNow, 60);
-					ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
-					return unitedNowPageLocators.matchDayInAllUnitedNow.getText();
+	public String validateMatchDayLiveFromUi() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
 
-				} else {
-					waitForVisibility(unitedNowPageLocators.matchDayInAllUnitedNow, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns MatchDayLive text");
-					return unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getUpcomingFixturesUi()<br />" + e);
-				throw e;
-			}
-		}
-			
+				waitForVisibilityFluentWait(unitedNowPageLocators.matchDayInAllUnitedNow, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returns dateTBC text");
+				return unitedNowPageLocators.matchDayInAllUnitedNow.getText();
 
-
-	
-
-public String getprofilesTabText() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-				waitForVisibility(unitedNowPageLocators.profileTabPlayersInfoPage1, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns getprofilesTabText text");
-					return unitedNowPageLocators.profileTabPlayersInfoPage1.getText();
 			} else {
-					waitForVisibility(unitedNowPageLocators.profileTabPlayersInfoPage1, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns getprofilesTabText text");
-					return unitedNowPageLocators.profileTabPlayersInfoPage1.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getprofilesTabText()<br />" + e);
-				throw e;
+				waitForVisibility(unitedNowPageLocators.matchDayInAllUnitedNow, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns MatchDayLive text");
+				return unitedNowPageLocators.matchDayInAllUnitedNow.getDomAttribute("label");
 			}
-
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getUpcomingFixturesUi()<br />" + e);
+			throw e;
 		}
+	}
 
-		public String getStatsTabText() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					waitForVisibility(unitedNowPageLocators.statsTabPlayersInfoPage1, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns StatsTabText text");
-					return unitedNowPageLocators.statsTabPlayersInfoPage1.getText();
-				} else {
-					waitForVisibility(unitedNowPageLocators.statsTabPlayersInfoPage1, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns StatsTabText text");
-					return unitedNowPageLocators.statsTabPlayersInfoPage1.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getStatsTabText()<br />" + e);
-				throw e;
+	public String getprofilesTabText() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibility(unitedNowPageLocators.profileTabPlayersInfoPage1, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns getprofilesTabText text");
+				return unitedNowPageLocators.profileTabPlayersInfoPage1.getText();
+			} else {
+				waitForVisibility(unitedNowPageLocators.profileTabPlayersInfoPage1, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns getprofilesTabText text");
+				return unitedNowPageLocators.profileTabPlayersInfoPage1.getDomAttribute("label");
 			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getprofilesTabText()<br />" + e);
+			throw e;
 		}
 
-		public boolean validatesGreetingsMessageIsNotDisplayedUnitedNow() {
-			try {
-				        if (unitedNowPageLocators.greetingsMsgUnitedNowPageNotDisplayed.size() == 0) {
-				            ExtentsReportManager.extentReportLogging("pass",
-				                    "Greetings message is NOT displayed on the United Now page.");
-				            return true;
-				        } else {
-				            ExtentsReportManager.extentReportLogging("pass",
-				                    "Greetings message is PRESENT on the United Now page.");
-				            return true;
-				        }
-							} catch (Exception e) {
-								ExtentsReportManager.extentReportLogging("fail",
-										"Error in validating Greetings Message  is  displayed" + e);
-								throw e;
-							}
-								}
+	}
 
-		public boolean validatesStoriesCarouselIsNotDisplayedInUnitedNow() {
-			try {
-		        if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() == 0) {
-		            ExtentsReportManager.extentReportLogging("pass",
-		                    "Stories Carousel is NOT displayed on the United Now page.");
-		            return true;
-		        } else {
-		            ExtentsReportManager.extentReportLogging("pass",
-		                    "Stories Carousel is PRESENT on the United Now page.");
-		            return true;
-		        }
-				} catch (Exception e) {
-					ExtentsReportManager.extentReportLogging("fail",
-							"Error in validating Stories Carousel  is  displayed" + e);
-					throw e;
-				}
-					}
-
-		public boolean validatesComingUpCarouselIsNotDisplayedInUnitedNow() {
-			try {
-		        if (unitedNowPageLocators.comingUpCouroselUnitedNowPage.size() == 0) {
-		            ExtentsReportManager.extentReportLogging("pass",
-		                    "ComingUp Carousel is NOT displayed on the United Now page.");
-		            return true;
-		        } else {
-		            ExtentsReportManager.extentReportLogging("pass",
-		                    "ComingUp Carousel is PRESENT on the United Now page.");
-		            return true;
-		        }
-				} catch (Exception e) {
-					ExtentsReportManager.extentReportLogging("fail",
-							"Error in validating ComingUp Carousel  is  displayed" + e);
-					throw e;
-				}
+	public String getStatsTabText() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibility(unitedNowPageLocators.statsTabPlayersInfoPage1, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns StatsTabText text");
+				return unitedNowPageLocators.statsTabPlayersInfoPage1.getText();
+			} else {
+				waitForVisibility(unitedNowPageLocators.statsTabPlayersInfoPage1, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns StatsTabText text");
+				return unitedNowPageLocators.statsTabPlayersInfoPage1.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getStatsTabText()<br />" + e);
+			throw e;
 		}
+	}
+
+	public boolean validatesGreetingsMessageIsNotDisplayedUnitedNow() {
+		try {
+			if (unitedNowPageLocators.greetingsMsgUnitedNowPageNotDisplayed.size() == 0) {
+				ExtentsReportManager.extentReportLogging("pass",
+						"Greetings message is NOT displayed on the United Now page.");
+				return true;
+			} else {
+				ExtentsReportManager.extentReportLogging("pass",
+						"Greetings message is PRESENT on the United Now page.");
+				return true;
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating Greetings Message  is  displayed" + e);
+			throw e;
+		}
+	}
+
+	public boolean validatesStoriesCarouselIsNotDisplayedInUnitedNow() {
+		try {
+			if (unitedNowPageLocators.storiesCouroselUnitedNowPage.size() == 0) {
+				ExtentsReportManager.extentReportLogging("pass",
+						"Stories Carousel is NOT displayed on the United Now page.");
+				return true;
+			} else {
+				ExtentsReportManager.extentReportLogging("pass", "Stories Carousel is PRESENT on the United Now page.");
+				return true;
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in validating Stories Carousel  is  displayed" + e);
+			throw e;
+		}
+	}
+
+	public boolean validatesComingUpCarouselIsNotDisplayedInUnitedNow() {
+		try {
+			if (unitedNowPageLocators.comingUpCouroselUnitedNowPage.size() == 0) {
+				ExtentsReportManager.extentReportLogging("pass",
+						"ComingUp Carousel is NOT displayed on the United Now page.");
+				return true;
+			} else {
+				ExtentsReportManager.extentReportLogging("pass",
+						"ComingUp Carousel is PRESENT on the United Now page.");
+				return true;
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in validating ComingUp Carousel  is  displayed" + e);
+			throw e;
+		}
+	}
 
 //		public boolean validatesUpsellFunctionalityIsDisplayedInUnitedNow() {
 //			try {
@@ -3821,172 +3916,177 @@ public String getprofilesTabText() {
 //			}
 //		}
 
-		public String getUpsellTitleFromUI() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					waitForVisibility(unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0), 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns UpsellTitle text");
-					return unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0).getText();
-				} else {
-					System.out.println(unitedNowPageLocators.upsellTextInUnitedNowScreen.size());
+	public String getUpsellTitleFromUI() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibility(unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0), 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns UpsellTitle text");
+				return unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0).getText();
+			} else {
+				System.out.println(unitedNowPageLocators.upsellTextInUnitedNowScreen.size());
 //					waitForVisibility(unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0), 60);
-					ExtentsReportManager.extentReportLogging("pass", "Returns UpsellTitle text");
-					return unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0).getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getUpsellTitleFromUI()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Returns UpsellTitle text");
+				return unitedNowPageLocators.upsellTextInUnitedNowScreen.get(0).getDomAttribute("label");
 			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getUpsellTitleFromUI()<br />" + e);
+			throw e;
 		}
+	}
 
-		public String getWatchNowBtnTextUi() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					waitForVisibility(unitedNowPageLocators.watchNowCTAInUnitedNowScreen, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns watchNow CTA text");
-					return unitedNowPageLocators.watchNowCTAInUnitedNowScreen.getText();
-				} else {
+	public String getWatchNowBtnTextUi() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibility(unitedNowPageLocators.watchNowCTAInUnitedNowScreen, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns watchNow CTA text");
+				return unitedNowPageLocators.watchNowCTAInUnitedNowScreen.getText();
+			} else {
 //					waitForVisibility(unitedNowPageLocators.watchNowCTAInUnitedNowScreen, 60);
-					ExtentsReportManager.extentReportLogging("pass", "Returns watchNow CTA text");
-					return unitedNowPageLocators.watchNowCTAInUnitedNowScreen.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getWatchNowBtnTextUi()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Returns watchNow CTA text");
+				return unitedNowPageLocators.watchNowCTAInUnitedNowScreen.getDomAttribute("label");
 			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getWatchNowBtnTextUi()<br />" + e);
+			throw e;
+		}
+	}
+
+	public String getLiveVideoTextFromUI() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibility(unitedNowPageLocators.liveVideoInUnitedNowScreen, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns LiveVideo  text");
+				return unitedNowPageLocators.liveVideoInUnitedNowScreen.getText();
+			} else {
+				waitForVisibility(unitedNowPageLocators.liveVideoInUnitedNowScreen, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns LiveVideo text");
+				return unitedNowPageLocators.liveVideoInUnitedNowScreen.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validatesLiveVideoInUnitedNowIsDisplayed()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
+		try {
+			waitForVisibilityFluentWait(unitedNowPageLocators.liveVideoInUnitedNowScreen, 120);
+			ExtentsReportManager.extentReportLogging("pass", "Displayed LiveVideo in united now page");
+			return unitedNowPageLocators.liveVideoInUnitedNowScreen.isDisplayed();
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-validatesLiveVedioIsDisplayedInUI()<br />" + e);
+			throw e;
+		}
+	}
+
+	public void clicksOnUnitedNowTab() {
+		try {
+			elementToBeClickableFluentWait(unitedNowPageLocators.unitedNowTab, 60);
+			unitedNowPageLocators.unitedNowTab.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on United Now Tab");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksOnUnitedNowTab()" + e);
+			throw e;
 		}
 
-		public String getLiveVideoTextFromUI() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					waitForVisibility(unitedNowPageLocators.liveVideoInUnitedNowScreen, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns LiveVideo  text");
-					return unitedNowPageLocators.liveVideoInUnitedNowScreen.getText();
-				} else {
-					waitForVisibility(unitedNowPageLocators.liveVideoInUnitedNowScreen, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns LiveVideo text");
-					return unitedNowPageLocators.liveVideoInUnitedNowScreen.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-validatesLiveVideoInUnitedNowIsDisplayed()<br />" + e);
-				throw e;
-			}
-		}
-			
-			
-public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
-			try {
-				waitForVisibilityFluentWait(unitedNowPageLocators.liveVideoInUnitedNowScreen, 120);
-				ExtentsReportManager.extentReportLogging("pass", "Displayed LiveVideo in united now page");
-				return unitedNowPageLocators.liveVideoInUnitedNowScreen.isDisplayed();
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-validatesLiveVedioIsDisplayedInUI()<br />" + e);
-				throw e;
-			}
-		}
+	}
 
+	public boolean getArticleCardFromUnitedNow(String expArticleCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expArticleCard);
 
-
-		
-		public void clicksOnUnitedNowTab() {
-			try {
-				elementToBeClickableFluentWait(unitedNowPageLocators.unitedNowTab, 60);
-				unitedNowPageLocators.unitedNowTab.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on United Now Tab");
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-clicksOnUnitedNowTab()" + e);
-				throw e;
-			}
-			
-		}
-		
-		
-		public boolean getArticleCardFromUnitedNow(String expArticleCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expArticleCard);
-
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expArticleCard+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expArticleCard + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-							i++;
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expArticleCard + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expArticleCard + "\""));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						i++;
 //							if(i>20){
 //								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
 //								return false;
 //							}
-						}
 					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Article Card d in united now page");
 				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getArticleCardFromUnitedNow()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Article Card d in united now page");
 			}
-	        return false;
-	    }
-		
-		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
-		    String device = GlobalParams.getPlatformName();
-		    try {
-		        if (device.equalsIgnoreCase("android")) {
-		            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
-		            List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expVideoCard + "')]"));
-		            Thread.sleep(2000); 
-
-		            if (!e.isEmpty()) {
-		                waitForVisibilityFluentWait(e.get(0), 60);
-		                e.get(0).click();
-		                ExtentsReportManager.extentReportLogging("pass", "Video card '" + expVideoCard + "' displayed and clicked on Android.");
-		                return true;
-		            } else {
-		                ExtentsReportManager.extentReportLogging("fail", "Video card '" + expVideoCard + "' not found on Android.");
-		                return false;
-		            }
-
-		        } else { // iOS
-		        	 int i = 0;
-			            while (i < 20) {
-		                List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\""));
-		                if (!e.isEmpty()) {
-		                    e.get(0).click();
-		                    Thread.sleep(4000); // Consider replacing with WebDriverWait
-		                    ExtentsReportManager.extentReportLogging("pass", "Video card '" + expVideoCard + "' displayed and clicked on iOS.");
-		                    return true;
-		                } else {
-		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-		                    i++;
-		                }
-		            }
-		            ExtentsReportManager.extentReportLogging("fail", "Failing due to excessive scrolls. Unable to find the card '" + expVideoCard + "' on iOS.");
-		            return false;
-		        }
-		    } catch (Exception e) {
-		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getVideoCardFromUnitedNow()<br />" + e);
-		        throw e;
-		    }
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getArticleCardFromUnitedNow()<br />" + e);
+			throw e;
 		}
+		return false;
+	}
+
+	public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expVideoCard + "')]"));
+				Thread.sleep(2000);
+
+				if (!e.isEmpty()) {
+					waitForVisibilityFluentWait(e.get(0), 60);
+					e.get(0).click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Video card '" + expVideoCard + "' displayed and clicked on Android.");
+					return true;
+				} else {
+					ExtentsReportManager.extentReportLogging("fail",
+							"Video card '" + expVideoCard + "' not found on Android.");
+					return false;
+				}
+
+			} else { // iOS
+				int i = 0;
+				while (i < 20) {
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\""));
+					if (!e.isEmpty()) {
+						e.get(0).click();
+						Thread.sleep(4000); // Consider replacing with WebDriverWait
+						ExtentsReportManager.extentReportLogging("pass",
+								"Video card '" + expVideoCard + "' displayed and clicked on iOS.");
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						i++;
+					}
+				}
+				ExtentsReportManager.extentReportLogging("fail",
+						"Failing due to excessive scrolls. Unable to find the card '" + expVideoCard + "' on iOS.");
+				return false;
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getVideoCardFromUnitedNow()<br />" + e);
+			throw e;
+		}
+	}
 //		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
 //			String device = GlobalParams.getPlatformName();
 //			try {
@@ -4023,353 +4123,477 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //			}
 //	        return false;
 //	    }
-		
-		public boolean getGalleryCardFromUnitedNow(String expGalleryCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
-//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.toUpperCase()+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expGalleryCard.replaceAll("\\[|\\]", "") + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-							i++;
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Gallery Card in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getGalleryCardFromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		public boolean getQuoteCardFromUnitedNow(String expQuoteCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuoteCard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuoteCard+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expQuoteCard + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Quote Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getQuoteCardFromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		public boolean getQuizCardFromUnitedNow(String expQuizCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuizCard.toUpperCase());
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expQuizCard.toUpperCase()+"')]"));
-					Thread.sleep(2000);
 
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expQuizCard.toString().toUpperCase()));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
+	public boolean getGalleryCardFromUnitedNow(String expGalleryCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
+//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expGalleryCard.toUpperCase() + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver.findElements(AppiumBy
+							.iOSNsPredicateString(type + " == \"" + expGalleryCard.replaceAll("\\[|\\]", "") + "\""));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						i++;
 					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Quiz Card d in united now page");
 				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getQuizCardFromUnitedNow()<br />" + e);
-				throw e;
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Gallery Card in united now page");
 			}
-	        return false;
-	    }
-		
-		public boolean getPollCardFromUnitedNow(String expPollCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard.toUpperCase());
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text,\""+expPollCard.toUpperCase()+"\")]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-//						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expPollCard));
-						if (e.size() > 0) {
-							ExtentsReportManager.extentReportLogging("pass", "Poll card" + expPollCard + " displayed in united now page");
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Poll Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getPollCardFromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		public boolean getCompetitionCardFromUnitedNow(String expCompetitionCard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expCompetitionCard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expCompetitionCard+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expCompetitionCard + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Competition Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getCompetitionCardFromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		public boolean getAdcardfromUnitedNow(String expAdcard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expAdcard+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard + "\""));
-						if (e.size() > 0) {
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Adcard Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getAdcardfromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		public boolean getImagefromUnitedNow(String expImageCcard) throws InterruptedException {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
-					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expImageCcard+"')]"));
-					Thread.sleep(2000);
-					waitForVisibilityFluentWait(e.get(0),60);
-					e.get(0).click();
-					return true;
-				} else {
-					 int i = 0;
-			            while (i < 20) {
-						String type = "name";
-						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expImageCcard + "\""));
-						if (e.size() > 0) {
-							ExtentsReportManager.extentReportLogging("pass", "Image card" + expImageCcard + " displayed in united now page");
-							e.get(0).click();
-							Thread.sleep(4000);
-							return true;
-						} else {
-							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
-							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-						}
-					}
-					ExtentsReportManager.extentReportLogging("pass", "Checks for Image Card d in united now page");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getImagefromUnitedNow()<br />" + e);
-				throw e;
-			}
-	        return false;
-	    }
-		
-		
-		
-		public String getStoriesCarouselinMatchResultFromUI() {
-			String device = GlobalParams.getPlatformName();
-			try {
-				if (device.equalsIgnoreCase("android")) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-					waitForVisibility(unitedNowPageLocators.storiesCarousel, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns stories Carousel text");
-					return unitedNowPageLocators.storiesCarousel.getText();
-				} else {
-					waitForVisibility(unitedNowPageLocators.storiesCarousel, 15);
-					ExtentsReportManager.extentReportLogging("pass", "Returns stories Carousel text");
-					return unitedNowPageLocators.storiesCarousel.getDomAttribute("label");
-				}
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function-getStoriesCarouselinMatchResultFromUI()<br />" + e);
-				throw e;
-			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getGalleryCardFromUnitedNow()<br />" + e);
+			throw e;
 		}
-		
-		public boolean getEnglishFaCups() throws Exception {
-			String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
-	        try {
-	        	if(unitedNowPageLocators.englishFACups.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.englishFACups.get(0), 60);
-				String actualEnglishFaCups = unitedNowPageLocators.englishFACups.get(0).getText();
-	            if (actualEnglishFaCups.contains(expEnglishFaCups))
+		return false;
+	}
+
+	public boolean getQuoteCardFromUnitedNow(String expQuoteCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuoteCard);
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expQuoteCard + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expQuoteCard + "\""));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Quote Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getQuoteCardFromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public boolean getQuizCardFromUnitedNow(String expQuizCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expQuizCard.toUpperCase());
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expQuizCard.toUpperCase() + "')]"));
+				Thread.sleep(2000);
+
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.accessibilityId(expQuizCard.toString().toUpperCase()));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Quiz Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getQuizCardFromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public boolean getPollCardFromUnitedNow(String expPollCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expPollCard.toUpperCase());
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text,\"" + expPollCard.toUpperCase() + "\")]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+//						String type = "name";
+					List<WebElement> e = driver.findElements(AppiumBy.accessibilityId(expPollCard));
+					if (e.size() > 0) {
+						ExtentsReportManager.extentReportLogging("pass",
+								"Poll card" + expPollCard + " displayed in united now page");
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Poll Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getPollCardFromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public boolean getCompetitionCardFromUnitedNow(String expCompetitionCard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expCompetitionCard);
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expCompetitionCard + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expCompetitionCard + "\""));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Competition Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getCompetitionCardFromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public boolean getAdcardfromUnitedNow(String expAdcard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard);
+				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expAdcard + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard + "\""));
+					if (e.size() > 0) {
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Adcard Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getAdcardfromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public boolean getImagefromUnitedNow(String expImageCcard) throws InterruptedException {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expImageCcard);
+				List<WebElement> e = driver
+						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expImageCcard + "')]"));
+				Thread.sleep(2000);
+				waitForVisibilityFluentWait(e.get(0), 60);
+				e.get(0).click();
+				return true;
+			} else {
+				int i = 0;
+				while (i < 20) {
+					String type = "name";
+					List<WebElement> e = driver
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expImageCcard + "\""));
+					if (e.size() > 0) {
+						ExtentsReportManager.extentReportLogging("pass",
+								"Image card" + expImageCcard + " displayed in united now page");
+						e.get(0).click();
+						Thread.sleep(4000);
+						return true;
+					} else {
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
+						i++;
+//							if(i>20){
+//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+//								return false;
+//							}
+					}
+				}
+				ExtentsReportManager.extentReportLogging("pass", "Checks for Image Card d in united now page");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getImagefromUnitedNow()<br />" + e);
+			throw e;
+		}
+		return false;
+	}
+
+	public String getStoriesCarouselinMatchResultFromUI() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			if (device.equalsIgnoreCase("android")) {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+				waitForVisibility(unitedNowPageLocators.storiesCarousel, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns stories Carousel text");
+				return unitedNowPageLocators.storiesCarousel.getText();
+			} else {
+				waitForVisibility(unitedNowPageLocators.storiesCarousel, 15);
+				ExtentsReportManager.extentReportLogging("pass", "Returns stories Carousel text");
+				return unitedNowPageLocators.storiesCarousel.getDomAttribute("label");
+			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getStoriesCarouselinMatchResultFromUI()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getEnglishFaCups() throws Exception {
+		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
+		try {
+			List<WebElement> bodyText = driver.findElements(
+					AppiumBy.xpath("(//android.widget.TextView[contains(@text,'" + expEnglishFaCups + "')])[1]"));
+			if (bodyText.size() > 0) {
+				waitForVisibilityFluentWait(bodyText.get(0), 60);
+				String actualEnglishFaCups = bodyText.get(0).getText();
+				if (actualEnglishFaCups.contains(expEnglishFaCups))
 					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishFaCups + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(expEnglishFaCups))
 					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishFaCups + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getEnglishFaCups()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-//		public boolean getEnglishPremierLeague() throws Exception {
-//			String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
-//	        try {
-//	        	waitForVisibilityFluentWait(unitedNowPageLocators.englishPremierLeague, 60);
-//				String actEnglishPremierLeague = unitedNowPageLocators.englishPremierLeague.getText();
-//	            if (actEnglishPremierLeague.contains(expEnglishPremierLeague))
-//	                ExtentsReportManager.extentReportLogging("pass", ""+expEnglishPremierLeague+" text matching");
-//	            return true;
-//	        } catch (Exception e) {
-//	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getEnglishPremierLeague()<br />" + e);
-//	            throw e;
-//	        }
-//	    }
-		public boolean getEnglishPremierLeague() throws Exception {
-			String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.englishPremierLeague.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.englishPremierLeague.get(0), 60);
-				String actualEnglishFaCups = unitedNowPageLocators.englishPremierLeague.get(0).getText();
-	            if (actualEnglishFaCups.contains(expEnglishPremierLeague))
-					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
-			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
-				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
-				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
-				if (actnoFixturesTextUnitedPage.contains(error))
-					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
-	        }
-			else {
-				return false;
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getEnglishFaCups()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean validateContentInTheRadioOptions() throws Exception {
+		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
+		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
+		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+
+		ArrayList<String> allLeague = new ArrayList<>();
+		allLeague.add(expEnglishFaCups);
+		allLeague.add(expEnglishPremierLeague);
+		allLeague.add(expEnglishFAcupLeague);
+		allLeague.add(expLeagueCup);
+		allLeague.add(expFriendly);
+
+		String error = "There are currently no fixtures available in this competition.";
+
+		try {
+			for (String allLeagueBodyContent : allLeague) {
+
+				List<WebElement> bodyText = driver.findElements(AppiumBy
+						.xpath("(//android.widget.TextView[contains(@text,'" + allLeagueBodyContent + "')])[1]"));
+				if (bodyText.size() > 0) {
+					waitForVisibilityFluentWait(bodyText.get(0), 60);
+					String actualBodyText = bodyText.get(0).getText();
+					if (actualBodyText.contains(expEnglishFaCups) || actualBodyText.contains(expEnglishPremierLeague)
+							|| actualBodyText.contains(expEnglishFAcupLeague) || actualBodyText.contains(expLeagueCup)
+							|| actualBodyText.contains(expFriendly))
+						ExtentsReportManager.extentReportLogging("pass", ""+allLeagueBodyContent+"text matching");
+
+				} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
+					String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0)
+							.getText();
+					if (actnoFixturesTextUnitedPage.contains(error))
+						ExtentsReportManager.extentReportLogging("pass", ""+error+"text matching");
+				} else {
+					return false;
+				}
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getEnglishPremierLeague()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validateContentInTheRadioOptions()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean validateContentInTheRadioOptionsIOnIOS() throws Exception {
+		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
+		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
+		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+
+		ArrayList<String> allOptions = new ArrayList<>();
+		allOptions.add(expEnglishFaCups);
+		allOptions.add(expEnglishPremierLeague);
+		allOptions.add(expEnglishFAcupLeague);
+		allOptions.add(expLeagueCup);
+		allOptions.add(expFriendly);
+
+		String error = "There are currently no fixtures available in this competition.";
+
+		try {
+			for (String radioButton : allOptions) {
+
+				List<WebElement> bodyText = driver.findElements(AppiumBy
+						.xpath("//XCUIElementTypeButton[@name='"+radioButton+", selected, radio']"));
+				if (bodyText.size() > 0) {
+					waitForVisibilityFluentWait(bodyText.get(0), 60);
+					String actualBodyText = bodyText.get(0).getText();
+					if (actualBodyText.contains(expEnglishFaCups) || actualBodyText.contains(expEnglishPremierLeague)
+							|| actualBodyText.contains(expEnglishFAcupLeague) || actualBodyText.contains(expLeagueCup)
+							|| actualBodyText.contains(expFriendly))
+						ExtentsReportManager.extentReportLogging("pass", ""+radioButton+"text matching");
+
+				} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
+					String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0)
+							.getText();
+					if (actnoFixturesTextUnitedPage.contains(error))
+						ExtentsReportManager.extentReportLogging("pass", ""+error+"text matching");
+				} else {
+					return false;
+				}
+			}
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-validateContentInTheRadioOptionsIOnIOS()<br />" + e);
+			throw e;
+		}
+	}
+
+//	public boolean validateContentInTheRadioOptionstest() throws Exception {
+//		ArrayList<String> expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCup("AllLeagueFiltersEndpoint");
+//		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
+//		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+//		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+//		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+//		
+//		String error = "There are currently no fixtures available in this competition.";
+//		
+//		try {
+//			List<WebElement> bodyText = driver.findElements(AppiumBy
+//					.xpath("(//android.widget.TextView[contains(@text,'" + expEnglishPremierLeague + "')])[1]"));
+//			if (bodyText.size() > 0) {
+//				waitForVisibilityFluentWait(bodyText.get(0), 60);
+//				String actualBodyText = bodyText.get(0).getText();
+//				for(String options:expEnglishFaCups)
+//					if(options.equalsIgnoreCase(actualBodyText)) {
+//						ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
+//					}
+//				
+//					else if(options.equalsIgnoreCase(actualBodyText))
+//					else if()
+//						
+//				if (actualBodyText.contains(expEnglishFaCups)
+//						|| actualBodyText.contains(expEnglishPremierLeague)
+//								||actualBodyText.contains(expEnglishFAcupLeague)
+//										||actualBodyText.contains(expLeagueCup)
+//												||actualBodyText.contains(expFriendly))
+//					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
+//			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+//				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
+//				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
+//				if (actnoFixturesTextUnitedPage.contains(error))
+//					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishPremierLeague + " text matching");
+//			} else {
+//				return false;
+//			}
+//			return true;
+//
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Exception occured in function-getEnglishPremierLeague()<br />" + e);
+//			throw e;
+//		}
+//	}
+
 //		public boolean getFACup() throws Exception {
 //			String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
 //	        try {
@@ -4384,34 +4608,39 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //	            throw e;
 //	        }
 //	    }
-		
-		
-		public boolean getFACup() throws Exception {
-			String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.faCup.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.faCup.get(0), 60);
-				String actualEnglishFaCups = unitedNowPageLocators.faCup.get(0).getText();
-	            if (actualEnglishFaCups.contains(expEnglishFAcupLeague))
+
+	public boolean getFACup() throws Exception {
+		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+			List<WebElement> bodyText = driver.findElements(
+					AppiumBy.xpath("(//android.widget.TextView[contains(@text,'" + expEnglishFAcupLeague + "')])[1]"));
+			if (bodyText.size() > 0) {
+				waitForVisibilityFluentWait(bodyText.get(0), 60);
+				String actualBodyText = bodyText.get(0).getText();
+				if (actualBodyText.contains(expEnglishFAcupLeague))
+//	        	if(unitedNowPageLocators.faCup.size() > 0) { 
+//	        	waitForVisibilityFluentWait(unitedNowPageLocators.faCup.get(0), 60);
+//				String actualEnglishFaCups = unitedNowPageLocators.faCup.get(0).getText();
+//	            if (actualEnglishFaCups.contains(expEnglishFAcupLeague))
 					ExtentsReportManager.extentReportLogging("pass", "" + expEnglishFAcupLeague + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
-					ExtentsReportManager.extentReportLogging("pass", "" + actnoFixturesTextUnitedPage + " text matching");
-	        }
-			else {
+					ExtentsReportManager.extentReportLogging("pass",
+							"" + actnoFixturesTextUnitedPage + " text matching");
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getFACup()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getFACup()<br />" + e);
+			throw e;
+		}
+	}
+
 //		public boolean getEuropaLeague() throws Exception {
 //			String expuEFAEuropaLeague = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
 //	        try {
@@ -4426,111 +4655,124 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //	            throw e;
 //	        }
 //	    }
-		
-		public boolean getEuropaLeague() throws Exception {
-			String expuEFAEuropaLeague = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.uEFAEuropaLeague.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.uEFAEuropaLeague.get(0), 60);
+
+	public boolean getEuropaLeague() throws Exception {
+		String expuEFAEuropaLeague = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+			if (unitedNowPageLocators.uEFAEuropaLeague.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.uEFAEuropaLeague.get(0), 60);
 				String actualEnglishFaCups = unitedNowPageLocators.uEFAEuropaLeague.get(0).getText();
-	            if (actualEnglishFaCups.contains(expuEFAEuropaLeague))
+				if (actualEnglishFaCups.contains(expuEFAEuropaLeague))
 					ExtentsReportManager.extentReportLogging("pass", "" + expuEFAEuropaLeague + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expuEFAEuropaLeague + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getEuropaLeague()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		public boolean getLeagueCup() throws Exception {
-			String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.leagueCup.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.leagueCup.get(0), 60);
-				String actualEnglishFaCups = unitedNowPageLocators.leagueCup.get(0).getText();
-	            if (actualEnglishFaCups.contains(expLeagueCup))
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getEuropaLeague()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getLeagueCup() throws Exception {
+		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+
+			List<WebElement> bodyText = driver.findElements(
+					AppiumBy.xpath("(//android.widget.TextView[contains(@text,'" + expLeagueCup + "')])[1]"));
+			if (bodyText.size() > 0) {
+				waitForVisibilityFluentWait(bodyText.get(0), 60);
+				String actualBodyText = bodyText.get(0).getText();
+				if (actualBodyText.contains(expLeagueCup))
+//			if (unitedNowPageLocators.leagueCup.size() > 0) {
+//				waitForVisibilityFluentWait(unitedNowPageLocators.leagueCup.get(0), 60);
+//				String actualEnglishFaCups = unitedNowPageLocators.leagueCup.get(0).getText();
+//				if (actualEnglishFaCups.contains(expLeagueCup))
 					ExtentsReportManager.extentReportLogging("pass", "" + expLeagueCup + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expLeagueCup + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getEnglishPremierLeague()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		public boolean getFriendly() throws Exception {
-			String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.friendly.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.friendly.get(0), 60);
-				String actualEnglishFaCups = unitedNowPageLocators.friendly.get(0).getText();
-	            if (actualEnglishFaCups.contains(expFriendly))
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getEnglishPremierLeague()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getFriendly() throws Exception {
+		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+
+			List<WebElement> bodyText = driver
+					.findElements(AppiumBy.xpath("(//*[contains(@text,'" + expFriendly + "')])[1]"));
+			if (bodyText.size() > 0) {
+				waitForVisibilityFluentWait(bodyText.get(0), 60);
+				String actualBodyText = bodyText.get(0).getText();
+				if (actualBodyText.contains(expFriendly))
+
+//			if (unitedNowPageLocators.friendly.size() > 0) {
+//				waitForVisibilityFluentWait(unitedNowPageLocators.friendly.get(0), 60);
+//				String actualEnglishFaCups = unitedNowPageLocators.friendly.get(0).getText();
+//				if (actualEnglishFaCups.contains(expFriendly))
 					ExtentsReportManager.extentReportLogging("pass", "" + expFriendly + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expFriendly + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getFriendly()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		public boolean getDateTBC() throws Exception {
-			String expDateTBC = unitedNowAPIResponse.getDateTBC("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.dateTBC.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.dateTBC.get(0), 60);
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getFriendly()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getDateTBC() throws Exception {
+		String expDateTBC = unitedNowAPIResponse.getDateTBC("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+			if (unitedNowPageLocators.dateTBC.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.dateTBC.get(0), 60);
 				String actualDateTBC = unitedNowPageLocators.dateTBC.get(0).getText();
-	            if (actualDateTBC.contains(expDateTBC))
+				if (actualDateTBC.contains(expDateTBC))
 					ExtentsReportManager.extentReportLogging("pass", "" + expDateTBC + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expDateTBC + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDateTBC()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDateTBC()<br />" + e);
+			throw e;
+		}
+	}
+
 //		public boolean getTicketInfo() throws Exception {
 //			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint");
 //	        try {
@@ -4555,48 +4797,46 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //	            throw e;
 //	        }
 //	    }
-		
-		
-		public boolean getTicketInfoAndMatchReview() throws Exception {
-			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint");
-			String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
-			String actualTicketInfo = null;
-			String actualMatchReview = null;
-			
-	        try {
-	        	if(unitedNowPageLocators.ticketInfo.size() > 0 || unitedNowPageLocators.matchReview.size() > 0) { 
-	        		if(unitedNowPageLocators.ticketInfo.size() > 0){
-	        			waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
-	        			actualTicketInfo = unitedNowPageLocators.ticketInfo.get(0).getText();
-	        			ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
-	        		}
-	        		else {
-	        			waitForVisibilityFluentWait(unitedNowPageLocators.matchReview.get(0), 60);
-	        			actualMatchReview = unitedNowPageLocators.matchReview.get(0).getText();
-	        			ExtentsReportManager.extentReportLogging("pass", "" + expMatchReview + " text matching");
-	        			
-	        		}
-	            if (actualTicketInfo.contains(expTicketInfo) || actualMatchReview.contains(expTicketInfo)) {
-					ExtentsReportManager.extentReportLogging("pass",""+ expTicketInfo+" And "+expTicketInfo+" text matching");
-	            return true;
-	            }
+
+	public boolean getTicketInfoAndMatchReview() throws Exception {
+		String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint");
+		String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
+		String actualTicketInfo = null;
+		String actualMatchReview = null;
+
+		try {
+			if (unitedNowPageLocators.ticketInfo.size() > 0 || unitedNowPageLocators.matchReview.size() > 0) {
+				if (unitedNowPageLocators.ticketInfo.size() > 0) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
+					actualTicketInfo = unitedNowPageLocators.ticketInfo.get(0).getText();
+					ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
+				} else {
+					waitForVisibilityFluentWait(unitedNowPageLocators.matchReview.get(0), 60);
+					actualMatchReview = unitedNowPageLocators.matchReview.get(0).getText();
+					ExtentsReportManager.extentReportLogging("pass", "" + expMatchReview + " text matching");
+
+				}
+				if (actualTicketInfo.contains(expTicketInfo) || actualMatchReview.contains(expTicketInfo)) {
+					ExtentsReportManager.extentReportLogging("pass",
+							"" + expTicketInfo + " And " + expTicketInfo + " text matching");
+					return true;
+				}
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(expTicketInfo))
 					ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getTicketInfo()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getTicketInfo()<br />" + e);
+			throw e;
+		}
+	}
+
 //		public boolean getTicketInfoAndMatchReviewInIOS() throws Exception {
 //			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint");
 //			String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
@@ -4636,147 +4876,143 @@ public boolean validatesLiveVideoInUnitedNowIsDisplayed() {
 //	            throw e;
 //	        }
 //	    }
-		
-		public boolean getMtachReview() throws Exception {
-			String expMatchReview = unitedNowAPIResponse.getDateTBC("MatchReviewEndPoint");
-	        try {
-	        	if(unitedNowPageLocators.matchReview.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.matchReview.get(0), 60);
+
+	public boolean getMtachReview() throws Exception {
+		String expMatchReview = unitedNowAPIResponse.getDateTBC("MatchReviewEndPoint");
+		try {
+			if (unitedNowPageLocators.matchReview.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.matchReview.get(0), 60);
 				String actualMatchReview = unitedNowPageLocators.matchReview.get(0).getText();
-	            if (actualMatchReview.contains(expMatchReview))
+				if (actualMatchReview.contains(expMatchReview))
 					ExtentsReportManager.extentReportLogging("pass", "" + expMatchReview + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(expMatchReview))
 					ExtentsReportManager.extentReportLogging("pass", "" + expMatchReview + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getMtachReview()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		
-		public boolean getMatchDayLive() throws Exception {
-			String expMatchDayLive = unitedNowAPIResponse.getMatchDayLive("MatchReviewEndPoint");
-	        try {
-	        	if(unitedNowPageLocators.matchDayLive.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.matchDayLive.get(0), 60);
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getMtachReview()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getMatchDayLive() throws Exception {
+		String expMatchDayLive = unitedNowAPIResponse.getMatchDayLive("MatchReviewEndPoint");
+		try {
+			if (unitedNowPageLocators.matchDayLive.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.matchDayLive.get(0), 60);
 				String actualMatchReview = unitedNowPageLocators.matchDayLive.get(0).getAttribute("name");
-	            if (actualMatchReview.contains(expMatchDayLive))
+				if (actualMatchReview.contains(expMatchDayLive))
 					ExtentsReportManager.extentReportLogging("pass", "" + expMatchDayLive + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(expMatchDayLive))
 					ExtentsReportManager.extentReportLogging("pass", "" + expMatchDayLive + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getMatchDayLive()<br />" + e);
-	            throw e;
-	        }
-	    }
-		public boolean getDummyTestSiteCore() throws Exception {
-			String expDummyTestSiteCore = unitedNowAPIResponse.getDummyTestSiteCore("AllLeagueFiltersEndpoint");
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.dummyTestSiteCore.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.dummyTestSiteCore.get(0), 60);
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getMatchDayLive()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getDummyTestSiteCore() throws Exception {
+		String expDummyTestSiteCore = unitedNowAPIResponse.getDummyTestSiteCore("AllLeagueFiltersEndpoint");
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+			if (unitedNowPageLocators.dummyTestSiteCore.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.dummyTestSiteCore.get(0), 60);
 				String actualDummyTestSiteCore = unitedNowPageLocators.dummyTestSiteCore.get(0).getText();
-	            if (actualDummyTestSiteCore.contains(expDummyTestSiteCore))
+				if (actualDummyTestSiteCore.contains(expDummyTestSiteCore))
 					ExtentsReportManager.extentReportLogging("pass", "" + expDummyTestSiteCore + " text matching");
 			} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 				String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0).getText();
 				if (actnoFixturesTextUnitedPage.contains(error))
 					ExtentsReportManager.extentReportLogging("pass", "" + expDummyTestSiteCore + " text matching");
-	        }
-			else {
+			} else {
 				return false;
 			}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDummyTestSiteCore()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		public boolean getTicketInfoInIOS() throws Exception {
-			String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint").toUpperCase();
-			String error= "There are currently no fixtures available in this competition.";
-	        try {
-	        	if(unitedNowPageLocators.ticketInfo.size() > 0) { 
-	        	waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getDummyTestSiteCore()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getTicketInfoInIOS() throws Exception {
+		String expTicketInfo = unitedNowAPIResponse.getTicketInfo("UpComingFixturesEndPoint").toUpperCase();
+		String error = "There are currently no fixtures available in this competition.";
+		try {
+			if (unitedNowPageLocators.ticketInfo.size() > 0) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfo.get(0), 60);
 				String actualTicketInfo = unitedNowPageLocators.ticketInfo.get(0).getAttribute("name").toUpperCase();
-	            if (actualTicketInfo.contains(expTicketInfo))
+				if (actualTicketInfo.contains(expTicketInfo))
 					ExtentsReportManager.extentReportLogging("pass", "" + expTicketInfo + " text matching");
-	        	}
-	            return true;
-	        	
-	        } catch (Exception e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getDummyTestSiteCore()<br />" + e);
-	            throw e;
-	        }
-	    }
-		
-		public boolean getSponsorLogoValues() {
-		    String device = GlobalParams.getPlatformName();
+			}
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-getDummyTestSiteCore()<br />" + e);
+			throw e;
+		}
+	}
+
+	public boolean getSponsorLogoValues() {
+		String device = GlobalParams.getPlatformName();
 //		    ArrayList<String> sponsorLogos = new ArrayList<>();
-		    try {
-		        for (int i = 0; i <= 100; i++) {
-		            if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
-		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-				            
-		                }
-		            else {
-		            unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
-		            }
-		        }
-		        ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
-		        return true;
+		try {
+			for (int i = 0; i <= 100; i++) {
+				if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
 
-		    } catch (Exception e) {
-		        ExtentsReportManager.extentReportLogging("fail",
-		            "Exception occurred in function-getSponsorLogoValues()<br />" + e);
-		        throw e;
-		    }
+				} else {
+					unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
+				}
+			}
+			ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getSponsorLogoValues()<br />" + e);
+			throw e;
 		}
+	}
 
-		public boolean getSponsorLogoValuesInIOS() {
-			 String device = GlobalParams.getPlatformName();
-			    //ArrayList<String> sponsorLogos = new ArrayList<>();
-			    try {
-			        for (int i = 0; i <=100; i++) {
-			            if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
-			                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-					            
-			                }
-			            else {
-			            unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
-			            }
-			        }
-			        ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
-			        return true;
+	public boolean getSponsorLogoValuesInIOS() {
+		String device = GlobalParams.getPlatformName();
+		// ArrayList<String> sponsorLogos = new ArrayList<>();
+		try {
+			for (int i = 0; i <= 100; i++) {
+				if (unitedNowPageLocators.sponsorLogoFromUI.size() <= 0) {
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
 
-			    } catch (Exception e) {
-			        ExtentsReportManager.extentReportLogging("fail",
-			            "Exception occurred in function-getSponsorLogoValues()<br />" + e);
-			        throw e;
-			    }
+				} else {
+					unitedNowPageLocators.sponsorLogoFromUI1.isDisplayed();
+				}
+			}
+			ExtentsReportManager.extentReportLogging("pass", "Found the sponsor logo");
+			return true;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-getSponsorLogoValues()<br />" + e);
+			throw e;
 		}
+	}
 }
-		    
-	
-	    

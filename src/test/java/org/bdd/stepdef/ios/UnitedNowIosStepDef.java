@@ -592,6 +592,22 @@ public class UnitedNowIosStepDef {
 			throw e;
 		}
 	}
+	
+	@And("^user clicks the following filter in UnitedNow Calender screen and validate content in the body in ios$")
+	public void userClicksTheFollowingFilterInUnitedNowCalenderScreenInvalidateContentInTheBodyIos() throws Throwable {
+		try {
+			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+            unitedNowPage.clickingRadioButton(allLeagueFiltersDropDownValues);
+//			unitedNowPage.clickOnTheGivenFilterInIos(table.cell(1, 0));
+			ExtentsReportManager.extentReportLogging("info",
+					"clicked the following filter in UnitedNow Calender screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in clicking the following filter in UnitedNow Calender screen in ios<br />" + e);
+			throw e;
+		}
+	}
 
 	@Then("^user validates the upcoming Fixtures in ios$")
 	public void userValidatesTheUpcomingFixturesInIos(DataTable table) throws Throwable {
