@@ -415,7 +415,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@qwer
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -433,8 +433,7 @@ Feature: My United features
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
     And user navigates to About you in my united screen in ios
-
-    #Then User validates text containing user Firstname lastName Country and Age details personalised in ios
+Then User validates text containing user Firstname lastName Country and Age details personalised in ios
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
@@ -464,3 +463,25 @@ Feature: My United features
       | username                  | password | Name      |
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
+      
+  #Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
+     #Given user navigates to manu ios application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #Then user validates the background colour of profile screen in ios
+#		
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |

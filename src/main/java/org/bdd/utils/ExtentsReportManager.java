@@ -19,8 +19,8 @@ public class ExtentsReportManager {
         if (status.equalsIgnoreCase("pass")) {
             log.info(message);
             //Commented passed taking snapshot
-//            ExtentReporter.getTest().log(Status.PASS, message, MediaEntityBuilder.createScreenCaptureFromBase64String(addScreenshot()).build());
-            ExtentReporter.getTest().log(Status.PASS, message);
+           ExtentReporter.getTest().log(Status.PASS, message, MediaEntityBuilder.createScreenCaptureFromBase64String(addScreenshot()).build());
+//            ExtentReporter.getTest().log(Status.PASS, message);
         } else if (status.equalsIgnoreCase("fail")) {
             log.error(message);
             ExtentReporter.getTest().log(Status.FAIL, message, MediaEntityBuilder.createScreenCaptureFromBase64String(addScreenshot()).build());

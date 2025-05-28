@@ -100,6 +100,10 @@ public class IdmAndroidStepDef {
             	username = props.getProperty("username_preprod");
             	password = props.getProperty("password_preprod");
             }
+            else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+            	username = props.getProperty("username_qa");
+            	password = props.getProperty("password_qa");
+            }
             idmPage.switchToWebView();
             idmPage.enterUsername(username);
             idmPage.enterPassword(password);

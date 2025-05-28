@@ -138,6 +138,11 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_control_close\')]")
 	@iOSXCUITFindBy(accessibility = "xCircleFill")
 	public WebElement closeButtonVideo;
+	
+	@AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/fs_close_button\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"xCircleFill\"]")
+	public WebElement closeButtonVideoInMUTV;
+	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/epg_play\')])[3]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage")
 	public WebElement plusIconMutvSchedulePage;
@@ -357,12 +362,35 @@ public class MutvPageLocators {
 	public List<WebElement> uTDPodcastMUTV;
 	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/image_thumnial\"])[4]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name, \"UTD Podcast\")]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
 	public WebElement podcastInMUTV;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name, \"UTD Podcast\")]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
+	public List<WebElement> podcastInMUTV1;
+	
 	
 	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Watch Now Button\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Pause\"]")
 	public WebElement playButtonInPodcastAudioScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"My Library\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Minimize\"]")
+	public WebElement backButtonInPodcastAudioScreen;
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Podcast mini player, current item, UTD Podcast: Jimmy Nicholl, UTDPodcastEpisode 200\"]")
+	public WebElement audioMinimizedAndPlaying;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/header\" and @text=\"TOP 20 COLLECTION\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TOP 20 COLLECTION\"]")
+	public List<WebElement> topTwentyCollectionsInMutv;
+	
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/image_thumnial\"])[7]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name=\" 13 minutes , Top 20 bizarre and unusual goals , Series 1 · Episode 93 , double tap to open\"]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
+	public WebElement firstVideoInTopTwentyCollectionInMUTV;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Listen Now button\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"PLAY\"]")
+	public WebElement playButtonInMUTV;
 }
 
 

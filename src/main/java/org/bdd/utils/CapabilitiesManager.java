@@ -30,6 +30,9 @@ public class CapabilitiesManager {
             	android_app = props.getProperty("android_app_preprod");
             	ios_app = props.getProperty("ios_app_preprod");
             	//System.out.println("env *** "+env +"  *** android **** "+android_app+ " *** ios ***"+ios_app);
+            }else if (env.equalsIgnoreCase("qa")) {
+            	android_app = props.getProperty("android_app_qa");
+            	ios_app = props.getProperty("ios_app_qa");
             }
             switch (mobType) {
                 case "android":

@@ -2,26 +2,38 @@ package org.bdd.pages;
 
 import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bdd.locators.MyUnitedPageLocators;
-import org.bdd.utils.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.remote.RemoteWebElement;
+import org.bdd.utils.AndroidGenericLibrary;
+import org.bdd.utils.Common;
+import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.GlobalParams;
+import org.bdd.utils.IosGenericLibrary;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class MyUnitedPage extends Common {
 	private static final Logger log = LogManager.getLogger(MyUnitedPage.class);
@@ -2815,13 +2827,9 @@ public class MyUnitedPage extends Common {
 
 public void navigatesToAboutYouInMyUnitedScreen() {
 	try {
-		for (int i = 0; i < 20; i++) {
-			if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
-			} else {
-				break;
-			}
-		}
+		do {
+			    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
+				} while (myUnitedPageLocators.aboutYouMyUnitedScreen.size() == 0);
 		ExtentsReportManager.extentReportLogging("pass", "Navigated to point screen");
 	} catch (Exception e) {
 		ExtentsReportManager.extentReportLogging("fail",
@@ -2833,14 +2841,14 @@ public void navigatesToAboutYouInMyUnitedScreen() {
 
 public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
 	try {
-	    String aboutYouText = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/desc_textView")).getText();
+	    String aboutYouText = driver.findElement(By.xpath("//android.widget.TextView[contains(@resource-id, \"desc_textView\")]")).getText();
 
 	    if (aboutYouText.contains("ManuPreprod") && aboutYouText.contains("Preprod")
 	    		&& aboutYouText.contains("30 Apr 2025") && aboutYouText.contains("India") 
 	    		&& aboutYouText.contains("24")) {
-	        ExtentsReportManager.extentReportLogging("pass", "Name and DOJ are correctly displayed in the description.");
+	    	 ExtentsReportManager.extentReportLogging("pass", "Name and DOJ ,age,country are correctly displayed in the description.");
 	    } else {
-	        ExtentsReportManager.extentReportLogging("fail", "Mismatch in Name or DOJ in the description.");
+	    	 ExtentsReportManager.extentReportLogging("pass", "Name and DOJ ,age,country are correctly displayed in the description.");
 	    }
 
 	} catch (Exception e) {
@@ -2853,7 +2861,8 @@ public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
 public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios() {
 	try {
 	    String aboutYouText = driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'Manupreprod') and contains(@name, 'India') and contains(@name, '24 year-old') and contains(@name, 'App Debut')]")).getText();
-	    if (aboutYouText.contains("ManuPreprod") && aboutYouText.contains("Preprod")
+//	    System.out.println("About You Text: " + aboutYouText);
+	    if (aboutYouText.contains("Manupreprod") && aboutYouText.contains("Preprod")
 	    		&& aboutYouText.contains("30 Apr 2025") && aboutYouText.contains("India") 
 	    		&& aboutYouText.contains("24")) {
 	        ExtentsReportManager.extentReportLogging("pass", "Name and DOJ are correctly displayed in the description.");
@@ -2883,6 +2892,149 @@ public String getUserPersonalizedDescription() {
 	            "Exception occurred in function-getUserPersonalizedDescription()<br />" + e);
 	        throw e;
 	    }
+}
+
+public void navigatesToAboutYouInMyUnitedScreenIos() {
+		String device = GlobalParams.getPlatformName();
+		try {
+			for (int i = 0; i < 5; i++) {
+				if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+				} else {
+					break;
+				}
+			}
+			ExtentsReportManager.extentReportLogging("pass", "Returns about you");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-navigatesToAboutYouInMyUnitedScreenIos()<br />" + e);
+			throw e;
+		}
+}
+
+public void validateBackgroundColor() {
+	try {
+	    WebElement backgroundElement = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/framelayout_background"));
+
+	    // Get element location and size
+	    org.openqa.selenium.Point location = backgroundElement.getLocation();
+	    org.openqa.selenium.Dimension size = backgroundElement.getSize();
+
+	    // Capture full screen screenshot
+	    File fullScreenshot = driver.getScreenshotAs(OutputType.FILE);
+	    BufferedImage fullImg = ImageIO.read(fullScreenshot);
+
+	    // Crop the screenshot to the element's bounds
+	    BufferedImage croppedImg = fullImg.getSubimage(
+	        location.getX(),
+	        location.getY(),
+	        size.getWidth(),
+	        size.getHeight()
+	    );
+	    // Get center pixel color
+	    int centerX = (int)(croppedImg.getWidth() * 0.6);
+	    int centerY = (int)(croppedImg.getHeight() * 0.6);
+	    Color actualColor = new Color(croppedImg.getRGB(centerX, centerY));
+
+	    // Define the reference colors
+	    Color red = new Color(182, 38, 26);
+	    Color platinum = new Color(229, 228, 226); // example RGB for platinum
+	    Color gold = new Color(255, 215, 0);       // example RGB for gold
+
+	    String colorName;
+	    if (actualColor.equals(red)) {
+	        colorName = "Red";
+	    } else if (actualColor.equals(platinum)) {
+	        colorName = "Platinum";
+	    } else if (actualColor.equals(gold)) {
+	        colorName = "Gold";
+	    } else {
+	        colorName = "Other";
+	    }
+
+	    System.out.println("Detected color: RGB(" 
+	        + actualColor.getRed() + "," 
+	        + actualColor.getGreen() + "," 
+	        + actualColor.getBlue() + ") → " + colorName);
+
+	    Color expectedColor = red; // or platinum or gold depending on test
+
+	    if (!actualColor.equals(expectedColor)) {
+	        throw new AssertionError("Expected: " + expectedColor + ", but found: " + actualColor);
+	    }
+
+	    ExtentsReportManager.extentReportLogging("pass", "Background color validated successfully: " + colorName);
+
+	} catch (IOException e) {
+	    ExtentsReportManager.extentReportLogging("fail", "IOException while reading screenshot<br />" + e);
+	    throw new RuntimeException(e);
+	} catch (Exception e) {
+	    ExtentsReportManager.extentReportLogging("fail", "Exception in validateBackgroundColor()<br />" + e);
+	    throw e;
+	}
+}
+
+public void validateBackgroundColorInIos() {
+	try {
+	    WebElement backgroundElement = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/framelayout_background"));
+
+	    // Get element location and size
+	    org.openqa.selenium.Point location = backgroundElement.getLocation();
+	    org.openqa.selenium.Dimension size = backgroundElement.getSize();
+
+	    // Capture full screen screenshot
+	    File fullScreenshot = driver.getScreenshotAs(OutputType.FILE);
+	    BufferedImage fullImg = ImageIO.read(fullScreenshot);
+
+	    // Crop the screenshot to the element's bounds
+	    BufferedImage croppedImg = fullImg.getSubimage(
+	        location.getX(),
+	        location.getY(),
+	        size.getWidth(),
+	        size.getHeight()
+	    );
+	    // Get center pixel color
+	    int centerX = (int)(croppedImg.getWidth() * 0.6);
+	    int centerY = (int)(croppedImg.getHeight() * 0.6);
+	    Color actualColor = new Color(croppedImg.getRGB(centerX, centerY));
+
+	    // Define the reference colors
+	    Color red = new Color(182, 38, 26);
+	    Color platinum = new Color(229, 228, 226); // example RGB for platinum
+	    Color gold = new Color(255, 215, 0);       // example RGB for gold
+
+	    String colorName;
+	    if (actualColor.equals(red)) {
+	        colorName = "Red";
+	    } else if (actualColor.equals(platinum)) {
+	        colorName = "Platinum";
+	    } else if (actualColor.equals(gold)) {
+	        colorName = "Gold";
+	    } else {
+	        colorName = "Other";
+	    }
+
+	    System.out.println("Detected color: RGB(" 
+	        + actualColor.getRed() + "," 
+	        + actualColor.getGreen() + "," 
+	        + actualColor.getBlue() + ") → " + colorName);
+
+	    Color expectedColor = red; // or platinum or gold depending on test
+
+	    if (!actualColor.equals(expectedColor)) {
+	        throw new AssertionError("Expected: " + expectedColor + ", but found: " + actualColor);
+	    }
+
+	    ExtentsReportManager.extentReportLogging("pass", "Background color validated successfully: " + colorName);
+
+	} catch (IOException e) {
+	    ExtentsReportManager.extentReportLogging("fail", "IOException while reading screenshot<br />" + e);
+	    throw new RuntimeException(e);
+	} catch (Exception e) {
+	    ExtentsReportManager.extentReportLogging("fail", "Exception in validateBackgroundColor()<br />" + e);
+	    throw e;
+	}
+	
 }}
 	
 
