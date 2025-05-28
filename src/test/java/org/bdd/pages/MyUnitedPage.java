@@ -3059,7 +3059,72 @@ public void validateBackgroundColorInIos() {
 	    throw e;
 	}
 	
-}}
+}
+	public void clicksOnChangePasswordInMyProfile() {
+	try {
+		myUnitedPageLocators.changePasswordMyProfilePage.click();
+		ExtentsReportManager.extentReportLogging("pass", "Clicks on change Password My Profie page");
+	} catch (Exception e) {
+		ExtentsReportManager.extentReportLogging("fail",
+				"Exception occurred in function-clicksOnChangePasswordInMyProfile()<br />" + e);
+		throw e;
+	}
+	}
+	
+	public void clicksOnUpdatePasswordInChangePassword() {
+		try {
+			myUnitedPageLocators.updatePasswordChangePasswordScreen.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on Update Password in change Password page");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clicksOnUpdatePasswordInChangePassword()<br />" + e);
+			throw e;
+		}
+	}
+	
+	public boolean userValidatesPasswordUpdatedSuccessfullyMessage() {
+	    try {
+	        waitForVisibilityFluentWait(myUnitedPageLocators.pwUpdatedtxtChangePasswordScreen, 60);
+
+	        boolean isMessageDisplayed = myUnitedPageLocators.pwUpdatedtxtChangePasswordScreen.isDisplayed();
+	        boolean isChangePasswordSectionVisible = myUnitedPageLocators.pwUpdateMsgChangePasswordScreen.isDisplayed();
+
+	        if (isMessageDisplayed && isChangePasswordSectionVisible) {
+	            ExtentsReportManager.extentReportLogging("pass", "Password update success messages are visible.");
+	            return true;
+	        } else {
+	            ExtentsReportManager.extentReportLogging("fail", "Password update success messages are not visible.");
+	            return false;
+	        }
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception occurred in function-userValidatesPasswordUpdatedSuccessfullyMessage()<br />" + e);
+	        throw e;
+	    }
+	}
+
+
+	public void updatePassword() throws Exception {
+	      String device = GlobalParams.getPlatformName();
+	        try {
+	        	String oldpassword = Common.getOldPassword();	
+	        	String newpassword = Common.getNewPassword();
+	        	GlobalParams.setNewPassword(newpassword);
+                waitForVisibilityFluentWait(myUnitedPageLocators.currentPasswordChangePasswordScreen,60);
+                myUnitedPageLocators.currentPasswordChangePasswordScreen.sendKeys(oldpassword);
+                myUnitedPageLocators.newPasswordChangePasswordScreen.sendKeys(newpassword);
+                myUnitedPageLocators.confirmNewPasswordChangePasswordScreen.sendKeys(newpassword);
+                System.out.println("newpassword "+newpassword +" oldpassword "+ oldpassword);
+                ExtentsReportManager.extentReportLogging("pass","Updated old password with New Password ");
+	        } catch (Exception e) {
+	           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-updatePassword()<br />" + e);
+	           throw e;
+
+	        }
+	}
+
+}
 	
 
 	

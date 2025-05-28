@@ -11,6 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 import java.io.IOException;
@@ -461,6 +462,25 @@ public class IdmIosStepDef {
 		}
 	}
 	
+    @Given("user enter the valid email {string} and valid password")
+	public void user_enter_the_valid_email_and_valid_password(String userName) throws Exception {
+		 try {		
+			   String password = Common.getOldPassword();	    
+				if (GlobalParams.getPlatformName().equalsIgnoreCase("android")) { 
+					 idmPage.switchToWebView();
+					 idmPage.enterUsername(userName);			                
+			         idmPage.enterPassword(password);
+				 }
+				else {
+					idmPage.enterUsername(userName);
+					idmPage.enterPasswordInIos(password);
+				}
+	            ExtentsReportManager.extentReportLogging("info", "Entered the valid username "+ userName +" and old password "+password);
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password<br />" + e);
+	            throw e;
+	        }
+	}
 	
 
 

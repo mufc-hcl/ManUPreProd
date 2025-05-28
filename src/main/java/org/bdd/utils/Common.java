@@ -1,10 +1,17 @@
 package org.bdd.utils;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.By;
@@ -163,5 +170,61 @@ public class Common {
     
     public static String apiEnv() {
         return System.getProperty("env");
+    }
+    
+    private static final String PASSWORD_FILE = System.getProperty("user.dir") + "/src/main/resources/pw_store.txt";
+
+    /**
+     * Reads the current password from file and generates a new one.
+     * @return A map with keys: OLD (current password), NEW (newly generated password)
+     * @throws IOException if reading the file fails
+     */
+    public static String getOldPassword() throws IOException {
+        Map<String, String> allPasswords = readPasswordsFromFile();
+        String env = Common.apiEnv();
+        return allPasswords.getOrDefault(env, "");
+    }
+
+    public static String getNewPassword() {
+    	String env = capitalizeFirstLetter(Common.apiEnv());
+        String timestamp = new SimpleDateFormat("MMddHHmm").format(new Date());
+        return env + "@" + timestamp;
+    }
+    
+    public static String capitalizeFirstLetter(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
+
+    public static void updatePasswordFile(String newPassword) throws IOException {
+    	String env = Common.apiEnv();
+        Map<String, String> allPasswords = readPasswordsFromFile();
+        allPasswords.put(env, newPassword); // Update only current env password
+        writePasswordsToFile(allPasswords);
+    }
+
+    private static Map<String, String> readPasswordsFromFile() throws IOException {
+        Map<String, String> passwords = new HashMap<>();
+        Path path = Paths.get(PASSWORD_FILE);
+        if (!Files.exists(path)) return passwords;
+
+        List<String> lines = Files.readAllLines(path);
+        for (String line : lines) {
+            String[] parts = line.split("=", 2);
+            if (parts.length == 2) {
+                passwords.put(parts[0].trim(), parts[1].trim());
+            }
+        }
+        return passwords;
+    }
+
+    private static void writePasswordsToFile(Map<String, String> passwords) throws IOException {
+        List<String> lines = new ArrayList<>();
+        for (Map.Entry<String, String> entry : passwords.entrySet()) {
+            lines.add(entry.getKey() + "=" + entry.getValue());
+        }
+        Files.write(Paths.get(PASSWORD_FILE), lines);
     }
 }

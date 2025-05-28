@@ -75,15 +75,15 @@ public class UnitedNowPageLocators {
     public List<WebElement> allLabelUnitedPage;
 
                             
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='All 2025/26']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='All 2024/25' or @text='All 2025/26']")
     @iOSXCUITFindBy(accessibility = "All 2025/26, selected, radio")
     public WebElement allRadioBtnUnitedPage;
     
     @AndroidFindBy(xpath = "(//android.widget.RadioButton[contains(@resource-id, \":id/radio\")])[1]")
     @iOSXCUITFindBy(accessibility = "All 2024/25, selected, radio")
     public List<WebElement> allRadioBtnUnitedPage1;
-
-    @AndroidFindBy(xpath = "(//android.widget.RadioButton[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/radio\"])[2]")
+    							
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton[contains(@resource-id, \":id/radio\"])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView//XCUIElementTypeCell[2]//XCUIElementTypeOther[2]//XCUIElementTypeOther//XCUIElementTypeStaticText")
     public WebElement allLeaguesUnitedPage;
 
@@ -118,7 +118,7 @@ public class UnitedNowPageLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/title\") and @text=\"Friendly\"]")
     public WebElement friendlyLabelUnitedPage;
 
-    @AndroidFindBy(xpath = "(//android.widget.RadioButton[contains(@resource-id, \":id/radio\")])[6]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Friendly\")")
     @iOSXCUITFindBy(accessibility = "Friendly, radio")
     public WebElement friendlyRadioBtnUnitedPage;
     
@@ -126,7 +126,7 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(accessibility = "Friendly, radio")
     public WebElement fACommunityShieldRadioBtnUnitedPage;
 
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/bottom_textView\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/bottom_textView')]")
     @iOSXCUITFindBy(accessibility = "There are currently no fixtures available in this competition.")
     public List<WebElement> noFixturesTextUnitedPage;
 
