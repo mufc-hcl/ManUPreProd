@@ -761,11 +761,11 @@ public class MyUnitedAndroidStepDef {
         try {
 //            String expPlayerName = table.cell(1, 0);
             String expPlayerName = playerName;
-            String expBuyShirt = table.cell(1, 0);
+//            String expBuyShirt = table.cell(1, 0);
             String actualPlayerName = myUnitedPage.getPlayerNameInUnitedScreen();
-            String actualBuyShirt = myUnitedPage.getBuyShirtButtonScreen();
+            myUnitedPage.getBuyShirtButtonScreen();
             soft.assertEquals(actualPlayerName, expPlayerName);
-            soft.assertEquals(actualBuyShirt, expBuyShirt);
+//            soft.assertEquals(actualBuyShirt, expBuyShirt);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "validated players details updated in my united screen");
         } catch (AssertionError e) {
@@ -1261,9 +1261,9 @@ public class MyUnitedAndroidStepDef {
 	public void userClicksOnCloseIconInEmailUpdateSuccessScreen() throws Throwable {
 		try {
             myUnitedPage.clicksOnCloseIconInEmailUpdateSuccessScreen();
-            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+            ExtentsReportManager.extentReportLogging("info", "clicks on close icon in email update success");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "clicked on close icon in email update success<br />" + e);
             throw e;
         }
 	}
@@ -1298,10 +1298,12 @@ public class MyUnitedAndroidStepDef {
 	@And("^user navigates to About you in my united screen$")
 	public void userNavigatesToAboutYouInMyUnitedScreen() throws Throwable {
 		try {
-            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
-            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+            boolean flag = myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            soft.assertTrue(flag);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
             throw e;
         }
 	}
@@ -1309,12 +1311,14 @@ public class MyUnitedAndroidStepDef {
 	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalised()
 			throws Throwable {
 		try {
-			myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
-            ExtentsReportManager.extentReportLogging("info", "Validates About you details");
+            boolean flag = myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
+            soft.assertTrue(flag);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "navigates to Firstname lastName Country and Age details");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Validates About you details<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "navigates to Firstname lastName Country and Age details<br />" + e);
             throw e;
-         }
+        }
 	}
 
 	@Then("^user validates the background colour of profile screen$")

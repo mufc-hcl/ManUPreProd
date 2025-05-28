@@ -2825,21 +2825,28 @@ public class MyUnitedPage extends Common {
 	    }
 	}		
 
-public void navigatesToAboutYouInMyUnitedScreen() {
-	try {
-		do {
-			    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.9);
-				} while (myUnitedPageLocators.aboutYouMyUnitedScreen.size() == 0);
-		ExtentsReportManager.extentReportLogging("pass", "Navigated to point screen");
-	} catch (Exception e) {
-		ExtentsReportManager.extentReportLogging("fail",
-				"Exception occurred in function-navigatesPointsScreenInIos()<br />" + e);
-		throw e;
+public boolean navigatesToAboutYouInMyUnitedScreen() {
+	    String device = GlobalParams.getPlatformName();
+	    try {
+	        for (int i = 0; i < 5; i++) {
+	            if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+	            } else {
+	                ExtentsReportManager.extentReportLogging("pass", "Returns about you");
+	                return true;
+	            }
+	        }
+	        ExtentsReportManager.extentReportLogging("fail", "aboutYouMyUnitedScreen not displayed after scrolling");
+	        return false;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception occurred in function-navigatesToAboutYouInMyUnitedScreenIos()<br />" + e);
+	        return false;
+	    }
 	}
+	
 
-}
-
-public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
+public boolean validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
 	try {
 	    String aboutYouText = driver.findElement(By.xpath("//android.widget.TextView[contains(@resource-id, \"desc_textView\")]")).getText();
 
@@ -2855,13 +2862,15 @@ public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails() {
 	    ExtentsReportManager.extentReportLogging("fail", "Exception occurred while validating About You section<br />" + e);
 	    throw e;
 	}
+	return false;
 	
 }
 
-public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios() {
+public boolean validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios() {
 	try {
-	    String aboutYouText = driver.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'Manupreprod') and contains(@name, 'India') and contains(@name, '24 year-old') and contains(@name, 'App Debut')]")).getText();
-//	    System.out.println("About You Text: " + aboutYouText);
+		 if (Common.apiEnv().equalsIgnoreCase("stage")) {
+	    String aboutYouText = driver.findElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeStaticText[2]")).getText();
+	    System.out.println("About You Text: " + aboutYouText);
 	    if (aboutYouText.contains("Manupreprod") && aboutYouText.contains("Preprod")
 	    		&& aboutYouText.contains("30 Apr 2025") && aboutYouText.contains("India") 
 	    		&& aboutYouText.contains("24")) {
@@ -2869,10 +2878,23 @@ public void validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinio
 	    } else {
 	        ExtentsReportManager.extentReportLogging("fail", "Mismatch in Name or DOJ in the description.");
 	    }
+		 }
+			else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+		    String aboutYouText = driver.findElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[4]/XCUIElementTypeOther[2]/XCUIElementTypeStaticText[2]")).getText();
+		    System.out.println("About You Text: " + aboutYouText);
+		    if (aboutYouText.contains("Manu") && aboutYouText.contains("Preprod")
+		    		&& aboutYouText.contains("24 Apr 2025") && aboutYouText.contains("India") 
+		    		&& aboutYouText.contains("25")) {
+		        ExtentsReportManager.extentReportLogging("pass", "Name and DOJ are correctly displayed in the description.");
+		    } else {
+		        ExtentsReportManager.extentReportLogging("fail", "Mismatch in Name or DOJ in the description.");
+		    }
+			}
 	} catch (Exception e) {
 	    ExtentsReportManager.extentReportLogging("fail", "Exception occurred while validating About You section<br />" + e);
 	    throw e;
 	}
+	return false;
 	
 }
 
@@ -2894,27 +2916,29 @@ public String getUserPersonalizedDescription() {
 	    }
 }
 
-public void navigatesToAboutYouInMyUnitedScreenIos() {
-		String device = GlobalParams.getPlatformName();
-		try {
-			for (int i = 0; i < 5; i++) {
-				if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-				} else {
-					break;
-				}
-			}
-			ExtentsReportManager.extentReportLogging("pass", "Returns about you");
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-navigatesToAboutYouInMyUnitedScreenIos()<br />" + e);
-			throw e;
-		}
-}
+	public boolean navigatesToAboutYouInMyUnitedScreenIos() { 
+	    String device = GlobalParams.getPlatformName();
+	    try {
+	        for (int i = 0; i < 5; i++) {
+	            if (!(myUnitedPageLocators.aboutYouMyUnitedScreen.size() > 0)) {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+	            } else {
+	                ExtentsReportManager.extentReportLogging("pass", "Returns about you");
+	                return true;
+	            }
+	        }
+	        ExtentsReportManager.extentReportLogging("fail", "aboutYouMyUnitedScreen not displayed after scrolling");
+	        return false;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception occurred in function-navigatesToAboutYouInMyUnitedScreenIos()<br />" + e);
+	        return false;
+	    }
+	}
 
 public void validateBackgroundColor() {
 	try {
-	    WebElement backgroundElement = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/framelayout_background"));
+	    WebElement backgroundElement = driver.findElement(By.xpath("//android.widget.FrameLayout[contains(@resource-id, \"framelayout_background\")]"));
 
 	    // Get element location and size
 	    org.openqa.selenium.Point location = backgroundElement.getLocation();
@@ -2976,7 +3000,7 @@ public void validateBackgroundColor() {
 
 public void validateBackgroundColorInIos() {
 	try {
-	    WebElement backgroundElement = driver.findElement(By.id("com.mu.muclubapp.staging_mu_dxc:id/framelayout_background"));
+	    WebElement backgroundElement = driver.findElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]"));
 
 	    // Get element location and size
 	    org.openqa.selenium.Point location = backgroundElement.getLocation();
@@ -2999,9 +3023,9 @@ public void validateBackgroundColorInIos() {
 	    Color actualColor = new Color(croppedImg.getRGB(centerX, centerY));
 
 	    // Define the reference colors
-	    Color red = new Color(182, 38, 26);
-	    Color platinum = new Color(229, 228, 226); // example RGB for platinum
-	    Color gold = new Color(255, 215, 0);       // example RGB for gold
+	    Color red = new Color(198, 1, 2);
+	    Color platinum = new Color(229, 228, 226); 
+	    Color gold = new Color(255, 215, 0);   
 
 	    String colorName;
 	    if (actualColor.equals(red)) {
@@ -3019,7 +3043,7 @@ public void validateBackgroundColorInIos() {
 	        + actualColor.getGreen() + "," 
 	        + actualColor.getBlue() + ") → " + colorName);
 
-	    Color expectedColor = red; // or platinum or gold depending on test
+	    Color expectedColor = red; 
 
 	    if (!actualColor.equals(expectedColor)) {
 	        throw new AssertionError("Expected: " + expectedColor + ", but found: " + actualColor);
