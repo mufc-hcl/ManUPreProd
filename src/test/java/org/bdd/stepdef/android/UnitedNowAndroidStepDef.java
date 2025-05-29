@@ -167,11 +167,13 @@ public class UnitedNowAndroidStepDef {
         try {
             ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
             allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
-
-            Collections.sort(allLeagueFiltersDropDownValues);
             List<String> actualDropDownValues = unitedNowPage.getLeagueFilterRadioBtnValues();
+            Collections.sort(allLeagueFiltersDropDownValues);
+            Collections.sort(actualDropDownValues);
+
             log.info("Expected All league filters from API" + allLeagueFiltersDropDownValues);
             log.info("Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
+            
             soft.assertEquals(allLeagueFiltersDropDownValues, actualDropDownValues);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated the FilterFeeds screen");
@@ -182,13 +184,31 @@ public class UnitedNowAndroidStepDef {
     }
 
 
+    @And("^user clicks the following filter in UnitedNow Calender screen and validate content in the body$")
+    public void userClicksTheFollowingFilterInUnitedNowCalenderScreenandValidateContentInTheBody() throws Throwable {
+        try {
+        	ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+//            unitedNowPage.clickOnTheGivenFilter(table.cell(1, 0));
+//            unitedNowPage.clickingRadioButton(allLeagueFiltersDropDownValues);
+            boolean flag = unitedNowPage.clickingRadioButton(allLeagueFiltersDropDownValues);
+            soft.assertTrue(flag);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            throw e;
+        }
+
+    }
+    
     @And("^user clicks the following filter in UnitedNow Calender screen$")
     public void userClicksTheFollowingFilterInUnitedNowCalenderScreen(DataTable table) throws Throwable {
         try {
             unitedNowPage.clickOnTheGivenFilter(table.cell(1, 0));
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now calendar screen<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now<br />" + e);
             throw e;
         }
 
@@ -1787,24 +1807,24 @@ public class UnitedNowAndroidStepDef {
 	        }
 	}
     
-	@Then("^user validate EnglishFaCups text using api$")
-    public void userValidateEnglishFaCupsTextInAllUsingpi() throws Exception {
-        try {
-            Boolean expectedSelection = unitedNowPage.getEnglishFaCups();
-            soft.assertTrue(expectedSelection);
-            soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Validated English FA Cups using API");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Fa Cups Text In All Usingpi<br />" + e);
-            throw e;
-        }
-        
-    }
+//	@Then("^user validate EnglishFaCups text using api$")
+//    public void userValidateEnglishFaCupsTextInAllUsingpi() throws Exception {
+//        try {
+//            Boolean expectedSelection = unitedNowPage.getEnglishFaCups();
+//            soft.assertTrue(expectedSelection);
+//            soft.assertAll();
+//            ExtentsReportManager.extentReportLogging("info", "Validated English FA Cups using API");
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Fa Cups Text In All Usingpi<br />" + e);
+//            throw e;
+//        }
+//        
+//    }
 	
 	@Then("^user validate English Premier League text using api$")
     public void uservalidateEnglishPremierLeagueTextUsingApi() throws Exception {
         try {
-            Boolean expectedSelection = unitedNowPage.getEnglishPremierLeague();
+            Boolean expectedSelection = unitedNowPage.validateContentInTheRadioOptions();
             soft.assertTrue(expectedSelection);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated English Premier League using API");

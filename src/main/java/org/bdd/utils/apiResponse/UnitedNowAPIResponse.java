@@ -3,6 +3,7 @@ package org.bdd.utils.apiResponse;
 import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -37,37 +38,35 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 
 	}
-	
+
 	public String getWhatsNew(String endpoint) throws IOException {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-				String whatNew = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlenonmatchday_t");
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return whatNew.trim();
-			}
-		 catch (Exception e) {
+			String whatNew = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlenonmatchday_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return whatNew.trim();
+		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getWhatsNew()" + e);
 			throw e;
 		}
 	}
-	
+
 	public String getLiveBlog(String endpoint) throws IOException {
 		try {
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-				String liveBlog = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlematchday_t");
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return liveBlog.trim();
-			}
-		 catch (Exception e) {
+			String liveBlog = js.getString("UnitednowconfigurationsResponse.response.docs[0].titlematchday_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return liveBlog.trim();
+		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getWhatsNew()" + e);
 			throw e;
 		}
 	}
-	
+
 	public ArrayList<String> getDropDownValuesFromApi(String endpoint) throws IOException {
 		try {
 			ArrayList<String> dropDownValues = new ArrayList<>();
@@ -107,8 +106,9 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String matchReviewText=js.getString("ResultListResponse.response.docs[0].matchdayresultctatitle_t");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+			String matchReviewText = js.getString("ResultListResponse.response.docs[0].matchdayresultctatitle_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return matchReviewText;
 
 		} catch (Exception e) {
@@ -158,18 +158,19 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        // Assuming the API returns a boolean field indicating carousel presence
-	        boolean comingUpCarousal = js.getBoolean("UnitednowconfigurationsResponse.response.docs[0].comingupenableunitednow_b");
+			// Assuming the API returns a boolean field indicating carousel presence
+			boolean comingUpCarousal = js
+					.getBoolean("UnitednowconfigurationsResponse.response.docs[0].comingupenableunitednow_b");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return comingUpCarousal;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in isCarouselDisplayedFromApi(): " + e.getMessage());
-	        throw e;
-	    }
-		
-		
-		
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return comingUpCarousal;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception in isCarouselDisplayedFromApi(): " + e.getMessage());
+			throw e;
+		}
+
 //		try {x.ComingUpCarouselResponse.response.docs[0].contenttype_t
 //			Response res = getResponse(endpoint);
 //			js = new JsonPath(res.asString());
@@ -192,9 +193,9 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			int size = js.getList("PageFilterResponse.response.docs").size();
 			System.out.println("size=" + size);
 			for (int i = 0; i < size; i++) {
-				if(js.getString("PageFilterResponse.response.docs[" + i + "].label_t")!=null) 
-				{
-				playerPageFilters.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
+				if (js.getString("PageFilterResponse.response.docs[" + i + "].label_t") != null) {
+					playerPageFilters
+							.add(js.getString("PageFilterResponse.response.docs[" + i + "].label_t").toUpperCase());
 				}
 			}
 			ExtentsReportManager.extentReportLogging("info",
@@ -310,267 +311,287 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 	}
 
-	
-		public ArrayList<String> getPremierLeagueFromApi(String endpoint, String premierLeagueFromAPI) throws Exception {
-			try {			
-				ArrayList<String> expPremierLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	public ArrayList<String> getPremierLeagueFromApi(String endpoint, String premierLeagueFromAPI) throws Exception {
+		try {
+			ArrayList<String> expPremierLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String premierLeagueFromAPI = "Premier League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String premierLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(premierLeagueTextAPI.equalsIgnoreCase(premierLeagueFromAPI)) {
-							expPremierLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String premierLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (premierLeagueTextAPI.equalsIgnoreCase(premierLeagueFromAPI)) {
+						expPremierLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expPremierLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getPremierLeagueFromApi()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expPremierLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getPremierLeagueFromApi()" + e);
+			throw e;
 		}
-		
-		public ArrayList<String> getEuropaLeagueFromAPI(String endpoint,String europaLeagueText) throws Exception {
-			try {			
-				ArrayList<String> expEuropaLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	}
+
+	public ArrayList<String> getEuropaLeagueFromAPI(String endpoint, String europaLeagueText) throws Exception {
+		try {
+			ArrayList<String> expEuropaLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String europaLeagueText = "Europa League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String europaLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(europaLeagueTextAPI.equalsIgnoreCase(europaLeagueText)) {
-							expEuropaLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String europaLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (europaLeagueTextAPI.equalsIgnoreCase(europaLeagueText)) {
+						expEuropaLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expEuropaLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getEuropaLeagueFromAPI1()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expEuropaLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getEuropaLeagueFromAPI1()" + e);
+			throw e;
 		}
-		
-		public ArrayList<String> getWomensSuperLeagueFromApi(String endpoint, String womensSuperLeagueText) throws Exception {
-			try {			
-				ArrayList<String> expwomensSuperLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	}
+
+	public ArrayList<String> getWomensSuperLeagueFromApi(String endpoint, String womensSuperLeagueText)
+			throws Exception {
+		try {
+			ArrayList<String> expwomensSuperLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String womensSuperLeagueText = "Women's Super League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String womensSuperLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(womensSuperLeagueTextAPI.equalsIgnoreCase(womensSuperLeagueText)) {
-							expwomensSuperLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String womensSuperLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (womensSuperLeagueTextAPI.equalsIgnoreCase(womensSuperLeagueText)) {
+						expwomensSuperLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expwomensSuperLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getWomensSuperLeagueFromApi()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expwomensSuperLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getWomensSuperLeagueFromApi()" + e);
+			throw e;
 		}
+	}
 
-		public ArrayList<String> getContenentalLeagueCupFromAPI(String endpoint, String contenentalLeagueCupText) throws Exception {
-			try {			
-				ArrayList<String> expContenentalLeagueCup = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	public ArrayList<String> getContenentalLeagueCupFromAPI(String endpoint, String contenentalLeagueCupText)
+			throws Exception {
+		try {
+			ArrayList<String> expContenentalLeagueCup = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String contenentalLeagueCupText = "Continental League Cup";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String contenentalLeagueCupTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(contenentalLeagueCupTextAPI.equalsIgnoreCase(contenentalLeagueCupText)) {
-							expContenentalLeagueCup.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String contenentalLeagueCupTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (contenentalLeagueCupTextAPI.equalsIgnoreCase(contenentalLeagueCupText)) {
+						expContenentalLeagueCup.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expContenentalLeagueCup;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getContenentalLeagueCupFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expContenentalLeagueCup;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getContenentalLeagueCupFromAPI()" + e);
+			throw e;
 		}
+	}
 
-		public ArrayList<String> getPremierLeague2FromAPI(String endpoint, String premierLeague2Text) throws Exception {
-			try {			
-				ArrayList<String> expPremierLeague2 = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	public ArrayList<String> getPremierLeague2FromAPI(String endpoint, String premierLeague2Text) throws Exception {
+		try {
+			ArrayList<String> expPremierLeague2 = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String premierLeague2Text = "Premier League 2";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String premierLeague2TextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(premierLeague2TextAPI.equalsIgnoreCase(premierLeague2Text)) {
-							expPremierLeague2.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String premierLeague2TextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (premierLeague2TextAPI.equalsIgnoreCase(premierLeague2Text)) {
+						expPremierLeague2.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expPremierLeague2;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getPremierLeague2FromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expPremierLeague2;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getPremierLeague2FromAPI()" + e);
+			throw e;
 		}
-		
-		public ArrayList<String> getEFLTrophyFromAPI(String endpoint,String eFLTrophyText) throws Exception {
-			try {			
-				ArrayList<String> expEFLTrophy = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	}
+
+	public ArrayList<String> getEFLTrophyFromAPI(String endpoint, String eFLTrophyText) throws Exception {
+		try {
+			ArrayList<String> expEFLTrophy = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String eFLTrophyText = "EFL Trophy";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String eFLTrophyTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(eFLTrophyTextAPI.equalsIgnoreCase(eFLTrophyText)) {
-							expEFLTrophy.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String eFLTrophyTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (eFLTrophyTextAPI.equalsIgnoreCase(eFLTrophyText)) {
+						expEFLTrophy.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expEFLTrophy;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getEFLTrophyFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expEFLTrophy;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getEFLTrophyFromAPI()" + e);
+			throw e;
 		}
+	}
 
-		public ArrayList<String> getU18PremierLeagueFromAPI(String endpoint, String u18PremierLeagueText) throws Exception {
-			try {			
-				ArrayList<String> expU18PremierLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	public ArrayList<String> getU18PremierLeagueFromAPI(String endpoint, String u18PremierLeagueText) throws Exception {
+		try {
+			ArrayList<String> expU18PremierLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String u18PremierLeagueText = "U18 Premier League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String u18PremierLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(u18PremierLeagueTextAPI.equalsIgnoreCase(u18PremierLeagueText)) {
-							expU18PremierLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String u18PremierLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (u18PremierLeagueTextAPI.equalsIgnoreCase(u18PremierLeagueText)) {
+						expU18PremierLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expU18PremierLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getU18PremierLeagueFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expU18PremierLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getU18PremierLeagueFromAPI()" + e);
+			throw e;
 		}
+	}
 
-		
-		public ArrayList<String> getUEFAYouthLeagueFromAPI(String endpoint, String uEFAYouthLeagueText) throws Exception {
-			try {			
-				ArrayList<String> expUEFAYouthLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
+	public ArrayList<String> getUEFAYouthLeagueFromAPI(String endpoint, String uEFAYouthLeagueText) throws Exception {
+		try {
+			ArrayList<String> expUEFAYouthLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
 //				String uEFAYouthLeagueText = "UEFA Youth League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String uEFAYouthLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(uEFAYouthLeagueTextAPI.equalsIgnoreCase(uEFAYouthLeagueText)) {
-							expUEFAYouthLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String uEFAYouthLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (uEFAYouthLeagueTextAPI.equalsIgnoreCase(uEFAYouthLeagueText)) {
+						expUEFAYouthLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expUEFAYouthLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getUEFAYouthLeagueFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expUEFAYouthLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getUEFAYouthLeagueFromAPI()" + e);
+			throw e;
 		}
-		
-		public ArrayList<String> getEnglishPGAU16WomensCupFromAPI(String endpoint) throws Exception {
-			try {			
-				ArrayList<String> expEnglishPGAU16WomensCup = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
-				String englishPGAU16WomensCupText = "English PGA U16 Womens Cup";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String englishPGAU16WomensCupTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(englishPGAU16WomensCupTextAPI.equalsIgnoreCase(englishPGAU16WomensCupText)) {
-							expEnglishPGAU16WomensCup.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+	}
+
+	public ArrayList<String> getEnglishPGAU16WomensCupFromAPI(String endpoint) throws Exception {
+		try {
+			ArrayList<String> expEnglishPGAU16WomensCup = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			String englishPGAU16WomensCupText = "English PGA U16 Womens Cup";
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String englishPGAU16WomensCupTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (englishPGAU16WomensCupTextAPI.equalsIgnoreCase(englishPGAU16WomensCupText)) {
+						expEnglishPGAU16WomensCup.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expEnglishPGAU16WomensCup;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getEnglishPGAU16WomensCupFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expEnglishPGAU16WomensCup;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getEnglishPGAU16WomensCupFromAPI()" + e);
+			throw e;
 		}
-		
-		public ArrayList<String> getEnglishWomensSuperLeagueFromAPI(String endpoint) throws Exception {
-			try {			
-				ArrayList<String> expEnglishWomensSuperLeague = new ArrayList<>();
-				Response res = getUrlEncodedResponse(endpoint);
-				js = new JsonPath(res.asString());
-				String englishWomensSuperLeagueText = "English Womens Super League";
-				int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
-				for(int i=0; i < parent; i++) {
-				int child = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-					for(int j=0; j < child; j++) {
-						String englishWomensSuperLeagueTextAPI = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-						if(englishWomensSuperLeagueTextAPI.equalsIgnoreCase(englishWomensSuperLeagueText)) {
-							expEnglishWomensSuperLeague.add(js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t"));
-						}
+	}
+
+	public ArrayList<String> getEnglishWomensSuperLeagueFromAPI(String endpoint) throws Exception {
+		try {
+			ArrayList<String> expEnglishWomensSuperLeague = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			String englishWomensSuperLeagueText = "English Womens Super League";
+			int parent = js.getList("PageFilterResponse.grouped._parent.groups").size();
+			for (int i = 0; i < parent; i++) {
+				int child = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+				for (int j = 0; j < child; j++) {
+					String englishWomensSuperLeagueTextAPI = js.getString(
+							"PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs[" + j + "].label_t");
+					if (englishWomensSuperLeagueTextAPI.equalsIgnoreCase(englishWomensSuperLeagueText)) {
+						expEnglishWomensSuperLeague.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
 					}
 				}
-				ExtentsReportManager.extentReportLogging("info",
-						"Getting the response from the endpoint " + getURIInfo(endpoint));
-				return expEnglishWomensSuperLeague;
-			} catch (Exception e) {
-				ExtentsReportManager.extentReportLogging("fail",
-						"Exception occurred in function getEnglishWomensSuperLeagueFromAPI()" + e);
-				throw e;
 			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return expEnglishWomensSuperLeague;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getEnglishWomensSuperLeagueFromAPI()" + e);
+			throw e;
 		}
+	}
 
 	public String getMatchDayLiveFromApi(String endpoint) throws Exception {
 		try {
@@ -631,11 +652,12 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
+
 	public ArrayList<String> getArticleCard(String endpoint) throws Exception {
 		try {
 			ArrayList<String> expArticleCard = new ArrayList<>();
 			String contentTypeArticleCard = "article";
- 
+
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
@@ -643,7 +665,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
 						.equalsIgnoreCase(contentTypeArticleCard)) {
 					expArticleCard.add(js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t"));
- 
+
 				}
 			}
 			ExtentsReportManager.extentReportLogging("info",
@@ -723,30 +745,35 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
-	
+
 	public boolean getStoriesCarouselFromApi(String endpoint) throws Exception {
 		try {
-	        Response res = getUrlEncodedResponse(endpoint);
-	        js = new JsonPath(res.asString());
-	        // Assuming the API returns a boolean field indicating carousel presence
-	        boolean storiesCarousel = js.getBoolean("UnitednowconfigurationsResponse.response.docs[0].hideunstoriescarousal_b");
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-		        return storiesCarousel;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getStoriesCarouselFromApi(): " + e.getMessage());
-	        throw e;
-	    }
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			// Assuming the API returns a boolean field indicating carousel presence
+			boolean storiesCarousel = js
+					.getBoolean("UnitednowconfigurationsResponse.response.docs[0].hideunstoriescarousal_b");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return storiesCarousel;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception in getStoriesCarouselFromApi(): " + e.getMessage());
+			throw e;
+		}
 	}
 
 	public String getUpsellTitleFromApi(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String upsellTitleFromAPI=js.getString("UpsellResponse.response.docs[0].title_t");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].title_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return upsellTitleFromAPI;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getUpsellTitleFromApi()" + e);
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getUpsellTitleFromApi()" + e);
 			throw e;
 		}
 	}
@@ -755,11 +782,13 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String upsellTitleFromAPI=js.getString("UpsellResponse.response.docs[0].ctatitle_t");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].ctatitle_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return upsellTitleFromAPI;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getWatchNowBtnTextFromAPI()" + e);
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getWatchNowBtnTextFromAPI()" + e);
 			throw e;
 		}
 
@@ -767,30 +796,34 @@ public class UnitedNowAPIResponse extends BaseApiService {
 
 	public boolean getLiveVideoFromApi(String endpoint) throws Exception {
 		try {
-	        Response res = getUrlEncodedResponse(endpoint);
-	        js = new JsonPath(res.asString());
-			if(js.getList("EpgLiveStreamResponse.response.docs").size()>0) {
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			if (js.getList("EpgLiveStreamResponse.response.docs").size() > 0) {
 				// Assuming the API returns a boolean field indicating carousel presence
 				boolean liveVideo = js.getBoolean("EpgLiveStreamResponse.response.docs[1].enablevideounitednow_b");
-			}else return false;
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+			} else
+				return false;
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
 
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getLiveVideoFromApi(): " + e.getMessage());
-	        throw e;
-	    }
-        return false;
-    }
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getLiveVideoFromApi(): " + e.getMessage());
+			throw e;
+		}
+		return false;
+	}
 
 	public String getLiveVideoTextFromApi(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String LiveVideoText=js.getString("EpgLiveStreamResponse.response.docs[1].schedulemetadata_t.Title");
-			ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
+			String LiveVideoText = js.getString("EpgLiveStreamResponse.response.docs[1].schedulemetadata_t.Title");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return LiveVideoText;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getLiveVideoTextFromApi()" + e);
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getLiveVideoTextFromApi()" + e);
 		}
 		return endpoint;
 	}
@@ -822,13 +855,14 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	public ArrayList<String> getPollCard(String endpoint) throws Exception {
 		try {
 			ArrayList<String> expPollCard = new ArrayList<>();
-			String headline_tPollCard = "MAN OF THE MATCH";
+			String headline_tPollCard = "poll";
 
 			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
 			for (int i = 0; i < size; i++) {
-				if (js.getString("ListingResponse.response.docs[" + i + "].headline_t").equalsIgnoreCase(headline_tPollCard)) {
+				if (js.getString("x.ListingResponse.response.docs[" + i + "].contenttype_t")
+						.equalsIgnoreCase(headline_tPollCard)) {
 					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
 				}
 			}
@@ -912,7 +946,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
-	
+
 	public String getStoriesCarouseMatchResultsApi(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
@@ -928,176 +962,220 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
-	
+
 	public String getEnglishFaCups(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("LatestResultsResponse.response.docs[0].competitionname_t");
+			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getAll;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getAll(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getAll;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getAll(): " + e.getMessage());
+			throw e;
+		}
 	}
 	
+	public ArrayList<String> getEnglishFaCup(String endpoint) throws Exception {
+		try {
+			ArrayList<String> englishFaCup = new ArrayList<>();
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+			int size = js.getList("FixtureListResponse.response.docs").size();
+			for (int i = 0; i < size; i++) {
+				englishFaCup.add(js.getString("FixtureListResponse.response.docs[" + i + "].competitionname_t"));
+
+				}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return englishFaCup;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getImageCard()" + e);
+			throw e;
+		}
+	}
+	
+	
+
 	public String getEnglishPremierLeague(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getAll;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getEnglishPremierLeague(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getAll;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception in getEnglishPremierLeague(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getFACup(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
+			String getAll = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getAll;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getFACup(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getAll;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getFACup(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getUEFAEuropaLeague(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getAll;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getAll;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getFriendly(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getAll = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
+			String getAll = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getAll;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getAll;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getDateTBC(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String getDateTBC = js.getString("LatestResultsResponse.response.docs[0].matchdatetbc_t");
+			String getDateTBC = js.getString("LatestResultsResponse.response.docs[0].matchdatetbc_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getDateTBC;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getDateTBC(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getDateTBC;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getDateTBC(): " + e.getMessage());
+			throw e;
+		}
 	}
+
 	public String getTicketInfo(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			ArrayList<String> getTicketInfo = new ArrayList<>();
 			js = new JsonPath(res.asString());
 			int size = js.getList("ResultListResponse.response.docs").size();
-			for(int i=0;i < size; i++) {
-				if(js.getString("ResultListResponse.response.docs["+i+"].ticketctatitle_t")!=null){
-					getTicketInfo.add(js.getString("ResultListResponse.response.docs["+i+"].ticketctatitle_t"));
+			for (int i = 0; i < size; i++) {
+				if (js.getString("ResultListResponse.response.docs[" + i + "].ticketctatitle_t") != null) {
+					getTicketInfo.add(js.getString("ResultListResponse.response.docs[" + i + "].ticketctatitle_t"));
 				}
 			}
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint "+getTicketInfo.get(0)+"" + getURIInfo(endpoint));
-	        return getTicketInfo.get(0);
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getTicketInfo(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getTicketInfo.get(0) + "" + getURIInfo(endpoint));
+			return getTicketInfo.get(0);
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getTicketInfo(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getMatchReview(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			ArrayList<String> getMatchReview = new ArrayList<>();
 			js = new JsonPath(res.asString());
 			int size = js.getList("LatestResultsResponse.response.docs").size();
-			for(int i=0;i < size; i++) {
-				if(js.getString("LatestResultsResponse.response.docs["+i+"].matchdayresultctatitle_t")!=null){
-					getMatchReview.add(js.getString("ResultListResponse.response.docs["+i+"].matchdayresultctatitle_t"));
+			for (int i = 0; i < size; i++) {
+				if (js.getString("LatestResultsResponse.response.docs[" + i + "].matchdayresultctatitle_t") != null) {
+					getMatchReview
+							.add(js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t"));
 				}
 			}
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getMatchReview.get(0);
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getMatchReview(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getMatchReview.get(0);
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getMatchReview(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public String getMatchDayLive(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			ArrayList<String> getMatchReview = new ArrayList<>();
 			js = new JsonPath(res.asString());
 			int size = js.getList("ResultListResponse.response.docs").size();
-			for(int i=0;i < size; i++) {
-				if(js.getString("ResultListResponse.response.docs["+i+"].matchdayresultctatitle_t")!=null){
-					getMatchReview.add(js.getString("ResultListResponse.response.docs["+i+"].matchdayresultctatitle_t"));
+			for (int i = 0; i < size; i++) {
+				if (js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t") != null) {
+					getMatchReview
+							.add(js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t"));
 				}
 			}
-			
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	        return getMatchReview.get(0);
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getMatchDayLive(): " + e.getMessage());
-	        throw e;
-	    }
+
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getMatchReview.get(0);
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getMatchDayLive(): " + e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	public ArrayList<String> getAllLeaguesFromApinew(String endpoint) throws Exception {
 		try {
-			boolean flag=true;
+			boolean flag = true;
 			ArrayList<String> allLeagueFilters = new ArrayList<>();
 			Response res = getUrlEncodedResponse(endpoint);
-			int currentYear = Year.now().getValue()-1;
-			int nextYear = Year.now().getValue() % 100;
-	        String sid="sid:"+currentYear;
-	        String expAll="All "+currentYear+"/"+nextYear;
+//			int currentYear = Year.now().getValue()-1;
+//			int nextYear = Year.now().getValue() % 100;
+//	        String sid="sid:"+currentYear;
+//	        String expAll="All "+currentYear+"/"+nextYear;
+			String getCurrentSeason = getcurrentSeason("currentSeason");
 			js = new JsonPath(res.asString());
 			int parentSize = js.getList("PageFilterResponse.grouped._parent.groups").size();
-			int sample = 0;
-			for(int i=0;i< parentSize;i++) {
-				int childSize = js.getList("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs").size();
-				for(int j=0;j< childSize;j++) {
-					String actuAll = js.getString("PageFilterResponse.grouped._parent.groups["+i+"].doclist.docs["+j+"].label_t");
-					if(expAll.equalsIgnoreCase(actuAll)) {
-						sample=i;
-						break;
+//			int sample = 0;
+			for (int i = 0; i < parentSize; i++) {
+				int childSize = js.getList("PageFilterResponse.grouped._parent.groups[" + i + "].doclist.docs").size();
+
+				for (int j = 0; j < childSize; j++) {
+					String actCurrentSeason = js.getString("PageFilterResponse.grouped._parent.groups[" + i
+							+ "].doclist.docs[" + j + "].matchfilter_s");
+					String leagueTable = js.getString("PageFilterResponse.grouped._parent.groups[" + i
+							+ "].doclist.docs[" + j + "].matchfilter_s");
+					if (actCurrentSeason.contains(getCurrentSeason)) {
+						allLeagueFilters.add(js.getString("PageFilterResponse.grouped._parent.groups[" + i
+								+ "].doclist.docs[" + j + "].label_t"));
+//						sample=i;
+//						break;
 					}
 				}
 			}
-			int child1 = js.getList("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs.label_t").size();
-			for(int j=0;j<child1;j++)
-			{
-				allLeagueFilters.add(js.getString("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs["+j+"].label_t"));
-			}
-					ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+//			int child1 = js.getList("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs.label_t").size();
+//			for(int j=0;j<child1;j++)
+//			{
+//				allLeagueFilters.add(js.getString("PageFilterResponse.grouped._parent.groups["+sample+"].doclist.docs["+j+"].label_t"));
+//			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			allLeagueFilters.removeIf(item -> item.equalsIgnoreCase("2024-25") || item.equalsIgnoreCase("2025-26")|| item.equalsIgnoreCase("League Table") || item.equalsIgnoreCase("FA Community Shield")|| item.equalsIgnoreCase("Europa League"));
+			Collections.sort(allLeagueFilters);
 			return allLeagueFilters;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -1105,64 +1183,82 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
-	
+
+	public String getcurrentSeason(String endpoint) throws Exception {
+		try {
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			String gecurrentSeason = js.getString("AppConfigurationResponse.response.docs[0].data_t.currentSeason");
+
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting current Season response from the endpoint" + getURIInfo(endpoint));
+			return gecurrentSeason;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getcurrentSeason(): " + e.getMessage());
+			throw e;
+		}
+	}
+
 	public String getDummyTestSiteCore(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-	        String geDummyTestSiteCore = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+			String geDummyTestSiteCore = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-	    	ExtentsReportManager.extentReportLogging("info", "Getting the response from the endpoint " + getURIInfo(endpoint));
-	    	geDummyTestSiteCore=geDummyTestSiteCore.replaceAll("[0-9]", "");
-	        return geDummyTestSiteCore;
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception in getDummyTestSiteCore(): " + e.getMessage());
-	        throw e;
-	    }
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			geDummyTestSiteCore = geDummyTestSiteCore.replaceAll("[0-9]", "");
+			return geDummyTestSiteCore;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception in getDummyTestSiteCore(): " + e.getMessage());
+			throw e;
+		}
 	}
 
 	public ArrayList<String> getAllSponsorLogoFromAPI(String endpoint) throws Exception {
-	    ArrayList<String> allSponsorLogos = new ArrayList<>();
-	    try {
-	        Response res = getUrlEncodedResponse(endpoint);
-	        String[] expAllSponsorLogos = {"DXC", "Adidas", "MUTV", "Cadbury"};
-	        JsonPath js = new JsonPath(res.asString());
+		ArrayList<String> allSponsorLogos = new ArrayList<>();
+		try {
+			Response res = getUrlEncodedResponse(endpoint);
+			String[] expAllSponsorLogos = { "DXC", "Adidas", "MUTV", "Cadbury" };
+			JsonPath js = new JsonPath(res.asString());
 
-	        List<Object> groups = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups");
+			List<Object> groups = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups");
 //	        ExtentsReportManager.extentReportLogging( "info","Group count = " + groups.size());
 
-	        for (int i = 0; i < groups.size(); i++) {
-	            List<Object> docs = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs");
+			for (int i = 0; i < groups.size(); i++) {
+				List<Object> docs = js
+						.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs");
 //	            ExtentsReportManager.extentReportLogging( "info","Docs in group " + i + " = " + docs.size());
 
-	            for (int j = 0; j < docs.size(); j++) {
-	                List<Object> sponsorDetails = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs[" + j + "].sponsordetailinfo_s");
+				for (int j = 0; j < docs.size(); j++) {
+					List<Object> sponsorDetails = js.getList("ModuleSponsorResponse.grouped.modulemappingtype_t.groups["
+							+ i + "].doclist.docs[" + j + "].sponsordetailinfo_s");
 
-	                if (sponsorDetails != null) {
-	                    for (int k = 0; k < sponsorDetails.size(); k++) {
-	                        String actualName = js.getString(
-	                            "ModuleSponsorResponse.grouped.modulemappingtype_t.groups[" + i + "].doclist.docs[" + j + "].sponsordetailinfo_s[" + k + "].PartnerName"
-	                        );
+					if (sponsorDetails != null) {
+						for (int k = 0; k < sponsorDetails.size(); k++) {
+							String actualName = js.getString("ModuleSponsorResponse.grouped.modulemappingtype_t.groups["
+									+ i + "].doclist.docs[" + j + "].sponsordetailinfo_s[" + k + "].PartnerName");
 
-	                        for (String expectedLogo : expAllSponsorLogos) {
-	                            if (actualName != null && actualName.equalsIgnoreCase(expectedLogo)) {
-	                                if (!allSponsorLogos.contains(expectedLogo)) {
-	                                    allSponsorLogos.add(expectedLogo);
-	                                    ExtentsReportManager.extentReportLogging( "info","Found sponsor logo: " + expectedLogo);
-	                                }
-	                                break;
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-	        }
-	    } catch (Exception e) {
-	        System.err.println("Error while fetching sponsor logos: " + e.getMessage());
-	        throw e;
-	    }
+							for (String expectedLogo : expAllSponsorLogos) {
+								if (actualName != null && actualName.equalsIgnoreCase(expectedLogo)) {
+									if (!allSponsorLogos.contains(expectedLogo)) {
+										allSponsorLogos.add(expectedLogo);
+										ExtentsReportManager.extentReportLogging("info",
+												"Found sponsor logo: " + expectedLogo);
+									}
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("Error while fetching sponsor logos: " + e.getMessage());
+			throw e;
+		}
 
-	    return allSponsorLogos;
+		return allSponsorLogos;
 	}
+
 }
-	

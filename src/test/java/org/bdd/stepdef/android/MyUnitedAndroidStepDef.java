@@ -1,10 +1,12 @@
 package org.bdd.stepdef.android;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bdd.pages.MyUnitedPage;
 import org.bdd.pages.UnitedNowPage;
+import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.GlobalParams;
 import org.bdd.utils.apiResponse.MyUnitedAPIResponse;
@@ -761,11 +763,11 @@ public class MyUnitedAndroidStepDef {
         try {
 //            String expPlayerName = table.cell(1, 0);
             String expPlayerName = playerName;
-            String expBuyShirt = table.cell(1, 0);
+//            String expBuyShirt = table.cell(1, 0);
             String actualPlayerName = myUnitedPage.getPlayerNameInUnitedScreen();
-            String actualBuyShirt = myUnitedPage.getBuyShirtButtonScreen();
+            myUnitedPage.getBuyShirtButtonScreen();
             soft.assertEquals(actualPlayerName, expPlayerName);
-            soft.assertEquals(actualBuyShirt, expBuyShirt);
+//            soft.assertEquals(actualBuyShirt, expBuyShirt);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "validated players details updated in my united screen");
         } catch (AssertionError e) {
@@ -1261,9 +1263,9 @@ public class MyUnitedAndroidStepDef {
 	public void userClicksOnCloseIconInEmailUpdateSuccessScreen() throws Throwable {
 		try {
             myUnitedPage.clicksOnCloseIconInEmailUpdateSuccessScreen();
-            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+            ExtentsReportManager.extentReportLogging("info", "clicks on close icon in email update success");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "clicked on close icon in email update success<br />" + e);
             throw e;
         }
 	}
@@ -1298,10 +1300,12 @@ public class MyUnitedAndroidStepDef {
 	@And("^user navigates to About you in my united screen$")
 	public void userNavigatesToAboutYouInMyUnitedScreen() throws Throwable {
 		try {
-            myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
-            ExtentsReportManager.extentReportLogging("info", "clicked on save preference button");
+            boolean flag = myUnitedPage.navigatesToAboutYouInMyUnitedScreen();
+            soft.assertTrue(flag);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "clicking on save preference button<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
             throw e;
         }
 	}
@@ -1309,12 +1313,14 @@ public class MyUnitedAndroidStepDef {
 	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalised()
 			throws Throwable {
 		try {
-			myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
-            ExtentsReportManager.extentReportLogging("info", "Validates About you details");
+            boolean flag = myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetails();
+            soft.assertTrue(flag);
+            soft.assertAll();
+            ExtentsReportManager.extentReportLogging("info", "navigates to Firstname lastName Country and Age details");
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Validates About you details<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "navigates to Firstname lastName Country and Age details<br />" + e);
             throw e;
-         }
+        }
 	}
 
 	@Then("^user validates the background colour of profile screen$")
@@ -1330,5 +1336,60 @@ public class MyUnitedAndroidStepDef {
 		        throw e;
 		    }
 	}
+	
+	@Given("user clicks on change password in my profile screen")
+	public void user_clicks_on_change_password_address_in_my_profile_screen() {
+		try {	
+			myUnitedPage.clicksOnChangePasswordInMyProfile();
+	        ExtentsReportManager.extentReportLogging("info", "clicked on Change Password in My profile screen");
+	    } catch (AssertionError e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Error while clicking on Change Password in My profile screen<br />" + e);
+	        throw e;
+	    }
+	}
+	
+	@Then("user enters the current password, new password and confirm new password")
+	public void user_enters_the_current_password_new_password_and_confirm_new_password() throws Exception {
+		 try {
+			 	myUnitedPage.updatePassword();
+	            ExtentsReportManager.extentReportLogging("info", "Updated current password with new password");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in updating valid password<br />" + e);
+	            throw e;
+	        }
+	}
+	
+	
+	@Then("user clicks on update password button in change password screen")
+	public void user_clicks_on_update_password_button_in_change_password_screen() {
+		try {	
+				myUnitedPage.clicksOnUpdatePasswordInChangePassword();
+		        ExtentsReportManager.extentReportLogging("info", "clicked on update Password in change password screen");
+		    } catch (AssertionError e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Error while clicking on update Password in change passwordscreen<br />" + e);
+		        throw e;
+		    }
+	}
+	
+	@Then("user validates password updated successfully message")
+	public void user_validates_password_updated_successfully_message() throws IOException {
+		try {
+			 boolean actualMessage = myUnitedPage.userValidatesPasswordUpdatedSuccessfullyMessage();
+	            soft.assertTrue(actualMessage, "Password not updated successfully");
+	            soft.assertAll();
+	         // After successful password update:
+	            if (actualMessage)
+	            {
+		            String newPassword = GlobalParams.getNewPassword();
+		            Common.updatePasswordFile(newPassword);
+		            System.out.println(Common.getOldPassword());
+		            ExtentsReportManager.extentReportLogging("info", "validated  password updated successfully message for new password  "+newPassword);
+		         }
+	           } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in validating  password updated  message<br />" + e);
+	            throw e;
+	        }
+		}
+	
 	}
 

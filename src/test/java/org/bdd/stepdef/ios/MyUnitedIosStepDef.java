@@ -1651,7 +1651,8 @@ public class MyUnitedIosStepDef {
 	@And("^user navigates to About you in my united screen in ios$")
 	public void userNavigatesToAboutYouInMyUnitedScreenInIos() throws Throwable {
 		try {
-            myUnitedPage.navigatesToAboutYouInMyUnitedScreenIos();
+            boolean flag = myUnitedPage.navigatesToAboutYouInMyUnitedScreenIos();
+            soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "navigates to About you in my united");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "navigates to About you in my united<br />" + e);
@@ -1663,7 +1664,8 @@ public class MyUnitedIosStepDef {
 	public void userValidatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsPersonalisedInIos()
 			throws Throwable {
 		try {
-            myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios();
+            boolean flag = myUnitedPage.validatesTextContainingUserFirstnameLastNameCountryAndAgeDetailsinios();
+            soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validates textFirstname lastName Country and Age details personalised");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "validates textFirstname lastName Country and Age details personalised<br />" + e);
