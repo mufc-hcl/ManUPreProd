@@ -180,7 +180,7 @@ public class OnboardingAndroidStepDef {
             String actualWelcomeText = onboardingPage.getTextForWelcomeHeadingScreen4();
             soft.assertEquals(actualWelcomeText.toUpperCase(), welcomeTextFromAPIScFour.toUpperCase());
 
-            ArrayList<String> button1FromAPIScFour = onboardingAPIResponse.getButton1FromAPIScFourApi("onBoardingScreenOneEndPoint");
+//            ArrayList<String> button1FromAPIScFour = onboardingAPIResponse.getButton1FromAPIScFourApi("onBoardingScreenOneEndPoint");
 //            ArrayList<String> actualButton1 = onboardingPage.getbutton1Screen4();
 //            soft.assertEquals(actualButton1.toUpperCase(), button1FromAPIScFour.toUpperCase());
             

@@ -177,7 +177,7 @@ try {
             soft.assertTrue(actualDesc.contains(descFromAPIScFour));
             //soft.assertEquals(actualDesc.toUpperCase(), descFromAPIScFour.toUpperCase());
             
-            String actualSignForUnitedButton = onboardingPage.getSignForUnitedButtonScreen4();
+            String actualSignForUnitedButton = onboardingPage.getSignForUnitedButtonScreen4IOS();
             soft.assertEquals(actualSignForUnitedButton.toUpperCase(), signForUnitedButtonFromAPIScFour.toUpperCase());
             
             String actualSkipButton = onboardingPage.getSkipButtonScreen4();

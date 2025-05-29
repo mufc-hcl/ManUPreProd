@@ -16,7 +16,7 @@ Feature: Onboarding
     And user clicks confirm button
     Then user validates all objects in screen four using Api
 
-  Scenario Outline: [My United]TC006 Validate shirt number not zero in My United screen for less than OS 13
+  Scenario Outline: [Onboarding]TC006 Validate shirt number not zero in My United screen for less than OS 13
     Given user navigates to manu android application
     And user navigates to screen three
     And user navigates to screen four

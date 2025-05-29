@@ -146,7 +146,11 @@ public class OnboardingPageLocators {
 	    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc='sign for united']")
 	    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN FOR UNITED\"]")
 	    public WebElement signForUnitedScreen4;
-
+        
+	    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"sign up\"]")
+	    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SIGN UP\"]")
+	    public WebElement signForUnitedScreen4QA;
+	    
 	    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc='Skip button']")
 	    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"SKIP\"]")
 	    public WebElement skipBtnScreen4;

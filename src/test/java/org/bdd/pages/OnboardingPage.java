@@ -610,20 +610,47 @@ public class OnboardingPage extends Common {
     public String getSignForUnitedButtonScreen4() {
       String device = GlobalParams.getPlatformName();
         try {
-            if (device.equalsIgnoreCase("android")) {
+            if (Common.apiEnv().equalsIgnoreCase("stage")) {
                 waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4, 60);
                 ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
                 return onboardingPageLocators.signForUnitedScreen4.getText();
-            } else {
-                waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4, 60);
-                ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text ");
-                return onboardingPageLocators.signForUnitedScreen4.getDomAttribute("label");
-            }
-        } catch (Exception e) {
+            } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+            	waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4, 60);
+                ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
+                return onboardingPageLocators.signForUnitedScreen4.getText();
+            }else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+            	waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4QA, 60);
+                ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
+                return onboardingPageLocators.signForUnitedScreen4QA.getText();
+         }}catch (Exception e) {
             ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getSignForUnitedButtonScreen4()<br />" + e);
             throw e;
         }
+		return device;
+         
     }
+    
+    public String getSignForUnitedButtonScreen4IOS() {
+        String device = GlobalParams.getPlatformName();
+          try {
+              if (Common.apiEnv().equalsIgnoreCase("stage")) {
+                  waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4, 60);
+                  ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
+                  return onboardingPageLocators.signForUnitedScreen4.getDomAttribute("label");
+              } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+              	waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4, 60);
+                  ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
+                  return onboardingPageLocators.signForUnitedScreen4.getDomAttribute("label");
+              }else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+              	waitForVisibilityFluentWait(onboardingPageLocators.signForUnitedScreen4QA, 60);
+                  ExtentsReportManager.extentReportLogging("pass", "Returns sign in for united button text");
+                  return onboardingPageLocators.signForUnitedScreen4QA.getDomAttribute("label");
+          } }catch (Exception e) {
+              ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getSignForUnitedButtonScreen4()<br />" + e);
+              throw e;
+          }
+		return null;
+      }
 
     public String getSkipButtonScreen4() {
       String device = GlobalParams.getPlatformName();
