@@ -373,3 +373,36 @@ Feature: Explore
     #Examples: 
       #| username             | password |
       #| manupreprod@yopmail.com | Manu@123 |
+      
+      @United23431
+      Scenario Outline: [Explore]TC029 Validate the CBR ,CBS flow from the search results content as a logout , login but not subscribed and subscribed user
+   	Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user clicks search button in united screen in ios
+    And user search all data or updates "mutv" in ios
+    And user select first item from suggestion in ios
+    Then user validate data in search screen in ios
+    And user checks for CBR content in search result in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in subscribe screen in ios
+     #And user clicks on play Icon for CBR video
+     And user clicks on back icon in podcast audio screen in ios
+      And user checks for CBS content in search result in ios
+       #And user clicks on login button in subscribe screen
+    #And user clicks on continue button in ios
+     #And user enter the valid email and valid password for subscribed user in ios
+    #And user clicks on login button in subscribe screen in ios
+    
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+    
+    

@@ -120,6 +120,10 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/textview_image_carousel_header')]")
 	@iOSXCUITFindBy(accessibility = "MY STICKERS")
 	public WebElement myStickersTextMyUnitedScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/textview_image_carousel_header')]")
+	@iOSXCUITFindBy(accessibility = "MY STICKERS")
+	public List<WebElement> myStickersTextMyUnitedScreen1;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/view_all')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"View All\"]")
@@ -137,14 +141,14 @@ public class MyUnitedPageLocators {
 	@iOSXCUITFindBy(accessibility = "MY STICKERS")
 	public WebElement searchImageLinkStickersScreen;
 
-	@AndroidFindBy(xpath = "//android.view.View[@resource-id=\"com.google.android.googlequicksearchbox:id/search_box_transition_outline\"]")
+	@AndroidFindBy(xpath = "//android.view.View[@resource-id='com.google.android.googlequicksearchbox:id/search_box_transition_outline']")
 	public WebElement imageSharedGoogleLensScreen;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/edit_shirt_no_btn')]")
 	@iOSXCUITFindBy(iOSNsPredicate = "name == \"Edit\" AND label == \"Edit\" AND type == \"XCUIElementTypeButton\"")
 	public WebElement tShirtEditButton;
 
-	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, \"player_jerseyNo_EdtTxt\")]")
+	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, 'player_jerseyNo_EdtTxt')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
 	public WebElement tShirtTextBox;
 
@@ -281,7 +285,7 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_description')]")
 	public WebElement thisSeasonFour;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"appearance_view_button\")]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'id/appearance_view_button')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
 	public WebElement viewSeasonFour;
 
@@ -727,4 +731,11 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/title' and @text='CHANGE PASSWORD']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='change password']")
 	public WebElement changePasswordMyProfilePage;
+	
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \"navigation_bar_item_icon_view\")])[3]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Shop\"]")
+	public WebElement shopTabIcon;
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='My United']")
+	@iOSXCUITFindBy(accessibility = "My United, you are not logged in.")
+	public WebElement myUnitedButton;
 }

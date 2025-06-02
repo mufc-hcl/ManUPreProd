@@ -463,6 +463,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MANCHESTER UNITED: THE STORY SO FAR\"]")
 	public WebElement titleCTAHistoryItem;
 
+	
 	@iOSXCUITFindBy(accessibility = "Girls, radio")
 	public WebElement girlsDDInTableFixturesPgae;
 
@@ -592,4 +593,7 @@ public class ExplorePageLocators {
 	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/framelayout_tabwidget_parent')]")
 	public List<WebElement> notificationUnitedNowBottomScreen;
+
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[contains(@name, \"Register\")])[1]")
+	public WebElement CBRcontentSearchResults;
 }
