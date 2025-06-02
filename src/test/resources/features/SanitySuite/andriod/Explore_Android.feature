@@ -1,6 +1,6 @@
 @Sanity_Android @Explore_Android
 Feature: Explore
-@AWSFailure
+
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -56,7 +56,6 @@ Feature: Explore
   #    Then user validates the success message
   #      | success message             |
   #      | Feedback sent successfully. |
-  @AWSFailure
   Scenario: [Explore]TC007-TC012 Help --> Contact Us &CTA (Hybrid Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -155,7 +154,7 @@ Feature: Explore
     And user clicks search button in united screen
     And user clicks shop courosel in search screen
     Then user validates all the tabs names in shop screen using API
-@AWSFailure
+@tc16
   Scenario: [Explore]TC016 My Tickets -> should be Hybrid Page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -242,13 +241,13 @@ Feature: Explore
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks buy tickets courosel in search screen
-     #And user clicks on ok button in cookies screen
-    #And user clicks continue in MUApp popup
-    #And user clicks on not now button in match appearance alert screen
-    #Then user verify the ticket screen
-      #| Ticket title |
-      #| Tickets      |
 
+  #And user clicks on ok button in cookies screen
+  #And user clicks continue in MUApp popup
+  #And user clicks on not now button in match appearance alert screen
+  #Then user verify the ticket screen
+  #| Ticket title |
+  #| Tickets      |
   Scenario: [Explore]TC022 Fans -> should be Hybrid Page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -342,21 +341,6 @@ Feature: Explore
     Then user validate suggestion are displayed
 
   Scenario Outline: [Explore]TC027 Validate the search results screen UI , Data and the filter functionality
-  Given user navigates to manu android application
-  And user navigates to screen two
-  And user navigates to screen three
-  And user navigates to screen four
-  And user click on skip button in screen four
-  And user clicks on ok button in cookies screen
-  And user clicks continue in MUApp popup
-  And user clicks on not now button in match appearance alert screen
-  And user clicks on braze in app msg
-  And user clicks search button in united screen
-  And user enters three character in search for "mutv" in page filter
-  And user select first item from suggestion
-  Then user validate data in search screen
-  
-  Scenario Outline: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -366,16 +350,32 @@ Feature: Explore
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now in bottom tab
+    And user clicks search button in united screen
+    And user enters three character in search for "mutv" in page filter
+    And user select first item from suggestion
+    Then user validate data in search screen
+
+  @TC028_exp_Android
+  Scenario: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now in bottom tab
     And user clicks search button in united screen
     And user clicks latest courosel in search screen
     Then user validates hero card in Latest screen
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
