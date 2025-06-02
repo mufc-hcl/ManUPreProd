@@ -1825,8 +1825,10 @@ public class MyUnitedPage extends Common {
 	public void clicksContinueInMUAppPopup() {
 		try {
 			if (myUnitedPageLocators.mutvINAppPopUp.size() > 0) {
+				if (myUnitedPageLocators.closeIconMutvINAppPopUp.size() > 0) {
 				myUnitedPageLocators.closeIconMutvINAppPopUp.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on close icon in mutv in app popup");
+				}
 			}
 			if (myUnitedPageLocators.muappPopup.size() > 0) {
 //                continueMuApp.click();

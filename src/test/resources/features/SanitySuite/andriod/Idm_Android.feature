@@ -101,7 +101,7 @@ Feature: IDM
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-
+@idm89
   Scenario Outline: [IDM]TC008 &TC009 Verify that user is able to Login using valid credentials using social channel,User should Not see Change email & change password in seeting screen however user should see Edit profile, Preference center and Log out and Social Login [>13 ]
     #added Social Login more than 13 and less than 13 social login is not possible in Manu (Under 13 registrations are not allowed to be linked to a social account)
     Given user navigates to manu android application
@@ -119,7 +119,8 @@ Feature: IDM
     And user clicks on sign in with google button
     And user enters the valid email "<username>" and valid password "<password>" in google screen
     And user clicks on continue alert
-    #And user clicks continue in MUApp popup
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
     And user click on setting icon on top righhand side
     And user clicks on My profile icon
     Then user validates change password and email is not displayed but Edit profile, Preference center and Log out is displayed
