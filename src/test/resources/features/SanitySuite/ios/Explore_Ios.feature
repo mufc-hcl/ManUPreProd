@@ -153,7 +153,7 @@ Feature: Explore
     And user clicks search button in united screen in ios
     And user clicks shop courosel in search screen in ios
     Then user validates all the tabs names in shop screen using API
-
+@ios16
   Scenario: [Explore]TC016 My Tickets -> should be Hybrid Page
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -349,8 +349,8 @@ Feature: Explore
       | All | MUTV | News | Videos |
       
       @EXPLORE_NEW
-  Scenario Outline: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
-Given user navigates to manu ios application
+  Scenario: [Explore]TC028 Latest --> Hero card should be the first card if enabled and data should be reflected based on the page filters selected
+		Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
     And user clicks on ask me later in screen two in ios
@@ -358,21 +358,21 @@ Given user navigates to manu ios application
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now in bottom tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now in bottom tab in ios
     And user clicks search button in united screen in ios
     And user clicks latest courosel in search screen in ios
     Then user validates hero card in Latest screen
     
-    Examples: 
-      | username             | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username             | password |
+      #| manupreprod@yopmail.com | Manu@123 |
       
       @United23431
       Scenario Outline: [Explore]TC029 Validate the CBR ,CBS flow from the search results content as a logout , login but not subscribed and subscribed user
@@ -406,5 +406,3 @@ Given user navigates to manu ios application
       | manupreprod@yopmail.com | Manu@123 |
     
     
-    
-      

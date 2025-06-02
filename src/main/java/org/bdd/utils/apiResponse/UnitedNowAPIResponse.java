@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 
 import io.restassured.path.json.JsonPath;
@@ -963,20 +965,59 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 	}
 
-	public String getEnglishFaCups(String endpoint) throws Exception {
+	public ArrayList<String> allDropDownListBodyContent(String endpoint) throws Exception {
+		ArrayList<String> allContent = new ArrayList<>();
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
-
+			int size = js.getList("FixtureListResponse.response.docs").size();
+			for (int i = 0; i < size; i++) {
+				allContent.add(js.getString("FixtureListResponse.response.docs["+i+"].competitionname_t"));
+				}
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return getAll;
+			return allContent;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail", "Exception in getAll(): " + e.getMessage());
 			throw e;
 		}
 	}
+		
+	
+	
+	//Under All 2024/25
+	public String getEnglishFaCups(String endpoint) throws Exception {
+		String getEnglishFaCup = null;
+		try {
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				getEnglishFaCup = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				
+				ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getEnglishFaCup;
+			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				getEnglishFaCup = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getEnglishFaCup;
+			} else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+				getEnglishFaCup = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from api endpoint: " + getURIInfo(endpoint));
+				return getEnglishFaCup;
+			}
+			return getEnglishFaCup;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getEnglishFaCups()" + e);
+			throw e;
+		}
+	}
+	
+	
+	
 	
 	public ArrayList<String> getEnglishFaCup(String endpoint) throws Exception {
 		try {
@@ -999,66 +1040,192 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	
 	
 
+//	public String getEnglishPremierLeague1(String endpoint) throws Exception {
+//		try {
+//			Response res = getUrlEncodedResponse(endpoint);
+//			js = new JsonPath(res.asString());
+//			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+//
+//			ExtentsReportManager.extentReportLogging("info",
+//					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			return getAll;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Exception in getEnglishPremierLeague(): " + e.getMessage());
+//			throw e;
+//		}
+//	}
+	
+	// Under PremierLeague
 	public String getEnglishPremierLeague(String endpoint) throws Exception {
+		String  getEnglishPremierLeagueText = null;
 		try {
-			Response res = getUrlEncodedResponse(endpoint);
+			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-			ExtentsReportManager.extentReportLogging("info",
-					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return getAll;
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				getEnglishPremierLeagueText = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				
+				ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getEnglishPremierLeagueText;
+			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				getEnglishPremierLeagueText = js.getString("FixtureListResponse.response.docs[9].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getEnglishPremierLeagueText;
+			} else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+				getEnglishPremierLeagueText = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from api endpoint: " + getURIInfo(endpoint));
+				return getEnglishPremierLeagueText;
+			}
+			return getEnglishPremierLeagueText;
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception in getEnglishPremierLeague(): " + e.getMessage());
+					"Exception occurred in function getEnglishPremierLeague()" + e);
 			throw e;
 		}
 	}
+	
 
+//	public String getFACup1(String endpoint) throws Exception {
+//		try {
+//			Response res = getUrlEncodedResponse(endpoint);
+//			js = new JsonPath(res.asString());
+//			String getAll = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
+//
+//			ExtentsReportManager.extentReportLogging("info",
+//					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			return getAll;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail", "Exception in getFACup(): " + e.getMessage());
+//			throw e;
+//		}
+//	}
+	
+	//Under FA Cup
 	public String getFACup(String endpoint) throws Exception {
+		String  getFACupText = null;
 		try {
-			Response res = getUrlEncodedResponse(endpoint);
+			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getAll = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
 
-			ExtentsReportManager.extentReportLogging("info",
-					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return getAll;
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				getFACupText = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
+				
+				ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getFACupText;
+			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				getFACupText = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getFACupText;
+			} else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+				getFACupText = js.getString("LatestResultsResponse.response.docs[0].aliascompetitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from api endpoint: " + getURIInfo(endpoint));
+				return getFACupText;
+			}
+			return getFACupText;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception in getFACup(): " + e.getMessage());
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getFACup()" + e);
 			throw e;
 		}
 	}
 
+//	public String getUEFAEuropaLeague1(String endpoint) throws Exception {
+//		try {
+//			Response res = getUrlEncodedResponse(endpoint);
+//			js = new JsonPath(res.asString());
+//			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+//
+//			ExtentsReportManager.extentReportLogging("info",
+//					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			return getAll;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+//			throw e;
+//		}
+//	}
+	
+	// Under EuropaLeague
 	public String getUEFAEuropaLeague(String endpoint) throws Exception {
+		String  getUEFAEuropaLeagueText = null;
 		try {
-			Response res = getUrlEncodedResponse(endpoint);
+			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getAll = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
 
-			ExtentsReportManager.extentReportLogging("info",
-					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return getAll;
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				getUEFAEuropaLeagueText = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				
+				ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getUEFAEuropaLeagueText;
+			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				getUEFAEuropaLeagueText = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getUEFAEuropaLeagueText;
+			} else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+				getUEFAEuropaLeagueText = js.getString("FixtureListResponse.response.docs[0].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from api endpoint: " + getURIInfo(endpoint));
+				return getUEFAEuropaLeagueText;
+			}
+			return getUEFAEuropaLeagueText;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getUEFAEuropaLeague()" + e);
 			throw e;
 		}
 	}
 
+//	public String getFriendly1(String endpoint) throws Exception {
+//		try {
+//			Response res = getUrlEncodedResponse(endpoint);
+//			js = new JsonPath(res.asString());
+//			String getAll = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
+//
+//			ExtentsReportManager.extentReportLogging("info",
+//					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			return getAll;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+//			throw e;
+//		}
+//	}
+	
+	//Under Friendly
 	public String getFriendly(String endpoint) throws Exception {
+		String  getFriendlyText = null;
 		try {
-			Response res = getUrlEncodedResponse(endpoint);
+			Response res = getResponse(endpoint);
 			js = new JsonPath(res.asString());
-			String getAll = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
 
-			ExtentsReportManager.extentReportLogging("info",
-					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return getAll;
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+				getFriendlyText = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
+				
+				ExtentsReportManager.extentReportLogging("info","Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getFriendlyText;
+			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				getFriendlyText = js.getString("FixtureListResponse.response.docs[10].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from the endpoint " + getURIInfo(endpoint));
+				return getFriendlyText;
+			} else if (Common.apiEnv().equalsIgnoreCase("qa")) {
+				getFriendlyText = js.getString("FixtureListResponse.response.docs[6].competitionname_t");
+				ExtentsReportManager.extentReportLogging("info",
+						"Getting the response from api endpoint: " + getURIInfo(endpoint));
+				return getFriendlyText;
+			}
+			return getFriendlyText;
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception in getUEFAEuropaLeague(): " + e.getMessage());
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function getFriendly()" + e);
 			throw e;
 		}
 	}
+	
 
 	public String getDateTBC(String endpoint) throws Exception {
 		try {

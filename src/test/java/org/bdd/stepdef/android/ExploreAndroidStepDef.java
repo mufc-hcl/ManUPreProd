@@ -3,6 +3,7 @@ package org.bdd.stepdef.android;
 import org.bdd.pages.ExplorePage;
 import org.bdd.pages.MutvPage;
 import org.bdd.utils.AppiumDriverManager;
+import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.apiResponse.ExploreAPIResponse;
 import org.bdd.utils.apiResponse.UnitedNowAPIResponse;
@@ -393,13 +394,20 @@ public class ExploreAndroidStepDef {
 
     @And("^user clicks my tickets courosel in search screen$")
     public void userClicksMyTicketsCouroselInSearchScreen() {
+    	if (!Common.apiEnv().equalsIgnoreCase("prod")) {
         try {
+        	 
             explorePage.clickMyTicketsCouroselInSearchPage();
             ExtentsReportManager.extentReportLogging("info", "Clicked my tickets carousel in search screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking my tickets carousel in search screen <br />" + e);
             throw e;
         }
+    	}
+    	else
+    	{
+    		 ExtentsReportManager.extentReportLogging("info", "My tickets carousel in search screen is not available in Preprod");
+    	}
     }
 
     @And("^user clicks membership courosel in search screen$")

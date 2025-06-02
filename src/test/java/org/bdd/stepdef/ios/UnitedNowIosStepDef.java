@@ -593,13 +593,86 @@ public class UnitedNowIosStepDef {
 		}
 	}
 	
-	@And("^user clicks the following filter in UnitedNow Calender screen and validate content in the body in ios$")
-	public void userClicksTheFollowingFilterInUnitedNowCalenderScreenInvalidateContentInTheBodyIos() throws Throwable {
+	@And("^user select first radio option and validate content in the body in ios$")
+	public void userSelectFirstRadioOptionAndValidateContentInTheBodyInIOS() throws Throwable {
 		try {
 			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
             allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
-            unitedNowPage.clickingRadioButton(allLeagueFiltersDropDownValues);
-//			unitedNowPage.clickOnTheGivenFilterInIos(table.cell(1, 0));
+            boolean flag1 = unitedNowPage.clickingRadioButtonAndValidateContentInBodyOne(allLeagueFiltersDropDownValues);
+            soft.assertTrue(flag1);
+            soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"clicked the following filter in UnitedNow Calender screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in clicking the following filter in UnitedNow Calender screen in ios<br />" + e);
+			throw e;
+		}
+	}
+	
+	@And("^user select secound radio option and validate content in the body in ios$")
+	public void userSelectSecoundRadioOptionAndValidateContentInTheBodyInIOS() throws Throwable {
+		try {
+			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+            unitedNowPage.clickOnThreeDotsIcon();
+            boolean flag2 = unitedNowPage.clickingRadioButtonAndValidateContentInBodyTwo(allLeagueFiltersDropDownValues);            
+            soft.assertTrue(flag2);
+            soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"clicked the following filter in UnitedNow Calender screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in clicking the following filter in UnitedNow Calender screen in ios<br />" + e);
+			throw e;
+		}
+	}
+	
+	@And("^user select third radio option and validate content in the body in ios$")
+	public void userSelectThirdRadioOptionAndValidateContentInTheBodyInIOS() throws Throwable {
+		try {
+			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+            unitedNowPage.clickOnThreeDotsIcon();
+            boolean flag2 = unitedNowPage.clickingFriendlyRadioButtonAndValidateContentInBodyThree(allLeagueFiltersDropDownValues);            
+            soft.assertTrue(flag2);
+            soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"clicked the following filter in UnitedNow Calender screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in clicking the following filter in UnitedNow Calender screen in ios<br />" + e);
+			throw e;
+		}
+	}
+	
+	@And("^user select fourth radio option and validate content in the body in ios$")
+	public void userSelectFourthRadioOptionAndValidateContentInTheBodyInIOS() throws Throwable {
+		try {
+			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+            unitedNowPage.clickOnThreeDotsIcon();
+            boolean flag2 = unitedNowPage.clickingRadioButtonAndValidateContentInBodyFour(allLeagueFiltersDropDownValues);            
+            soft.assertTrue(flag2);
+            soft.assertAll();
+			ExtentsReportManager.extentReportLogging("info",
+					"clicked the following filter in UnitedNow Calender screen in ios");
+		} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Error in clicking the following filter in UnitedNow Calender screen in ios<br />" + e);
+			throw e;
+		}
+	}
+	
+	@And("^user select fifth radio option and validate content in the body in ios$")
+	public void userSelectFifthRadioOptionAndValidateContentInTheBodyInIOS() throws Throwable {
+		try {
+			ArrayList<String> allLeagueFiltersDropDownValues = new ArrayList<>();
+            allLeagueFiltersDropDownValues = unitedNowAPIResponse.getAllLeaguesFromApinew("AllLeagueFiltersEndpoint");
+            unitedNowPage.clickOnThreeDotsIcon();
+            boolean flag2 = unitedNowPage.clickingRadioButtonAndValidateContentInBodyFive(allLeagueFiltersDropDownValues);            
+            soft.assertTrue(flag2);
+            soft.assertAll();
 			ExtentsReportManager.extentReportLogging("info",
 					"clicked the following filter in UnitedNow Calender screen in ios");
 		} catch (AssertionError e) {
