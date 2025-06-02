@@ -117,6 +117,10 @@ public class MutvPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]")
 	public WebElement heroCarouselInMutvPage;
 	
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, 'mutv_view_pager_container')]/android.widget.LinearLayout")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]")
+	public WebElement heroCarouselInMutvPage1;
+	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/epg_time\')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
 	public WebElement epgTimeSchedulePage;
@@ -362,6 +366,7 @@ public class MutvPageLocators {
 	public List<WebElement> uTDPodcastMUTV;
 	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/image_thumnial\"])[4]")
+	@iOSXCUITFindBy(xpath ="//XCUIElementTypeCell[@name=\" 58 minutes , UTD Podcast: Jimmy Nicholl , Series 5 · Episode 200 , double tap to open\"]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
 	public WebElement podcastInMUTV;
 	
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name, \"UTD Podcast\")]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
@@ -377,8 +382,11 @@ public class MutvPageLocators {
 	public WebElement backButtonInPodcastAudioScreen;
 	
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Podcast mini player, current item, UTD Podcast: Jimmy Nicholl, UTDPodcastEpisode 200\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTabBar[@name=\"Tab Bar\"]/XCUIElementTypeOther/XCUIElementTypeOther")
 	public WebElement audioMinimizedAndPlaying;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Pause\"]")
+	public WebElement audioMinimizedAndPlayingPause;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/header\" and @text=\"TOP 20 COLLECTION\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"TOP 20 COLLECTION\"]")

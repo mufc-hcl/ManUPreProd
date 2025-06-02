@@ -1,14 +1,13 @@
 package org.bdd.pages;
 
-import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
-
 import java.time.Duration;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bdd.locators.MutvPageLocators;
@@ -17,7 +16,13 @@ import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.GlobalParams;
 import org.bdd.utils.IosGenericLibrary;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -594,13 +599,20 @@ public class MutvPage extends Common {
     
     public boolean clicksOnTheHeroCarouselDotsInMutvScreenIos() {
     	try {
+    		if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
 			return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
-		} catch (Exception e) {
+		} else  if (Common.apiEnv().equalsIgnoreCase("prod")) {
+			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
+			return mutvPageLocators.heroCarouselInMutvPage1.isDisplayed();
+		}
+		}
+    		catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-validatesHeroCardInShopScreen()<br />" + e);
+					"Exception occured in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
 			throw e;
 		}
+		return false;
     }
 //            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
 //            if (dots == null || dots.isEmpty()) {
@@ -2194,11 +2206,12 @@ public class MutvPage extends Common {
 		                return true;
 		            }
 		        } else {
-		            if (mutvPageLocators.audioMinimizedAndPlaying.isDisplayed()) {
+		        	waitForVisibilityFluentWait(mutvPageLocators.audioMinimizedAndPlaying, 60);
+		            mutvPageLocators.audioMinimizedAndPlaying.isDisplayed();
 		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
 		                return true;
 		            }
-		        }
+		        
 		    } catch (Exception e) {
 		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validatesProdcastAudioMinimizedAndPlayinge ()<br />" + e);
 		        return false;
