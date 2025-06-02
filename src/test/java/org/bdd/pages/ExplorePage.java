@@ -2566,8 +2566,85 @@ public class ExplorePage extends Common {
 			throw e;
 		}
 	}
+
+		public void checksForCBSContentInSearchResult() throws Exception {
+			try {
+			    int scrollAttempts = 0;
+			    while (true) {
+			        List<WebElement> videos = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name=\"Subscribe\"])[1]"));
+			        
+			        if (!videos.isEmpty()) {
+			            ExtentsReportManager.extentReportLogging("pass", "Found video with 'Subscribe' label.");
+			            videos.get(0).click();
+			            // Optional: Wait for next screen to load
+			            // new WebDriverWait(driver, Duration.ofSeconds(10)).until(...);
+			            break;
+			        }
+
+			        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+			        scrollAttempts++;
+
+			        if (scrollAttempts > 30) {
+			            ExtentsReportManager.extentReportLogging("fail", "Exceeded max scrolls; could not find CBS video.");
+			            break;
+			        }
+			    }
+			} catch (Exception e) {
+			    ExtentsReportManager.extentReportLogging("fail", "Exception in SelectsTheVideoAndCheckCBSBadgeInIos(): " + e);
+			    throw e;
+			}
+			
+		}
+		
+
+	public void checksForCBRContentInSearchResult() {
+		try {
+	        int scrollAttempts = 0;
+	        while (true) {
+	            List<WebElement> videos = driver.findElements(AppiumBy.xpath("//XCUIElementTypeLink[contains(@name, \"Register\")]"));
+
+	            if (!videos.isEmpty()) {
+	                WebElement video = videos.get(0);
+	                if (video.isDisplayed()) {
+	                    ExtentsReportManager.extentReportLogging("pass", "Found video with 'Register' label.");
+	                     video.click();
+	                    break; // ✅ Do NOT scroll, just exit
+	                }
+	            }
+
+	            if (scrollAttempts >= 30) {
+	                ExtentsReportManager.extentReportLogging("fail", "Exceeded max scrolls; could not find CBR video.");
+	                break;
+	            }
+
+	            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+	            scrollAttempts++;
+	        }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in checksForCBRContentInSearchResult(): " + e);
+	        throw e;
+	    }
+		
 		
 	}
+
+	public void clicksOnCBRContent() {
+		try {
+			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+			elementToBeClickableFluentWait(explorePageLocators.CBRcontentSearchResults, 60);
+			explorePageLocators.CBRcontentSearchResults.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on CBRContent");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickOnStatsTabInPlayersScreenIos()<br />" + e);
+			throw e;
+
+		}
+		
+	}
+		
+	}
+		
 		
 
 

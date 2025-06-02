@@ -5,6 +5,7 @@ import org.bdd.pages.MutvPage;
 import org.bdd.pages.OnboardingPage;
 import org.bdd.pages.UnitedNowPage;
 import org.bdd.utils.AppiumDriverManager;
+import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.GlobalParams;
 import org.bdd.utils.apiResponse.UnitedNowAPIResponse;
@@ -508,7 +509,8 @@ public class ExploreIosStepdef {
 
     @And("^user clicks my tickets courosel in search screen in ios$")
     public void userClicksMyTicketsCouroselInSearchScreenInIos() throws Throwable {
-        try {
+    	if (!Common.apiEnv().equalsIgnoreCase("prod")) {
+    	try {
             explorePage.clickMyTicketsCouroselInSearchPage();
             ExtentsReportManager.extentReportLogging("info", "Clicked on my tickets courosel in search screen in ios");
         } catch (AssertionError e) {
@@ -516,6 +518,11 @@ public class ExploreIosStepdef {
                     "Error in clicking my tickets courosel in search screen in ios<br />" + e);
             throw e;
         }
+    	}
+    	else
+    	{
+    		 ExtentsReportManager.extentReportLogging("info", "My tickets carousel in search screen is not available in Preprod");
+    	}
     }
 
     @And("^user clicks membership courosel in search screen in ios$")
@@ -1510,5 +1517,30 @@ public class ExploreIosStepdef {
                 throw e;
             }
         }
+
+		@And("^user checks for CBS content in search result in ios$")
+		public void userChecksForCBSContentInSearchResultInIos() throws Throwable {
+			try {
+				explorePage.checksForCBSContentInSearchResult();
+				ExtentsReportManager.extentReportLogging("info", "Selected the video and check CBS badge in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Error in selectinh the video and check CBS badge in ios" + e);
+				throw e;
+			}
+		}
+
+		@And("^user checks for CBR content in search result in ios$")
+		public void userChecksForCBRContentInSearchResultInIos() throws Throwable {
+			try {
+				explorePage.checksForCBRContentInSearchResult();
+//				explorePage.clicksOnCBRContent();
+				ExtentsReportManager.extentReportLogging("info", "Selected the video and check CBS badge in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Error in selectinh the video and check CBS badge in ios" + e);
+				throw e;
+			}
+		}
 
 }
