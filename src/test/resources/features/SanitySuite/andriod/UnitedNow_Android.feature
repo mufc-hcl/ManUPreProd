@@ -2,7 +2,7 @@
 Feature: United now
 
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
-    Given user navigates to manu android application
+    Given user navigates to manu android application	
     And user navigates to screen two
     And user navigates to screen three
     And user navigates to screen four
@@ -76,7 +76,11 @@ Feature: United now
     And user click on calender icon
     And user clicks Three dots icon
     Then user validates the following leagues using Api
-    And user clicks the following filter in UnitedNow Calender screen and validate content in the body
+    And user select first radio option and validate content in the body
+    And user select secound radio option and validate content in the body
+    And user select third radio option and validate content in the body
+    And user select fourth radio option and validate content in the body
+    And user select fifth radio option and validate content in the body
   
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu android application
@@ -95,6 +99,7 @@ Feature: United now
       | All 2025/26 |
     Then user validates the upcoming Fixtures using Api
 
+@ReRun
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -183,7 +188,7 @@ Feature: United now
     And user clicks on braze in app msg
     Then user clicks on the stories carousel
     And user validates the story page is displayed
-
+@ReRun
   Scenario: [United now]TC0014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -247,7 +252,8 @@ Feature: United now
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC0018 UNITED NOW - Validate the functionality of the Article card from United Now feeds/United Now Stories
+@ReRun
+  Scenario: TC0018 UNITED NOW - Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -257,19 +263,19 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for article card in united now page using api
+#
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
-
-  Scenario Outline:: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
+  Scenario: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
   Given user navigates to manu android application
   And user navigates to screen two
   And user navigates to screen three
@@ -279,18 +285,19 @@ Feature: United now
   And user clicks continue in MUApp popup
   And user clicks on not now button in match appearance alert screen
   And user clicks on braze in app msg
-  And user click on My United in bottom tab
-  And user clicks on log in button
-  And user enter the valid email "<username>" and valid password "<password>"
-  And user clicks on login button in login screen
-  And user clicks on close from notification
-  And user clicks on united now tab
+  #And user click on My United in bottom tab
+  #And user clicks on log in button
+  #And user enter the valid email "<username>" and valid password "<password>"
+  #And user clicks on login button in login screen
+  #And user clicks on close from notification
+  #And user clicks on united now tab
   Then user checks for video card in united now page using api
-  Examples:
-  | username                | password |
-  | manupreprod@yopmail.com | Manu@123 |
+  #Examples:
+  #| username                | password |
+  #| manupreprod@yopmail.com | Manu@123 |
   
-  Scenario Outline: TC020 UNITED NOW - Validate the functionality of the gallery card from United Now feeds/United Now Stories
+  @ReRungallery
+  Scenario: TC020 UNITED NOW - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -300,19 +307,19 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for gallery card in united now page using api
+#
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
-
-  Scenario Outline: TC021 UNITED NOW - Validate the functionality of the Quote card from United Now feeds/United Now Stories
+  Scenario: TC021 UNITED NOW - Validate the functionality of the Quote card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -322,19 +329,20 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for quote card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC022 UNITED NOW - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
+@ReRun
+  Scenario: TC022 UNITED NOW - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -344,19 +352,20 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for quiz card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
+@ReRun
+  Scenario: TC023 UNITED NOW - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -366,19 +375,19 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for poll card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC024 UNITED NOW - Validate the functionality of the Competition card from United Now feeds/United Now Stories
+  Scenario: TC024 UNITED NOW - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -388,19 +397,19 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for Competition card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC025 UNITED NOW - Validate the functionality of the Adcard from United Now feeds/United Now Stories
+  Scenario: TC025 UNITED NOW - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -410,19 +419,19 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for Adcard card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: TC026 UNITED NOW - Validate the functionality of the Image card from United Now feeds/United Now Stories
+  Scenario: TC026 UNITED NOW - Validate the functionality of the Image card from United Now feeds/United Now Stories
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -432,17 +441,17 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user checks for Image card in united now page using api
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
     Given user navigates to manu android application

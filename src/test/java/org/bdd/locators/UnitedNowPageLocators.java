@@ -42,7 +42,7 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeStaticText")
     public List<WebElement> filterListFilterPage;
                          
-    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, \":id/image_left\")]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, ':id/image_left')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Fixtures\"]")
     public WebElement calenderIconUnitedPage;
 

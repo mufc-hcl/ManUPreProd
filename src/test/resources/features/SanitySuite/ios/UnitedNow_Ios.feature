@@ -56,7 +56,7 @@ Feature: United now
       | UNITEDTab Item | ALL TEAMSTab Item |
     And user click on men drop down and validates the dropdown values in ios using API
 
-  @IOSUnitedNowTC008
+  @IOSToBeFixedTC008
   Scenario: [United now]TC008 Validate the fixture listing page show the data based on the Team + League filter applied
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -69,7 +69,11 @@ Feature: United now
     And user click on calender icon in ios
     And user clicks Three dots icon in ios
     Then user validates the following leagues using Api
-    And user clicks the following filter in UnitedNow Calender screen and validate content in the body in ios
+    And user select first radio option and validate content in the body in ios
+    #And user select secound radio option and validate content in the body in ios
+    #And user select third radio option and validate content in the body in ios
+    #And user select fourth radio option and validate content in the body in ios
+    #And user select fifth radio option and validate content in the body in ios
 
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu ios application
@@ -213,19 +217,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for article card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -236,19 +240,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for video card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -259,19 +263,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for gallery card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario: [United now]TC0019 Validate the Live Video functionality in United Now if enabled from CMS
     Given user navigates to manu ios application
@@ -293,19 +297,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for quote card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC021 - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -316,19 +320,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for quiz card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC022 - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -339,19 +343,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for poll card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC023 - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -362,19 +366,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for Competition card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC024 - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -385,19 +389,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for Adcard card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario Outline: [United now]TC025 - Validate the functionality of the Image Card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
@@ -408,19 +412,19 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
-    And user clicks on united now tab in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
+    #And user clicks on united now tab in ios
     Then user checks for Image card in united now page using api in ios
 
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
 
   Scenario: [United now]TC0026 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu ios application

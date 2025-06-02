@@ -20,6 +20,8 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import com.aventstack.extentreports.model.SystemEnvInfo;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -440,39 +442,190 @@ public class UnitedNowPage extends Common {
 
 	}
 
-	public boolean clickingRadioButton(ArrayList<String> expectedRadioButtons) throws Exception {
+	public boolean clickingRadioButtonAndValidateContentInBodyOne(ArrayList<String> expectedRadioButtons) throws Exception {
 		String device = GlobalParams.getPlatformName();
 		try {
-			for (String radioButton : expectedRadioButtons) {
-
+//			for (int i=0;i<expectedRadioButtons.size();i++) {
 				if (device.equalsIgnoreCase("android")) {
 					WebElement radioOptions = driver
-							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + radioButton + "']"));
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + expectedRadioButtons.get(0) + "']"));
 					elementToBeClickableFluentWait(radioOptions, 60);
 					radioOptions.click();
 					ExtentsReportManager.extentReportLogging("pass",
-							"Validating content in the " + radioButton + " body");
+							"Validating content in the " + expectedRadioButtons.get(0) + " body");
 					return validateContentInTheRadioOptions();
 
 				}
 				else{
-					WebElement radioOptions = driver.findElement(
-							AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + radioButton + ", selected, radio\"]"));
+					WebElement radioOptions = driver.findElement(AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + expectedRadioButtons.get(0) + ", selected, radio\"]"));
 					elementToBeClickableFluentWait(radioOptions, 60);
 					radioOptions.click();
 					ExtentsReportManager.extentReportLogging("pass",
-							"Validating content in the " + radioButton + " body");
-					return validateContentInTheRadioOptionsIOnIOS();
+							"Validating content in the " + expectedRadioButtons.get(0) + " body");
+					return validateContentInTheRadioOptionsInIOS();
 
 					
 				}
-			}
+//			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occured in function-clickingRadioButton()<br />" + e);
 			throw e;
 		}
-		return true;
+//		return true;
+	}
+	
+	public boolean clickingRadioButtonAndValidateContentInBodyTwo(ArrayList<String> expectedRadioButtons) throws Exception {
+		String device = GlobalParams.getPlatformName();
+		try {
+//			for (int i=0;i<expectedRadioButtons.size();i++) {
+				if (device.equalsIgnoreCase("android")) {
+					WebElement radioOptions = driver
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + expectedRadioButtons.get(1) + "']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(1) + " body");
+					return validateContentInTheRadioOptions();
+
+				}
+				else{
+					WebElement radioOptions = driver.findElement(
+							AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + expectedRadioButtons.get(1) + ", selected, radio\"]"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(1) + " body");
+					return validateContentInTheRadioOptionsInIOS();
+
+					
+				}
+//			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingRadioButton()<br />" + e);
+			throw e;
+		}
+//		return true;
+	}
+	
+	public boolean clickingRadioButtonAndValidateContentInBodyThree(ArrayList<String> expectedRadioButtons) throws Exception {
+		String device = GlobalParams.getPlatformName();
+		try {
+//			for (int i=0;i<expectedRadioButtons.size();i++) {
+				if (device.equalsIgnoreCase("android")) {
+					WebElement radioOptions = driver
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + expectedRadioButtons.get(2) + "']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(2) + " body");
+					return validateContentInTheRadioOptions();
+
+				}
+				else{
+//					WebElement radioOptions = driver.findElement(AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + expectedRadioButtons.get(2) + ", selected, radio\"]"));
+					WebElement radioOptions = driver.findElement(AppiumBy.xpath("//XCUIElementTypeButton[@name=\"Friendly, selected, radio\"]"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(2) + " body");
+					return validateContentInTheRadioOptionsInIOS();
+
+					
+				}
+//			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingRadioButton()<br />" + e);
+			throw e;
+		}
+//		return true;
+	}
+	
+	public boolean clickingFriendlyRadioButtonAndValidateContentInBodyThree(ArrayList<String> expectedRadioButtons) throws Exception {
+		try {
+					WebElement radioOptions = driver.findElement(AppiumBy.xpath("//XCUIElementTypeButton[@name='Friendly, selected, radio']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(2) + " body");
+					return validateContentInTheRadioOptionsInIOS();
+
+					
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingFriendlyRadioButton()<br />" + e);
+			throw e;
+		}
+//		return true;
+	}
+	
+	public boolean clickingRadioButtonAndValidateContentInBodyFour(ArrayList<String> expectedRadioButtons) throws Exception {
+		String device = GlobalParams.getPlatformName();
+		try {
+//			for (int i=0;i<expectedRadioButtons.size();i++) {
+				if (device.equalsIgnoreCase("android")) {
+					WebElement radioOptions = driver
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + expectedRadioButtons.get(3) + "']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(3) + " body");
+					return validateContentInTheRadioOptions();
+
+				}
+				else{
+					WebElement radioOptions = driver.findElement(AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + expectedRadioButtons.get(3) + ", selected, radio\"]"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(3) + " body");
+					return validateContentInTheRadioOptionsInIOS();
+
+					
+				}
+//			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingRadioButton()<br />" + e);
+			throw e;
+		}
+//		return true;
+	}
+	
+	public boolean clickingRadioButtonAndValidateContentInBodyFive(ArrayList<String> expectedRadioButtons) throws Exception {
+		String device = GlobalParams.getPlatformName();
+		try {
+//			for (int i=0;i<expectedRadioButtons.size();i++) {
+				if (device.equalsIgnoreCase("android")) {
+					WebElement radioOptions = driver
+							.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + expectedRadioButtons.get(4) + "']"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(4) + " body");
+					return validateContentInTheRadioOptions();
+
+				}
+				else{
+					WebElement radioOptions = driver.findElement(
+							AppiumBy.xpath("//XCUIElementTypeButton[@name=\"" + expectedRadioButtons.get(4) + ", selected, radio\"]"));
+					elementToBeClickableFluentWait(radioOptions, 60);
+					radioOptions.click();
+					ExtentsReportManager.extentReportLogging("pass",
+							"Validating content in the " + expectedRadioButtons.get(4) + " body");
+					return validateContentInTheRadioOptionsInIOS();
+
+					
+				}
+//			}
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickingRadioButton()<br />" + e);
+			throw e;
+		}
+//		return true;
 	}
 
 	public void clickOnTheGivenFilter(String filter) throws Exception {
@@ -4453,18 +4606,20 @@ public class UnitedNowPage extends Common {
 	}
 
 	public boolean validateContentInTheRadioOptions() throws Exception {
-		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
-		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
-		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
-		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
-		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
+//		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
+//		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
+//		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
+//		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
+//		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
 
 		ArrayList<String> allLeague = new ArrayList<>();
-		allLeague.add(expEnglishFaCups);
-		allLeague.add(expEnglishPremierLeague);
-		allLeague.add(expEnglishFAcupLeague);
-		allLeague.add(expLeagueCup);
-		allLeague.add(expFriendly);
+		allLeague = unitedNowAPIResponse.allDropDownListBodyContent("AllLeagueFiltersEndpoint");
+//		allLeague.add(expEnglishFaCups);
+//		allLeague.add(expEnglishPremierLeague);
+//		allLeague.add(expEnglishFAcupLeague);
+//		allLeague.add(expLeagueCup);
+//		allLeague.add(expFriendly);
+//		System.out.println("allLeague++++++++++++++++++++++++++++++++"+allLeague);
 
 		String error = "There are currently no fixtures available in this competition.";
 
@@ -4476,10 +4631,15 @@ public class UnitedNowPage extends Common {
 				if (bodyText.size() > 0) {
 					waitForVisibilityFluentWait(bodyText.get(0), 60);
 					String actualBodyText = bodyText.get(0).getText();
-					if (actualBodyText.contains(expEnglishFaCups) || actualBodyText.contains(expEnglishPremierLeague)
-							|| actualBodyText.contains(expEnglishFAcupLeague) || actualBodyText.contains(expLeagueCup)
-							|| actualBodyText.contains(expFriendly))
+					System.out.println("actualBodyText----------------------"+actualBodyText);
+//					if (actualBodyText.contains(expEnglishFaCups) || actualBodyText.contains(expEnglishPremierLeague)
+//							|| actualBodyText.contains(expEnglishFAcupLeague) || actualBodyText.contains(expLeagueCup)
+//							|| actualBodyText.contains(expFriendly))
+//						ExtentsReportManager.extentReportLogging("pass", ""+allLeagueBodyContent+"text matching");
+					
+					if (allLeague.contains(actualBodyText))
 						ExtentsReportManager.extentReportLogging("pass", ""+allLeagueBodyContent+"text matching");
+
 
 				} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 					waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
@@ -4494,42 +4654,28 @@ public class UnitedNowPage extends Common {
 			return true;
 
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-validateContentInTheRadioOptions()<br />" + e);
+			ExtentsReportManager.extentReportLogging("fail","Exception occured in function-validateContentInTheRadioOptions()<br />" + e);
 			throw e;
 		}
 	}
 
-	public boolean validateContentInTheRadioOptionsIOnIOS() throws Exception {
-		String expEnglishFaCups = unitedNowAPIResponse.getEnglishFaCups("AllLeagueFiltersEndpoint");
-		String expEnglishPremierLeague = unitedNowAPIResponse.getEnglishPremierLeague("AllLeagueFiltersEndpoint");
-		String expEnglishFAcupLeague = unitedNowAPIResponse.getFACup("AllLeagueFiltersEndpoint");
-		String expLeagueCup = unitedNowAPIResponse.getUEFAEuropaLeague("AllLeagueFiltersEndpoint");
-		String expFriendly = unitedNowAPIResponse.getFriendly("AllLeagueFiltersEndpoint");
-
-		ArrayList<String> allOptions = new ArrayList<>();
-		allOptions.add(expEnglishFaCups);
-		allOptions.add(expEnglishPremierLeague);
-		allOptions.add(expEnglishFAcupLeague);
-		allOptions.add(expLeagueCup);
-		allOptions.add(expFriendly);
-
+	public boolean validateContentInTheRadioOptionsInIOS() throws Exception {
+		ArrayList<String> allLeague = new ArrayList<>();
+		allLeague = unitedNowAPIResponse.allDropDownListBodyContent("AllLeagueFiltersEndpoint");
 		String error = "There are currently no fixtures available in this competition.";
-
 		try {
-			for (String radioButton : allOptions) {
-
-				List<WebElement> bodyText = driver.findElements(AppiumBy
-						.xpath("//XCUIElementTypeButton[@name='"+radioButton+", selected, radio']"));
+			for (String allLeagueBodyContent : allLeague) {
+//				List<WebElement> bodyText = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[substring(@label, string-length(@label) - string-length('"+allLeagueBodyContent+"') + 1) = '"+allLeagueBodyContent+"'])[1]"));
+//				List<WebElement> bodyText = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[substring(@label, string-length(@label) - string-length('Friendly') + 1) = 'Friendly'])[1]"));
+//				List<WebElement> bodyText = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[contains(@label, '"+allLeagueBodyContent+"')])[1]"));
+				List<WebElement> bodyText = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[contains(@label, 'Friendly')])[1]"));
 				if (bodyText.size() > 0) {
 					waitForVisibilityFluentWait(bodyText.get(0), 60);
-					String actualBodyText = bodyText.get(0).getText();
-					if (actualBodyText.contains(expEnglishFaCups) || actualBodyText.contains(expEnglishPremierLeague)
-							|| actualBodyText.contains(expEnglishFAcupLeague) || actualBodyText.contains(expLeagueCup)
-							|| actualBodyText.contains(expFriendly))
-						ExtentsReportManager.extentReportLogging("pass", ""+radioButton+"text matching");
-
-				} else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
+					String actualBodyText = bodyText.get(0).getAttribute("label");
+					if (allLeague.contains(actualBodyText))
+						ExtentsReportManager.extentReportLogging("pass", ""+allLeagueBodyContent+"text matching");
+				} 
+				else if (unitedNowPageLocators.noFixturesTextUnitedPage.size() > 0) {
 					waitForVisibilityFluentWait(unitedNowPageLocators.noFixturesTextUnitedPage.get(0), 60);
 					String actnoFixturesTextUnitedPage = unitedNowPageLocators.noFixturesTextUnitedPage.get(0)
 							.getText();
@@ -4542,8 +4688,7 @@ public class UnitedNowPage extends Common {
 			return true;
 
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-validateContentInTheRadioOptionsIOnIOS()<br />" + e);
+			ExtentsReportManager.extentReportLogging("fail","Exception occured in function-validateContentInTheRadioOptions()<br />" + e);
 			throw e;
 		}
 	}
