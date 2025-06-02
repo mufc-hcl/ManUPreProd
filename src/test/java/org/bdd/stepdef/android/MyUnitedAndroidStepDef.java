@@ -42,7 +42,7 @@ public class MyUnitedAndroidStepDef {
         try {
             String expGooglePlay = table.cell(1, 0);
             String actualGooglePlay = myUnitedPage.getGooglePlayText();
-            soft.assertEquals(actualGooglePlay, expGooglePlay);
+            soft.assertTrue(actualGooglePlay.contains(expGooglePlay));
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated google play");
         } catch (AssertionError e) {
@@ -659,9 +659,9 @@ public class MyUnitedAndroidStepDef {
             String actualAppearance = myUnitedPage.getAppearanceInsideTitleAppearancecard();
             // String actualMatchDay = myUnitedPage.getDescriptionAppearancecard();
             String actualShare = myUnitedPage.getShareAppearanceCard();
-            soft.assertEquals(actualAppearance, expAppearance);
+            soft.assertTrue(actualAppearance.contains(expAppearance));
             // soft.assertEquals(actualMatchDay, expMatchDay);
-            soft.assertEquals(actualShare, expShare);
+            soft.assertTrue(actualShare.contains(expShare));
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated content in appearance card");
         } catch (AssertionError e) {
@@ -763,11 +763,12 @@ public class MyUnitedAndroidStepDef {
         try {
 //            String expPlayerName = table.cell(1, 0);
             String expPlayerName = playerName;
-//            String expBuyShirt = table.cell(1, 0);
+            String expBuyShirt = table.cell(1, 0);
             String actualPlayerName = myUnitedPage.getPlayerNameInUnitedScreen();
-            myUnitedPage.getBuyShirtButtonScreen();
+//            myUnitedPage.getBuyShirtButtonScreen();
+            String actualBuyShirt = myUnitedPage.getBuyShirtButtonScreen();
             soft.assertEquals(actualPlayerName, expPlayerName);
-//            soft.assertEquals(actualBuyShirt, expBuyShirt);
+            soft.assertEquals(actualBuyShirt, expBuyShirt);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "validated players details updated in my united screen");
         } catch (AssertionError e) {

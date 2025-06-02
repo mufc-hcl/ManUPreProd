@@ -1511,4 +1511,29 @@ public class ExploreIosStepdef {
             }
         }
 
+		@And("^user checks for CBS content in search result in ios$")
+		public void userChecksForCBSContentInSearchResultInIos() throws Throwable {
+			try {
+				explorePage.checksForCBSContentInSearchResult();
+				ExtentsReportManager.extentReportLogging("info", "Selected the video and check CBS badge in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Error in selectinh the video and check CBS badge in ios" + e);
+				throw e;
+			}
+		}
+
+		@And("^user checks for CBR content in search result in ios$")
+		public void userChecksForCBRContentInSearchResultInIos() throws Throwable {
+			try {
+				explorePage.checksForCBRContentInSearchResult();
+//				explorePage.clicksOnCBRContent();
+				ExtentsReportManager.extentReportLogging("info", "Selected the video and check CBS badge in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Error in selectinh the video and check CBS badge in ios" + e);
+				throw e;
+			}
+		}
+
 }
