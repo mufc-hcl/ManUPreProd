@@ -320,24 +320,35 @@ public class MyUnitedPage extends Common {
 	public String getPointsThisSeasonCardTextMyUnited() {
 		String device = GlobalParams.getPlatformName();
 		try {
-			if (device.equalsIgnoreCase("android")) {
+		    int maxScrollAttempts = 5;
+		    boolean elementFound = false;
 
-				do {
-				    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-				} while (myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.size() == 0);
-				waitForVisibilityFluentWait(myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0), 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns points this season cars text");
-				return myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0).getText();
-			} else {
-//				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-				waitForVisibilityFluentWait(myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0), 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns points this season cars text ");
-				return myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0).getDomAttribute("label");
-			}
+		    for (int i = 0; i < maxScrollAttempts; i++) {
+		        if (myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.size() > 0) {
+		            elementFound = true;
+		            break;
+		        }
+		        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5); // Works for both platforms
+		    }
+
+		    if (!elementFound) {
+		        throw new NoSuchElementException("Point This Season Card not found after scrolling.");
+		    }
+
+		    waitForVisibilityFluentWait(myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0), 60);
+
+		    if (device.equalsIgnoreCase("android")) {
+		        ExtentsReportManager.extentReportLogging("pass", "Returns points this season card text - Android");
+		        return myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0).getText();
+		    } else {
+		        ExtentsReportManager.extentReportLogging("pass", "Returns points this season card text - iOS");
+		        return myUnitedPageLocators.pointThisSeasonCardMyunitedScreen.get(0).getDomAttribute("label");
+		    }
+
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-getPointsThisSeasonCardTextMyUnited()<br />" + e);
-			throw e;
+		    ExtentsReportManager.extentReportLogging("fail",
+		            "Exception occurred in function-getPointsThisSeasonCardTextMyUnited()<br />" + e);
+		    throw e;
 		}
 
 	}
@@ -688,25 +699,51 @@ public class MyUnitedPage extends Common {
 	}
 
 	public String getScoredCardThisSeason() {
-		try {
-		 if (Common.apiEnv().equalsIgnoreCase("stage")) {
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season ");
-				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
-		 }
-				else if (Common.apiEnv().equalsIgnoreCase("prod")) {
-				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-				waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns Score this season");
-				return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
-				}
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-getScoredCardThisSeason()<br />" + e);
-			throw e;
-		}
+		    try {
+		        int maxScrollAttempts = 5;
+		        boolean elementFound = false;
+
+		        if (Common.apiEnv().equalsIgnoreCase("stage")) {
+		            for (int i = 0; i < maxScrollAttempts; i++) {
+		                if (myUnitedPageLocators.scoreThisSeasonSeasonOne1.size() > 0) {
+		                    elementFound = true;
+		                    break;
+		                }
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+		            }
+
+		            if (!elementFound) {
+		                throw new NoSuchElementException("Score This Season Card not found after scrolling (stage).");
+		            }
+
+		            waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
+		            ExtentsReportManager.extentReportLogging("pass", "Returns Score this season - Stage");
+		            return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
+
+		        } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+		            for (int i = 0; i < maxScrollAttempts; i++) {
+		                if (myUnitedPageLocators.scoreThisSeasonSeasonOne1.size() > 0) {
+		                    elementFound = true;
+		                    break;
+		                }
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
+		            }
+
+		            if (!elementFound) {
+		                throw new NoSuchElementException("Score This Season Card not found after scrolling (prod).");
+		            }
+
+		            waitForVisibilityFluentWait(myUnitedPageLocators.scoreThisSeasonSeasonOne, 60);
+		            ExtentsReportManager.extentReportLogging("pass", "Returns Score this season - Prod");
+		            return myUnitedPageLocators.scoreThisSeasonSeasonOne.getText();
+		        }
+
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail",
+		                "Exception occurred in function-getScoredCardThisSeason()<br />" + e);
+		        throw e;
+		    }
 		return null;
 	}
 
