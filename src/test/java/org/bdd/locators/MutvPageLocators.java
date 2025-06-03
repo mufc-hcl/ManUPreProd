@@ -342,6 +342,9 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'tertiary_text')]")
 	public WebElement notNowPopUpInMatchAlert;
 	
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Close\"]")
+	public WebElement closeIconInAppMsgIosBrazeTest;
+	
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"title\") and contains(@text, \"PREFERENCE\")]")
 	@iOSXCUITFindBy(accessibility = "Explore")

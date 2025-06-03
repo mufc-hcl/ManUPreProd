@@ -4280,13 +4280,10 @@ public class UnitedNowPage extends Common {
 	public boolean getGalleryCardFromUnitedNow(String expGalleryCard) throws InterruptedException {
 		String device = GlobalParams.getPlatformName();
 		try {
+			String shortheadline_t= expGalleryCard.toUpperCase().trim();
 			if (device.equalsIgnoreCase("android")) {
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.replaceAll("\\[|\\]", ""));
-				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expGalleryCard.toUpperCase());
-//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expGalleryCard.replaceAll("\\[|\\]", "")+"')]"));
-				List<WebElement> e = driver
-						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expGalleryCard.toUpperCase() + "')]"));
-				Thread.sleep(2000);
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver,  shortheadline_t);
+				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, \""+shortheadline_t+"\")]"));
 				waitForVisibilityFluentWait(e.get(0), 60);
 				e.get(0).click();
 				return true;
@@ -4295,7 +4292,7 @@ public class UnitedNowPage extends Common {
 				while (i < 20) {
 					String type = "name";
 					List<WebElement> e = driver.findElements(AppiumBy
-							.iOSNsPredicateString(type + " == \"" + expGalleryCard.replaceAll("\\[|\\]", "") + "\""));
+							.iOSNsPredicateString(type + " == \"" + shortheadline_t.replaceAll("\\[|\\]", "") + "\""));
 					if (e.size() > 0) {
 						e.get(0).click();
 						Thread.sleep(4000);

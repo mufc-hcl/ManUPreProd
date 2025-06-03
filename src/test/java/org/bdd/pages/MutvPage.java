@@ -1958,6 +1958,23 @@ public class MutvPage extends Common {
 			throw e;
 		}
 		}
+	public void clicksinAppMsgIOSBreazeTestCloseButton() {
+		try {
+			if (mutvPageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
+					waitForVisibilityFluentWait(mutvPageLocators.closeIconInAppMsgIosBrazeTest, 60);
+					mutvPageLocators.closeIconInAppMsgIosBrazeTest.click();
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+			}
+			} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		}catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clicksinAppMsgIOSBreazeTestCloseButton()<br />" + e);
+			throw e;
+		}
+		}
 		
 	
 		
