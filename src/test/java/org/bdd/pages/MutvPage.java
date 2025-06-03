@@ -277,29 +277,38 @@ public class MutvPage extends Common {
     }
 
     public void clicksOnOneVideo() {
-        String device = GlobalParams.getPlatformName();
-        ;
         try {
-            if (device.equalsIgnoreCase("android")) {
-//                AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "FANS' Q&A");
+        	int maxScrollAttempts = 5;
+		    boolean elementFound = false;
+ 
+		    for (int i = 0; i < maxScrollAttempts; i++) {
+		        if (mutvPageLocators.fullMUTV.size() > 0) {
+		            elementFound = true;
+		            break;
+		        }
+                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+            }
+     
+            if (!elementFound) {
+                throw new NoSuchElementException("One Video MUTV element not found after scrolling.");
+            }
+     
+            if (Common.apiEnv().equalsIgnoreCase("stage")) {
                 waitForVisibilityFluentWait(mutvPageLocators.oneVideoMutvScreen, 60);
                 mutvPageLocators.oneVideoMutvScreen.click();
-                ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen ");
-            } else {
-//            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-//                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-                elementToBeClickableFluentWait(mutvPageLocators.oneVideoMutvScreenIos, 60);
-                mutvPageLocators.oneVideoMutvScreenIos.click();
-                ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreenIos ");
+                ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Stage)");
+            } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+                elementToBeClickableFluentWait(mutvPageLocators.oneVideoMutvScreen1, 60);
+                mutvPageLocators.oneVideoMutvScreen1.click();
+                ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Prod)");
             }
+     
         } catch (Exception e) {
-            ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksOnOneVideo()<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail",
+                    "Exception occurred in function-clicksOnOneVideo()<br />" + e);
             throw e;
-
         }
-
     }
-
     public void clickPlusSymbolMyListScreen() {
         try {
             waitForVisibilityFluentWait(mutvPageLocators.plusSymbolMyListScreen, 60);

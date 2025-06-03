@@ -200,6 +200,10 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_description')]")
 	@iOSXCUITFindBy(accessibility = "150 MY UNITED All Points This Season")
 	public WebElement scoreThisSeasonSeasonOne;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_description')]")
+	@iOSXCUITFindBy(accessibility = "150 MY UNITED All Points This Season")
+	public List<WebElement> scoreThisSeasonSeasonOne1;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/myunited_total_title')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
@@ -516,11 +520,11 @@ public class MyUnitedPageLocators {
 	public WebElement playerLastNameInMyUnitedScreen;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'itemFirstTxt')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"My Tickets\"]")
 	public WebElement myTicketsComponentMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/ticket_card_title\")]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"My Tickets\"]")
 	public WebElement myTicketsComponentMyUnitedPreProd;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/text_view_title')]")
@@ -532,11 +536,11 @@ public class MyUnitedPageLocators {
 	public WebElement backIconinMyTicketsMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'itemSecondTxt')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Matchday Help\"]")
 	public WebElement stadiumComponentMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/stadium_card_title\")]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Matchday Help\"]")
 	public WebElement stadiumComponentMyUnitedPreProd;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/stadiumview_title')]")

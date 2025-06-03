@@ -66,10 +66,20 @@ public class MutvPageLocators {
 	public WebElement closeIconInVideoMutv;
 
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
-	public WebElement oneVideoMutvScreen;
-
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
-	public WebElement oneVideoMutvScreenIos;
+	public WebElement oneVideoMutvScreen;
+	
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[position()=3 or position()=4]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
+	public WebElement oneVideoMutvScreen1;
+	
+	
+	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"FULL 90\"]")
+	public List<WebElement> fullMUTV;
+
+//	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
+//	public WebElement oneVideoMutvScreenIos;
 
 	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'podcast_mylist_icon')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeStaticText/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeButton")
