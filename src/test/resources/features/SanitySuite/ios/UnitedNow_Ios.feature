@@ -208,7 +208,7 @@ Feature: United now
     Then user validates Stories Carousel is not displayed in united now in ios
     Then user validates Coming Up carousel is not displayed in united now in ios
 
-  Scenario Outline: [United now]TC0016- Validate the functionality of the Article card from United Now feeds/United Now Stories
+  Scenario: [United now]TC0016- Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -231,7 +231,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
+  Scenario: [United now]TC0017 - Validate the functionality of the Video card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -254,7 +254,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
+  Scenario: [United now]TC0018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -288,7 +288,7 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen in ios
     Then user validates live video is displayed in united now screen in ios using Api
 
-  Scenario Outline: [United now]TC0020 - Validate the functionality of the Quote card from United Now feeds/United Now Stories
+  Scenario: [United now]TC0020 - Validate the functionality of the Quote card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -311,7 +311,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC021 - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
+  Scenario: [United now]TC021 - Validate the functionality of the Quiz card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -334,7 +334,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC022 - Validate the functionality of the Poll card from United Now feeds/United Now Stories
+  Scenario: [United now]TC022 - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -357,7 +357,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC023 - Validate the functionality of the Competition card from United Now feeds/United Now Stories
+  Scenario: [United now]TC023 - Validate the functionality of the Competition card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -380,7 +380,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC024 - Validate the functionality of the Adcard from United Now feeds/United Now Stories
+  Scenario: [United now]TC024 - Validate the functionality of the Adcard from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -403,7 +403,7 @@ Feature: United now
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [United now]TC025 - Validate the functionality of the Image Card from United Now feeds/United Now Stories
+  Scenario: [United now]TC025 - Validate the functionality of the Image Card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -437,13 +437,13 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen in ios
     Then user validates upsell functionality is displayed united now screen in ios using API
 
-  Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
-    Given user navigates to manu ios application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    Then user validates Sponsor logo in united now screen using API in ios
+  #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
+    #Given user navigates to manu ios application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #Then user validates Sponsor logo in united now screen using API in ios

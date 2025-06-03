@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="15" verbose="2" >
-	<!--<test name="android_device1">
+	
+	<test name="ios_device2">
+		<parameter name="platformName" value="ios"/>
+		<parameter name="deviceName" value="iPhone 15 Pro"/>
+		<parameter name="os_version" value="17"/>
+		<classes>
+			<class name="org.bdd.runners.Runner2"/>
+		</classes>
+	</test>
+	
+	<test name="android_device1">
 		<parameter name="platformName" value="android"/>
 		<parameter name="deviceName" value="Google Pixel 8"/>
 		<parameter name="os_version" value="14.0"/>
 		<classes>
 			<class name="org.bdd.runners.Runner1"/>
 		</classes>
-	</test>-->
+	</test>
 	
 <!--	<test name="android_device2">-->
 <!--		<parameter name="platformName" value="android"/>-->
@@ -33,13 +43,6 @@
 	<!--        <classes>-->
 	<!--            <class name="org.bdd.runners.Runner1"/>-->
 	<!--        </classes>-->
-	<test name="ios_device2">
-		<parameter name="platformName" value="ios"/>
-		<parameter name="deviceName" value="iPhone 15 Pro"/>
-		<parameter name="os_version" value="17"/>
-		<classes>
-			<class name="org.bdd.runners.Runner2"/>
-		</classes>
-	</test>
+	
 	
 </suite>
