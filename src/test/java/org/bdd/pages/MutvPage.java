@@ -2167,7 +2167,7 @@ public class MutvPage extends Common {
 			try {
 				for (int i = 0; i < 20; i++) {
 					if (!(mutvPageLocators.uTDPodcastMUTV.size() > 0)) {
-						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 					} else {
 						break;
 					}
@@ -2230,14 +2230,15 @@ public class MutvPage extends Common {
 		            if (mutvPageLocators.audioMinimizedAndPlaying.isDisplayed()) {
 		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
 		                return true;
+		            } }else { // iOS logic
+		                if (mutvPageLocators.audioMinimizedAndPlaying1.size() > 0) {
+		                    System.out.println("Podcast mini player is displayed.");
+		                    ExtentsReportManager.extentReportLogging("pass", "Podcast mini player is displayed.");
+		                    return true;
+		                } else {
+		                	   ExtentsReportManager.extentReportLogging("fail", "Podcast mini player is not displayed.");
+		                }
 		            }
-		        } else {
-		        	waitForVisibilityFluentWait(mutvPageLocators.audioMinimizedAndPlaying, 60);
-		            mutvPageLocators.audioMinimizedAndPlaying.isDisplayed();
-		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
-		                return true;
-		            }
-		        
 		    } catch (Exception e) {
 		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validatesProdcastAudioMinimizedAndPlayinge ()<br />" + e);
 		        return false;
@@ -2249,13 +2250,14 @@ public class MutvPage extends Common {
 		public void checksForTopTwentyCollectionsInMUTV() {
 			String device = GlobalParams.getPlatformName();
 			try {
-				for (int i = 0; i < 20; i++) {
-					if (!(mutvPageLocators.topTwentyCollectionsInMutv.size() > 0)) {
-						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
-					} else {
-						break;
-					}
-				}
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+//				for (int i = 0; i < 20; i++) {
+//					if (!(mutvPageLocators.topTwentyCollectionsInMutv.size() > 0)) {
+//						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.7);
+//					} else {
+//						break;
+//					}
+//				}
 				ExtentsReportManager.extentReportLogging("pass", "found TOP 20 COLLECTION in MUTV");
 			} catch (Exception e) {
 				ExtentsReportManager.extentReportLogging("fail",

@@ -374,7 +374,7 @@ Feature: Explore
       #| username             | password |
       #| manupreprod@yopmail.com | Manu@123 |
       
-      @United23431
+      @MUTV_TESTING
       Scenario Outline: [Explore]TC029 Validate the CBR ,CBS flow from the search results content as a logout , login but not subscribed and subscribed user
    	Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
