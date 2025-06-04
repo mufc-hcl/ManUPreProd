@@ -1398,7 +1398,7 @@ public class ExploreIosStepdef {
     @And("^user enters less than three character in search for \"([^\"]*)\" in page filter in ios$")
     public void userEnterslessThanThreeCharacterInSearchForInPageFilter1InIos(String lessthanthreecharacter) throws Exception {
         try {
-            explorePage.enterlessthanTwoCharacter(lessthanthreecharacter);
+            explorePage.enterCharactersInSearch(lessthanthreecharacter);
             ExtentsReportManager.extentReportLogging("info", "Entered news in search for news content in page filter ");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in entering news in search for news content in page filter<br />" + e);

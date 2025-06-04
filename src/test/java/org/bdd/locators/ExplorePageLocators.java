@@ -551,7 +551,7 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField")
 	public WebElement typesearchInputTextInUnitedNowSearchScreen;
 	
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/listview_search_suggestion\')]")
+	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/listview_search_suggestion')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell")
 	public List<WebElement> suggestion;
 

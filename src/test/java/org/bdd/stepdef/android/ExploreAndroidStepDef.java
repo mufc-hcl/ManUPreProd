@@ -1240,7 +1240,7 @@ public class ExploreAndroidStepDef {
     @And("^user enters less than three character in search for \"([^\"]*)\" in page filter$")
     public void userEnterslessThanThreeCharacterInSearchForInPageFilter1(String lessthanthreecharacter) throws Exception {
         try {
-            explorePage.enterlessthanTwoCharacter(lessthanthreecharacter);
+            explorePage.enterCharactersInSearch(lessthanthreecharacter);
             ExtentsReportManager.extentReportLogging("info", "Entered news in search for news content in page filter ");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in entering news in search for news content in page filter<br />" + e);
@@ -1251,7 +1251,7 @@ public class ExploreAndroidStepDef {
     @And("^user enters three character in search for \"([^\"]*)\" in page filter$")
     public void userEntersThreeCharacterInSearchForInPageFilter1(String lessthanthreecharacter) throws Exception {
         try {
-            explorePage.enterlessthanTwoCharacter(lessthanthreecharacter);
+            explorePage.enterCharactersInSearch(lessthanthreecharacter);
             ExtentsReportManager.extentReportLogging("info", "Entered news in search for news content in page filter ");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in entering news in search for news content in page filter<br />" + e);
