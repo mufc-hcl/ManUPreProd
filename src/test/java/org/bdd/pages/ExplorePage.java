@@ -389,6 +389,49 @@ public class ExplorePage extends Common {
 		}
 
 	}
+	public void clicksSearchInUnitedScreen3() {
+		try {
+		//	System.out.println(driver.getPageSource());
+			AndroidGenericLibrary.clickAtCoordinates(driver,870,205);
+		//	elementToBeClickableFluentWait(explorePageLocators.searchButtonUnitedPage, 60);
+			explorePageLocators.searchButtonUnitedPage.click();
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
+		} catch (WebDriverException e) {
+			try {				
+			AndroidGenericLibrary.clickAtCoordinates(driver,870,205);
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
+		} catch (WebDriverException e1) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", explorePageLocators.searchButtonUnitedPage);
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
+		
+		 // Retry locating element
+//        WebElement button = driver.findElement(By.xpath("//android.widget.ImageView[@content-desc='Search']")); 
+//        // Get coordinates
+//        Point point = button.getLocation();
+//        Dimension size = button.getSize();
+//        int centerX = point.getX() + (size.getWidth() / 2);
+//        int centerY = point.getY() + (size.getHeight() / 2);
+//        System.out.println("X " +centerX + "Y "+centerY);
+//        // Create W3C touch tap action
+//        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+//        Sequence tap = new Sequence(finger, 1)
+//                .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), centerX, centerY))
+//                .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+//                .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+//
+//        driver.perform(Arrays.asList(tap));
+		
+
+	}
+		catch (Exception e2) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clicksSearchInUnitedScreen()<br />" + e);
+			throw e;
+		}
+		}
+
+	}
 
 	public void clicksSearchInUnitedScreen1() throws Exception {
 		String device = GlobalParams.getPlatformName();
@@ -2260,7 +2303,7 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void enterlessthanTwoCharacter(String twoCharacter) throws Exception {
+	public void enterCharactersInSearch(String twoCharacter) throws Exception {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
@@ -2278,7 +2321,7 @@ public class ExplorePage extends Common {
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-enterImageInSearchForNewsContentInPageFilter()<br />" + e);
+					"Exception occured in function-enterCharactersInSearch()<br />" + e);
 			throw e;
 
 		}
@@ -2435,8 +2478,9 @@ public class ExplorePage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
+				Thread.sleep(1000);
 				
-				List<WebElement> allData = driver.findElements(By.xpath("//android.widget.FrameLayout[contains(@resource-id, \"ripple_view_background\")]"));
+				List<WebElement> allData = driver.findElements(By.xpath("//android.webkit.WebView[@text=\"Search – ManUtd.com | Manchester United\"]"));
 				if (allData.size() > 0) {
 					ExtentsReportManager.extentReportLogging("pass", "Data found from suggestion in search screen");
 					return true;
