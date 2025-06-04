@@ -66,7 +66,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@executes
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -83,6 +83,9 @@ Feature: My United features
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
+    Then user validates My united text in myunited screen in ios
+      | my united text |
+      | MY UNITED      |
     And navigates to the Stickers section in ios
     Then user validates my stickers carousel in My united screen in ios
     Then user validates stickers in My united screen using Api in ios using Api
@@ -115,6 +118,9 @@ Feature: My United features
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     And user navigates points screen in ios
     Then user validates Points this season card in My united screen in ios
     And user clicks on Season card in My united screen in ios
@@ -156,7 +162,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @AWSFailure1
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -200,6 +205,9 @@ Feature: My United features
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     And user scrolls down to my united All points season card
     And user clicks on total score card in my united screen in ios
     #Then user validates content in total score card in ios
@@ -379,7 +387,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @1234
   Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -415,7 +422,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@testrttr1
+
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -433,7 +440,8 @@ Feature: My United features
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
     And user navigates to About you in my united screen in ios
-		Then User validates text containing user Firstname lastName Country and Age details personalised in ios
+    Then User validates text containing user Firstname lastName Country and Age details personalised in ios
+
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
@@ -463,9 +471,9 @@ Feature: My United features
       | username                  | password | Name      |
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
-      
+
   Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
-     Given user navigates to manu ios application
+    Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
     And user clicks on ask me later in screen two in ios
@@ -481,7 +489,7 @@ Feature: My United features
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
     Then user validates the background colour of profile screen in ios
-		
+
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |

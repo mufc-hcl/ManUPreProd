@@ -640,7 +640,7 @@ public class MyUnitedAndroidStepDef {
     }
 
     @And("^user clicks on appearance card in my united screen$")
-    public void userClicksOnAppearanceCardInMyUnitedScreen() {
+    public void userClicksOnAppearanceCardInMyUnitedScreen() throws Exception {
         try {
             myUnitedPage.clickOnViewButtonAppearancecard();
             ExtentsReportManager.extentReportLogging("info", "CLicked on appearance card in my united screen");
@@ -651,17 +651,14 @@ public class MyUnitedAndroidStepDef {
     }
 
     @Then("^user validates content in appearance card$")
-    public void userValidatesContentInAppearanceCard(DataTable table) {
+    public void userValidatesContentInAppearanceCard(DataTable table) throws Exception {
         try {
             String expAppearance = table.cell(1, 0);
-            // String expMatchDay = table.cell(1, 1);
             String expShare = table.cell(1, 1);
             String actualAppearance = myUnitedPage.getAppearanceInsideTitleAppearancecard();
-            // String actualMatchDay = myUnitedPage.getDescriptionAppearancecard();
             String actualShare = myUnitedPage.getShareAppearanceCard();
-            soft.assertTrue(actualAppearance.contains(expAppearance));
-            // soft.assertEquals(actualMatchDay, expMatchDay);
-            soft.assertTrue(actualShare.contains(expShare));
+             soft.assertEquals(actualAppearance, expAppearance);
+             soft.assertEquals(actualShare, expShare);
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated content in appearance card");
         } catch (AssertionError e) {

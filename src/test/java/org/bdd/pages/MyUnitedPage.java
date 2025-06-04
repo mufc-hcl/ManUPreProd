@@ -438,29 +438,37 @@ public class MyUnitedPage extends Common {
 	}
 
 	public String getMyStickersCarouselMyUnited() {
-		String device = GlobalParams.getPlatformName();
-		try {
-			if (device.equalsIgnoreCase("android")) {
-				do {
-				    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-				} while (myUnitedPageLocators.myStickersTextMyUnitedScreen1.size() == 0);
-//				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "MY STICKERS");
-				waitForVisibilityFluentWait(myUnitedPageLocators.myStickersTextMyUnitedScreen, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my stickers text in my united screen ");
-				return myUnitedPageLocators.myStickersTextMyUnitedScreen.getText();
-			} else {
-				do {
-				    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
-				} while (myUnitedPageLocators.myStickersTextMyUnitedScreen1.size() == 0);
-				waitForVisibilityFluentWait(myUnitedPageLocators.myStickersTextMyUnitedScreen, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my stickers text in my united screen");
-				return myUnitedPageLocators.myStickersTextMyUnitedScreen.getDomAttribute("label");
-			}
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-getMyStickersCarouselMyUnited()<br />" + e);
-			throw e;
-		}
+		  String device = GlobalParams.getPlatformName();
+		    try {
+		        if (device.equalsIgnoreCase("android")) {
+		            int maxScrollAttempts = 5;
+		            boolean elementFound = false;
+
+		            for (int i = 0; i < maxScrollAttempts; i++) {
+		                if (myUnitedPageLocators.myStickersTextMyUnitedScreen1.size() > 0) {
+		                    elementFound = true;
+		                    break;
+		                }
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+		            }
+
+		            if (!elementFound) {
+		                throw new NoSuchElementException("My Stickers text not found after scrolling.");
+		            }
+
+		            waitForVisibilityFluentWait(myUnitedPageLocators.myStickersTextMyUnitedScreen, 60);
+		            ExtentsReportManager.extentReportLogging("pass", "Returns My Stickers text in My United screen (Android)");
+		            return myUnitedPageLocators.myStickersTextMyUnitedScreen.getText();
+		        } else {
+		            waitForVisibilityFluentWait(myUnitedPageLocators.myStickersTextMyUnitedScreen, 60);
+		            ExtentsReportManager.extentReportLogging("pass", "Returns My Stickers text in My United screen (iOS)");
+		            return myUnitedPageLocators.myStickersTextMyUnitedScreen.getDomAttribute("label");
+		        }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail",
+		            "Exception occurred in function-getMyStickersCarouselMyUnited()<br />" + e);
+		        throw e;
+		    }
 	}
 
 	public void clickOnViewAllButton() {
@@ -1139,28 +1147,33 @@ public class MyUnitedPage extends Common {
 		}
 	}
 
-	public void clickOnViewButtonAppearancecard() {
+	public void clickOnViewButtonAppearancecard() throws Exception {
 		try {
-			waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
-			myUnitedPageLocators.viewSeasonFour.click();
-			ExtentsReportManager.extentReportLogging("pass", "Clicked on view button in appearance card");
+		    waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
+		    
+		    myUnitedPageLocators.viewSeasonFour.click();
+
+		    if (myUnitedPageLocators.viewSeasonFour1.size() > 0) {
+		        myUnitedPageLocators.viewSeasonFour.click();
+		    }
+
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clickOnViewButtonAppearancecard()<br />" + e);
-			throw e;
+		    ExtentsReportManager.extentReportLogging("fail",
+		        "Exception occurred in function-clickOnViewButtonAppearancecard()<br />" + e);
+		    throw e;
 		}
 	}
 
-	public String getAppearanceInsideTitleAppearancecard() {
+	public String getAppearanceInsideTitleAppearancecard() throws Exception {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(myUnitedPageLocators.appearancesInsideTitleFour, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returned appearance in title appearance card");
+				ExtentsReportManager.extentReportLogging("pass", "Returned Aprearance text in appearance card");
 				return myUnitedPageLocators.appearancesInsideTitleFour.getText();
 			} else {
 				waitForVisibilityFluentWait(myUnitedPageLocators.appearancesInsideTitleFour, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returned appearance in title appearance card ");
+				ExtentsReportManager.extentReportLogging("pass", "Returned Aprearance text in appearance card ");
 				return myUnitedPageLocators.appearancesInsideTitleFour.getDomAttribute("label");
 			}
 		} catch (Exception e) {

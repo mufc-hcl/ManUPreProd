@@ -1,6 +1,6 @@
 @Sanity_Android @MyUnited_Android
 Feature: My United features
-@webex1
+
   Scenario: [My United]TC001 Settings --> General --> Language / Help / Rate app
     Given user navigates to manu android application
     And user navigates to screen two
@@ -20,7 +20,6 @@ Feature: My United features
       | googlePlay Text                                                       |
       | Sign in to find the latest Android apps, games, movies, music, & more |
 
-  
   Scenario: [My United]TC002 Settings --> General-Language --> Change to Chinese / English and validate if the changes are applied
     Given user navigates to manu android application
     And user navigates to screen two
@@ -104,7 +103,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@webex1
+
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu android application
     And user navigates to screen two
@@ -120,6 +119,9 @@ Feature: My United features
     And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks on close from notification
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     Then user validates my stickers carousel in My united screen
     Then user validates stickers in My united screen using Api
     And user clicks on view all button
@@ -131,7 +133,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu android application
     And user navigates to screen two
@@ -184,7 +185,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @webex1
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -200,6 +200,9 @@ Feature: My United features
     And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks on close from notification
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     Then user scrolls down to validates this season card in My united now screen
       | score this season | my united |
       | Score this season | MY UNITED |
@@ -245,6 +248,9 @@ Feature: My United features
     And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks on close from notification
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     And user scrolls down to favorite player screen
     And user validates payer image n my united screen
     And user clicks on edit button in my united screen
@@ -253,7 +259,7 @@ Feature: My United features
       | CHOOSE PLAYER | Men | Women |
     And user selects a favorite player in players screen
     Then user validates player details updated in my united screen
-       | buy shirt CTA |
+      | buy shirt CTA |
       | Buy Shirt     |
     Then user validates the star icon is displayed
     #    And clicks on  buy shirt button in my united screen
@@ -333,7 +339,6 @@ Feature: My United features
   #Examples:
   #| username                | password | notificationbutton |
   #| manupreprod@yopmail.com | Manu@123 | deny_button        |
-  @webex1
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -352,13 +357,12 @@ Feature: My United features
     Then user validates my tickets component in my united screen
     #Then user validates content in my tickets component
     Then user validates stadium component in my united screen
+
     #Then user validates content in stadium component
-    
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -390,7 +394,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  
   Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu android application
     And user navigates to screen two
@@ -411,8 +414,8 @@ Feature: My United features
     And user click on setting icon on top righhand side
     And user clicks on My profile icon
     And user clicks on edit profile button
+
     #Edit profile navigates to web page and locator were not available hence not feasable in adroid
-   
     #Then user validates the firstname,surname,email,dob is displayed and not editable in edit profile screen
     #And user clears all data in textbox in edit profile screen in ios
     #And user clicks save details in edit profile screen
@@ -430,7 +433,6 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  @webex1
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -448,13 +450,16 @@ Feature: My United features
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
+    Then user validates My united text in myunited screen
+      | my united text |
+      | MY UNITED      |
     And user navigates to About you in my united screen
-		Then user validates text containing user Firstname lastName Country and Age details personalised
-		
+    Then user validates text containing user Firstname lastName Country and Age details personalised
+
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@webex
+
   Scenario Outline: [My United]TC017 Native Login [>13 and <13] and Social Login
     #Social login possible only for >13 and its covered in IDM TC008 and TC009
     #Social login <13 - Under 13 registrations are not allowed to be linked to a social account" in Manu app
@@ -481,10 +486,10 @@ Feature: My United features
       | username                  | password | Name      |
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
-      
-      
-      Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
-   Given user navigates to manu android application
+
+  @webex1
+  Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
+    Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
     And user navigates to screen four
@@ -501,7 +506,7 @@ Feature: My United features
     And user clicks continue in MUApp popup
     And user clicks on close from notification
     Then user validates the background colour of profile screen
-		
+
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |

@@ -395,8 +395,12 @@ public class MutvPageLocators {
 	public WebElement backButtonInPodcastAudioScreen;
 	
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTabBar[@name=\"Tab Bar\"]/XCUIElementTypeOther/XCUIElementTypeOther")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Podcast mini player, current item, UTD Podcast: Jimmy Nicholl, UTDPodcastEpisode 200\"]")
 	public WebElement audioMinimizedAndPlaying;
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.preprod_mu_dxc:id/framelayout_tabwidget_parent\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Podcast mini player, current item, UTD Podcast: Jimmy Nicholl, UTDPodcastEpisode 200\"]")
+	public List<WebElement> audioMinimizedAndPlaying1;
 	
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Pause\"]")
 	public WebElement audioMinimizedAndPlayingPause;

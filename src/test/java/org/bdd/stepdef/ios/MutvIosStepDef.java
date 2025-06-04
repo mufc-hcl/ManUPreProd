@@ -1046,8 +1046,8 @@ public class MutvIosStepDef {
 	@Then("^user validates prodcast audio minimized and playing in ios$")
 	public void userValidatesProdcastAudioMinimizedAndPlayingInIos() throws Throwable {
 		try {
-	        boolean isValid = mutvPage.validatesProdcastAudioMinimizedAndPlaying();
-	        soft.assertTrue(isValid,"play button in podcast audio is not displayed");
+	        boolean flag = mutvPage.validatesProdcastAudioMinimizedAndPlaying();
+	        soft.assertTrue(flag);
 	    	  soft.assertAll();
 	        ExtentsReportManager.extentReportLogging("info", "validated prodcast audio minimized and playing");
 	    } catch (Exception e) {
