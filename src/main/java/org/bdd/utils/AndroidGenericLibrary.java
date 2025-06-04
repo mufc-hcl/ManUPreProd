@@ -146,7 +146,6 @@ public class AndroidGenericLibrary {
         clickAtPoint.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
         clickAtPoint.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
         clickAtPoint.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
         driver.perform(Arrays.asList(clickAtPoint));
     }
 }
