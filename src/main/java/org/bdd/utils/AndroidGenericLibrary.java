@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Set;
@@ -138,4 +139,14 @@ public class AndroidGenericLibrary {
         log.info("Switched to native context");
     }
 
+    public static void clickAtCoordinates(AppiumDriver driver,int x, int y) {
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence clickAtPoint = new Sequence(finger, 1);
+
+        clickAtPoint.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+        clickAtPoint.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        clickAtPoint.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(clickAtPoint));
+    }
 }
