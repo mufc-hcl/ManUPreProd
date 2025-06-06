@@ -281,7 +281,7 @@ public class ExploreAndroidStepDef {
     @And("^user clicks search button in united screen$")
     public void userClicksSearchButtonInUnitedScreen() throws Exception {
         try {
-            explorePage.clicksSearchInUnitedScreen();
+            explorePage.clicksSearchInUnitedScreenAnd();
             ExtentsReportManager.extentReportLogging("info", "Clicked search button in united screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking search button in united screen <br />" + e);
@@ -696,6 +696,7 @@ public class ExploreAndroidStepDef {
         try {
             explorePage.clickOnReggNotNowInMyUnited();
             explorePage.clicksOnOkButtonInCookiesScreen();
+            mutvPage.clicksinAppMsgIOSBreazeTestCloseButton();
             ExtentsReportManager.extentReportLogging("info", "Clicked on OK button in cookies screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking ok button in cookies screen<br />" + e);

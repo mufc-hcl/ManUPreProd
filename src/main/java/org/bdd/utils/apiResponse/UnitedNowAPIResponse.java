@@ -863,7 +863,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
 			for (int i = 0; i < size; i++) {
-				if (js.getString("x.ListingResponse.response.docs[" + i + "].contenttype_t")
+				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
 						.equalsIgnoreCase(headline_tPollCard)) {
 					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
 				}

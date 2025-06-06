@@ -389,21 +389,29 @@ public class ExplorePage extends Common {
 		}
 
 	}
-	public void clicksSearchInUnitedScreen3() {
+	public void clicksSearchInUnitedScreenAnd() {
 		try {
-		//	System.out.println(driver.getPageSource());
-			AndroidGenericLibrary.clickAtCoordinates(driver,870,205);
-		//	elementToBeClickableFluentWait(explorePageLocators.searchButtonUnitedPage, 60);
+			//WebElement button = driver.findElement(By.xpath("//android.widget.ImageView[@content-desc='Search']")); 
+	        // Get coordinates
+//	        Point point = button.getLocation();
+//	        Dimension size = button.getSize();
+//	        int centerX = point.getX() + (size.getWidth() / 2);
+//	        int centerY = point.getY() + (size.getHeight() / 2);
+//	        System.out.println("X " +centerX + "Y "+centerY);
+//			AndroidGenericLibrary.clickAtCoordinates(driver,870,205);//non match day
+			//AndroidGenericLibrary.clickAtCoordinates(driver,904,205);//match day
+			elementToBeClickableFluentWait(explorePageLocators.searchButtonUnitedPage, 60);
 			explorePageLocators.searchButtonUnitedPage.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
 		} catch (WebDriverException e) {
 			try {				
-			AndroidGenericLibrary.clickAtCoordinates(driver,870,205);
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
+//				AndroidGenericLibrary.clickAtCoordinates(driver,870,205);//non match day
+				AndroidGenericLibrary.clickAtCoordinates(driver,904,205);//match day
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage with co-ordinates");
 		} catch (WebDriverException e1) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", explorePageLocators.searchButtonUnitedPage);
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage");
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on searchButton UnitedPage with js");
 		
 		 // Retry locating element
 //        WebElement button = driver.findElement(By.xpath("//android.widget.ImageView[@content-desc='Search']")); 
