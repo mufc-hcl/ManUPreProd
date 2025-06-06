@@ -4945,7 +4945,8 @@ public class UnitedNowPage extends Common {
 		String expMatchReview = unitedNowAPIResponse.getMatchReview("UpComingFixturesEndPoint");
 		String actualTicketInfo = null;
 		String actualMatchReview = null;
-
+		ExtentsReportManager.extentReportLogging("info", "" + expTicketInfo + " text matching");
+		ExtentsReportManager.extentReportLogging("info", "" + expMatchReview + " text matching");
 		try {
 			if (unitedNowPageLocators.ticketInfo.size() > 0 || unitedNowPageLocators.matchReview.size() > 0) {
 				if (unitedNowPageLocators.ticketInfo.size() > 0) {
@@ -5157,4 +5158,44 @@ public class UnitedNowPage extends Common {
 			throw e;
 		}
 	}
-}
+
+	public String getTicketInfoFromUI() {
+		      String device = GlobalParams.getPlatformName();
+		        try {
+		            if (device.equalsIgnoreCase("android")) {
+		                waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfoUI, 60);
+		                ExtentsReportManager.extentReportLogging("pass", "Returns Ticket Info from UI");
+		                return unitedNowPageLocators.ticketInfoUI.getText();
+		            } else {
+		                waitForVisibilityFluentWait(unitedNowPageLocators.ticketInfoUI, 60);
+		                ExtentsReportManager.extentReportLogging("pass", "Returns Ticket Info from UI ");
+		                return unitedNowPageLocators.ticketInfoUI.getDomAttribute("label");
+		            }
+		        } catch (Exception e) {
+		            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getTicketInfoFromUI()<br />" + e);
+		            throw e;
+		        }
+		    }
+
+	public String getMatchReviewFromUI() {
+		String device = GlobalParams.getPlatformName();
+        try {
+            if (device.equalsIgnoreCase("android")) {
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
+                waitForVisibilityFluentWait(unitedNowPageLocators.matchReviewUI, 60);
+                ExtentsReportManager.extentReportLogging("pass", "Returns Match Review from UI");
+                return unitedNowPageLocators.matchReviewUI.getText();
+            } else {
+            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.UP, 0.5);
+                waitForVisibilityFluentWait(unitedNowPageLocators.matchReviewUI, 60);
+                ExtentsReportManager.extentReportLogging("pass", "Returns Match Review from UI ");
+                return unitedNowPageLocators.matchReviewUI.getDomAttribute("label");
+            }
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getMatchReviewFromUI()<br />" + e);
+            throw e;
+        }
+    }
+	}
+	
+

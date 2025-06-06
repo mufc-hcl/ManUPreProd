@@ -1164,6 +1164,19 @@ public class MutvAndroidStepDef {
 	        throw e;
 	    }
 	}
+	
+	@Then("^user validates prodcast audio minimized and playing in BG$")
+	public void userValidatesProdcastAudioMinimizedAndPlayingBG() throws Throwable {
+		try {
+	        boolean isValid = mutvPage.validatesProdcastAudioMinimizedAndPlayingBG();
+	        soft.assertTrue(isValid,"play button in podcast audio is not displayed");
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "validated prodcast audio minimized and playing");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception while validating prodcast audio minimized and playing.<br />" + e);
+	        throw e;
+	    }
+	}
 
 	@And("^user checks for Top twenty collections in MUTV$")
 	public void userChecksForTopTwentyCollectionsInMUTV() throws Throwable {

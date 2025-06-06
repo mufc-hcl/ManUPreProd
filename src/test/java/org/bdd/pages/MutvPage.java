@@ -2245,6 +2245,30 @@ public class MutvPage extends Common {
 		    }
 		    return false; 
 		}
+		
+		public boolean validatesProdcastAudioMinimizedAndPlayingBG() {
+			String device = GlobalParams.getPlatformName();
+			driver.manage().window().minimize();
+		    try {
+		        if (device.equalsIgnoreCase("android")) {
+		            if (mutvPageLocators.audioMinimizedAndPlaying.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Validated podcast audio minimized and playing");
+		                return true;
+		            } }else { // iOS logic
+		                if (mutvPageLocators.audioMinimizedAndPlaying1.size() > 0) {
+		                    System.out.println("Podcast mini player is displayed.");
+		                    ExtentsReportManager.extentReportLogging("pass", "Podcast mini player is displayed.");
+		                    return true;
+		                } else {
+		                	   ExtentsReportManager.extentReportLogging("fail", "Podcast mini player is not displayed.");
+		                }
+		            }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-validatesProdcastAudioMinimizedAndPlayinge ()<br />" + e);
+		        return false;
+		    }
+		    return false; 
+		}
 
 
 		public void checksForTopTwentyCollectionsInMUTV() {

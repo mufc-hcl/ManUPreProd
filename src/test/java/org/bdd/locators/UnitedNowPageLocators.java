@@ -883,9 +883,17 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(id = "(//*[contains(@name,'TICKET INFO')])[1]")
     public List<WebElement> ticketInfo;
     
+    @AndroidFindBy(xpath = "(//*[contains(@text,'TICKET INFO')])[1]")
+    @iOSXCUITFindBy(id = "(//*[contains(@name,'TICKET INFO')])[1]")
+    public WebElement ticketInfoUI;
+    
     @AndroidFindBy(xpath = "(//*[contains(@text,'MATCH REVIEW')])[1]")
     @iOSXCUITFindBy(id = "(//XCUIElementTypeStaticText[@name=\"MATCH REVIEW\"])[1]")
     public List<WebElement> matchReview;
+    
+    @AndroidFindBy(xpath = "(//*[contains(@text,'MATCH REVIEW')])[1]")
+    @iOSXCUITFindBy(id = "(//XCUIElementTypeStaticText[@name=\"MATCH REVIEW\"])[1]")
+    public WebElement matchReviewUI;
     
     @iOSXCUITFindBy(xpath = "(//*[contains(@name,'MATCHDAY LIVE')])[1]")
     public List<WebElement> matchDayLive;

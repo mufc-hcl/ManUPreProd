@@ -1261,17 +1261,36 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
+	
+	public ArrayList<String> getTicketInfoFromAPI(String endpoint) throws Exception {
+		try {
+			ArrayList<String> getTicketInfo = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			int size = js.getList("ResultListResponse.response.docs").size();
+			for (int i = 0; i < size; i++) {
+				if (js.getString("ResultListResponse.response.docs[" + i + "].ticketctatitle_t") != null)
+				getTicketInfo.add(js.getString("ResultListResponse.response.docs[" + i + "].ticketctatitle_t"));
+
+				}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getTicketInfo;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getTicketInfoFromAPI()" + e);
+			throw e;
+		}
+	}
 
 	public String getMatchReview(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			ArrayList<String> getMatchReview = new ArrayList<>();
 			js = new JsonPath(res.asString());
-			int size = js.getList("LatestResultsResponse.response.docs").size();
+			int size = js.getList("ResultListResponse.response.docs").size();
 			for (int i = 0; i < size; i++) {
-				if (js.getString("LatestResultsResponse.response.docs[" + i + "].matchdayresultctatitle_t") != null) {
-					getMatchReview
-							.add(js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t"));
+				if (js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t") != null) {
+					getMatchReview.add(js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t"));
 				}
 			}
 			ExtentsReportManager.extentReportLogging("info",
@@ -1283,6 +1302,25 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 	}
 
+	public ArrayList<String> getMatchReviewFromAPI(String endpoint) throws Exception {
+		try {
+			ArrayList<String> getMatchReview = new ArrayList<>();
+			Response res = getUrlEncodedResponse(endpoint);
+			js = new JsonPath(res.asString());
+			int size = js.getList("ResultListResponse.response.docs").size();
+			for (int i = 0; i < size; i++) {
+				if (js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t") != null) {
+					getMatchReview.add(js.getString("ResultListResponse.response.docs[" + i + "].matchdayresultctatitle_t"));
+				}
+			}
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return getMatchReview;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getMatchReviewFromAPI()" + e);
+			throw e;
+		}
+	}
 	public String getMatchDayLive(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);

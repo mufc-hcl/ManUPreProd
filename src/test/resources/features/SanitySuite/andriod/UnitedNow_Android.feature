@@ -82,6 +82,7 @@ Feature: United now
     And user select fourth radio option and validate content in the body
     And user select fifth radio option and validate content in the body
   
+  @UNITED_TEST_009
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu android application
     And user navigates to screen two
@@ -93,11 +94,13 @@ Feature: United now
     And user clicks on braze in app msg
     And user clicks continue in MUApp popup
     And user click on calender icon
-    And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League      |
-      | All 2025/26 |
-    Then user validates the upcoming Fixtures using Api
+    #And user clicks Three dots icon
+    #And user clicks the following filter in UnitedNow Calender screen
+      #| League      |
+      #| All 2024/25 |
+    #Then user validates the upcoming Fixtures using Api
+    Then user validates the upcoming Fixtures using Api in united now
+    
 
 @ReRun
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS

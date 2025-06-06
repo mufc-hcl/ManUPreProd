@@ -75,6 +75,7 @@ Feature: United now
     #And user select fourth radio option and validate content in the body in ios
     #And user select fifth radio option and validate content in the body in ios
 
+@UNITEDNOW_IOS_009
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -85,13 +86,14 @@ Feature: United now
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
     And user click on calender icon in ios
-    And user clicks Three dots icon in ios
-    And user clicks the following filter in UnitedNow Calender screen in ios
-      | League      |
-      | All 2024/25 |
+    #And user clicks Three dots icon in ios
+    #And user clicks the following filter in UnitedNow Calender screen in ios
+      #| League      |
+      #| All 2024/25 |
     #Then user validates the upcoming Fixtures in ios
     #Then user validates the results in ios Using Api
     Then user validates the upcoming Fixtures using Api in ios
+    #Then user validates the upcoming Fixtures using Api in united now in ios
 
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu ios application

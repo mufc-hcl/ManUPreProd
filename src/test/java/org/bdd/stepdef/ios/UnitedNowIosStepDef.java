@@ -1843,6 +1843,36 @@ public class UnitedNowIosStepDef {
 	        }
 	}
 
+	@Then("^user validates the upcoming Fixtures using Api in united now in ios$")
+	public void userValidatesTheUpcomingFixturesUsingApiInUnitedNowInIos() throws Throwable {
+		try {
+			ArrayList<String> getTicketInfo = new ArrayList<>();
+			ArrayList<String> expMatchReview = new ArrayList<>();
+			
+			getTicketInfo = unitedNowAPIResponse.getTicketInfoFromAPI("UpComingFixturesEndPoint");
+			String actualButton1 = unitedNowPage.getTicketInfoFromUI();
+		       ExtentsReportManager.extentReportLogging("info","Expected  info " + getTicketInfo);
+		       ExtentsReportManager.extentReportLogging("info","Actual info" + unitedNowPage.getTicketInfoFromUI());
+		       soft.assertTrue(getTicketInfo.contains(actualButton1));
+			
+			 expMatchReview = unitedNowAPIResponse.getMatchReviewFromAPI("UpComingFixturesEndPoint");
+			 String actualMatchReview = unitedNowPage.getMatchReviewFromUI();
+		       ExtentsReportManager.extentReportLogging("info","Expected  info" + expMatchReview);
+		       ExtentsReportManager.extentReportLogging("info","Actual info" + unitedNowPage.getMatchReviewFromUI());
+		       soft.assertTrue(expMatchReview.contains(actualMatchReview));
+	       
+	       soft.assertAll();
+	       ExtentsReportManager.extentReportLogging("info", "Validated all objects in screen four");
+	   } catch (AssertionError e) {
+	       ExtentsReportManager.extentReportLogging("fail", "Error in validated all objects in screen four<br />" + e);
+	       throw e;
+	   }
 	}
+	        
+	        
+		
+	}
+
+	
 
 
