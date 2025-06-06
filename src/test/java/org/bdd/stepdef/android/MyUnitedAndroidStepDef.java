@@ -1388,6 +1388,19 @@ public class MyUnitedAndroidStepDef {
 	            throw e;
 	        }
 		}
+
+	@And("^user clicks on my tickets component in my united screen$")
+	public void userClicksOnMyTicketsComponentInMyUnitedScreen() throws Throwable {
+		try {
+			  myUnitedPage.userClicksOnMyTicketsComponentInMyUnitedScreen();
+          boolean flag = myUnitedPage.userValidatesContentInMyTicketsComponent();
+          soft.assertTrue(flag);
+          ExtentsReportManager.extentReportLogging("info", "validated content in my tickets component");
+      } catch (AssertionError e) {
+          ExtentsReportManager.extentReportLogging("fail", "Error in validating content in my tickets component<br />" + e);
+          throw e;
+      }
+	}
 	
 	}
 

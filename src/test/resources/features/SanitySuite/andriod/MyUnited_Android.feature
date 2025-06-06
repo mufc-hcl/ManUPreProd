@@ -510,3 +510,27 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
+      
+       Scenario Outline: [My United]TC019 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    #    And user clicks on the notification at bottom of screen
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
+    Then user validates my tickets component in my united screen
+    And user clicks on my tickets component in my united screen
+    
+     Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |

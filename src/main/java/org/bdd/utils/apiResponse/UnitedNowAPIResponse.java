@@ -681,26 +681,38 @@ public class UnitedNowAPIResponse extends BaseApiService {
 
 	public ArrayList<String> getVideoCard(String endpoint) throws Exception {
 		try {
-			ArrayList<String> expVideoCard = new ArrayList<>();
-			String contentTypeVideoCard = "video";
+	        ArrayList<String> expVideoCard = new ArrayList<>();
+	        String contentTypeVideoCard = "video";
 
-			Response res = getResponse(endpoint);
-			js = new JsonPath(res.asString());
-			int size = js.getList("ListingResponse.response.docs").size();
-			for (int i = 0; i < size; i++) {
-				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
-						.equalsIgnoreCase(contentTypeVideoCard)) {
-					expVideoCard.add(js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t"));
+	        Response res = getResponse(endpoint);
+	        js = new JsonPath(res.asString());
 
-				}
-			}
-			ExtentsReportManager.extentReportLogging("info",
-					"Getting the response from the endpoint " + getURIInfo(endpoint));
-			return expVideoCard;
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getVideoCard()" + e);
-			throw e;
-		}
+	        int size = js.getList("ListingResponse.response.docs").size();
+	        String env = Common.apiEnv().toLowerCase();
+
+	        for (int i = 0; i < size; i++) {
+	            if (env.equals("stage")) {
+	                if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
+	                        .equalsIgnoreCase(contentTypeVideoCard)) {
+	                    expVideoCard.add(js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t"));
+	                }
+	            } else if (env.equals("prod")) {
+	                if (js.getString("ListingResponse.response.docs[" + i + "].category_s")
+	                        .equalsIgnoreCase(contentTypeVideoCard)) {
+	                    expVideoCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
+	                }
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("info",
+	                "Getting the response from the endpoint: " + getURIInfo(endpoint));
+	        return expVideoCard;
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception occurred in function getVideoCard()<br/>" + e);
+	        throw e;
+	    }
 	}
 
 	public ArrayList<String> getGalleryCard(String endpoint) throws Exception {
@@ -863,7 +875,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			js = new JsonPath(res.asString());
 			int size = js.getList("ListingResponse.response.docs").size();
 			for (int i = 0; i < size; i++) {
-				if (js.getString("x.ListingResponse.response.docs[" + i + "].contenttype_t")
+				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
 						.equalsIgnoreCase(headline_tPollCard)) {
 					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
 				}
@@ -1466,4 +1478,23 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		return allSponsorLogos;
 	}
 
+//	public ArrayList<String> getVideoCardFromApi(String string) {
+//		 try {
+//			ArrayList<String> englishFaCup = new ArrayList<>();
+//			Response res = getResponse(endpoint);
+//			js = new JsonPath(res.asString());
+//			int size = js.getList("FixtureListResponse.response.docs").size();
+//			for (int i = 0; i < size; i++) {
+//				englishFaCup.add(js.getString("FixtureListResponse.response.docs[" + i + "].competitionname_t"));
+// 
+//				}
+//			ExtentsReportManager.extentReportLogging("info",
+//					"Getting the response from the endpoint " + getURIInfo(endpoint));
+//			return englishFaCup;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getImageCard()" + e);
+//			throw e;
+//		}
+//	}
 }
+
