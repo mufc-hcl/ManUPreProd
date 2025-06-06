@@ -520,7 +520,7 @@ public class MyUnitedPageLocators {
 	public WebElement playerLastNameInMyUnitedScreen;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'itemFirstTxt')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"My Tickets\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
 	public WebElement myTicketsComponentMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/ticket_card_title\")]")
@@ -536,7 +536,7 @@ public class MyUnitedPageLocators {
 	public WebElement backIconinMyTicketsMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'itemSecondTxt')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Matchday Help\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")
 	public WebElement stadiumComponentMyUnited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \"id/stadium_card_title\")]")
