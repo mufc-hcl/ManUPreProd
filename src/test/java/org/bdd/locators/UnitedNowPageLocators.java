@@ -909,6 +909,9 @@ public class UnitedNowPageLocators {
     @AndroidFindBy(xpath ="//android.widget.ImageView[@content-desc=\" DXC   opens external window\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"DXC\"]")
      public WebElement sponsorLogoFromUI1;
+    
+    @AndroidFindBy(xpath = "////android.widget.FrameLayout[@content-desc='Dismiss Live Stream']/android.widget.ImageView")
+	public WebElement DismissLiveStreamInUN;
      
 
 }

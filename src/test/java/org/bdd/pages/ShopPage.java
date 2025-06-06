@@ -1069,11 +1069,13 @@ public class ShopPage extends Common {
 	                HamburgerMenuItemElements = driver.findElements(AppiumBy.androidUIAutomator(
 	                	    "new UiSelector().text(\"" + menuItem + "\")"));
 	            } else {
-	                if (menuItem.equalsIgnoreCase("Home")) {
-	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name='" + menuItem + "'])[2]"));
-	                } else {
-	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='" + menuItem + "']"));
-	                }
+//	                if (menuItem.equalsIgnoreCase("Home")) {
+//	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("(//XCUIElementTypeStaticText[@name='" + menuItem + "'])[2]"));
+//	                } 
+//	                else {
+//	                    HamburgerMenuItemElements = driver.findElements(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='" + menuItem + "']"));
+//	                }
+	            	HamburgerMenuItemElements = driver.findElements(AppiumBy.name(menuItem));
 	            }
 
 	            if (HamburgerMenuItemElements.size() > 0) {

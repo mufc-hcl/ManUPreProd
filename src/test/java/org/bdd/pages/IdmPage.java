@@ -916,12 +916,13 @@ public class IdmPage extends Common {
                 idmPageLocators.newEmailAddress.sendKeys(table.cell(1, 0));
                 idmPageLocators.confirmNewEmailAddress.sendKeys(table.cell(1, 1));
                 idmPageLocators.password.sendKeys(table.cell(1, 2));
-
+                ExtentsReportManager.extentReportLogging("pass", "Entered new email address in change email address screen");
             } else {
                 waitForVisibilityFluentWait(idmPageLocators.newEmailAddress,120);
                 idmPageLocators.newEmailAddress.sendKeys(table.cell(1, 0));
                 idmPageLocators.confirmNewEmailAddress.sendKeys(table.cell(1, 1));
                 idmPageLocators.password1.sendKeys(table.cell(1, 2));
+                ExtentsReportManager.extentReportLogging("pass", "Entered new email address in change email address screen");
             }
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-entersTheFollowingDetailsInTheChangeEmailAddressScreen()<br />" + e);

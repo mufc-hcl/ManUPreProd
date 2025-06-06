@@ -1359,8 +1359,8 @@ public class UnitedNowAndroidStepDef {
         	expectedPollCard = unitedNowAPIResponse.getPollCard("getAllCardsFromUnitedNow");
             ExtentsReportManager.extentReportLogging("info", "Poll Card from API "+expectedPollCard);
             if(!expectedPollCard.isEmpty()) {
-                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
-            	//soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 30,"Poll"));
+                //soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
+            	soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 20,"Poll"));
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(0)+"is available in united now page");
             }else {
@@ -2024,6 +2024,17 @@ public class UnitedNowAndroidStepDef {
        throw e;
    }
 }
+	
+	@And("^user clicks on close in live video$")
+    public void userClicksCloseLiveVideo() throws Exception {
+        try {
+        	unitedNowPage.closeLiveVideo();
+            ExtentsReportManager.extentReportLogging("info", "Clicked on close in live video");
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking on close in live video<br />" + e);
+            throw e;
+        }
+    }
         
         
 	}
