@@ -4182,6 +4182,9 @@ public class UnitedNowPage extends Common {
 		try {
 			//String shortheadline_t= expArticleCard.toUpperCase().trim();
 			if (device.equalsIgnoreCase("android")) {
+				boolean isAndroid = device.contains("android");
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+				scrollAndClearMainFilterView(isAndroid,2);
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expArticleCard);
 
 				List<WebElement> e = driver
@@ -4189,8 +4192,8 @@ public class UnitedNowPage extends Common {
 				Thread.sleep(2000);
 				if (e.size() > 0) {
 				waitForVisibilityFluentWait(e.get(0), 60);
-				e.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Checked for Article Card in united now page");
+				e.get(0).click();
 				return true;
 				}
 			} else {
@@ -4200,9 +4203,9 @@ public class UnitedNowPage extends Common {
 					List<WebElement> e = driver
 							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expArticleCard + "\""));
 					if (e.size() > 0) {
+						ExtentsReportManager.extentReportLogging("pass", "Checked for Article Card in united now page");
 						e.get(0).click();
 						Thread.sleep(4000);
-						ExtentsReportManager.extentReportLogging("pass", "Checked for Article Card in united now page");
 						return true;
 					} else {
 						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
@@ -4332,7 +4335,7 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				int i = 0;
-				while (i < 20) {
+				while (i < 10) {
 					String type = "name";
 					List<WebElement> e = driver.findElements(AppiumBy
 							.iOSNsPredicateString(type + " == \"" + shortheadline_t.replaceAll("\\[|\\]", "") + "\""));
@@ -4535,13 +4538,17 @@ public class UnitedNowPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
-				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard);
-				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expAdcard + "')]"));
+				boolean isAndroid = device.contains("android");
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+				scrollAndClearMainFilterView(isAndroid,2);
+				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard.toUpperCase().trim());
+				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expAdcard.toUpperCase().trim() + "')]"));
 				Thread.sleep(2000);
 				if (e.size() > 0) {
 				waitForVisibilityFluentWait(e.get(0), 60);
-				e.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Checked for Adcard Card in united now page");
+				e.get(0).click();
+				
 				return true;
 				}
 			} else {
@@ -4551,9 +4558,9 @@ public class UnitedNowPage extends Common {
 					List<WebElement> e = driver
 							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard + "\""));
 					if (e.size() > 0) {
-						e.get(0).click();
-						Thread.sleep(4000);
 						ExtentsReportManager.extentReportLogging("pass", "Checked for Adcard Card in united now page");
+						e.get(0).click();						
+						Thread.sleep(1000);						
 						return true;
 					} else {
 						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.8);
@@ -5272,7 +5279,7 @@ public class UnitedNowPage extends Common {
 	    	String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch;
 
 	        if ("android".equalsIgnoreCase(device)) {
-	        	scrollAndClearMainFilterView(isAndroid,3);
+	        	scrollAndClearMainFilterView(isAndroid,5);
 	            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, eleText);
 	            List<WebElement> elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
 	            Thread.sleep(2000); // Consider replacing with explicit wait
@@ -5292,11 +5299,12 @@ public class UnitedNowPage extends Common {
 	                if (!elements.isEmpty()) {
 	                	ExtentsReportManager.extentReportLogging("pass",contentType + " Card '" + eleText + "' found ");
 	                    elements.get(0).click();
-	                    Thread.sleep(4000); 
+	                    Thread.sleep(100); 
 	                    
 	                    return true;
 	                } else {
-	                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
+	                	//ExtentsReportManager.extentReportLogging("pass","scroll "+attempts);
+	                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
 	                    attempts++;
 	                }
 	            }
@@ -5359,5 +5367,24 @@ public class UnitedNowPage extends Common {
 //	    }
 	
 	}
+	
+	public void closeLiveVideo() throws Exception {
+		try {
+			Thread.sleep(1000);
+			if (unitedNowPageLocators.DismissLiveStreamInUN.isDisplayed()) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.DismissLiveStreamInUN, 60);
+					unitedNowPageLocators.DismissLiveStreamInUN.click();
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on Close button in united Now to close live video");
+			}
+			} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (NullPointerException np) {
+			System.out.println("null pointer exception due to override of screens");
+		}catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-closeLiveVideo()<br />" + e);
+			throw e;
+		}
+		}
 
 }
