@@ -4228,6 +4228,7 @@ public class UnitedNowPage extends Common {
 					} else {
 						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 						i++;
+						ExtentsReportManager.extentReportLogging("pass", "Scrolling to find video card on iOS...");
 					}
 				}
 				ExtentsReportManager.extentReportLogging("fail",
