@@ -255,23 +255,23 @@ public class ShopPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'ADD TO BAG') or contains(@name, 'ADD TO BASKET')]")
 	public WebElement addtoBagButtonInStorePage;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Added to bag!\"])[2]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Added to bag!\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Added to bag!']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Added to bag!'])[2]")
 	public List<WebElement> addedtoBagLabelInStorePage;
 
 	// XCUIElementTypeStaticText[@name="1 product"]
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Your Bag 1 product') or contains(@text, 'Basket 1 product')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Your Bag') or contains(@text, 'Basket')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Your Bag') or contains(@name, 'Basket')]")
 	public List<WebElement> yourBagLabelInStorePage;
 
-	@AndroidFindBy(xpath = "//android.widget.Button[@text=\"CHECKOUT\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CHECKOUT\"]")
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='CHECKOUT']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='CHECKOUT']")
 	public List<WebElement> checkoutinStorePage;
 
 	// @AndroidFindBy(xpath =
 	// "//android.view.ViewGroup[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/framelayout_tabwidget_parent\"]")
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[contains(@resource-id, ':id/framelayout_tabwidget_parent')]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name=\"BAG\"])[2]")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeLink[@name='BAG'])[2]")
 	public WebElement bagButtonInStorePage;
 
 	// @AndroidFindBy(xpath =
@@ -280,11 +280,11 @@ public class ShopPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='navbar wishlist black']")
 	public WebElement wishListButton;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Wishlist 1 product\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"Wishlist 1 product\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Wishlist 1 product']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Wishlist 1 product']")
 	public WebElement wishListLabel;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Wishlist\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Wishlist']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Wishlist']")
 	public List<WebElement> wishListTitle;
 

@@ -103,6 +103,14 @@ public class ExplorePage extends Common {
 		try {
 			elementToBeClickableFluentWait(explorePageLocators.settingIcon, 60);
 			explorePageLocators.settingIcon.click();
+			
+			if (explorePageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
+				waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
+				explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+		}
+		} catch (NoSuchElementException ns) {
+		System.out.println("element is not displayed hence skipped");
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on settingIcon ");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",

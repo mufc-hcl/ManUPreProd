@@ -187,10 +187,10 @@ public class IdmPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name=\"change email address\"]/XCUIElementTypeOther[1]/XCUIElementTypeOther")
 	public WebElement changeEmailAddress;
 	@FindBy(id = "NewLoginEmail")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='main']/XCUIElementTypeOther[4]/XCUIElementTypeTextField[2]")
 	public WebElement newEmailAddress;
 	@FindBy(id = "ReenterNewLoginEmail")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[4]/XCUIElementTypeTextField[3]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='main']/XCUIElementTypeOther[4]/XCUIElementTypeTextField[3]")
 	public WebElement confirmNewEmailAddress;
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
 	public WebElement password1;

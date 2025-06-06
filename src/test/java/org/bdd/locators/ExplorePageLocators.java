@@ -27,6 +27,10 @@ public class ExplorePageLocators {
 	@AndroidFindBy(accessibility = "Settings")
 	@iOSXCUITFindBy(accessibility = "Settings")
 	public WebElement settingIcon;
+	
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Close\"]")
+	public WebElement closeIconInAppMsgIosBrazeTest;
+	
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"GENERAL\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"general\"]")

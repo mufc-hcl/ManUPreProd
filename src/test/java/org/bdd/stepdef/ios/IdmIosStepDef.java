@@ -416,10 +416,10 @@ public class IdmIosStepDef {
 	public void userClicksOnChangeEmailAddressInMyProfileScreenInIos() {
 		try {
 			idmPage.clicksOnChangeEmailAddressInMyProfileScreen();
-			ExtentsReportManager.extentReportLogging("info", "Clicked membership carousel in search screen");
+			ExtentsReportManager.extentReportLogging("info", "clicked on change email address in my profile screen");
 		} catch (AssertionError e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Error in clicking membership carousel in search screen<br />" + e);
+					"Error in clicking on change email address in my profile screen<br />" + e);
 			throw e;
 		}
 	}
@@ -428,10 +428,10 @@ public class IdmIosStepDef {
 	public void userEntersTheFollowingDetailsInTheChangeEmailAddressScreenInIos(DataTable table) {
 		try {
 			idmPage.entersTheFollowingDetailsInTheChangeEmailAddressScreen(table);
-			ExtentsReportManager.extentReportLogging("info", "Clicked membership carousel in search screen");
+			ExtentsReportManager.extentReportLogging("info", "Entered new email address in change email address screen");
 		} catch (AssertionError e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Error in clicking membership carousel in search screen<br />" + e);
+					"Error in entering ew email address in change email address screen<br />" + e);
 			throw e;
 		}
 	}
