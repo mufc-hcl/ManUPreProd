@@ -124,7 +124,7 @@ public class MutvPageLocators {
 	public List<WebElement> headerCBRCBSPage1;
 
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, 'mutv_view_pager_container')]/android.widget.LinearLayout")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United Stage App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView[1]/XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther")
 	public WebElement heroCarouselInMutvPage;
 	
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, 'mutv_view_pager_container')]/android.widget.LinearLayout")
