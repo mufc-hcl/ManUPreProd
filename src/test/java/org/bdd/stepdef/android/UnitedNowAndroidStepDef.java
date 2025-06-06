@@ -107,7 +107,7 @@ public class UnitedNowAndroidStepDef {
     @And("^user click on calender icon$")
     public void userClickOnCalenderIcon() throws Exception {
         try {
-            unitedNowPage.clickCalenderIcon();
+            unitedNowPage.clickCalenderIconAnd();
             ExtentsReportManager.extentReportLogging("info", "Clicked on calendar icon ");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking on calender icon<br />" + e);
@@ -973,9 +973,10 @@ public class UnitedNowAndroidStepDef {
     	 ArrayList<String> expectedGalleryCard = new ArrayList<>();
          try {
         	 expectedGalleryCard = unitedNowAPIResponse.getGalleryCard("getAllCardsFromUnitedNow");
-             ExtentsReportManager.extentReportLogging("info", "Gallery Card from API"+expectedGalleryCard.get(1));
+             ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard.get(0));
              if(!expectedGalleryCard.isEmpty()) {
-                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(1)));
+                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
+            	 //soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 20,"Gallery"));
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
              }else {
@@ -1356,16 +1357,17 @@ public class UnitedNowAndroidStepDef {
     	ArrayList<String> expectedPollCard = new ArrayList<>();
         try {
         	expectedPollCard = unitedNowAPIResponse.getPollCard("getAllCardsFromUnitedNow");
-            ExtentsReportManager.extentReportLogging("info", "Poll Card from API"+expectedPollCard);
+            ExtentsReportManager.extentReportLogging("info", "Poll Card from API "+expectedPollCard);
             if(!expectedPollCard.isEmpty()) {
-                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(1)));
+                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
+            	//soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 30,"Poll"));
                 soft.assertAll();
-                ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(1)+"is available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(0)+"is available in united now page");
             }else {
                 ExtentsReportManager.extentReportLogging("info", "Poll card not available in united now page");
             }
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quote card in united now page<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Poll card in united now page<br />" + e);
             throw e;
         }
     }
@@ -1680,7 +1682,7 @@ public class UnitedNowAndroidStepDef {
        ArrayList<String> expectedArticalCard = new ArrayList<>();
         try {
             expectedArticalCard = unitedNowAPIResponse.getArticleCard("getAllCardsFromUnitedNow");
-            ExtentsReportManager.extentReportLogging("info", "Article Card from API"+expectedArticalCard);
+            ExtentsReportManager.extentReportLogging("info", "Article Card from API "+expectedArticalCard);
             if(!expectedArticalCard.isEmpty()) {
                 soft.assertTrue(unitedNowPage.getArticleCardFromUnitedNow(expectedArticalCard.get(0)));
                 soft.assertAll();
@@ -1828,7 +1830,7 @@ public class UnitedNowAndroidStepDef {
     	 ArrayList<String> expectedCompetitionCard = new ArrayList<>();
          try {
         	 expectedCompetitionCard = unitedNowAPIResponse.getCompetitionCard("getAllCardsFromUnitedNow");
-             ExtentsReportManager.extentReportLogging("info", "Competition Card from API"+expectedCompetitionCard);
+             ExtentsReportManager.extentReportLogging("info", "Competition Card from API "+expectedCompetitionCard);
              if(!expectedCompetitionCard.isEmpty()) {
                  soft.assertTrue(unitedNowPage.getCompetitionCardFromUnitedNow(expectedCompetitionCard.get(0)));
                  soft.assertAll();
