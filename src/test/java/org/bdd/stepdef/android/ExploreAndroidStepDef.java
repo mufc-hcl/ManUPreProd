@@ -696,7 +696,7 @@ public class ExploreAndroidStepDef {
         try {
             explorePage.clickOnReggNotNowInMyUnited();
             explorePage.clicksOnOkButtonInCookiesScreen();
-            mutvPage.clicksinAppMsgIOSBreazeTestCloseButton();
+            mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             ExtentsReportManager.extentReportLogging("info", "Clicked on OK button in cookies screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking ok button in cookies screen<br />" + e);
