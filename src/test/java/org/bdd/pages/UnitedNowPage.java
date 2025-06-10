@@ -4421,7 +4421,7 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				int i = 0;
-				while (i < 10) {
+				while (i < 20) {
 					String type = "name";
 					List<WebElement> e = driver.findElements(AppiumBy
 							.iOSNsPredicateString(type + " == \"" + shortheadline_t.replaceAll("\\[|\\]", "") + "\""));

@@ -2744,21 +2744,26 @@ public class ExplorePage extends Common {
 	public String getWhatsNewText() {
 	    String device = GlobalParams.getPlatformName();
 	    String whatsNew = null;
+	    
 	    try {
 	        if (device.equalsIgnoreCase("android")) {
 	            if (explorePageLocators.whatsNew.isDisplayed()) {
+	            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 	                whatsNew = explorePageLocators.whatsNew.getText();
+	                return whatsNew;
 	            } else {
 	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 	                whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+	                return whatsNew;
 	            }
 	        } else { // iOS
 	            if (!explorePageLocators.whatsNew.isDisplayed()) {
 	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 	            }
 	            whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+	            return whatsNew;
 	        }
-	        return whatsNew;
+	        
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getWhatsNew()<br />" + e);
 	        throw e;
