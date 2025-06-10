@@ -278,15 +278,24 @@ public class MutvPage extends Common {
 
     public void clicksOnOneVideo() {
         try {
-        	int maxScrollAttempts = 5;
+        	int maxScrollAttempts = 10;
 		    boolean elementFound = false;
- 
+		    
+		    if (Common.apiEnv().equalsIgnoreCase("prod")) {
 		    for (int i = 0; i < maxScrollAttempts; i++) {
 		        if (mutvPageLocators.fullMUTV.size() > 0) {
 		            elementFound = true;
 		            break;
 		        }
                 IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+            }  }else if (Common.apiEnv().equalsIgnoreCase("stage")) {
+            	for (int i = 0; i < maxScrollAttempts; i++) {
+    		        if (mutvPageLocators.fullMUTV1.size() > 0) {
+    		            elementFound = true;
+    		            break;
+    		        }
+                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+                } 
             }
      
             if (!elementFound) {
@@ -719,10 +728,17 @@ public class MutvPage extends Common {
 
     public void clicksPauseButton() throws Exception {
         try {
+        	if (Common.apiEnv().equalsIgnoreCase("stage")) {
             Thread.sleep(10000);
-            elementToBeClickableFluentWait(mutvPageLocators.pauseButton, 60);
-            mutvPageLocators.pauseButton.click();
+            elementToBeClickableFluentWait(mutvPageLocators.pauseButton1, 60);
+            mutvPageLocators.pauseButton1.click();
             ExtentsReportManager.extentReportLogging("pass", "Clicks on pauseButton ");
+        	} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+        		Thread.sleep(10000);
+                elementToBeClickableFluentWait(mutvPageLocators.pauseButton, 60);
+                mutvPageLocators.pauseButton.click();
+                ExtentsReportManager.extentReportLogging("pass", "Clicks on pauseButton ");	
+        	}
         } catch (Exception e) {
             ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-clicksPauseButton()<br />" + e);
             throw e;
@@ -2368,7 +2384,21 @@ public class MutvPage extends Common {
 				throw e;
 			}
 		}
+
+
+		public void clicksOnLoginToAddCalenderButtonInIos() {
+			 try {
+		            waitForVisibilityFluentWait(mutvPageLocators.loginToAddCalenderButton,60);
+		            mutvPageLocators.loginToAddCalenderButton.click();
+		            ExtentsReportManager.extentReportLogging("pass","Clicks on loginButton ");
+		        } catch (Exception e) {
+		           ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clicksOnLoginToAddCalenderButtonInIos()<br />" + e);
+		           throw e;
+		        }
+		    }
+			
 		}
+		
 
 
 		

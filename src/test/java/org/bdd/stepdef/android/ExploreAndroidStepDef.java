@@ -23,25 +23,39 @@ public class ExploreAndroidStepDef {
     public ExploreAPIResponse exploreAPIResponse = new ExploreAPIResponse();
     public MutvPage mutvPage = new MutvPage();
 
+//    @Then("^verify whats new or live match blog in home page using api$")
+//    public void verifyWhatsNewOrLiveMatchBlogInHomePageUsingApi() throws Throwable {
+//        try {
+//            explorePage.closePopScreen();
+////        String expWhatsNew = table.cell(1, 0);
+//            boolean contentType = unitedNowAPIResponse.getContentTypeFromSpotLightApi("spotLightEndPoint");
+//            String actualWhatsNeworLiveBlogTextFromUI = explorePage.getWhatsNewOrLiveBlog();
+//            System.out.println(actualWhatsNeworLiveBlogTextFromUI);
+//            if (!contentType) {
+//                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNew("getUnitedNowConfigurationsEndpoint").toUpperCase();
+//                soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expWhatsNewTextFromApi.toUpperCase());
+//                ExtentsReportManager.extentReportLogging("info", "Verified Whats New in home page");
+//            } else {
+//                String expLiveBlogTextFromApi = unitedNowAPIResponse.getLiveBlog("getUnitedNowConfigurationsEndpoint").toUpperCase();
+//                soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expLiveBlogTextFromApi.toUpperCase());
+//                ExtentsReportManager.extentReportLogging("info", "Verified Live Match Blog in home page");
+//            }
+//            soft.assertAll();
+//
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Error in validation of Whats New in home page<br />" + e);
+//            throw e;
+//        }
+//    }
+    
     @Then("^verify whats new or live match blog in home page using api$")
     public void verifyWhatsNewOrLiveMatchBlogInHomePageUsingApi() throws Throwable {
         try {
-            explorePage.closePopScreen();
-//        String expWhatsNew = table.cell(1, 0);
-            boolean contentType = unitedNowAPIResponse.getContentTypeFromSpotLightApi("spotLightEndPoint");
-            String actualWhatsNeworLiveBlogTextFromUI = explorePage.getWhatsNewOrLiveBlog();
-            System.out.println(actualWhatsNeworLiveBlogTextFromUI);
-            if (!contentType) {
-                String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNew("getUnitedNowConfigurationsEndpoint").toUpperCase();
-                soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expWhatsNewTextFromApi.toUpperCase());
-                ExtentsReportManager.extentReportLogging("info", "Verified Whats New in home page");
-            } else {
-                String expLiveBlogTextFromApi = unitedNowAPIResponse.getLiveBlog("getUnitedNowConfigurationsEndpoint").toUpperCase();
-                soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expLiveBlogTextFromApi.toUpperCase());
-                ExtentsReportManager.extentReportLogging("info", "Verified Live Match Blog in home page");
-            }
+            String actualWhatsNeworLiveBlogTextFromUI = explorePage.getWhatsNewText();
+            String expWhatsNewTextFromApi = unitedNowAPIResponse.getWhatsNew("getUnitedNowConfigurationsEndpoint").toUpperCase();
+            soft.assertEquals(actualWhatsNeworLiveBlogTextFromUI, expWhatsNewTextFromApi.toUpperCase());
+            ExtentsReportManager.extentReportLogging("info", "Verified Whats New in home page");
             soft.assertAll();
-
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in validation of Whats New in home page<br />" + e);
             throw e;

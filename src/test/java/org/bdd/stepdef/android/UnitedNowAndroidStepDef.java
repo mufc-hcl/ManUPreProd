@@ -27,6 +27,20 @@ public class UnitedNowAndroidStepDef {
 
     private static final Logger log = LogManager.getLogger(UnitedNowPage.class);
 
+//    @Then("user validates the current day and date")
+//    public void userValidatesTheCurrentDayAndDate() {
+//        try {
+//            String actualDate = new Common().getDateAndDay();
+//            String expectedDate = unitedNowPage.getCurrentDayANdDate();
+//            soft.assertEquals(actualDate, expectedDate);
+//            soft.assertAll();
+//            ExtentsReportManager.extentReportLogging("info", "Validated current day and date");
+//        } catch (AssertionError e) {
+//            ExtentsReportManager.extentReportLogging("fail", "Error in validating current day and date<br />" + e);
+//            throw e;
+//        }
+//    }
+    
     @Then("user validates the current day and date")
     public void userValidatesTheCurrentDayAndDate() {
         try {

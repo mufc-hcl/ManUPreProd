@@ -3,12 +3,14 @@ package org.bdd.stepdef.ios;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bdd.pages.*;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
+import org.bdd.utils.PropertyFileManager;
 import org.bdd.utils.apiResponse.MUTVAPIResponse;
 import org.testng.asserts.SoftAssert;
 
@@ -19,6 +21,7 @@ import io.cucumber.java.en.Then;
 public class MutvIosStepDef {
 	public SoftAssert soft = new SoftAssert();
 	public MutvPage mutvPage = new MutvPage();
+	public IdmPage idmPage = new IdmPage();
 	public MUTVAPIResponse mutvAPIResponse = new MUTVAPIResponse();
 	private static final Logger log = LogManager.getLogger(ShopPage.class);
 
@@ -63,7 +66,7 @@ public class MutvIosStepDef {
             String myListTitleFromAPI = mutvAPIResponse.getMyListTitleFromAPI("MUTVMyListEndpoint");
             String actualMyList = mutvPage.getMyListTitle();
             soft.assertEquals(actualMyList.toUpperCase(), myListTitleFromAPI.toUpperCase());
-
+            
 //            String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
 //            String actualMyListDescAPI = mutvPage.getMyListDesc();
 //            soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
@@ -1099,7 +1102,44 @@ public class MutvIosStepDef {
             throw e;
         }
 	}
+
+	@And("^user clicks on login to add calender button in ios$")
+	public void userClicksOnLoginToAddCalenderButtonInIos() throws Throwable {
+		try {
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
+			mutvPage.clicksOnLoginToAddCalenderButtonInIos();
+			idmPage.clicksOnContinueButton();
+			try {
+	        	Properties props = new PropertyFileManager().getProperties();
+	        	String username = null;
+	        	String password = null;
+	            if (Common.apiEnv().equalsIgnoreCase("stage")) {
+	            	username = props.getProperty("username_stage");
+	            	password = props.getProperty("password_stage");
+	            }
+	            else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+	            	username = props.getProperty("username_preprod");
+	            	password = props.getProperty("password_preprod");
+	            }
+	            idmPage.enterUsername(username);
+				idmPage.enterPasswordInIos(password);
+	            ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password in ios");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password in ios<br />" + e);
+	            throw e;
+	        }
+			idmPage.clicksOnLogInButton();
+			mutvPage.clicksOnLoginToAddCalenderButtonInIos();
+			mutvPage.clickOnMyListIcon();
+			ExtentsReportManager.extentReportLogging("info", "Clicked on log in button in ios");
+		}} catch (AssertionError e) {
+			ExtentsReportManager.extentReportLogging("fail", "Error in clicking on log in button in ios<br />" + e);
+			throw e;
+		}
+
 	}
+}
+	
 
 
 //

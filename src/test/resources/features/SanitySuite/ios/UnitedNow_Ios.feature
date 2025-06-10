@@ -1,6 +1,6 @@
 @Sanity_IOS @UnitedNow_IOS
 Feature: United now
-
+@United_Now_01
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -11,8 +11,8 @@ Feature: United now
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
     Then verify whats new or live match blog in home page using api in ios
-
-  #Then user validates the current day and date in ios
+    Then user validates the current day and date in ios
+    
   Scenario: [United now]TC002 Validate if the filter is not selected by default
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

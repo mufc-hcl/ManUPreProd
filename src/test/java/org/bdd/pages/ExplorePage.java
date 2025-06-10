@@ -76,13 +76,20 @@ public class ExplorePage extends Common {
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 				return explorePageLocators.liveBlogUniteNowPage1.get(0).getDomAttribute("label");
 			} else {
+				if(explorePageLocators.whatsNew1.size()>0) {
 //                   IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 				waitForVisibilityFluentWait(explorePageLocators.whatsNew, 60);
 				ExtentsReportManager.extentReportLogging("pass", "Returning whatsNew Text ");
 				return explorePageLocators.whatsNew.getDomAttribute("label");
+			}else {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+				waitForVisibilityFluentWait(explorePageLocators.whatsNew, 60);
+				ExtentsReportManager.extentReportLogging("pass", "Returning whatsNew Text ");
+				return explorePageLocators.whatsNew.getDomAttribute("label");
+			}
 			}
 		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getWhatsNew()<br />" + e);
+			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getWhatsNewOrLiveBlog()<br />" + e);
 			throw e;
 		}
 	}
@@ -2702,8 +2709,65 @@ public class ExplorePage extends Common {
 		}
 		
 	}
-		
+
+//	public String getWhatsNewText() {
+//		String device = GlobalParams.getPlatformName();
+//		String whatsNew = null;
+//		try {
+//			if (device.equalsIgnoreCase("android")) {
+//				if(explorePageLocators.whatsNew.isDisplayed()) {
+////				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+//				 whatsNew = explorePageLocators.whatsNew.getText();
+//				return whatsNew;
+//				}
+//				else  {
+//					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+//					 whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+//					return whatsNew;
+//				}
+//			} else { //IOS
+//				if(explorePageLocators.whatsNew.isDisplayed()) {
+////				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+//				 whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+//				return whatsNew;
+//		} else {
+//				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+//				 whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+//				return whatsNew;
+//			}
+//		}
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail", "Exception occured in function-getWhatsNew()<br />" + e);
+//			throw e;
+//		}
+//	}
+	public String getWhatsNewText() {
+	    String device = GlobalParams.getPlatformName();
+	    String whatsNew = null;
+	    try {
+	        if (device.equalsIgnoreCase("android")) {
+	            if (explorePageLocators.whatsNew.isDisplayed()) {
+	                whatsNew = explorePageLocators.whatsNew.getText();
+	            } else {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+	                whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+	            }
+	        } else { // iOS
+	            if (!explorePageLocators.whatsNew.isDisplayed()) {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+	            }
+	            whatsNew = explorePageLocators.whatsNew.getAttribute("name");
+	        }
+	        return whatsNew;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getWhatsNew()<br />" + e);
+	        throw e;
+	    }
 	}
+
+}
+ 
+	
 		
 		
 

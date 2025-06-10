@@ -227,4 +227,10 @@ public class Common {
         }
         Files.write(Paths.get(PASSWORD_FILE), lines);
     }
+
+	public String getDateAndDayIOS() {
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE d MMMM");
+		return dateFormat.format(date);
+	}
 }

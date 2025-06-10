@@ -41,18 +41,42 @@ public class UnitedNowPage extends Common {
 		PageFactory.initElements(new AppiumFieldDecorator(this.driver), unitedNowPageLocators);
 	}
 
+//	public String getCurrentDayANdDate() {
+//		try {
+//			waitForVisibilityFluentWait(unitedNowPageLocators.dayAndDateUnitedPage, 5);
+//			String expectedDate = unitedNowPageLocators.dayAndDateUnitedPage.getText();
+//			ExtentsReportManager.extentReportLogging("pass", "Return the current day and date in united now page");
+//			return expectedDate;
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Exception occurred in function-getCurrentDayANdDate()<br />" + e);
+//			throw e;
+//		}
+//
+//	}
+	
 	public String getCurrentDayANdDate() {
+		String device = GlobalParams.getPlatformName();
 		try {
-			waitForVisibilityFluentWait(unitedNowPageLocators.dayAndDateUnitedPage, 5);
-			String expectedDate = unitedNowPageLocators.dayAndDateUnitedPage.getText();
-			ExtentsReportManager.extentReportLogging("pass", "Return the current day and date in united now page");
-			return expectedDate;
+			if (device.equalsIgnoreCase("android")) {
+				waitForVisibilityFluentWait(unitedNowPageLocators.dayAndDateUnitedPage, 5);
+				String expectedDate = unitedNowPageLocators.dayAndDateUnitedPage.getText().trim();
+				ExtentsReportManager.extentReportLogging("pass", "Return the current day and date in united now page");
+				return expectedDate;
+			} else {
+				
+				String date = new Common().getDateAndDayIOS().trim();
+				WebElement systemDate = driver.findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name=\""+date+"\"]"));
+				String expectedDate = systemDate.getAttribute("label");
+				ExtentsReportManager.extentReportLogging("pass", "Return the current day and date in united now page");
+				return expectedDate;
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occurred in function-getCurrentDayANdDate()<br />" + e);
 			throw e;
 		}
-
+ 
 	}
 
 	public void clickFilterIcon() {

@@ -1,6 +1,7 @@
 @Sanity_IOS @MUTV_IOS
 Feature: MUTV IOS feature
 
+@MUTV_001
   Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List screen and tapping on back button should take user back to MUTV screen ,Verify "Find Something to Add" button along with "+" icon is displayed when there is no favorite item added to My List
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -13,6 +14,12 @@ Feature: MUTV IOS feature
     And user clicks on Mutv tab in ios
     And user clicks on explore icon in ios
     And user clicks on MyList icon in ios
+    And user clicks on login to add calender button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email and valid password for subscribed user in ios
+    #And user clicks on log in button in ios
+    #And user clicks on login to add calender button in ios
+    #And user clicks on MyList icon in ios
     Then user verify the following details in ios using Api
     #| title   | desc                                                                                                                              | add button            |
     #| MY LIST | Add your favourite shows and episodes to your list to enjoy them at any time – just hit the My List + icon on any show or episode | FIND SOMETHING TO ADD |
@@ -34,6 +41,7 @@ Feature: MUTV IOS feature
     And user validate MUTV Today Schecule description using api
     Then user validate list containing schedules for next seven days in ios
     And user clicks on Back icon in ios
+
 
   Scenario: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu ios application
@@ -95,7 +103,8 @@ Feature: MUTV IOS feature
     And user click on My United in bottom tab in ios
     And user clicks on log in button in ios
     And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
@@ -129,7 +138,8 @@ Feature: MUTV IOS feature
     And user click on My United in bottom tab in ios
     And user clicks on log in button in ios
     And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
     And user clicks on login button in login screen in ios
     And user clicks on test continue and clicks on back icon
     And user clicks on No tracking
@@ -168,7 +178,8 @@ Feature: MUTV IOS feature
       | SUBSCRIBE          |
     And user clicks on login button in subscribe screen
     And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
     And user clicks on login button in subscribe screen in ios
 
     #And user clicks on play Icon for CBS video
@@ -193,7 +204,8 @@ Feature: MUTV IOS feature
       | SIGN UP      | REGISTER FOR FREE |
     And user clicks on log in button in ios
     And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
     And user clicks on login button in subscribe screen in ios
     And user clicks on play Icon for CBR video
 

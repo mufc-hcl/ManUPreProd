@@ -66,7 +66,7 @@ public class MutvPageLocators {
 	public WebElement closeIconInVideoMutv;
 
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[position()=4]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
 	public WebElement oneVideoMutvScreen;
 	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
@@ -77,6 +77,10 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"FULL 90\"]")
 	public List<WebElement> fullMUTV;
+	
+//	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNMISSABLE INTERVIEWS\"]")
+	public List<WebElement> fullMUTV1;
 
 //	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
 //	public WebElement oneVideoMutvScreenIos;
@@ -149,6 +153,11 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/play\')]")
 //	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
 	public WebElement pauseButton;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Pause\"]")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
+	public WebElement pauseButton1;
+	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_control_close\')]")
 	@iOSXCUITFindBy(accessibility = "xCircleFill")
 	public WebElement closeButtonVideo;
@@ -416,6 +425,9 @@ public class MutvPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Listen Now button\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"PLAY\"]")
 	public WebElement playButtonInMUTV;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOGIN TO ADD CALENDAR\"]")
+	public WebElement loginToAddCalenderButton;
 }
 
 

@@ -50,8 +50,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    #And user enter the valid email and valid password for subscribed user
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -75,7 +75,7 @@ Feature: MUTV Feature
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
     
-@AWSFailure
+
   Scenario Outline: [MUTV]TC008 Verify that CBS badges display for  subscribe display
     Given user navigates to manu android application
     And user navigates to screen two
@@ -118,7 +118,8 @@ Feature: MUTV Feature
     And user selects the video and checks CBR badge
     Then validate register screen is displayed
     And user clicks on log in button in subscribe page
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
 
     Examples: 
@@ -172,7 +173,7 @@ Feature: MUTV Feature
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
       
-@MUTV_bbbb
+
   Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
@@ -185,8 +186,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    #And user enter the valid email and valid password for subscribed user
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -219,6 +220,7 @@ Feature: MUTV Feature
       | manupreprod@yopmail.com | Manu@123 |
       
 
+
   Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -231,7 +233,8 @@ Feature: MUTV Feature
     And user clicks on braze in app msg
     And user click on My United in bottom tab
     And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
     And user clicks on login button in login screen
     And user clicks continue in MUApp popup
     And user clicks on close from notification
@@ -317,7 +320,7 @@ Feature: MUTV Feature
     Then user validates the CBS/CBR badges display for future schedule program
     
     
-    Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+    Scenario Outline: [MUTV]TC019 Verify on tapping Podcast it opens the same and start playing along with its expected controls
      Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three

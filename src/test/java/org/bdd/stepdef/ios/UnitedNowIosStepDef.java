@@ -23,20 +23,35 @@ public class UnitedNowIosStepDef {
 	public UnitedNowAPIResponse unitedNowAPIResponse = new UnitedNowAPIResponse();
 	 private static final Logger log = LogManager.getLogger(UnitedNowPage.class);
 
-	@Then("^user validates the current day and date in ios$")
-	public void userValidatesTheCurrentDayAndDateInIos() throws Throwable {
-		try {
-			String actualDate = new Common().getDateAndDay();
-			String expectedDate = unitedNowPage.getCurrentDayANdDate();
-			soft.assertEquals(actualDate, expectedDate);
-			soft.assertAll();
-			ExtentsReportManager.extentReportLogging("info", "validated the current day and date in ios");
-		} catch (AssertionError e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Error in validating the current day and date in ios <br />" + e);
-			throw e;
+//	@Then("^user validates the current day and date in ios$")
+//	public void userValidatesTheCurrentDayAndDateInIos() throws Throwable {
+//		try {
+//			String actualDate = new Common().getDateAndDay();
+//			String expectedDate = unitedNowPage.getCurrentDayANdDate();
+//			soft.assertEquals(actualDate, expectedDate);
+//			soft.assertAll();
+//			ExtentsReportManager.extentReportLogging("info", "validated the current day and date in ios");
+//		} catch (AssertionError e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Error in validating the current day and date in ios <br />" + e);
+//			throw e;
+//		}
+//	}
+	 
+	 @Then("^user validates the current day and date in ios$")
+		public void userValidatesTheCurrentDayAndDateInIos() throws Throwable {
+			try {
+				String actualDate = new Common().getDateAndDayIOS().trim();
+				String expectedDate = unitedNowPage.getCurrentDayANdDate().trim();
+				soft.assertEquals(actualDate, expectedDate);
+				soft.assertAll();
+				ExtentsReportManager.extentReportLogging("info", "validated the current day and date in ios");
+			} catch (AssertionError e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Error in validating the current day and date in ios <br />" + e);
+				throw e;
+			}
 		}
-	}
 
 	@And("^user click on filter icon in ios$")
 	public void userClickOnFilterIconInIos() throws Throwable {
