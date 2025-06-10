@@ -1969,7 +1969,7 @@ public class MutvPage extends Common {
 			throw e;
 		}
 		}
-	public void clicksinAppMsgIOSBreazeTestCloseButton() {
+	public void clicksinAppMsgIOSBrazeTestCloseButton() {
 		try {
 			if (mutvPageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
 					waitForVisibilityFluentWait(mutvPageLocators.closeIconInAppMsgIosBrazeTest, 60);
@@ -1982,7 +1982,7 @@ public class MutvPage extends Common {
 			System.out.println("null pointer exception due to override of screens");
 		}catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-clicksinAppMsgIOSBreazeTestCloseButton()<br />" + e);
+					"Exception occured in function-clicksinAppMsgIOSBrazeTestCloseButton()<br />" + e);
 			throw e;
 		}
 		}

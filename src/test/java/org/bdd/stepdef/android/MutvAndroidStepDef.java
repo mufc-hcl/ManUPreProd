@@ -805,8 +805,8 @@ public class MutvAndroidStepDef {
         try {
             mutvPage.clicksOnImagePopUpWindow();
             mutvPage.clicksOnShopNowPopUP();
-            mutvPage.clicksinAppMsgIOSBreazeTestCloseButton();
             mutvPage.clicksOnNotnowPopUp();
+            mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             ExtentsReportManager.extentReportLogging("info", "Clicked on braze in app msg");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking on braze in app msg<br />" + e);

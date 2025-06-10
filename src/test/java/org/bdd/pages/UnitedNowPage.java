@@ -4256,7 +4256,7 @@ public class UnitedNowPage extends Common {
 
 		        } else { // iOS
 		            int i = 0;
-		            while (i < 20) {
+		            while (i < 30) {
 		                List<WebElement> e = driver.findElements(
 		                    AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\"")
 		                );
@@ -4267,7 +4267,7 @@ public class UnitedNowPage extends Common {
 		                            "Video card '" + expVideoCard + "' displayed and clicked on iOS.");
 		                    return true;
 		                } else {
-		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 		                    i++;
 		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on iOS...");
 		                }
