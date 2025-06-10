@@ -4290,51 +4290,60 @@ public class UnitedNowPage extends Common {
 
 	public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
 		String device = GlobalParams.getPlatformName();
-		try {
-			if (device.equalsIgnoreCase("android")) {
-				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
-				List<WebElement> e = driver
-						.findElements(AppiumBy.xpath("//*[contains(@text, '" + expVideoCard + "')]"));
-				Thread.sleep(2000);
+		  try {
+		        if (device.equalsIgnoreCase("android")) {
+		            int i = 0;
+		            while (i < 20) {
+		                // Corrected XPath with escaped double quotes
+		                List<WebElement> e = driver.findElements(
+		                    AppiumBy.xpath("//*[contains(@text, \"" + expVideoCard + "\")]")
+		                );
+		                Thread.sleep(2000);
 
-				if (!e.isEmpty()) {
-					waitForVisibilityFluentWait(e.get(0), 60);
-					e.get(0).click();
-					ExtentsReportManager.extentReportLogging("pass",
-							"Video card '" + expVideoCard + "' displayed and clicked on Android.");
-					return true;
-				} else {
-					ExtentsReportManager.extentReportLogging("fail",
-							"Video card '" + expVideoCard + "' not found on Android.");
-					return false;
-				}
+		                if (!e.isEmpty()) {
+		                    waitForVisibilityFluentWait(e.get(0), 60);
+		                    e.get(0).click();
+		                    ExtentsReportManager.extentReportLogging("pass",
+		                            "Video card '" + expVideoCard + "' displayed and clicked on Android.");
+		                    return true;
+		                } else {
+		                	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3); // Use your generic scroll method for Android
+		                    i++;
+		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on Android...");
+		                }
+		            }
+		            ExtentsReportManager.extentReportLogging("fail",
+		                    "Video card '" + expVideoCard + "' not found on Android after multiple scrolls.");
+		            return false;
 
-			} else { // iOS
-				int i = 0;
-				while (i < 20) {
-					List<WebElement> e = driver
-							.findElements(AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\""));
-					if (!e.isEmpty()) {
-						e.get(0).click();
-						Thread.sleep(4000); // Consider replacing with WebDriverWait
-						ExtentsReportManager.extentReportLogging("pass",
-								"Video card '" + expVideoCard + "' displayed and clicked on iOS.");
-						return true;
-					} else {
-						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-						i++;
-						ExtentsReportManager.extentReportLogging("pass", "Scrolling to find video card on iOS...");
-					}
-				}
-				ExtentsReportManager.extentReportLogging("fail",
-						"Failing due to excessive scrolls. Unable to find the card '" + expVideoCard + "' on iOS.");
-				return false;
-			}
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function getVideoCardFromUnitedNow()<br />" + e);
-			throw e;
-		}
+		        } else { // iOS
+		            int i = 0;
+		            while (i < 20) {
+		                List<WebElement> e = driver.findElements(
+		                    AppiumBy.iOSNsPredicateString("name == \"" + expVideoCard + "\"")
+		                );
+		                if (!e.isEmpty()) {
+		                    e.get(0).click();
+		                    Thread.sleep(4000); // Consider WebDriverWait
+		                    ExtentsReportManager.extentReportLogging("pass",
+		                            "Video card '" + expVideoCard + "' displayed and clicked on iOS.");
+		                    return true;
+		                } else {
+		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+		                    i++;
+		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on iOS...");
+		                }
+		            }
+		            ExtentsReportManager.extentReportLogging("fail",
+		                    "Failing due to excessive scrolls. Unable to find the card '" + expVideoCard + "' on iOS.");
+		            return false;
+		        }
+
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail",
+		                "Exception occurred in function getVideoCardFromUnitedNow()<br />" + e);
+		        throw e;
+		    }
 	}
 //		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
 //			String device = GlobalParams.getPlatformName();

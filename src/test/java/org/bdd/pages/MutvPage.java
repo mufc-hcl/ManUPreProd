@@ -607,22 +607,24 @@ public class MutvPage extends Common {
 //    }
     
     public boolean clicksOnTheHeroCarouselDotsInMutvScreenIos() {
-    	try {
-    		if (Common.apiEnv().equalsIgnoreCase("stage")) {
-			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
-			return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
-		} else  if (Common.apiEnv().equalsIgnoreCase("prod")) {
-			ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
-			return mutvPageLocators.heroCarouselInMutvPage1.isDisplayed();
-		}
-		}
-    		catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occured in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
-			throw e;
-		}
-		return false;
+        try {
+            if (Common.apiEnv().equalsIgnoreCase("stage")) {
+                ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
+                return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
+            } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+                ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
+                return mutvPageLocators.heroCarouselInMutvPage1.isDisplayed();
+            } else {
+                ExtentsReportManager.extentReportLogging("fail", "Unknown environment: " + Common.apiEnv());
+                return false;
+            }
+        } catch (Exception e) {
+            ExtentsReportManager.extentReportLogging("fail",
+                    "Exception occurred in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
+            throw e;
+        }
     }
+
 //            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
 //            if (dots == null || dots.isEmpty()) {
 //                ExtentsReportManager.extentReportLogging("info", "No heroCarouselDotsMutvPage elements found.");
