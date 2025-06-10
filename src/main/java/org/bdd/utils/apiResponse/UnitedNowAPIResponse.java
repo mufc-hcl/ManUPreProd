@@ -760,7 +760,7 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 	}
 
-	public boolean getStoriesCarouselFromApi(String endpoint) throws Exception {
+	public boolean getStoriesCarouselFromApi1(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
 			js = new JsonPath(res.asString());
@@ -776,6 +776,31 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			throw e;
 		}
 	}
+	
+	public ArrayList<String> getStoriesCarouselTitles(String endpoint) throws Exception {
+	    try {
+	        ArrayList<String> highlightedTitles = new ArrayList<>();
+
+	        Response res = getResponse(endpoint);
+	        js = new JsonPath(res.asString());
+	        int size = js.getList("HighlightedItemResponse.response.docs").size();
+
+	        for (int i = 0; i < size; i++) {
+	            String title = js.getString("HighlightedItemResponse.response.docs[" + i + "].unitednowhighlightstitle_t");
+	            if (title != null && !title.isEmpty()) {
+	                highlightedTitles.add(title);
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("info",
+	                "Getting the response from the endpoint " + getURIInfo(endpoint));
+	        return highlightedTitles;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getHighlightedTitles(): " + e);
+	        throw e;
+	    }
+	}
+
 
 	public String getUpsellTitleFromApi(String endpoint) throws Exception {
 		try {
