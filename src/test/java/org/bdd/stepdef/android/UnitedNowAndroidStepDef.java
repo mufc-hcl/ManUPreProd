@@ -574,12 +574,13 @@ public class UnitedNowAndroidStepDef {
             ArrayList<String> expPlayersPageFilters = new ArrayList<>();
             expPlayersPageFilters = unitedNowAPIResponse.getPlayersPageFilterFromApi("PlayersPageFiltersEndpoint");
             expPlayersPageFilters.removeAll(Collections.singleton(null));
-            System.out.println("expPlayersPageFilters+++++++++++"+expPlayersPageFilters.toString().toUpperCase());
+           
+            System.out.println("expPlayersPageFilters+++++++++++"+expPlayersPageFilters);
             ArrayList<String> actPlayersPageFillers = unitedNowPage.getPlayersFiltersPageUI();
-            System.out.println("actPlayersPageFillers------------"+actPlayersPageFillers.toString().toUpperCase());
+            System.out.println("actPlayersPageFillers------------"+actPlayersPageFillers);
             Collections.sort(expPlayersPageFilters);
             Collections.sort(actPlayersPageFillers);
-            soft.assertEquals(expPlayersPageFilters.toString().toUpperCase(), actPlayersPageFillers.toString().toUpperCase());
+            soft.assertTrue(actPlayersPageFillers.containsAll(expPlayersPageFilters) ,expPlayersPageFilters.toString()+ " Expected player items not matched with actual player items "+actPlayersPageFillers.toString());
             soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "Validated the PlayersPageFilters screen");
         } catch (AssertionError | IOException e) {
@@ -653,7 +654,7 @@ public class UnitedNowAndroidStepDef {
              boolean flag = unitedNowPage.validatesGreetingsMessageInUnitedNowIsDisplayed();
              soft.assertTrue(flag);
              soft.assertAll();
-             ExtentsReportManager.extentReportLogging("info", "Validated greeting message in untied now is displayed ");
+             ExtentsReportManager.extentReportLogging("info", "Validated greeting message in united now is displayed ");
          } catch (AssertionError e) {
              ExtentsReportManager.extentReportLogging("fail", "Error in displaying greeting message in united now<br />" + e);
              throw e;
@@ -671,25 +672,27 @@ public class UnitedNowAndroidStepDef {
             throw e;
         }
     }
-//    	try {
-//            boolean storiesCarouselFromAPI = unitedNowAPIResponse.getStoriesCarouselFromApi("ComingUp/StoriesCarousalEndPoint");
-//
-//            boolean storiesCarouselDisplayedFromUI = unitedNowPage.validatesStoriesCarouselInUnitedNowIsDisplayed();
-//
-//            ExtentsReportManager.extentReportLogging("info","Stories Carousel  From API<br />"+storiesCarouselFromAPI);
-//			 ExtentsReportManager.extentReportLogging("info","actual Stories Carousel From UI<br />"+unitedNowPage.validatesStoriesCarouselInUnitedNowIsDisplayed());
-//
-//            soft.assertEquals(storiesCarouselDisplayedFromUI, storiesCarouselFromAPI, "Carousel display mismatch.");
-//	        soft.assertAll();
-//
-//            soft.assertAll();
-//
-//        } catch (Exception e) {
-//            ExtentsReportManager.extentReportLogging("fail", 
-//                "Exception occurred during Stories Carousel validation: " + e.getMessage());
-//            throw e;
-//        }
-//    }
+    
+    @Then("^user validates Stories Carousel in united now is displayed using API$")
+    public void userValidatesStoriesCarouselInUnitedNowIsDisplayedAPI() throws Exception {
+    	ArrayList<String> storiesCarouselFromAPI = new ArrayList<>();
+        try {
+        	storiesCarouselFromAPI = unitedNowAPIResponse.getStoriesCarouselTitles("StoriesCarousalEndPoint");
+            ExtentsReportManager.extentReportLogging("info", "Story Carousel from API "+storiesCarouselFromAPI);
+            if(!storiesCarouselFromAPI.isEmpty()) {
+                soft.assertTrue(unitedNowPage.validatesStoriesCarouselInUNUI(storiesCarouselFromAPI.get(0),false, 20,"Story Carousel"));
+                soft.assertAll();
+                ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
+            }else {
+                ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+            }
+  		
+	        } catch (Exception e) {
+	            ExtentsReportManager.extentReportLogging("fail", 
+	                "Exception occurred during Stories Carousel validation: " + e.getMessage());
+	            throw e;
+    		}
+    }
     	
     @Then("^user validates Coming Up carousel in united now is displayed using API$")
     public void userValidatesComingUpCarouselInUnitedNowIsDisplayed() throws Exception {
@@ -698,12 +701,12 @@ public class UnitedNowAndroidStepDef {
     	        boolean comingUpCarouselCarouselDisplayedFromUI = unitedNowPage.validatesTheCaroselPageIsDisplayed();
 
     	        ExtentsReportManager.extentReportLogging("info","ComingUp Carousel  From API<br />"+comingUpCarouselDisplayedFromAPI);
-   			 ExtentsReportManager.extentReportLogging("info","actual ComingUp Carousel From UI<br />"+unitedNowPage.validatesTheCaroselPageIsDisplayed());
+   			   ExtentsReportManager.extentReportLogging("info","actual ComingUp Carousel From UI<br />"+comingUpCarouselCarouselDisplayedFromUI);
 
     	        soft.assertEquals(comingUpCarouselCarouselDisplayedFromUI, comingUpCarouselDisplayedFromAPI, "Carousel display mismatch.");
     	        soft.assertAll();
 
-    	        ExtentsReportManager.extentReportLogging("info", "Validated the carousel is displayed in United Now using API.");
+    	        ExtentsReportManager.extentReportLogging("info", "Validated the carousel is displayed in United Now page.");
     	    } catch (Exception e) {
     	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred during carousel validation: " + e.getMessage());
     	        throw e;

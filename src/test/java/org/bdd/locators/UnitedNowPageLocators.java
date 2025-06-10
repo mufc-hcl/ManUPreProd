@@ -290,8 +290,13 @@ public class UnitedNowPageLocators {
     public WebElement under18MatchSchedulePage;
 
     @AndroidFindBy(accessibility = "Players")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Players\"]")
+   @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Players']")
     public WebElement playerIconUnitedNowPage;
+    
+    @AndroidFindBy(accessibility = "Players")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Players']")
+     public List<WebElement> playerIconUnitedNowPages;
+
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='MEN']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MENTab Item\"]")
@@ -313,7 +318,7 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"LEGENDSTab Item\"]")
     public WebElement legendTabPlayersScreen;
 
-    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[contains(@resource-id, \":id/player\")])[2]/android.view.View")
+    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[substring(@resource-id, string-length(@resource-id) - string-length('id/player') + 1) = 'id/player'])[2]/android.view.View")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")
     public WebElement selectPlayerPlayersScreen;
 
@@ -408,28 +413,34 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United Stage App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]")
     public WebElement closeButtonPredictionCouroselUnitedNowPage;
     
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Close']")
+    public WebElement closeButtonPredictionCouroselUN;
+    
     @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/predictions_top_unsigned_headline\")]")
     @iOSXCUITFindBy(accessibility = "MATCH PREDICTIONS")
     public WebElement predictionPageTitle;
     
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/contextual_button\")]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"MAKE YOUR PREDICTIONS\"]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/contextual_button')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='MAKE YOUR PREDICTIONS']")
     public List<WebElement> makeYourPredictionsUnitedNowScreen;
     
     @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/txtTeamTickets\")]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[3]")
     public List<WebElement> textFixtureAndResults1;
     
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Influencers\"]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Influencers']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Players\"]")
     public WebElement influencerIconUnitedNowPage;
     
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Player comparison\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Players\"]")
-    public WebElement playerComparisonIconUnitedNowPage;
+    public List<WebElement> playerComparisonIconUnitedNowPage;
     
     @iOSXCUITFindBy(accessibility = "Lineup")
     public WebElement lineUpIconUnitedNowPage;
+    
+    @iOSXCUITFindBy(accessibility = "Lineup")
+    public List<WebElement> lineUpIconUnitedNowPages;
     
     @iOSXCUITFindBy(accessibility = "Close")
     public WebElement CloseIconSignUpPage;
@@ -913,5 +924,7 @@ public class UnitedNowPageLocators {
     @AndroidFindBy(xpath = "////android.widget.FrameLayout[@content-desc='Dismiss Live Stream']/android.widget.ImageView")
 	public WebElement DismissLiveStreamInUN;
      
+    @AndroidFindBy(xpath = "//*[@content-desc='CLOSE']")
+	public List<WebElement> closeIconMutvINAppPopUp;
 
 }

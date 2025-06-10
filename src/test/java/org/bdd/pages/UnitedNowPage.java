@@ -87,7 +87,33 @@ public class UnitedNowPage extends Common {
 		}
 	}
 
+	
+	
+	
 	public void clickFilterIconIos() {
+		String device = GlobalParams.getPlatformName().toLowerCase();
+		try {
+			  scrollAndClearMainFilterView(false,8);
+			  if (unitedNowPageLocators.filterIconUnitedPage.size() > 0) {
+				//waitForVisibilityFluentWait(unitedNowPageLocators.filterIconUnitedPage.get(0), 10);
+				elementToBeClickableFluentWait(unitedNowPageLocators.filterIconUnitedPage.get(0),30);
+				unitedNowPageLocators.filterIconUnitedPage.get(0).click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on filter icon");
+			}
+		} catch (Exception e) {
+			try {
+			scrollAndClearMainFilterView(false,8);
+		
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", unitedNowPageLocators.filterIconUnitedPage);
+			}catch (Exception e1) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function-clickFilterIconIos()<br />" + e1);
+			throw e;
+		}
+		}
+	}
+	public void clickFilterIconIos1() {
 		try {
 			if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 //                    if (!(explorePageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText().equalsIgnoreCase("LIVE MATCH CENTRE")))
@@ -1242,27 +1268,57 @@ public class UnitedNowPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
+				
 				if (!unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.isEmpty()) {
+					if (unitedNowPageLocators.closeIconMutvINAppPopUp.size() > 0) {
+						unitedNowPageLocators.closeIconMutvINAppPopUp.get(0).click();
+						ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in mutv in app popup");
+					}
 					waitForVisibilityFluentWait(unitedNowPageLocators.influencerIconUnitedNowPage, 60);
 					unitedNowPageLocators.influencerIconUnitedNowPage.click();
+					if (unitedNowPageLocators.closeIconMutvINAppPopUp.size() > 0) {
+						unitedNowPageLocators.closeIconMutvINAppPopUp.get(0).click();
+						ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in mutv in app popup");
+					}
+					
 					if (unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage.isDisplayed()) {
 						unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage.click();
 					}
-					waitForVisibilityFluentWait(unitedNowPageLocators.playerComparisonIconUnitedNowPage, 60);
-					unitedNowPageLocators.playerComparisonIconUnitedNowPage.click();
-				} else {
+					
+					if (unitedNowPageLocators.playerComparisonIconUnitedNowPage.size() > 0) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.playerComparisonIconUnitedNowPage.get(0), 60);
+					unitedNowPageLocators.playerComparisonIconUnitedNowPage.get(0).click();
+					}					
+					
+				} if (!unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.isEmpty()) {
+					waitForVisibilityFluentWait(unitedNowPageLocators.influencerIconUnitedNowPage, 60);
+					unitedNowPageLocators.influencerIconUnitedNowPage.click();
+					if (unitedNowPageLocators.closeIconMutvINAppPopUp.size() > 0) {
+						unitedNowPageLocators.closeIconMutvINAppPopUp.get(0).click();
+						ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in mutv in app popup");
+					}
+					elementToBeClickableFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
+					unitedNowPageLocators.playerIconUnitedNowPage.click();
+					
+				}
+				else {
 					elementToBeClickableFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
 					unitedNowPageLocators.playerIconUnitedNowPage.click();
 				}
 			} else {
-				if (unitedNowPageLocators.playerIconUnitedNowPage.isDisplayed()) {
+				if (unitedNowPageLocators.playerIconUnitedNowPages.size()>0) {
 					elementToBeClickableFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
 					unitedNowPageLocators.playerIconUnitedNowPage.click();
 				} else {
+					if (unitedNowPageLocators.lineUpIconUnitedNowPages.size()>0) {
 					elementToBeClickableFluentWait(unitedNowPageLocators.lineUpIconUnitedNowPage, 60);
 					unitedNowPageLocators.lineUpIconUnitedNowPage.click();
-					Thread.sleep(2000);
-//					waitForVisibilityFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
+					}
+					if (unitedNowPageLocators.closeButtonPredictionCouroselUN.isDisplayed()) {
+						unitedNowPageLocators.closeButtonPredictionCouroselUN.click();
+					}
+					//Thread.sleep(2000);
+					waitForVisibilityFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
 					elementToBeClickableFluentWait(unitedNowPageLocators.playerIconUnitedNowPage, 60);
 					unitedNowPageLocators.playerIconUnitedNowPage.click();
 				}
@@ -1476,12 +1532,15 @@ public class UnitedNowPage extends Common {
 				unitedNowPageLocators.backButton.click();
 			} else {
 				unitedNowPageLocators.articleCard.click();
-				elementToBeClickableFluentWait(unitedNowPageLocators.backButton1.get(0), 60);
-				unitedNowPageLocators.backButton1.get(0).click();
-				elementToBeClickableFluentWait(unitedNowPageLocators.backButton, 60);
-				unitedNowPageLocators.backButton.click();
+				if (unitedNowPageLocators.backButton1.size() > 0) {
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on video or article");
+					elementToBeClickableFluentWait(unitedNowPageLocators.backButton1.get(0), 60);
+					unitedNowPageLocators.backButton1.get(0).click();
+					elementToBeClickableFluentWait(unitedNowPageLocators.backButton, 60);
+					unitedNowPageLocators.backButton.click();
+				}
 			}
-			ExtentsReportManager.extentReportLogging("pass", "CLicks on video or article");
+			ExtentsReportManager.extentReportLogging("pass", "Clicks on video or article");
 		} catch (NoSuchElementException ns) {
 			ExtentsReportManager.extentReportLogging("pass", "Latest section is not available");
 		} catch (Exception e) {
@@ -2145,6 +2204,7 @@ public class UnitedNowPage extends Common {
 			if (device.equalsIgnoreCase("android")) {
 //                Thread.sleep(3000);
 				if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
+					ExtentsReportManager.extentReportLogging("Pass", "Validated the carousel is displayed in United Now page.");
 					if (!(unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText()
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
 						if (!unitedNowPageLocators.matchStats.isEmpty()) {
@@ -2167,6 +2227,7 @@ public class UnitedNowPage extends Common {
 					} else if (!unitedNowPageLocators.backButton1.isEmpty()) {
 						return true;
 					} else if (!unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage1.isEmpty()) {
+						ExtentsReportManager.extentReportLogging("Pass", "Validated the carousel is displayed in United Now page.");
 						unitedNowPageLocators.closeButtonPredictionCouroselUnitedNowPage1.get(0).click();
 						return unitedNowPageLocators.predictionPageTitle.isDisplayed();
 
@@ -2176,6 +2237,7 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
+					ExtentsReportManager.extentReportLogging("Pass", "Validated the carousel is displayed in United Now page.");
 					if (!(unitedNowPageLocators.liveMatchCenterUnitedNowScreen.get(0).getText()
 							.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
 						if (!unitedNowPageLocators.matchStats.isEmpty()) {
@@ -5263,53 +5325,95 @@ public class UnitedNowPage extends Common {
 	
 
 	
-	public boolean getActualCardFromUnitedNowUI(String cardTextToSearch, boolean upperCase,int maxIOSScrolls,String contentType) {
+//	public boolean getActualCardFromUnitedNowUI(String cardTextToSearch, boolean upperCase,int maxIOSScrolls,String contentType) {
+//	    String device = GlobalParams.getPlatformName().toLowerCase();
+//	    boolean isAndroid = device.contains("android");
+//	    try {
+//	    	String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch;
+//
+//	        if ("android".equalsIgnoreCase(device)) {
+//	        	scrollAndClearMainFilterView(isAndroid,5);
+//	            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, eleText);
+//	            List<WebElement> elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
+//	            Thread.sleep(2000); // Consider replacing with explicit wait
+//
+//	            if (!elements.isEmpty()) {
+//	                waitForVisibilityFluentWait(elements.get(0), 60);
+//	                ExtentsReportManager.extentReportLogging("pass", contentType + " Card '" + eleText + "' found");
+//	                elements.get(0).click();
+//	                
+//	                return true;
+//	            }
+//	        } else {
+//	            int attempts = 0;
+//	            while (attempts < maxIOSScrolls) {
+//	                List<WebElement> elements = driver.findElements(AppiumBy.accessibilityId(eleText));
+//
+//	                if (!elements.isEmpty()) {
+//	                	ExtentsReportManager.extentReportLogging("pass",contentType + " Card '" + eleText + "' found ");
+//	                    elements.get(0).click();
+//	                    Thread.sleep(100); 
+//	                    
+//	                    return true;
+//	                } else {
+//	                	//ExtentsReportManager.extentReportLogging("pass","scroll "+attempts);
+//	                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+//	                    attempts++;
+//	                }
+//	            }
+//	        }
+//
+//	        ExtentsReportManager.extentReportLogging("info", contentType + " Card '" + eleText + "' not found after scrolling");
+//	    } catch (Exception e) {
+//	        ExtentsReportManager.extentReportLogging("fail",
+//	                "Exception in getActualCardFromUnitedNowUI() while searching for card '"+ contentType + " " + cardTextToSearch + "': " + e.getMessage());
+//	        return false;
+//	    }
+//
+//	    return false;
+//	}
+	
+	public boolean getActualCardFromUnitedNowUI(String cardTextToSearch, boolean upperCase, int maxScrolls, String contentType) {
 	    String device = GlobalParams.getPlatformName().toLowerCase();
 	    boolean isAndroid = device.contains("android");
-	    try {
-	    	String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch;
 
-	        if ("android".equalsIgnoreCase(device)) {
-	        	scrollAndClearMainFilterView(isAndroid,5);
-	            AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, eleText);
-	            List<WebElement> elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
-	            Thread.sleep(2000); // Consider replacing with explicit wait
+	    try {
+	        String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch;
+
+	        scrollAndClearMainFilterView(isAndroid, 5);
+
+	        int attempts = 0;
+	        while (attempts < maxScrolls) {
+	            List<WebElement> elements;
+
+	            if (isAndroid) {
+	                elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
+	            } else {
+	               // elements = driver.findElements(AppiumBy.accessibilityId(eleText));
+	            	 elements = driver.findElements(AppiumBy.iOSNsPredicateString("name ==[c] '" + eleText + "'"));
+	            }
 
 	            if (!elements.isEmpty()) {
 	                waitForVisibilityFluentWait(elements.get(0), 60);
 	                ExtentsReportManager.extentReportLogging("pass", contentType + " Card '" + eleText + "' found");
 	                elements.get(0).click();
-	                
 	                return true;
-	            }
-	        } else {
-	            int attempts = 0;
-	            while (attempts < maxIOSScrolls) {
-	                List<WebElement> elements = driver.findElements(AppiumBy.accessibilityId(eleText));
-
-	                if (!elements.isEmpty()) {
-	                	ExtentsReportManager.extentReportLogging("pass",contentType + " Card '" + eleText + "' found ");
-	                    elements.get(0).click();
-	                    Thread.sleep(100); 
-	                    
-	                    return true;
-	                } else {
-	                	//ExtentsReportManager.extentReportLogging("pass","scroll "+attempts);
-	                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
-	                    attempts++;
-	                }
+	            } else {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+	                attempts++;
 	            }
 	        }
 
-	        ExtentsReportManager.extentReportLogging("info", contentType + " Card '" + eleText + "' not found after scrolling");
+	        ExtentsReportManager.extentReportLogging("info", contentType + " Card '" + eleText + "' not found after scrolling "+maxScrolls);
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail",
-	                "Exception in getActualCardFromUnitedNowUI() while searching for card '"+ contentType + " " + cardTextToSearch + "': " + e.getMessage());
+	            "Exception in getActualCardFromUnitedNowUI() while searching for card '" + contentType + " " + cardTextToSearch + "': " + e.getMessage());
 	        return false;
 	    }
 
 	    return false;
 	}
+
 	
 	public void scrollAndClearMainFilterView(boolean isAndroid, int maxMainFilterScrolls) {
 	    int scrollCount = 0;
@@ -5378,4 +5482,45 @@ public class UnitedNowPage extends Common {
 		}
 		}
 
+	
+	public  boolean validatesStoriesCarouselInUNUI(String textToSearch, boolean upperCase,int maxScrolls,String contentType) {
+	    
+		String device = GlobalParams.getPlatformName().toLowerCase();
+	    int attempts = 0;
+	    try {
+	    boolean isAndroid = device.contains("android");
+	    
+	    	String eleText = isAndroid && upperCase ? textToSearch.toUpperCase().trim() : textToSearch;
+	    	  while (attempts < maxScrolls) {
+	              List<WebElement> elements;
+	        if ("android".equalsIgnoreCase(device)) {
+                elements = driver.findElements(
+                        AppiumBy.xpath("//*[contains(@content-desc, '" + eleText + "')]"));
+            } else {
+                elements = driver.findElements(
+                        AppiumBy.xpath("(//*[contains(@name, '" + eleText + "')])[1]"));
+            }
+
+            if (!elements.isEmpty()) {
+                ExtentsReportManager.extentReportLogging("pass", contentType + " Carousel '" + eleText + "' found ");
+                elements.get(0).click();
+                Thread.sleep(100);
+                return true;
+            } else {
+                // Scroll for both platforms using iOS scroll logic
+                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
+                attempts++;
+            }
+        }
+
+        ExtentsReportManager.extentReportLogging("fail", contentType + " Carousel '" + eleText + "' not found after " + maxScrolls + " scrolls");
+        return false;
+		 }
+        catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception in validatesStoriesCarouselInUNUI() while searching for Carousel '"+ contentType + " " + textToSearch + "': " + e.getMessage());
+	        return false;
+	    }
+    }
+	
 }

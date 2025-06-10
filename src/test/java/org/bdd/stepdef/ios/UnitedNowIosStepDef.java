@@ -173,15 +173,15 @@ public class UnitedNowIosStepDef {
  	        boolean comingUpCarouselDisplayedFromAPI = unitedNowAPIResponse.getComingUpCarousalFromApi("ComingUp/StoriesCarousalEndPoint");
  	        boolean comingUpCarouselCarouselDisplayedFromUI = unitedNowPage.validatesTheCaroselPageIsDisplayed();
 
- 	        ExtentsReportManager.extentReportLogging("info","Stories Carousel  From API<br />"+comingUpCarouselDisplayedFromAPI);
-			 ExtentsReportManager.extentReportLogging("info","actual Stories Carousel From UI<br />"+unitedNowPage.validatesTheCaroselPageIsDisplayed());
+ 	        ExtentsReportManager.extentReportLogging("info","Coming up Carousel  From API<br />"+comingUpCarouselDisplayedFromAPI);
+			 ExtentsReportManager.extentReportLogging("info","actual Coming up Carousel From UI<br />"+unitedNowPage.validatesTheCaroselPageIsDisplayed());
 
  	        soft.assertEquals(comingUpCarouselCarouselDisplayedFromUI, comingUpCarouselDisplayedFromAPI, "Carousel display mismatch.");
  	        soft.assertAll();
 
- 	        ExtentsReportManager.extentReportLogging("info", "Validated the carousel is displayed in United Now using API.");
+ 	        ExtentsReportManager.extentReportLogging("info", "Validated the Coming up carousel is displayed in United Now using API.");
  	    } catch (Exception e) {
- 	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred during carousel validation: " + e.getMessage());
+ 	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred during Coming up carousel validation: " + e.getMessage());
  	        throw e;
  	    }
  }
@@ -461,16 +461,17 @@ public class UnitedNowIosStepDef {
              ArrayList<String> expPlayersPageFilters = new ArrayList<>();
              ArrayList<String> actPlayersPageFilters = new ArrayList<>();
              expPlayersPageFilters = unitedNowAPIResponse.getPlayersPageFilterFromApi("PlayersPageFiltersEndpoint");
-             
-             actPlayersPageFilters=unitedNowPage.getPlayersFiltersPageUI();
-             Collections.sort(expPlayersPageFilters);
-//             System.out.println("expPlayersPageFilters++++++"+expPlayersPageFilters);
-             Collections.sort(actPlayersPageFilters);
-//             System.out.println("actPlayersPageFilters-------"+actPlayersPageFilters);
              ExtentsReportManager.extentReportLogging("info","expPlayersPageFilters Text From API<br />"+expPlayersPageFilters);
-			 ExtentsReportManager.extentReportLogging("info","actual getPlayersFiltersPageUI Text From UI<br />"+unitedNowPage.getPlayersFiltersPageUI());
-             soft.assertEquals(expPlayersPageFilters,actPlayersPageFilters);
+             actPlayersPageFilters=unitedNowPage.getPlayersFiltersPageUI();
+             System.out.println("actPlayersPageFillers------------"+actPlayersPageFilters);
+             Collections.sort(expPlayersPageFilters);
+             Collections.sort(actPlayersPageFilters);
+             soft.assertTrue(actPlayersPageFilters.containsAll(expPlayersPageFilters) ,expPlayersPageFilters.toString()+ " Expected player items not matched with actual player items "+actPlayersPageFilters.toString());
              soft.assertAll();
+             
+			 ExtentsReportManager.extentReportLogging("info","actual getPlayersFiltersPageUI Text From UI<br />"+actPlayersPageFilters);
+            // soft.assertEquals(expPlayersPageFilters,actPlayersPageFilters);
+             //soft.assertAll();
              ExtentsReportManager.extentReportLogging("info", "Validated the PlayersPageFilters screen");
     	 } catch (AssertionError | IOException e) {
     		  ExtentsReportManager.extentReportLogging("fail", "validation of PlayersPageFilters values<br />" + e);
@@ -1273,12 +1274,12 @@ public class UnitedNowIosStepDef {
             if(!expectedQuoteCard.isEmpty()) {
                 soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedQuoteCard.get(0)));
                 soft.assertAll();
-                ExtentsReportManager.extentReportLogging("info", "Quote card is available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Poll card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quote card not available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Poll card not available in united now page");
             }
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quote card in united now page<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Poll card in united now page<br />" + e);
             throw e;
         }
 

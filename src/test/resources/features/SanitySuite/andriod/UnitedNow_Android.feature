@@ -102,7 +102,7 @@ Feature: United now
     Then user validates the upcoming Fixtures using Api in united now
     
 
-@ReRun
+@ReRun10
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -114,7 +114,8 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
     Then user validates Greetings message in united now is displayed
-    Then user validates Stories Carousel in united now is displayed
+    #Then user validates Stories Carousel in united now is displayed
+    Then user validates Stories Carousel in united now is displayed using API
     Then user validates Coming Up carousel in united now is displayed using API
 
   #ToBeFixed Till Auguest 9th Table will not be availabe - Murali to confirm
@@ -146,6 +147,8 @@ Feature: United now
 
   #| League1            | League2           |
   #| U18 PREMIER LEAGUE | UEFA YOUTH LEAGUE |
+  
+  @tc012
   Scenario: [United now]TC0012 Validate Clicking on the Player icons from United Now top right corner and then validate the page filter (Based on Data in Service) [First Team, Reserve & etc.]
     Given user navigates to manu android application
     And user navigates to screen two
