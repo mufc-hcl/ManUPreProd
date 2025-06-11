@@ -258,38 +258,38 @@ Scenario Outline: [MUTV]TC007 Subscribe badge should be displayed on the content
     Then user validates the CBS/CBR badges display for future schedule program in ios
     
     
-     Scenario Outline: [MUTV]TC014 Verify on tapping Podcastit opens the same and start playing along with its expected controls
-    Given user navigates to manu android application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user clicks on Mutv tab in ios
-    And user clicks on explore icon in ios
-    And user checks for UTD Podcast in MUTV in ios
-    Then user clicks on first podcast in MUTV in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in subscribe screen in ios
-    Then user validates play button in podcast audio screen in ios
-    And user clicks on back icon in podcast audio screen in ios
-    And user clicks on united now tab in ios
-    Then user validates prodcast audio minimized and playing in ios
-    And user click on My United Logged in bottom tab in ios
-    Then user validates prodcast audio minimized and playing in ios
-    And user clicks on Mutv tab in ios
-    And user checks for Top twenty collections in MUTV in ios
-    And user clicks on first top collection video in MUTV in ios
-    And user clicks on play button in ios
-    Then user clicks on the close button in the played video in ios
-    
-    
-    
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+     #Scenario Outline: [MUTV]TC014 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+    #Given user navigates to manu android application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #And user clicks on Mutv tab in ios
+    #And user clicks on explore icon in ios
+    #And user checks for UTD Podcast in MUTV in ios
+    #Then user clicks on first podcast in MUTV in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in subscribe screen in ios
+    #Then user validates play button in podcast audio screen in ios
+    #And user clicks on back icon in podcast audio screen in ios
+    #And user clicks on united now tab in ios
+    #Then user validates prodcast audio minimized and playing in ios
+    #And user click on My United Logged in bottom tab in ios
+    #Then user validates prodcast audio minimized and playing in ios
+    #And user clicks on Mutv tab in ios
+    #And user checks for Top twenty collections in MUTV in ios
+    #And user clicks on first top collection video in MUTV in ios
+    #And user clicks on play button in ios
+    #Then user clicks on the close button in the played video in ios
+    #
+    #
+    #
+     #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
     

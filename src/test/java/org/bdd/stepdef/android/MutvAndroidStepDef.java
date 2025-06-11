@@ -1109,7 +1109,7 @@ public class MutvAndroidStepDef {
 	@And("^user checks for UTD Podcast in MUTV$")
 	public void userChecksForUTDProdcastInMUTV() throws Throwable {
 		try {	        
-	    	   mutvPage.checksForUTDProdcastInMUTV();
+	    	   mutvPage.checksForUTDPodcastInMUTV();
 	        ExtentsReportManager.extentReportLogging("info", "checked for UTD Prodcast in MUTV");
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail", "checking for UTD Prodcast in MUTV.<br />" + e);
