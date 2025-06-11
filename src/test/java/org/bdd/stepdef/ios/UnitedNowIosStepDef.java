@@ -942,15 +942,16 @@ public class UnitedNowIosStepDef {
 		 ArrayList<String> expectedImageCard = new ArrayList<>();
          try {
         	 expectedImageCard = unitedNowAPIResponse.getImageCard("getAllCardsFromUnitedNow");
+        	 ExtentsReportManager.extentReportLogging("info", "Image Card from API  "+expectedImageCard);
              if(!expectedImageCard.isEmpty()) {
                  soft.assertTrue(unitedNowPage.getImagefromUnitedNow(expectedImageCard.get(0)));
                  soft.assertAll();
-                 ExtentsReportManager.extentReportLogging("info", "Competition card is available in united now page");
+                 ExtentsReportManager.extentReportLogging("info", "Image card is available in united now page");
              }else {
-                 ExtentsReportManager.extentReportLogging("info", "Competition card not available in united now page");
+                 ExtentsReportManager.extentReportLogging("info", "Image card not available in united now page");
              }
          } catch (AssertionError e) {
-             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Competition card in united now page<br />" + e);
+             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Image card in united now page<br />" + e);
              throw e;
          }
 	}
@@ -1726,20 +1727,21 @@ public class UnitedNowIosStepDef {
 	
 	@Then("user checks for Adcard card in united now page using api in ios")
     public void userChecksForAdcardCardInUnitedNowPage() throws Exception {
-    	 ArrayList<String> expectedAdcardCard = new ArrayList<>();
-         try {
-        	 expectedAdcardCard = unitedNowAPIResponse.getAdcardCard("getAllCardsFromUnitedNow");
-             if(!expectedAdcardCard.isEmpty()) {
-                 soft.assertTrue(unitedNowPage.getAdcardfromUnitedNow(expectedAdcardCard.get(0)));
-                 soft.assertAll();
-                 ExtentsReportManager.extentReportLogging("info", "Competition card is available in united now page");
-             }else {
-                 ExtentsReportManager.extentReportLogging("info", "Competition card not available in united now page");
-             }
-         } catch (AssertionError e) {
-             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Competition card in united now page<br />" + e);
-             throw e;
-         }
+		ArrayList<String> expectedAdcardCard = new ArrayList<>();
+        try {
+       	 expectedAdcardCard = unitedNowAPIResponse.getAdcardCard("getAllCardsFromUnitedNow");
+            ExtentsReportManager.extentReportLogging("info", "Ad Card from API"+expectedAdcardCard);
+            if(!expectedAdcardCard.isEmpty()) {
+                soft.assertTrue(unitedNowPage.getAdcardfromUnitedNow(expectedAdcardCard.get(0)));
+                soft.assertAll();
+                ExtentsReportManager.extentReportLogging("info", "Adcard "+expectedAdcardCard.get(0)+" is available in united now page");
+            }else {
+                ExtentsReportManager.extentReportLogging("info", "Adcard card not available in united now page");
+            }
+        } catch (AssertionError e) {
+            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Adcard in united now page<br />" + e);
+            throw e;
+        }
     }
 
 	@Then("^user validates upsell functionality is displayed united now screen in ios using API$")

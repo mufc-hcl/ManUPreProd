@@ -4685,10 +4685,10 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				int i = 0;
-				while (i < 20) {
+				while (i < 30) {
 					String type = "name";
 					List<WebElement> e = driver
-							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard + "\""));
+							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expAdcard.toUpperCase().trim() + "\""));
 					if (e.size() > 0) {
 						ExtentsReportManager.extentReportLogging("pass", "Checked for Adcard Card in united now page");
 						e.get(0).click();						
@@ -4703,7 +4703,7 @@ public class UnitedNowPage extends Common {
 //							}
 					}
 				}
-				ExtentsReportManager.extentReportLogging("pass", "Checked for Adcard Card in united now page");
+				//ExtentsReportManager.extentReportLogging("pass", "Checked for Adcard Card in united now page");
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
