@@ -76,7 +76,7 @@ Feature: MUTV Feature
       | manupreprod@yopmail.com | Manu@123 |
     
 
-  Scenario Outline: [MUTV]TC008 Verify that CBS badges display for  subscribe display
+  Scenario Outline: [MUTV]TC007 Verify that CBS badges display for  subscribe display
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -103,7 +103,7 @@ Feature: MUTV Feature
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [MUTV]TC009 Verify that CBR badges display for register signup screen
+  Scenario Outline: [MUTV]TC008 Verify that CBR badges display for register signup screen
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -127,7 +127,7 @@ Feature: MUTV Feature
       | manupreprod@yopmail.com | Manu@123 |
 
 
-  Scenario: [MUTV]TC010 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
+  Scenario: [MUTV]TC009 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -142,7 +142,7 @@ Feature: MUTV Feature
     And user clicks on explore icon
     And user clicks on the hero carousel dots in Mutv screen
 
-  Scenario Outline: [MUTV]TC011 & TC012 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
+  Scenario Outline: [MUTV]TC010 & TC011 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -174,7 +174,7 @@ Feature: MUTV Feature
       | manupreprod@yopmail.com | Manu@123 |
       
 
-  Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
+  Scenario Outline: [MUTV]TC012 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -221,7 +221,7 @@ Feature: MUTV Feature
       
 
 
-  Scenario Outline: [MUTV]TC014 Verify tapping on clip type video plays the videos in full screen
+  Scenario Outline: [MUTV]TC013 Verify tapping on clip type video plays the videos in full screen
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -282,7 +282,7 @@ Feature: MUTV Feature
   #And user clicks on view all in MUTV screen in ios
   #Then user validate list in EPC Ten MOST EMOTIONAL MOMENTS screen
   
-  Scenario: :[Explore]TC017 Mutv search screen testcases
+  Scenario: :[Explore]TC014 Mutv search screen testcases
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -302,7 +302,7 @@ Feature: MUTV Feature
     #DMD-2229- EXPLORE - SEARCH - Search return Result (without Data)
     And user validates without data in search screen
 
-  Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
+  Scenario: [MUTV]TC015 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -320,7 +320,7 @@ Feature: MUTV Feature
     Then user validates the CBS/CBR badges display for future schedule program
     
     
-    Scenario Outline: [MUTV]TC019 Verify on tapping Podcast it opens the same and start playing along with its expected controls
+    Scenario Outline: [MUTV]TC016 Verify on tapping Podcast it opens the same and start playing along with its expected controls
      Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three

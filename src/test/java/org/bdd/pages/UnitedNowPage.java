@@ -79,7 +79,7 @@ public class UnitedNowPage extends Common {
  
 	}
 
-	public void clickFilterIcon() {
+	public void clickFilterIcon1() {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
@@ -114,10 +114,10 @@ public class UnitedNowPage extends Common {
 	
 	
 	
-	public void clickFilterIconIos() {
+	public void clickFilterIcon() {
 		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
-			  scrollAndClearMainFilterView(false,8);
+			  scrollAndClearMainFilterView(8);
 			  if (unitedNowPageLocators.filterIconUnitedPage.size() > 0) {
 				//waitForVisibilityFluentWait(unitedNowPageLocators.filterIconUnitedPage.get(0), 10);
 				elementToBeClickableFluentWait(unitedNowPageLocators.filterIconUnitedPage.get(0),30);
@@ -126,7 +126,7 @@ public class UnitedNowPage extends Common {
 			}
 		} catch (Exception e) {
 			try {
-			scrollAndClearMainFilterView(false,8);
+			scrollAndClearMainFilterView(8);
 		
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", unitedNowPageLocators.filterIconUnitedPage);
@@ -137,7 +137,7 @@ public class UnitedNowPage extends Common {
 		}
 		}
 	}
-	public void clickFilterIconIos1() {
+	public void clickFilterIconIos() {
 		try {
 			if (unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.size() > 0) {
 //                    if (!(explorePageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText().equalsIgnoreCase("LIVE MATCH CENTRE")))
@@ -4270,7 +4270,7 @@ public class UnitedNowPage extends Common {
 			if (device.equalsIgnoreCase("android")) {
 				boolean isAndroid = device.contains("android");
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
-				scrollAndClearMainFilterView(isAndroid,2);
+				scrollAndClearMainFilterView(2);
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expArticleCard);
 
 				List<WebElement> e = driver
@@ -4369,62 +4369,108 @@ public class UnitedNowPage extends Common {
 		        throw e;
 		    }
 	}
-//		public boolean getVideoCardFromUnitedNow(String expVideoCard) throws InterruptedException {
-//			String device = GlobalParams.getPlatformName();
-//			try {
-//				if (device.equalsIgnoreCase("android")) {
-//					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
-//					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expVideoCard+"')]"));
-//					Thread.sleep(2000);
-//					waitForVisibilityFluentWait(e.get(0),60);
-//					e.get(0).click();
-//					return true;
-//				} else {
-//					int i = 20;
-//					while (i < 20) {
-//						String type = "name";
-//						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expVideoCard + "\""));
-//						if (e.size() > 0) {
-//							e.get(0).click();
-//							Thread.sleep(4000);
-//							return true;
-//						} else {
-//							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-//							i++;
-//							if(i>20){
-//								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
-//								return false;
-//							}
-//						}
-//					}
-//					ExtentsReportManager.extentReportLogging("pass", "Checks for video Card d in united now page");
-//				}
-//			} catch (Exception e) {
-//				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getVideoCardFromUnitedNow()<br />" + e);
-//				throw e;
-//			}
-//	        return false;
-//	    }
+		public boolean getVideoCardFromUnitedNow1(String expVideoCard) throws InterruptedException {
+			String device = GlobalParams.getPlatformName();
+			try {
+				if (device.equalsIgnoreCase("android")) {
+					AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expVideoCard);
+					List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+expVideoCard+"')]"));
+					Thread.sleep(2000);
+					waitForVisibilityFluentWait(e.get(0),60);
+					e.get(0).click();
+					return true;
+				} else {
+					int i = 20;
+					while (i < 20) {
+						String type = "name";
+						List<WebElement> e = driver.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expVideoCard + "\""));
+						if (e.size() > 0) {
+							e.get(0).click();
+							Thread.sleep(4000);
+							return true;
+						} else {
+							IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+							i++;
+							if(i>20){
+								ExtentsReportManager.extentReportLogging("fail", "Failing due to excesive scroll and unable to find the card " + e);
+								return false;
+							}
+						}
+					}
+					ExtentsReportManager.extentReportLogging("pass", "Checks for video Card d in united now page");
+				}
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getVideoCardFromUnitedNow()<br />" + e);
+				throw e;
+			}
+	        return false;
+	    }
+	public boolean getGalleryCardFromUnitedNow1(String expGalleryCard) throws InterruptedException {
+	    String device = GlobalParams.getPlatformName().toLowerCase();
+	    boolean isAndroid = device.contains("android");
+
+	    try {
+	        String shortHeadline = expGalleryCard.toUpperCase().trim();
+	        int maxScrolls = 30;
+	        int scrollCount = 0;
+
+	        while (scrollCount < maxScrolls) {
+	            List<WebElement> elements;
+
+	            if (isAndroid) {
+	                elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + shortHeadline + "')]"));
+	            } else {
+	                //String predicate = "name == \"" + shortHeadline.replaceAll("\\[|\\]", "") + "\"";
+	                //elements = driver.findElements(AppiumBy.iOSNsPredicateString(predicate));
+	            	 elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + shortHeadline + "')]"));
+	            }
+
+	            if (!elements.isEmpty()) {
+	                waitForVisibilityFluentWait(elements.get(0), 60);
+	                ExtentsReportManager.extentReportLogging("pass", "Checked for Gallery Card in united now page");
+	                elements.get(0).click();
+	                Thread.sleep(100);
+	               
+	                return true;
+	            } else {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
+	                scrollCount++;
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("info", "Gallery Card not found after scrolling in united now page");
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	            "Exception occurred in function-getGalleryCardFromUnitedNow()<br />" + e);
+	        throw e;
+	    }
+
+	    return false;
+	}
 
 	public boolean getGalleryCardFromUnitedNow(String expGalleryCard) throws InterruptedException {
 		String device = GlobalParams.getPlatformName();
 		try {
 			String shortheadline_t= expGalleryCard.toUpperCase().trim();
 			if (device.equalsIgnoreCase("android")) {
+				//scrollAndClearMainFilterView(true,5);
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver,  shortheadline_t);
-				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, \""+shortheadline_t+"\")]"));
-				waitForVisibilityFluentWait(e.get(0), 60);
+				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '"+shortheadline_t+"')]"));
+				
 				if (e.size() > 0) {
+				waitForVisibilityFluentWait(e.get(0), 60);
 				e.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Checked for Gallery Card in united now page");
 				return true;
 				}
 			} else {
 				int i = 0;
-				while (i < 20) {
+				while (i < 30) {
 					String type = "name";
 					List<WebElement> e = driver.findElements(AppiumBy
 							.iOSNsPredicateString(type + " == \"" + shortheadline_t.replaceAll("\\[|\\]", "") + "\""));
+					
 					if (e.size() > 0) {
 						e.get(0).click();
 						Thread.sleep(4000);
@@ -4626,7 +4672,7 @@ public class UnitedNowPage extends Common {
 			if (device.equalsIgnoreCase("android")) {
 				boolean isAndroid = device.contains("android");
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
-				scrollAndClearMainFilterView(isAndroid,2);
+				scrollAndClearMainFilterView(5);
 				AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, expAdcard.toUpperCase().trim());
 				List<WebElement> e = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + expAdcard.toUpperCase().trim() + "')]"));
 				Thread.sleep(2000);
@@ -5413,7 +5459,7 @@ public class UnitedNowPage extends Common {
 	    try {
 	        String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch;
 
-	        scrollAndClearMainFilterView(isAndroid, 5);
+	        scrollAndClearMainFilterView(5);
 
 	        int attempts = 0;
 	        while (attempts < maxScrolls) {
@@ -5448,10 +5494,11 @@ public class UnitedNowPage extends Common {
 	}
 
 	
-	public void scrollAndClearMainFilterView(boolean isAndroid, int maxMainFilterScrolls) {
+	public void scrollAndClearMainFilterView(int maxMainFilterScrolls) {
 	    int scrollCount = 0;
+	    String device = GlobalParams.getPlatformName().toLowerCase();
+	    boolean isAndroid = device.contains("android");
 
-	    // Step 1: Scroll MainFilterView to top
 	    while (scrollCount < maxMainFilterScrolls) {
 	        try {
 	            WebElement filterElement = isAndroid
@@ -5461,40 +5508,20 @@ public class UnitedNowPage extends Common {
 	            if (filterElement.isDisplayed()) {
 	                Point location = filterElement.getLocation();
 	                if (location.getY() < 200) {
-	                    break;
+	                    return;
 	                }
 	            }
 	        } catch (Exception ignored) {
-	            // Element not found or not visible yet
+	           
 	        }
 
+	        // Scroll 
 	        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
-	        //ExtentsReportManager.extentReportLogging("pass", "scroll '" +scrollCount);
 	        scrollCount++;
 	    }
-
-//	    // Step 2: Clear filter view
-//	    int scrollToClearFilter = 0;
-//	    while (scrollToClearFilter < maxMainFilterScrolls) {
-//	        try {
-//	            WebElement filterElement = isAndroid
-//	                ? driver.findElement(By.xpath("//android.view.ViewGroup[contains(@resource-id, ':id/MainFilterViewOld')]"))
-//	                : driver.findElement(By.xpath("//XCUIElementTypeButton[@name='filterIcon']"));
-//
-//	            if (!filterElement.isDisplayed()) {
-//	                break;
-//	            }
-//	        } catch (Exception e) {
-//	            // Element not found, assume it's cleared
-//	            break;
-//	        }
-//
-//	        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.1);
-//	        ExtentsReportManager.extentReportLogging("pass", "after scroll '" +scrollToClearFilter);
-//	        scrollToClearFilter++;
-//	    }
-	
+	    ExtentsReportManager.extentReportLogging("info", "Reached max scrolls in scrollAndClearMainFilterView without finding element in position.");
 	}
+
 	
 	public void closeLiveVideo() throws Exception {
 		try {

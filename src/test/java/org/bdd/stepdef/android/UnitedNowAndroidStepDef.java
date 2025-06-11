@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bdd.pages.UnitedNowCardsPage;
 import org.bdd.pages.UnitedNowPage;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
@@ -23,6 +24,7 @@ import io.reactivex.rxjava3.internal.operators.single.SingleFromUnsafeSource;
 public class UnitedNowAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
     public UnitedNowPage unitedNowPage = new UnitedNowPage();
+    public UnitedNowCardsPage unitedNowCardsPage = new UnitedNowCardsPage();
     public UnitedNowAPIResponse unitedNowAPIResponse = new UnitedNowAPIResponse();
 
     private static final Logger log = LogManager.getLogger(UnitedNowPage.class);
@@ -58,7 +60,7 @@ public class UnitedNowAndroidStepDef {
     @And("user click on filter icon")
     public void userClickOnFilterIcon() {
         try {
-            unitedNowPage.clickFilterIcon();
+            unitedNowPage.clickFilterIcon1();
             ExtentsReportManager.extentReportLogging("info", "Clicked on filter icon");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter icon<br />" + e);
@@ -990,10 +992,10 @@ public class UnitedNowAndroidStepDef {
     	 ArrayList<String> expectedGalleryCard = new ArrayList<>();
          try {
         	 expectedGalleryCard = unitedNowAPIResponse.getGalleryCard("getAllCardsFromUnitedNow");
-             ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard.get(0));
+             ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard);
              if(!expectedGalleryCard.isEmpty()) {
                  soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
-            	 //soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 20,"Gallery"));
+            	 //soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 30,"Gallery"));
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
              }else {
@@ -2053,6 +2055,19 @@ public class UnitedNowAndroidStepDef {
         }
     }
         
+	@Then("user validates scroll and validates 30 items loaded in UN listing")
+	public void validateScrollAndItemCountInUNListing() {
+		 try {
+	            boolean actualDFPAdsValues = unitedNowCardsPage.validateAtLeast30DistinctCardsAndMore(200); 
+	            ExtentsReportManager.extentReportLogging("info","validates scroll and validates 30 items loaded in UN listing");
+	            soft.assertTrue(actualDFPAdsValues, "validates 30 items not loaded in UN listing after scroll");
+	            soft.assertAll();
+	            ExtentsReportManager.extentReportLogging("info", "validated 30 items loaded in UN listing");
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in validating 30 items in UN listing after scroll<br />" + e);
+	            throw e;
+	        }
+	}
         
 	}
 

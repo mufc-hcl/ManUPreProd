@@ -130,7 +130,7 @@ Feature: IDM
       | manutesting123@gmail.com | Manu@123 |
   
 
-  Scenario Outline: [IDM]TC0010 Verify the updated favorite player details on android for a user and the same favorite player details are displayed on IOS for the same user
+  Scenario Outline: [IDM]TC010 Verify the updated favorite player details on android for a user and the same favorite player details are displayed on IOS for the same user
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -172,7 +172,7 @@ Feature: IDM
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario: [IDM]TC0012 Verify that user is able to sign up natively & an email should get triggered with expected email template & post sucessfuly confirmation of email user is able to log in using the credntials successfully.
+  Scenario: [IDM]TC012 Verify that user is able to sign up natively & an email should get triggered with expected email template & post sucessfuly confirmation of email user is able to log in using the credntials successfully.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -190,7 +190,7 @@ Feature: IDM
       | firstname | surname | emailaddress       | password | confirmpassword | dob | mob | yob  | country        |
       | firstname | surname | test@testemail.com | xxxx     | xxxx            |   1 | May | 1990 | United Kingdom |
 
-  Scenario: [IDM]TC0013 Verify that during native sign up if user age is less then 13 years then user is presented with parental consent section asking user to enter parent/gauradian details.
+  Scenario: [IDM]TC013 Verify that during native sign up if user age is less then 13 years then user is presented with parental consent section asking user to enter parent/gauradian details.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -211,7 +211,7 @@ Feature: IDM
       | relationship | firstname  | surname       | emailaddress        |
       | Parent       | parentname | parentsurname | parentmail@test.com |
 
-  Scenario: [IDM]TC0014 Verify that user is able to reset the password using forget password link & an email should get triggered with expected email template & post password reset user is able to log in using chnaged password.
+  Scenario: [IDM]TC014 Verify that user is able to reset the password using forget password link & an email should get triggered with expected email template & post password reset user is able to log in using chnaged password.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -230,7 +230,7 @@ Feature: IDM
       | email             | dob | mob | yob  |
       | testmail@test.com |   1 | May | 1990 |
 
-  Scenario Outline: [IDM]TC0015 Verify that user able to naviagte to Change email screen post log in natively and in change password email user should be able to change email sucessfully, also an email should get triggered with expected email template to confirm the email. Post email confirmation if user try to relogin user should be able to log in using new changed email.
+  Scenario Outline: [IDM]TC015 Verify that user able to naviagte to Change email screen post log in natively and in change password email user should be able to change email sucessfully, also an email should get triggered with expected email template to confirm the email. Post email confirmation if user try to relogin user should be able to log in using new changed email.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu android application
     And user navigates to screen two

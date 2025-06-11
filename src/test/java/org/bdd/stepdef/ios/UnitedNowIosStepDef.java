@@ -56,7 +56,7 @@ public class UnitedNowIosStepDef {
 	@And("^user click on filter icon in ios$")
 	public void userClickOnFilterIconInIos() throws Throwable {
 		try {
-			unitedNowPage.clickFilterIconIos();
+			unitedNowPage.clickFilterIcon();
 			ExtentsReportManager.extentReportLogging("info", "clicked on filter icon in ios");
 		} catch (AssertionError e) {
 			ExtentsReportManager.extentReportLogging("fail", "Error in clicking on filter icon in ios<br />" + e);
@@ -960,12 +960,13 @@ public class UnitedNowIosStepDef {
 		ArrayList<String> expectedGalleryCard = new ArrayList<>();
         try {
        	 expectedGalleryCard = unitedNowAPIResponse.getGalleryCard("getAllCardsFromUnitedNow");
+       	 ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard);
             if(expectedGalleryCard.size() > 0) {
                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Gallery card not available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Gallery card not available in united now page in UI and API");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Gallery card in united now page<br />" + e);

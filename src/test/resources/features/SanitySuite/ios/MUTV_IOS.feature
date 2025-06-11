@@ -76,8 +76,61 @@ Feature: MUTV IOS feature
     And user clicks on MyList icon in ios
     Then user validate no videos in mylist screen in ios
 
+Scenario Outline: [MUTV]TC007 Subscribe badge should be displayed on the content that is marked behind Subscription
+    Given user navigates to manu android application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user clicks on Mutv tab in ios
+    And user clicks on explore icon in ios
+    #    And user navigates to Mens Highlights CBS video in ios
+    And user selects the video and check CBS badge in ios
+    Then validate subscribe screen is displayed in ios
+      | subscription title |
+      | SUBSCRIBE          |
+    And user clicks on login button in subscribe screen
+    And user clicks on continue button in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in subscribe screen in ios
 
-  Scenario: [MUTV]TC010 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
+    #And user clicks on play Icon for CBS video
+     Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+
+  Scenario Outline: [MUTV]TC008 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen
+    Given user navigates to manu android application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on ask me later in screen two in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user clicks on Mutv tab in ios
+    And user clicks on explore icon in ios
+    And user selects the video and check CBR badge in ios
+    Then user validate Register screen is displayed in ios
+      | signUp title | Desc              |
+      | SIGN UP      | REGISTER FOR FREE |
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in subscribe screen in ios
+    And user clicks on play Icon for CBR video
+
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+
+
+  Scenario: [MUTV]TC009 Validate the MUTV hero carousel when enabled from CMS  and having one or more cards in the carousel
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -91,7 +144,7 @@ Feature: MUTV IOS feature
     And user clicks on the hero carousel dots in Mutv screen in ios
 
 
-  Scenario Outline: [MUTV]TC011 & TC012 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
+  Scenario Outline: [MUTV]TC010 & TC011 MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , Title and Play button with red color dot blinking
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -125,7 +178,7 @@ Feature: MUTV IOS feature
       | manupreprod@yopmail.com | Manu@123 |
 
 
-  Scenario Outline: [MUTV]TC013 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
+  Scenario Outline: [MUTV]TC012 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -160,59 +213,7 @@ Feature: MUTV IOS feature
       | notificationbutton | username                | password |
       | allow_button       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [MUTV]TC014 Subscribe badge should be displayed on the content that is marked behind Subscription
-    Given user navigates to manu android application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user clicks on Mutv tab in ios
-    And user clicks on explore icon in ios
-    #    And user navigates to Mens Highlights CBS video in ios
-    And user selects the video and check CBS badge in ios
-    Then validate subscribe screen is displayed in ios
-      | subscription title |
-      | SUBSCRIBE          |
-    And user clicks on login button in subscribe screen
-    And user clicks on continue button in ios
-    And user enter the valid email and valid password for subscribed user in ios
-    #And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in subscribe screen in ios
-
-    #And user clicks on play Icon for CBS video
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
-
-  Scenario Outline: [MUTV]TC015 CBR screen should be displayed when user tries to open the content that is marked behind registration and on login user should be taken to the respective screen
-    Given user navigates to manu android application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user clicks on Mutv tab in ios
-    And user clicks on explore icon in ios
-    And user selects the video and check CBR badge in ios
-    Then user validate Register screen is displayed in ios
-      | signUp title | Desc              |
-      | SIGN UP      | REGISTER FOR FREE |
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email and valid password for subscribed user in ios
-    #And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in subscribe screen in ios
-    And user clicks on play Icon for CBR video
-
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
-
+  
   #below two test caess added by Automation team and moving to regression pack
   #Scenario Outline: [MUTV]TC015 Verify podcaset in MUTV screen
   #And user clicks on cancel button in apple id screen
@@ -240,7 +241,7 @@ Feature: MUTV IOS feature
   #Then user validate list in EPC Ten MOST EMOTIONAL MOMENTS screen in ios
  
  
-  Scenario: [MUTV]TC018 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
+  Scenario: [MUTV]TC013 Verify that CBS/CBR badges display for previous and future schedule program but not for the current program for logout user
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -257,7 +258,7 @@ Feature: MUTV IOS feature
     Then user validates the CBS/CBR badges display for future schedule program in ios
     
     
-     Scenario Outline: [MUTV]TC019 Verify on tapping Podcastit opens the same and start playing along with its expected controls
+     Scenario Outline: [MUTV]TC014 Verify on tapping Podcastit opens the same and start playing along with its expected controls
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
