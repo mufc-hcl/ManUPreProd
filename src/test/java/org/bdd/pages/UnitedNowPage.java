@@ -4331,7 +4331,7 @@ public class UnitedNowPage extends Common {
 		                            "Video card '" + expVideoCard + "' displayed and clicked on Android.");
 		                    return true;
 		                } else {
-		                	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3); // Use your generic scroll method for Android
+		                	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7); // Use your generic scroll method for Android
 		                    i++;
 		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on Android...");
 		                }
