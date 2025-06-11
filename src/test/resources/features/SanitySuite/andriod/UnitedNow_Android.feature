@@ -1,6 +1,6 @@
 @Sanity_Android @UnitedNow_Android
 Feature: United now
-
+ 
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -192,7 +192,7 @@ Feature: United now
     Then user clicks on the stories carousel
     And user validates the story page is displayed
 
-  @ReRun
+
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
     And user navigates to screen two
