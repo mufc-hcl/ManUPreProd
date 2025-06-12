@@ -4317,7 +4317,7 @@ public class UnitedNowPage extends Common {
 		  try {
 		        if (device.equalsIgnoreCase("android")) {
 		            int i = 0;
-		            while (i < 20) {
+		            while (i < 30) {
 		                // Corrected XPath with escaped double quotes
 		                List<WebElement> e = driver.findElements(
 		                    AppiumBy.xpath("//*[contains(@text, \"" + expVideoCard + "\")]")
@@ -4331,7 +4331,7 @@ public class UnitedNowPage extends Common {
 		                            "Video card '" + expVideoCard + "' displayed and clicked on Android.");
 		                    return true;
 		                } else {
-		                	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3); // Use your generic scroll method for Android
+		                	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5); // Use your generic scroll method for Android
 		                    i++;
 		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on Android...");
 		                }
@@ -4353,7 +4353,7 @@ public class UnitedNowPage extends Common {
 		                            "Video card '" + expVideoCard + "' displayed and clicked on iOS.");
 		                    return true;
 		                } else {
-		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
+		                    IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
 		                    i++;
 		                    ExtentsReportManager.extentReportLogging("info", "Scrolling to find video card on iOS...");
 		                }

@@ -163,6 +163,11 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_number')]")
 	@iOSXCUITFindBy(accessibility = "Shirt Number")
 	public WebElement tShirtNumberMyUnitedScreen;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='United Now']")
+    @iOSXCUITFindBy(accessibility = "United Now")
+    public WebElement unitedNowTab;
+	
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/player_name')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
@@ -742,4 +747,8 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='My United']")
 	@iOSXCUITFindBy(accessibility = "My United, you are not logged in.")
 	public WebElement myUnitedButton;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+	@iOSXCUITFindBy(xpath = "//*[@name='TICKETS']")
+	public WebElement myUnitedTabLogin;
 }

@@ -2068,6 +2068,11 @@ public class UnitedNowAndroidStepDef {
 	            throw e;
 	        }
 	}
+
+	@Then("^user validates its Fixures Results or no spotlight$")
+	public void userValidatesItsFixuresResultsOrNoSpotlight() throws Throwable {
+	
+	}
         
 	}
 

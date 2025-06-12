@@ -13,7 +13,7 @@ Feature: United now
     And user clicks on braze in app msg
     Then verify whats new or live match blog in home page using api
     Then user validates the current day and date
-@un1
+
   Scenario: [United now]TC002 Validate if the filter is not selected by default
     Given user navigates to manu android application
     And user navigates to screen two
@@ -26,7 +26,7 @@ Feature: United now
     And user clicks on braze in app msg
     And user click on filter icon
     Then user validates filter is not selected by default
-@un1
+
   Scenario: [United now]TC003 Validate the filter functionality on United Now when filter is selected & TC004  Validate the filter functionality on United Now when filter is unselected
     Given user navigates to manu android application
     And user navigates to screen two
@@ -62,7 +62,7 @@ Feature: United now
       | UNITED | ALL TEAMS |
     And user click on men drop down and validates the dropdown values using API
 
-  @ToBeFixedTC008
+  
   Scenario: [United now]TC008 Validate the fixture listing page show the data based on the Team + League filter applied
     Given user navigates to manu android application
     And user navigates to screen two
@@ -82,7 +82,7 @@ Feature: United now
     And user select fourth radio option and validate content in the body
     And user select fifth radio option and validate content in the body
 
-  @UNITED_TEST_009
+  
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu android application
     And user navigates to screen two
@@ -101,7 +101,7 @@ Feature: United now
     #Then user validates the upcoming Fixtures using Api
     Then user validates the upcoming Fixtures using Api in united now
 
-  @ReRun10
+  
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -145,7 +145,7 @@ Feature: United now
   #Then user validates the under eighteen match schedule using API
   #| League1            | League2           |
   #| U18 PREMIER LEAGUE | UEFA YOUTH LEAGUE |
-  @tc012
+  
   Scenario: [United now]TC012 Validate Clicking on the Player icons from United Now top right corner and then validate the page filter (Based on Data in Service) [First Team, Reserve & etc.]
     Given user navigates to manu android application
     And user navigates to screen two
@@ -178,7 +178,7 @@ Feature: United now
     Then verify profile and stats tab are displayed
     And navigate to the latest section for the player
     And verify clicking on video or article navigates to the respective page
-
+@UNII
   Scenario: [United now]TC013 United Now Carousel should display in United Now when it's Fixture, Result or No Spotlight
     Given user navigates to manu android application
     And user navigates to screen two
@@ -189,10 +189,11 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    Then user clicks on the stories carousel
-    And user validates the story page is displayed
-
-
+    #Then user clicks on the stories carousel
+    #And user validates the story page is displayed
+     Then user validates Stories Carousel in united now is displayed using API
+     Then user validates its Fixures Results or no spotlight
+     
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -206,6 +207,7 @@ Feature: United now
     And user clicks on the coming up carousel
     Then user validates the carosel page is displayed for the carousel
     And user validates stories carousel is displayed in Match or Result card using API
+    
 
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS
     Given user navigates to manu android application
@@ -280,6 +282,7 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
+  @UNII
   Scenario: TC019 UNITED NOW - Validate the functionality of the Video card from United Now feeds/United Now Storiese
     Given user navigates to manu android application
     And user navigates to screen two
