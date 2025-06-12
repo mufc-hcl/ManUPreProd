@@ -578,6 +578,8 @@ public class MyUnitedPage extends Common {
 		String device = GlobalParams.getPlatformName();
 		try {
 			if (device.equalsIgnoreCase("android")) {
+				myUnitedPageLocators.unitedNowTab.click();
+				myUnitedPageLocators.myUnitedButton.click();
                 AndroidGenericLibrary.scrollDownUsingUiScrollable(driver, "BACK TO TOP");
 //                waitForVisibilityFluentWait(backToTopButton);
 				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
@@ -1148,14 +1150,19 @@ public class MyUnitedPage extends Common {
 	}
 
 	public void clickOnViewButtonAppearancecard() throws Exception {
-		try {
+			String device = GlobalParams.getPlatformName();
+			try {
+				if (device.equalsIgnoreCase("android")) {
 		    waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
-		    
 		    myUnitedPageLocators.viewSeasonFour.click();
 
-		    if (myUnitedPageLocators.viewSeasonFour1.size() > 0) {
-		        myUnitedPageLocators.viewSeasonFour.click();
+		    if (myUnitedPageLocators.appearanceTitleFour1.size() > 0) {
+		        myUnitedPageLocators.appearanceTitleFour.click();
 		    }
+				} else {
+					 waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
+					 myUnitedPageLocators.viewSeasonFour.click();
+				}
 
 		} catch (Exception e) {
 		    ExtentsReportManager.extentReportLogging("fail",
@@ -1798,7 +1805,7 @@ public class MyUnitedPage extends Common {
 		try {
 			for (int i = 0; i < 20; i++) {
 				if (myUnitedPageLocators.allPointsThisSeasonMYUnitedInIos.size() <= 0) {
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
 				} else {
 					break;
 				}
