@@ -66,7 +66,7 @@ public class MutvPageLocators {
 	public WebElement closeIconInVideoMutv;
 
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[position()=4]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name=\" 3 minutes , VIDEO 28th JAN , 24-25 · Episode 119 , double tap to open\"]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage")
 	public WebElement oneVideoMutvScreen;
 	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
@@ -79,7 +79,7 @@ public class MutvPageLocators {
 	public List<WebElement> fullMUTV;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/header\" and @text=\"UNITED V FULHAM!!\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNMISSABLE INTERVIEWS\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"UNITED V FULHAM!!\"]")
 	public List<WebElement> fullMUTV1;
 
 //	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell)[1]")

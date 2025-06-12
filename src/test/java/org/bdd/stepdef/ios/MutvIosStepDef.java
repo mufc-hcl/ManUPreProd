@@ -402,6 +402,7 @@ public class MutvIosStepDef {
 	@And("^user clicks on login button in subscribe screen$")
 	public void userClicksOnLoginButtonInSubscribeScreen() throws Throwable {
 		try {
+			mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
 			mutvPage.ClicksOnLoginButtonInSubscribeScreen();
 			ExtentsReportManager.extentReportLogging("info", "Clicked on login button in subscribe screen");
 		} catch (AssertionError e) {
