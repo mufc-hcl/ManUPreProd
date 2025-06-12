@@ -1748,37 +1748,34 @@ public class UnitedNowIosStepDef {
 	public void userValidatesUpsellFunctionalityIsDisplayedUnitedNowScreenInIos() throws Throwable {
 		 try {
 	            //data from API
-	            String upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
-	            String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
-
+			 String upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
 	            ExtentsReportManager.extentReportLogging("info","upsellTitle Text From API<br />"+upsellTitleFromAPI);
-				 ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+unitedNowPage.getUpsellTitleFromUI());
-	           
-				 soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
+	            
+	            if(upsellTitleFromAPI != null) {
+	            	String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
+					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
 
+					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
+		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
+		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
 
-	            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
-	            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
+		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
+					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
 
-	            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
-				 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+unitedNowPage.getWatchNowBtnTextUi());
-
-	            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
-
-	            soft.assertAll();
-
-	            System.out.println();
-	            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
-	        }  catch (NullPointerException n) {
-			 ExtentsReportManager.extentReportLogging("pass", "Upsell  is not displayed in united now<br />" );
-//             throw i;
-		 	}catch (IndexOutOfBoundsException i) {
-			 ExtentsReportManager.extentReportLogging("pass", "Upsell  is not displayed in united now<br />" );
-//             throw i;
-             }catch (AssertionError e) {
+		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
+		            soft.assertAll();
+		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
+	            }else {
+	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page");
+	            }
+	            
+	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying upsell functionality is displayed in united now<br />" + e);
 	            throw e;
-	        }
+	        }catch (IndexOutOfBoundsException i) {
+          ExtentsReportManager.extentReportLogging("pass", "Upsell  is not displayed in united now<br />" );
+//          throw i;
+      }
 	    }
 
 	@Then("^user validates Greetings message in united now is displayed in ios$")
@@ -1888,7 +1885,27 @@ public class UnitedNowIosStepDef {
 	   }
 	}
 	        
-	        
+	@Then("user checks for {string} card in united now page using api")
+	public void userChecksForCardInUnitedNowPageUsingApi(String contentType) throws Exception {
+	    ArrayList<String> expectedCards = new ArrayList<>();
+	    try {
+	        expectedCards = unitedNowAPIResponse.getCardByContentType("getAllCardsFromUnitedNow", contentType);
+	        ExtentsReportManager.extentReportLogging("info", contentType + " Card(s) from API: " + expectedCards);
+
+	        if (!expectedCards.isEmpty()) {
+	            boolean isCardPresent = unitedNowPage.getActualCardFromUnitedNowUI(expectedCards.get(0), true,25,contentType);
+	            soft.assertTrue(isCardPresent);
+	            soft.assertAll();
+	            ExtentsReportManager.extentReportLogging("info", contentType + " card '" + expectedCards.get(0) + "' is available in united now page");
+	        } else {
+	            ExtentsReportManager.extentReportLogging("info", contentType + " card not available in united now page");
+	        }
+	    } catch (AssertionError e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Error in checking for " + contentType + " card in united now page<br />" + e);
+	        throw e;
+	    }
+	}
+   
 		
 	}
 

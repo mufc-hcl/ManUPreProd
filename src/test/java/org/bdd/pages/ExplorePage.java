@@ -505,6 +505,11 @@ public class ExplorePage extends Common {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 			waitForVisibilityFluentWait(explorePageLocators.helpCouroselSearchPage, 60);
 			explorePageLocators.helpCouroselSearchPage.click();
+			if (explorePageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
+				waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
+				explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
+			}
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on helpCourosel SearchPage");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",

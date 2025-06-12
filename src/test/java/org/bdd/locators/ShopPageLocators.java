@@ -245,8 +245,8 @@ public class ShopPageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"Wishlist\"])[1]")
 	public List<WebElement> firstWishListButtonInStorePage;
 
-	@AndroidFindBy(xpath = "//android.widget.Button[@text=\"M\"]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"M\"]")
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='M']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='M']")
 	public List<WebElement> productSizeinStorePage;
 
 //	@AndroidFindBy(xpath = "//android.widget.Button[@text=\"ADD TO BAG\"]")

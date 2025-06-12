@@ -1498,6 +1498,10 @@ public class UnitedNowPage extends Common {
 
 	public void getProfileTab() {
 		try {
+			if (unitedNowPageLocators.closeIconMutvINAppPopUp.size() > 0) {
+				unitedNowPageLocators.closeIconMutvINAppPopUp.get(0).click();
+				ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in mutv in app popup");
+			}
 //            IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 			if (!unitedNowPageLocators.profileTabPlayersInfoPage.isEmpty()) {
 //                waitForVisibilityFluentWait(profileTabPlayersInfoPage.get(0));

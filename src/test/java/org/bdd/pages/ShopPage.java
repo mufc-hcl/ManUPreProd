@@ -1275,8 +1275,18 @@ public class ShopPage extends Common {
 	                    int attemptsForSize = 0;
 	                    Thread.sleep(30);
 	                    while (attemptsForSize < maxAttemptsForSize) {
-	                        if (!shopPageLocators.productSizeinStorePage.isEmpty()) {
-	                            shopPageLocators.productSizeinStorePage.get(0).click();
+	                    	 List<WebElement> prodSize;	
+	                    	 if (device.contains("android")) {
+	                    		 prodSize = driver.findElements(AppiumBy.xpath("//android.widget.Button[@text='"+ size +"']"));
+	         	            } else {
+	         	            	prodSize = driver.findElements(AppiumBy.xpath("//XCUIElementTypeButton[@name='"+ size +"']"));
+	         	            }
+	           
+		                                        
+//	                        if (!shopPageLocators.productSizeinStorePage.isEmpty()) {
+//	                            shopPageLocators.productSizeinStorePage.get(0).click();
+	                   if (!prodSize.isEmpty()) {
+	                	   prodSize.get(0).click();
 	                            Thread.sleep(30);
 	                            ExtentsReportManager.extentReportLogging("pass", "Clicks on first product and selects size");
 	                            return true;

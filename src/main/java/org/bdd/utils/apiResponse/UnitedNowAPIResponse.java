@@ -1521,5 +1521,30 @@ public class UnitedNowAPIResponse extends BaseApiService {
 //			throw e;
 //		}
 //	}
+	
+	public ArrayList<String> getCardByContentType(String endpoint, String contentType) throws Exception {
+	    try {
+	        ArrayList<String> expectedCards = new ArrayList<>();
+	        Response res = getResponse(endpoint);
+	        js = new JsonPath(res.asString());
+	        int size = js.getList("ListingResponse.response.docs").size();
+	        for (int i = 0; i < size; i++) {
+	            String currentContentType = js.getString("ListingResponse.response.docs[" + i + "].contenttype_t");
+	            if (currentContentType != null && currentContentType.equalsIgnoreCase(contentType)) {
+	                String headline = js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t");
+	                expectedCards.add(headline);
+	            }
+	        }
+	        ExtentsReportManager.extentReportLogging("info",
+	            "Getting the response from the endpoint " + getURIInfo(endpoint));
+	        return expectedCards;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	            "Exception occurred in function getCardByContentType(): " + e);
+	        throw e;
+	    }
+	}
+
+
 }
 

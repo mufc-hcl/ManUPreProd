@@ -32,7 +32,7 @@ Feature: Shop-Web View features
     And user clicks on shop tab
     And user clicks on ok button in cookies screen
     #And user clicks on ok button in cookies screen in Store
-    And user adds the first product and select size as "M"
+    And user adds the first product and select size as "L"
     And user clicks on Add to bag button
     Then user validates Added to Bag page
     And user clicks on Bag button

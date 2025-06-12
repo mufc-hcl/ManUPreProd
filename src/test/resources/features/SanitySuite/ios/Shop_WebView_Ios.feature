@@ -29,7 +29,7 @@ Feature: Shop-Web View features
     And user clicks on not now button in match appearance alert screen in ios
     And user click on shop tab in bottom tab in ios
     And user clicks on ok in the cookies screen in ios
-    And user adds the first product and select size as "M"
+    And user adds the first product and select size as "L"
     And user clicks on Add to bag button
     Then user validates Added to Bag page
     And user clicks on Bag button

@@ -1767,42 +1767,42 @@ public class UnitedNowAndroidStepDef {
 //	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying Coming Up carousel in united now<br />" + e);
 //	            throw e;
 //	        }
-    @And("^user clicks on united now tab$")
-    public void userClicksOnUnitedNowTab() throws Throwable {
-        try {
-            new UnitedNowPage().clicksOnUnitedNowTab();
-            ExtentsReportManager.extentReportLogging("info", "Clicked on United now tab");
-        } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in Clicking on United tab <br />" + e);
-            throw e;
-        }
-    }
+		    @And("^user clicks on united now tab$")
+		    public void userClicksOnUnitedNowTab() throws Throwable {
+		        try {
+		            new UnitedNowPage().clicksOnUnitedNowTab();
+		            ExtentsReportManager.extentReportLogging("info", "Clicked on United now tab");
+		        } catch (AssertionError e) {
+		            ExtentsReportManager.extentReportLogging("fail", "Error in Clicking on United tab <br />" + e);
+		            throw e;
+		        }
+		    }
 
 	@Then("^user validates upsell functionality is displayed united now screen using API$")
 	public void userValidatesUpsellFunctionalityIsDisplayedUnitedNowScreen() throws Throwable {
 		 try {
 	            //data from API
 	            String upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
-	            String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
-
 	            ExtentsReportManager.extentReportLogging("info","upsellTitle Text From API<br />"+upsellTitleFromAPI);
-				 ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+unitedNowPage.getUpsellTitleFromUI());
+	            
+	            if(upsellTitleFromAPI != null) {
+	            	String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
+					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
 
-				 soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
+					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
+		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
+		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
 
+		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
+					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
 
-	            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
-	            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
-
-	            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
-				 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+unitedNowPage.getWatchNowBtnTextUi());
-
-	            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
-
-	            soft.assertAll();
-
-	            System.out.println();
-	            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
+		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
+		            soft.assertAll();
+		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
+	            }else {
+	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page");
+	            }
+	            
 	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying upsell functionality is displayed in united now<br />" + e);
 	            throw e;
