@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.bdd.pages.IdmPage;
+import org.bdd.pages.MutvPage;
 import org.bdd.pages.MyUnitedPage;
 import org.bdd.utils.AppiumDriverManager;
 import org.bdd.utils.Common;
@@ -22,6 +23,7 @@ import java.util.Properties;
 public class IdmAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
     public IdmPage idmPage = new IdmPage();
+    public MutvPage mutvPage = new MutvPage();
     public IdmAPIResponse idmAPIResponse = new IdmAPIResponse();
     public MyUnitedPage myUnitedPage = new MyUnitedPage();
 

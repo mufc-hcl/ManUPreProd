@@ -584,6 +584,7 @@ public class MutvAndroidStepDef {
     @And("user clicks on log in button in subscribe page")
     public void userClicksOnLogInButtonInSubscribePage() {
         try {
+        	mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             idmPage.clicksOnLogInButtonInSubscribePage();
             ExtentsReportManager.extentReportLogging("info", "Clicked on log in button in subscribe page");
         } catch (AssertionError e) {

@@ -22,6 +22,7 @@ import java.util.Properties;
 public class IdmIosStepDef {
 	public SoftAssert soft = new SoftAssert();
 	public IdmPage idmPage = new IdmPage();
+	public MutvPage mutvPage = new MutvPage();
 	public MyUnitedPage myUnitedPage = new MyUnitedPage();
 	public IdmAPIResponse idmAPIResponse = new IdmAPIResponse();
 

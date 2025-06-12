@@ -1328,7 +1328,6 @@ public class MyUnitedIosStepDef {
 	public void userValidatesMyTicketsComponentInMyUnitedScreenInIos() throws Throwable {
 		try {
             boolean flag = myUnitedPage.userValidatesMyTicketsComponentInMyUnitedScreen();
-            myUnitedPage.userClicksOnMyTicketsComponentInMyUnitedScreen();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validated my tickets component in my united screen");
         } catch (AssertionError e) {
@@ -1340,6 +1339,7 @@ public class MyUnitedIosStepDef {
 	@Then("^user validates content in my tickets component in ios$")
 	public void userValidatesContentInMyTicketsComponentInIos() throws Throwable {
 		try {
+			 myUnitedPage.userClicksOnMyTicketsComponentInMyUnitedScreen();
             boolean flag = myUnitedPage.userValidatesContentInMyTicketsComponent();
             myUnitedPage.userClicksOnBackIconInMyTickets();
             soft.assertTrue(flag);
@@ -1354,7 +1354,6 @@ public class MyUnitedIosStepDef {
 	public void userValidatesStadiumComponentInMyUnitedScreenInIos() throws Throwable {
 		try {
             boolean flag = myUnitedPage.userValidatesStadiumComponentInMyUnitedScreen();
-            myUnitedPage.userClicksOnStadiumComponentInMyUnitedScreen();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validated stadium component in my united screen");
         } catch (AssertionError e) {
@@ -1366,6 +1365,7 @@ public class MyUnitedIosStepDef {
 	@Then("^user validates content in stadium component in ios$")
 	public void userValidatesContentInStadiumComponentInIos() throws Throwable {
 		try {
+			myUnitedPage.userClicksOnStadiumComponentInMyUnitedScreen();
             boolean flag = myUnitedPage.userValidatesContentInStadiumComponent();
             soft.assertTrue(flag);
             ExtentsReportManager.extentReportLogging("info", "validates content in stadium component");
