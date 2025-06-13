@@ -5567,7 +5567,7 @@ public class UnitedNowPage extends Common {
 
             if (!elements.isEmpty()) {
                 ExtentsReportManager.extentReportLogging("pass", contentType + " Carousel '" + eleText + "' found ");
-                elements.get(0).click();
+                elements.get(0);
                 Thread.sleep(100);
                 return true;
             } else {
@@ -5586,5 +5586,36 @@ public class UnitedNowPage extends Common {
 	        return false;
 	    }
     }
-	
-}
+
+	public Boolean validateFixturesResultsOrNoSpotlight() {
+		String device = GlobalParams.getPlatformName();
+		try {
+	        if (device.equalsIgnoreCase("android")) {
+	        	        if (unitedNowPageLocators.resultFixtureNoSpotLight1.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "Results or Fixtures with no spotlight are displayed.");
+	        	            return unitedNowPageLocators.resultFixtureNoSpotLight.isDisplayed();
+	        	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+	        	            return unitedNowPageLocators.noSpolightStoriescarousel.isDisplayed();
+	        	        } else {
+	        	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+	        	            return false;
+	        	        }
+	        } else { // iOS or other platforms
+	        	 if (unitedNowPageLocators.resultFixtureNoSpotLight1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "Results or Fixtures with no spotlight are displayed.");
+     	            return unitedNowPageLocators.resultFixtureNoSpotLight.isDisplayed();
+     	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+     	            return unitedNowPageLocators.noSpolightStoriescarousel.isDisplayed();
+     	        } else {
+     	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+     	            return false;
+     	        }
+	            }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateFixturesResultsOrNoSpotlight()<br />" + e);
+	        throw e;
+	    }
+	}
+	}

@@ -175,7 +175,7 @@ Feature: United now
   #And user clicks player from "women" tab in ios
   #And navigate to the latest section for the player in ios
   #And verify clicking on video or article navigates to the respective page in ios
-  @u1
+  @u1111
   Scenario: [United now]TC013 United Now Carousel should display in United Now when it's Fixture, Result or No Spotlight
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -189,6 +189,7 @@ Feature: United now
     #And user clicks on the stories carousel
     #Then user validates the story page is displayed
     Then user validates Stories Carousel in united now is displayed using API
+    Then user validates it is Fixures Results or no spotlight
 
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu ios application

@@ -927,4 +927,16 @@ public class UnitedNowPageLocators {
     @AndroidFindBy(xpath = "//*[@content-desc='CLOSE']")
 	public List<WebElement> closeIconMutvINAppPopUp;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'spotlight_btn')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
+    public WebElement resultFixtureNoSpotLight;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, 'spotlight_btn')]")
+    public List<WebElement> resultFixtureNoSpotLight1;
+    
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView")
+    public WebElement noSpolightStoriescarousel;
+    
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView")
+    public List<WebElement> noSpolightStoriescarousel1;
 }
