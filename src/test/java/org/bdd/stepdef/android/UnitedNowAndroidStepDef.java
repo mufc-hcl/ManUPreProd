@@ -1791,16 +1791,15 @@ public class UnitedNowAndroidStepDef {
 
 					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
 		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
-		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
-
 		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
+		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();		           
 					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
 
 		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
 		            soft.assertAll();
-		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
+		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed united now is displayed ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page");
+	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page and API");
 	            }
 	            
 	        } catch (AssertionError e) {
@@ -2072,6 +2071,25 @@ public class UnitedNowAndroidStepDef {
 	@Then("^user validates its Fixures Results or no spotlight$")
 	public void userValidatesItsFixuresResultsOrNoSpotlight() throws Throwable {
 	
+	}
+	@Then("^user validates DFP ads after every 10 items in UN listing$")
+	public void userValidatesDFPadsUnitedListing() throws Throwable {
+		 try {
+	            //boolean actualDFPAdsValues = unitedNowPage.validateDfpAfterCards(50,10);
+			 int actualDFPAdsPosition = unitedNowCardsPage.getDfpAdPosition(25);
+	           if (actualDFPAdsPosition==-1)
+	           {
+	        	   ExtentsReportManager.extentReportLogging("WARNING", "Data for DFP Ads is not added by the CMS and is unavailable after the first 10 items in the UN listing");
+	           }else {
+	          soft.assertTrue((actualDFPAdsPosition==11), "DFP Ads expected position is 11 that is after 10 items in UN listing but actual position is   "+ actualDFPAdsPosition);
+	            soft.assertAll();
+	            
+	            ExtentsReportManager.extentReportLogging("info", "validated DFP Ads after every 10 items in UN listing");
+	           }
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in validating DFP Ads after every 10 items in UN listing<br />" + e);
+	            throw e;
+	        }
 	}
         
 	}

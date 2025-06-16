@@ -485,3 +485,18 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
     Then user validates scroll and validates 30 items loaded in UN listing
+    
+    @AndroidUN_TC029
+    Scenario: [UNITED NOW] TC029_User should be able to see DFP ads after every 10 items in UN listing
+    Given user navigates to manu android application
+    And user navigates to screen two
+    And user navigates to screen three
+    And user navigates to screen four
+    And user click on skip button in screen four
+    And user clicks on ok button in cookies screen
+    And user clicks on close from notification
+    And user clicks continue in MUApp popup
+    And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    Then user validates DFP ads after every 10 items in UN listing
+    

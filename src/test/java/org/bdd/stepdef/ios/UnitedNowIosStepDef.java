@@ -1766,7 +1766,7 @@ public class UnitedNowIosStepDef {
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page");
+	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page and API");
 	            }
 	            
 	        } catch (AssertionError e) {
