@@ -178,7 +178,7 @@ Feature: United now
     Then verify profile and stats tab are displayed
     And navigate to the latest section for the player
     And verify clicking on video or article navigates to the respective page
-@UNII
+@UNII11
   Scenario: [United now]TC013 United Now Carousel should display in United Now when it's Fixture, Result or No Spotlight
     Given user navigates to manu android application
     And user navigates to screen two
@@ -192,7 +192,7 @@ Feature: United now
     #Then user clicks on the stories carousel
     #And user validates the story page is displayed
      Then user validates Stories Carousel in united now is displayed using API
-     Then user validates its Fixures Results or no spotlight
+     Then user validates it is Fixures Results or no spotlight
      
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
