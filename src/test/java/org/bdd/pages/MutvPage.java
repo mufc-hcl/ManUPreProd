@@ -2599,4 +2599,91 @@ public class MutvPage extends Common {
 		}
 	}
 
+//	public boolean validatesContentCardInMUTV() {
+//		try {
+//			for (int i = 0; i < 20; i++) {
+//				if (!(mutvPageLocators.contentCardInMUTV1.size() > 0)) {
+//					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+//					 return mutvPageLocators.contentCardInMUTV.isDisplayed();
+//				} else {
+//					break;
+//				}
+//			}
+//			ExtentsReportManager.extentReportLogging("pass", "found content card in MUTV");
+//		} catch (Exception e) {
+//			ExtentsReportManager.extentReportLogging("fail",
+//					"Exception occured in function-validatesContentCardInMUTV()<br />" + e);
+//			throw e;
+//		}
+//		
+//	}
+	public boolean validatesContentCardInMUTV() {
+			String device = GlobalParams.getPlatformName();
+			try {
+		        if (device.equalsIgnoreCase("android")) {
+		        	 if (mutvPageLocators.contentCardInMUTV.isDisplayed()) {
+		     	            ExtentsReportManager.extentReportLogging("pass", "Braze content card is displayed.");
+		     	            return true;
+		        	        } else {
+		        	            ExtentsReportManager.extentReportLogging("info", "Braze content card is not displayed.");
+		        	            return false;
+		        	        }
+		        } else {
+		        	 if (mutvPageLocators.contentCardInMUTV.isDisplayed()) {
+	     	            ExtentsReportManager.extentReportLogging("pass", "Braze content card is displayed.");
+	     	            return true;
+		        	 } else {
+	     	            ExtentsReportManager.extentReportLogging("info", "Braze content card is not displayed.");
+	     	            return false;
+	     	        }
+		            }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validatesContentCardInMUTV()<br />" + e);
+		        throw e;
+		    }
+	 
+	}
+
+	public boolean validatesContentCardInMUTVInIos() {
+		 try {
+		        for (int i = 0; i < 5; i++) {
+		            if (mutvPageLocators.contentCardInMUTV1.size() > 0) {
+		                ExtentsReportManager.extentReportLogging("pass", "Found content card in MUTV");
+		                return true; 
+		            } else {
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+		            }
+		        }
+		        ExtentsReportManager.extentReportLogging("fail", "Content card is not available in MUTV.");
+		        return false; 
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail",
+		                "Exception occurred in function validatesContentCardInMUTV() - " + e);
+		        throw e;
+		    }
+	}
+
+	public boolean userNavigatesToBrazeContentcardMUTV() {
+		try {
+	        for (int i = 0; i < 10; i++) {
+	            if (mutvPageLocators.contentCardInMUTV1.size() > 0) {
+	                ExtentsReportManager.extentReportLogging("Pass", "Braze Content Card 'MUTV' is available.");
+	                return true;
+	            } else {
+	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+	                ExtentsReportManager.extentReportLogging("Info", "Scrolled down to look for Braze Content Card 'MUTV'.");
+	            }
+	        }
+	        ExtentsReportManager.extentReportLogging("Fail", "Braze Content Card 'MUTV' is not available after scrolling.");
+	        return false;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("Fail",
+	            "Exception occurred in function userNavigatesToBrazeContentcardMUTV()<br />" + e);
+	        throw e;
+	    }
 }
+		
+	}
+
+
+

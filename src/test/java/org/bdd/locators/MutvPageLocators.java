@@ -436,6 +436,14 @@ public class MutvPageLocators {
 	
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOGIN TO ADD CALENDAR\"]")
 	public WebElement loginToAddCalenderButton;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@content-desc=\"MUTV CBS Wrong Promo2 . MUTV CBS Wrong Promo2\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable")
+	public List<WebElement> contentCardInMUTV1;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@content-desc=\"MUTV CBS Wrong Promo2 . MUTV CBS Wrong Promo2\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable")
+	public WebElement contentCardInMUTV;
 }
 
 
