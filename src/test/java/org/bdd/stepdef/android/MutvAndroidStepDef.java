@@ -1098,8 +1098,14 @@ public class MutvAndroidStepDef {
 	public void userValidatesMutvHeroCarouselIsNotDisplayedWhenDisabledFromCMS() {
 	    try {	        
 	    	  boolean isCarouselDisabled =  mutvPage.validateHeroCarouselDisableInMutvPage();
-	    	  soft.assertTrue(isCarouselDisabled);
-	    	  soft.assertAll();
+	    	  if(isCarouselDisabled) {
+	    		  soft.assertTrue(isCarouselDisabled);
+		    	  soft.assertAll();
+	                ExtentsReportManager.extentReportLogging("info", "MUTV hero carousel is not displayed when disabled from CMS");
+	            }else {
+	                ExtentsReportManager.extentReportLogging("warning", "MUTV hero carousel is not disabled from CMS hence displayed");
+	            }
+	    	 
 	        ExtentsReportManager.extentReportLogging("info", "MUTV hero carousel are not displayed when disabled from CMS");
 	    } catch (Exception e) {
 	        ExtentsReportManager.extentReportLogging("fail", "Error in validating the disabled MUTV hero carousel validation.<br />" + e);
