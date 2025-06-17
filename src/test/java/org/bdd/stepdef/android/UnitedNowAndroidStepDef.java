@@ -2080,6 +2080,31 @@ public class UnitedNowAndroidStepDef {
           throw e;
       }
 	}
+
+	@Then("^user validates and clicks on it is Fixures Results or no spotlight$")
+	public void userValidatesAndClicksOnItIsFixuresResultsOrNoSpotlight() throws Throwable {
+		try {
+	          unitedNowPage.validatesAndClicksOnItIsFixuresResultsOrNoSpotlight();
+	          soft.assertAll();
+	          ExtentsReportManager.extentReportLogging("info", "Validated upcoming Fixtures using API");
+	      } catch (AssertionError e) {
+	          ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Europa League Text userValidatesTheUpcomingFixturesusingApi<br />" + e);
+	          throw e;
+	      }
+	}
+
+	@Then("^user validates deeplink to Match listing or respective match centre$")
+	public void userValidatesDeeplinkToMatchListingOrRespectiveMatchCentre() throws Throwable {
+		try {
+	          Boolean spotlight = unitedNowPage.validatesDeeplinkToMatchListingOrRespectiveMatchCentre();
+	          soft.assertTrue(spotlight);
+	          soft.assertAll();
+	          ExtentsReportManager.extentReportLogging("info", "validated deeplink to Match listing or respective match centre");
+	      } catch (AssertionError e) {
+	          ExtentsReportManager.extentReportLogging("fail", "Error in user validateing deeplink to Match listing or respective match centre<br />" + e);
+	          throw e;
+	      }
+	}
 	@Then("^user validates DFP ads after every 10 items in UN listing$")
 	public void userValidatesDFPadsUnitedListing() throws Throwable {
 		 try {

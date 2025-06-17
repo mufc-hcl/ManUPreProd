@@ -292,4 +292,5 @@ Scenario Outline: [MUTV]TC007 Subscribe badge should be displayed on the content
      #Examples: 
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
-    
+      
+   

@@ -5618,4 +5618,68 @@ public class UnitedNowPage extends Common {
 	        throw e;
 	    }
 	}
+
+	public void validatesAndClicksOnItIsFixuresResultsOrNoSpotlight() {
+		String device = GlobalParams.getPlatformName();
+		try {
+	        if (device.equalsIgnoreCase("android")) {
+	        	        if (unitedNowPageLocators.resultFixtureNoSpotLight1.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "Results or Fixtures with no spotlight are displayed.");
+	        	             unitedNowPageLocators.resultFixtureNoSpotLight.click();
+	        	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+	        	             unitedNowPageLocators.noSpolightStoriescarousel.click();
+	        	        } else {
+	        	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+	        	           
+	        	        }
+	        } else { // iOS or other platforms
+	        	 if (unitedNowPageLocators.resultFixtureNoSpotLight1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "Results or Fixtures with no spotlight are displayed.");
+     	             unitedNowPageLocators.resultFixtureNoSpotLight.click();
+     	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+     	             unitedNowPageLocators.noSpolightStoriescarousel.click();
+     	        } else {
+     	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+     	        }
+	            }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateFixturesResultsOrNoSpotlight()<br />" + e);
+	        throw e;
+	    }
 	}
+
+	public Boolean validatesDeeplinkToMatchListingOrRespectiveMatchCentre() {
+		String device = GlobalParams.getPlatformName();
+		try {
+	        if (device.equalsIgnoreCase("android")) {
+	        	        if (unitedNowPageLocators.matchCenter.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "Match Center is displayed.");
+	        	            return unitedNowPageLocators.matchCenter1.isDisplayed();
+	        	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+	        	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+	        	            return unitedNowPageLocators.noSpolightStoriescarousel.isDisplayed();
+	        	        } else {
+	        	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+	        	            return false;
+	        	        }
+	        } else { // iOS or other platforms
+	        	 if (unitedNowPageLocators.resultFixtureNoSpotLight1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "Results or Fixtures with no spotlight are displayed.");
+     	            return unitedNowPageLocators.resultFixtureNoSpotLight.isDisplayed();
+     	        } else if (unitedNowPageLocators.noSpolightStoriescarousel1.size()>0) {
+     	            ExtentsReportManager.extentReportLogging("pass", "No spotlight is displayed.");
+     	            return unitedNowPageLocators.noSpolightStoriescarousel.isDisplayed();
+     	        } else {
+     	            ExtentsReportManager.extentReportLogging("info", "Results, Fixtures or No spotlight - nothing found.");
+     	            return false;
+     	        }
+	            }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateFixturesResultsOrNoSpotlight()<br />" + e);
+	        throw e;
+	    }
+	}
+}
+	

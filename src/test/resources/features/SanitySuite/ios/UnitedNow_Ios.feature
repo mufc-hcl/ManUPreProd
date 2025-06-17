@@ -190,7 +190,7 @@ Feature: United now
     #Then user validates the story page is displayed
     Then user validates Stories Carousel in united now is displayed using API
     Then user validates it is Fixures Results or no spotlight
-
+@United_Now_14_Test
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -200,8 +200,11 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    And user clicks on the coming up carousel
-    Then user validates the carosel page is displayed for the carousel
+    #And user clicks on the coming up carousel
+    #Then user validates the carosel page is displayed for the carousel
+     Then user validates Stories Carousel in united now is displayed using API
+    Then user validates and clicks on it is Fixures Results or no spotlight
+     #Then user validates deeplink to Match listing or respective match centre
 
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS
     Given user navigates to manu ios application

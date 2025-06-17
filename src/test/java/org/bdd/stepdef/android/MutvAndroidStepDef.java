@@ -1218,4 +1218,18 @@ public class MutvAndroidStepDef {
         }
 	}
 
+	@And("^user validates braze content card in MUTV$")
+	public void userValidatesContentCardInMUTV() throws Throwable {
+		try {
+			mutvPage.userNavigatesToBrazeContentcardMUTV();
+	        boolean isValid = mutvPage.validatesContentCardInMUTV();
+	        soft.assertTrue(isValid,"Content card is not displayed");
+	    	  soft.assertAll();
+	        ExtentsReportManager.extentReportLogging("info", "validated content card in MUTV");
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception while validateing content card in MUTV.<br />" + e);
+	        throw e;
+	    }
+	}
+
 }

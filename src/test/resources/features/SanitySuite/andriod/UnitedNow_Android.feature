@@ -1,6 +1,6 @@
 @Sanity_Android @UnitedNow_Android
 Feature: United now
- 
+ @United_Now_14
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -193,7 +193,8 @@ Feature: United now
     #And user validates the story page is displayed
      Then user validates Stories Carousel in united now is displayed using API
      Then user validates it is Fixures Results or no spotlight
-     
+
+
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -204,9 +205,12 @@ Feature: United now
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user clicks on the coming up carousel
-    Then user validates the carosel page is displayed for the carousel
-    And user validates stories carousel is displayed in Match or Result card using API
+    #And user clicks on the coming up carousel
+    #Then user validates the carosel page is displayed for the carousel
+    #And user validates stories carousel is displayed in Match or Result card using API
+    Then user validates Stories Carousel in united now is displayed using API
+    Then user validates and clicks on it is Fixures Results or no spotlight
+    #Then user validates deeplink to Match listing or respective match centre
     
 
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS

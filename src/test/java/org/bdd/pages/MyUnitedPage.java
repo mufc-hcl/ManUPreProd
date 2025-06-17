@@ -3,7 +3,6 @@ package org.bdd.pages;
 import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -3203,6 +3202,52 @@ public void validateBackgroundColorInIos() {
 	           throw e;
 
 	        }
+	}
+
+	public boolean validatesBrazeContentCardMyUnitedScreen() {
+		String device = GlobalParams.getPlatformName();
+		try {
+	        if (device.equalsIgnoreCase("android")) {
+	        	 if (myUnitedPageLocators.brazeContentCardMyUnited.isDisplayed()) {
+	     	            ExtentsReportManager.extentReportLogging("pass", "Braze content card is displayed.");
+	     	            return true;
+	        	        } else {
+	        	            ExtentsReportManager.extentReportLogging("info", "Braze content card is not displayed.");
+	        	            return false;
+	        	        }
+	        } else { 
+	        	 if (myUnitedPageLocators.brazeContentCardMyUnited.isDisplayed()) {
+     	            ExtentsReportManager.extentReportLogging("pass", "Braze content card is displayed.");
+     	            return true;
+	        	 } else {
+     	            ExtentsReportManager.extentReportLogging("info", "Braze content card is not displayed.");
+     	            return false;
+     	        }
+	            }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validatesBrazeContentCardMyUnitedScreen()<br />" + e);
+	        throw e;
+	    }
+	}
+
+	public boolean userNavigatesToBrazeContentcardMyUnited() {
+		 try {
+		        for (int i = 0; i < 5; i++) {
+		            if (myUnitedPageLocators.brazeContentCardMyUnited1.size() > 0) {
+		                ExtentsReportManager.extentReportLogging("Pass", "Braze Content Card 'My United' is available.");
+		                return true;
+		            } else {
+		                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+		                ExtentsReportManager.extentReportLogging("Info", "Scrolled down to look for Braze Content Card 'My United'.");
+		            }
+		        }
+		        ExtentsReportManager.extentReportLogging("Fail", "Braze Content Card 'My United' is not available after scrolling.");
+		        return false;
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("Fail",
+		            "Exception occurred in function userNavigatesToBrazeContentCardMyUnited()<br />" + e);
+		        throw e;
+		    }
 	}
 
 }
