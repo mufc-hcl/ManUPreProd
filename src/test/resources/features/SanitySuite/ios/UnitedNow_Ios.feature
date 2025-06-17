@@ -205,7 +205,7 @@ Feature: United now
      Then user validates Stories Carousel in united now is displayed using API
     Then user validates and clicks on it is Fixures Results or no spotlight
      #Then user validates deeplink to Match listing or respective match centre
-
+@tc015i
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -215,9 +215,9 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    Then user validates Greetings message is not displayed in united now page in ios
-    Then user validates Stories Carousel is not displayed in united now in ios
-    Then user validates Coming Up carousel is not displayed in united now in ios
+     Then user validates Greetings message is not displayed in united now page
+    Then user validates Stories Carousel is not displayed in united now
+    Then user validates Coming Up carousel is not displayed in united now using API
 
   Scenario: [United now]TC016- Validate the functionality of the Article card from United Now feeds/United Now Stories
     Given user navigates to manu ios application

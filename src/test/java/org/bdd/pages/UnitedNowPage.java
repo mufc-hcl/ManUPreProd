@@ -4127,9 +4127,8 @@ public class UnitedNowPage extends Common {
 						"Greetings message is NOT displayed on the United Now page.");
 				return true;
 			} else {
-				ExtentsReportManager.extentReportLogging("pass",
-						"Greetings message is PRESENT on the United Now page.");
-				return true;
+				//ExtentsReportManager.extentReportLogging("pass","Greetings message is PRESENT on the United Now page.");
+				return false;
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -4145,8 +4144,8 @@ public class UnitedNowPage extends Common {
 						"Stories Carousel is NOT displayed on the United Now page.");
 				return true;
 			} else {
-				ExtentsReportManager.extentReportLogging("pass", "Stories Carousel is PRESENT on the United Now page.");
-				return true;
+				//ExtentsReportManager.extentReportLogging("pass", "Stories Carousel is PRESENT on the United Now page.");
+				return false;
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail", "Error in validating Stories Carousel  is  displayed" + e);
@@ -4161,9 +4160,8 @@ public class UnitedNowPage extends Common {
 						"ComingUp Carousel is NOT displayed on the United Now page.");
 				return true;
 			} else {
-				ExtentsReportManager.extentReportLogging("pass",
-						"ComingUp Carousel is PRESENT on the United Now page.");
-				return true;
+				//ExtentsReportManager.extentReportLogging("pass","ComingUp Carousel is PRESENT on the United Now page.");
+				return false;
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",

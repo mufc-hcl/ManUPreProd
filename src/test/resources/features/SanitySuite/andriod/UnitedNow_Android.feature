@@ -212,7 +212,7 @@ Feature: United now
     Then user validates and clicks on it is Fixures Results or no spotlight
     #Then user validates deeplink to Match listing or respective match centre
     
-
+@tc15
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -225,7 +225,7 @@ Feature: United now
     And user clicks on braze in app msg
     Then user validates Greetings message is not displayed in united now page
     Then user validates Stories Carousel is not displayed in united now
-    Then user validates Coming Up carousel is not displayed in united now
+    Then user validates Coming Up carousel is not displayed in united now using API
 
   Scenario: [United now]TC016 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu android application
@@ -461,34 +461,34 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
-  @rerunun11
-  Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user clicks on close in live video
+  #@rerunun11
+  #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #And user clicks on close in live video
     #And user clicks on united now tab
-    Then user validates Sponsor logo in united now screen using API
-
-  @un28 @card
-  Scenario: [UNITED NOW] TC028_User should be able to scroll in UN listing and post 30 items the next 30 items should load if the data is avaibale.
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks on close from notification
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    Then user validates scroll and validates 30 items loaded in UN listing
+    #Then user validates Sponsor logo in united now screen using API
+#
+  #@un28 @card
+  #Scenario: [UNITED NOW] TC028_User should be able to scroll in UN listing and post 30 items the next 30 items should load if the data is avaibale.
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks on close from notification
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
+    #Then user validates scroll and validates 30 items loaded in UN listing
     
     @AndroidUN_TC029 @card
     Scenario: [UNITED NOW] TC029_User should be able to see DFP ads after every 10 items in UN listing

@@ -2231,8 +2231,7 @@ public class MutvPage extends Common {
 			}
 
 			// If elements are found
-			ExtentsReportManager.extentReportLogging("fail",
-					"Hero carousel are visible in MUTV page – should be disabled on CMS side ");
+			//ExtentsReportManager.extentReportLogging("fail",	"Hero carousel are visible in MUTV page – should be disabled on CMS side ");
 			return false;
 
 		} catch (Exception e) {

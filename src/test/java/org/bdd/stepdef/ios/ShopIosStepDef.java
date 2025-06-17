@@ -476,20 +476,6 @@ public class ShopIosStepDef {
 		}
 	}
 
-	@Then("^user validates all the tabs in shop screen not displayed when disabled from CMS in ios$")
-	public void userValidatesAllTheTabsInShopScreenNotDisplayedWhenDisabledFromCMSInIos() throws Throwable {
-		try {
-			boolean isAllTabsDisabled = shopPage.validateAllTheTabsInShopScreenDisabledInMutvPage();
-			soft.assertTrue(isAllTabsDisabled);
-			soft.assertAll();
-			ExtentsReportManager.extentReportLogging("info", "all the tabs in shop screen should be disabled from CMS");
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Error in validating the disabled all the tabs in shop.<br />" + e);
-			throw e;
-		}
-	}
-
 	@Then("^user validates hero card in shop screen in ios$")
 	public void userValidatesHeroCardInShopScreenInIos() throws Throwable {
 		try {

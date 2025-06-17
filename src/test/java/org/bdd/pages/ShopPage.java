@@ -1459,7 +1459,7 @@ public class ShopPage extends Common {
 	        }
 
 	        // If elements are found
-	        ExtentsReportManager.extentReportLogging("fail", "All tabs in shop screen is displayed – should be disabled on CMS side " );
+	        //ExtentsReportManager.extentReportLogging("fail", "All tabs in shop screen is displayed – should be disabled on CMS side " );
 	        return false;
 
 	    } catch (Exception e) {

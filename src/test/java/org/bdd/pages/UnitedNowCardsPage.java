@@ -2,6 +2,9 @@ package org.bdd.pages;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -413,28 +416,43 @@ public class UnitedNowCardsPage extends Common {
 	}
 
 	
-	public int getBrazeCardPositionBasedonMatchday(String matchStartTime, String appOpenTime, int displayTimeInHours) {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+	public int getBrazeCardPositionBasedonMatchday( int displayTimeInHours) {
+	    try {
+	        // Define UK time zone
+	        ZoneId ukZone = ZoneId.of("Europe/London");
 
-            Date matchStart = format.parse(matchStartTime);
-            Date appOpen = format.parse(appOpenTime);
+	        // Get current UK time and format it
+	        ZonedDateTime nowUK = ZonedDateTime.now(ukZone);
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+	        String appOpenTime = nowUK.format(formatter);
 
-            // Calculate the difference in minutes
-            long diffMillis = appOpen.getTime() - matchStart.getTime();
-            int diffMinutes = (int) (diffMillis / (60 * 1000));
+	        // Extract match start time from the card element
+	        WebElement ele = driver.findElement(By.xpath(".//android.widget.TextView"));
+	        String matchStartTime = ele.getText();
 
-            // Logic to decide position
-            int displayWindowMinutes = displayTimeInHours * 60;
-            if (diffMinutes <= displayWindowMinutes && displayWindowMinutes >= 0) {
-                return 3; // 2nd index position
-            } else {
-                return 2; // 1st index position
-            }
-        } catch (ParseException e) {
-            throw new RuntimeException("Invalid time format. Use format like '3:00 PM' in function <getBrazeCardPositionBasedonMatchday>", e);
-        }
-    }
+	        // Parse times
+	        SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+	        Date matchStart = format.parse(matchStartTime);
+	        Date appOpen = format.parse(appOpenTime);
+
+	        // Calculate the difference in minutes
+	        long diffMillis = appOpen.getTime() - matchStart.getTime();
+	        int diffMinutes = (int) (diffMillis / (60 * 1000));
+
+	        // Logic to decide position
+	        int displayWindowMinutes = displayTimeInHours * 60;
+	        if (diffMinutes <= displayWindowMinutes && diffMinutes >= 0) {
+	            return 3; // 2nd index position
+	        } else {
+	            return 2; // 1st index position
+	        }
+	    } catch (ParseException e) {
+	        throw new RuntimeException("Invalid time format. Use format like '3:00 PM' in function <getBrazeCardPositionBasedonMatchday>", e);
+	    } catch (Exception e) {
+	        throw new RuntimeException("Error extracting match start time from card element.", e);
+	    }
+	}
+
 	
 	public int getBrazeCardPosition(int maxScrolls) {
 		 int scrollCount = 0;
