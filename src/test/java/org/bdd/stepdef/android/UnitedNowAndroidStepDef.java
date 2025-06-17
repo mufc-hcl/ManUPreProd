@@ -2057,7 +2057,7 @@ public class UnitedNowAndroidStepDef {
 	@Then("user validates scroll and validates 30 items loaded in UN listing")
 	public void validateScrollAndItemCountInUNListing() {
 		 try {
-	            boolean actualDFPAdsValues = unitedNowCardsPage.validateAtLeast30DistinctCardsAndMore(200); 
+	            boolean actualDFPAdsValues = unitedNowCardsPage.validateAtLeast30DistinctCardsAndMore(150); 
 	            ExtentsReportManager.extentReportLogging("info","validates scroll and validates 30 items loaded in UN listing");
 	            soft.assertTrue(actualDFPAdsValues, "validates 30 items not loaded in UN listing after scroll");
 	            soft.assertAll();
@@ -2096,6 +2096,32 @@ public class UnitedNowAndroidStepDef {
 	           }
 	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in validating DFP Ads after every 10 items in UN listing<br />" + e);
+	            throw e;
+	        }
+	}
+	
+	@Then("^user validates Braze card as second item in UN listing using api$")
+	public void userValidatesBrazeCardUnitedListing() throws Throwable {
+		 try {
+			    boolean hidebrazefromappAPI = unitedNowAPIResponse.getBrazeCardinApp("getUnitedNowConfigurationsEndpoint");
+				ExtentsReportManager.extentReportLogging("info",	"hidebrazefromapp_bAPI value using API " + hidebrazefromappAPI);
+	            String brazecarddisplaytime = unitedNowAPIResponse.getBrazeCardDisplayTime("getUnitedNowConfigurationsEndpoint");
+	            ExtentsReportManager.extentReportLogging("info",	"brazecarddisplaytime_t value using API " + brazecarddisplaytime);
+			    if (hidebrazefromappAPI)
+			    {
+			    	ExtentsReportManager.extentReportLogging("Pass","Braze card will not be displayed in UN listing as hidebrazefromapp_b is set as "+hidebrazefromappAPI);
+			    }else {
+			    	String matchStartTime = null;
+			    	String currentTime = null;
+			    	int expectedPosition = unitedNowCardsPage.getBrazeCardPositionBasedonMatchday(matchStartTime, currentTime, Integer.parseInt(brazecarddisplaytime));
+				    int brazePosition = unitedNowCardsPage.getBrazeCardPosition(10);
+				    soft.assertTrue((brazePosition==2), "Braze card as not displayed as second item in UN listing expected is 2 but actual position is "+brazePosition);
+		            soft.assertAll();
+		            ExtentsReportManager.extentReportLogging("info", "validated Braze card as second item in UN listing "+brazePosition);
+			    }
+	            
+	        } catch (AssertionError e) {
+	            ExtentsReportManager.extentReportLogging("fail", "Error in validating Braze card as second item in UN listing<br />" + e);
 	            throw e;
 	        }
 	}

@@ -1546,5 +1546,32 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	}
 
 
+	public boolean getBrazeCardinApp(String endpoint) throws IOException {
+		try {
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+			boolean hidebrazeinappmessages = (boolean) js.getBoolean("UnitednowconfigurationsResponse.response.docs[0].hidebrazeinappmessages_b");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return hidebrazeinappmessages;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getBrazeCardDisplay()" + e);
+			throw e;
+		}
+	}
+	
+	public String getBrazeCardDisplayTime(String endpoint) throws IOException {
+		try {
+			Response res = getResponse(endpoint);
+			js = new JsonPath(res.asString());
+			String brazecarddisplaytime = js.getString("UnitednowconfigurationsResponse.response.docs[0].brazecarddisplaytime_t");
+			ExtentsReportManager.extentReportLogging("info",
+					"Getting the response from the endpoint " + getURIInfo(endpoint));
+			return brazecarddisplaytime;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getBrazeCardDisplayTime()" + e);
+			throw e;
+		}
+	}
 }
 
