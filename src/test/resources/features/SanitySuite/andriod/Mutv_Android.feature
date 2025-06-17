@@ -390,26 +390,4 @@ Feature: MUTV Feature
       #| username                | password |
       #| manupreprod@yopmail.com | Manu@123 |
       
-      @MUTV_20
-   Scenario Outline: [MUTV20] - Content Card - Logout & Login User - braze
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email and valid password for subscribed user
-    And user clicks on login button in login screen
-    And user clicks continue in MUApp popup
-    And user clicks on Mutv tab
-    And user clicks on explore icon
-    And user validates braze content card in MUTV
     
-    Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |

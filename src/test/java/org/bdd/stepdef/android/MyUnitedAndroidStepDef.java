@@ -1401,6 +1401,20 @@ public class MyUnitedAndroidStepDef {
           throw e;
       }
 	}
+
+	@Then("^user validates braze content card in myUnited Screen$")
+	public void userValidatesBrazeContentCardInMyUnitedScreen() throws Throwable {
+		try {
+			  myUnitedPage.userNavigatesToBrazeContentcardMyUnited();
+	          boolean Braze = myUnitedPage.validatesBrazeContentCardMyUnitedScreen();
+	          soft.assertTrue(Braze);
+	          soft.assertAll();
+	          ExtentsReportManager.extentReportLogging("info", "Validated braze content card in myUnited Screen");
+	      } catch (AssertionError e) {
+	          ExtentsReportManager.extentReportLogging("fail", "Error in user Validate braze content card in myUnited Screen<br />" + e);
+	          throw e;
+	      }
+	}
 	
 	}
 

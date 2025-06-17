@@ -132,7 +132,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@MyU
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu android application
     And user navigates to screen two
@@ -152,7 +152,7 @@ Feature: My United features
     #tshirt num commented due to defetct
     Then user validate t shirt number from the previous step
     And user validate t shirt name is displayed
-
+    
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
@@ -184,7 +184,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@MyU
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -511,7 +511,7 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
       
-       Scenario Outline: [My United]TC019 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
+       Scenario Outline: [My United]TC020 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -534,3 +534,6 @@ Feature: My United features
      Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
+      
+      
+   

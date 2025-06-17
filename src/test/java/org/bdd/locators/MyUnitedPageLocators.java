@@ -751,4 +751,13 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
 	@iOSXCUITFindBy(xpath = "//*[@name='TICKETS']")
 	public WebElement myUnitedTabLogin;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@content-desc=\"MyUnited  CBS Null Value2 . MyUnited  CBS Null Value2\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable")
+	public WebElement brazeContentCardMyUnited;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@content-desc=\"MyUnited  CBS Null Value2 . MyUnited  CBS Null Value2\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable")
+	public List<WebElement> brazeContentCardMyUnited1;
+	
 }
