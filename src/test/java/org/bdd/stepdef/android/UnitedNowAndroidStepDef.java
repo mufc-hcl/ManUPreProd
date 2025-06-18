@@ -994,8 +994,8 @@ public class UnitedNowAndroidStepDef {
         	 expectedGalleryCard = unitedNowAPIResponse.getGalleryCard("getAllCardsFromUnitedNow");
              ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard);
              if(!expectedGalleryCard.isEmpty()) {
-                 soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
-            	 //soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 30,"Gallery"));
+                // soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
+            	 soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 30,"Gallery"));
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
              }else {
@@ -1722,11 +1722,11 @@ public class UnitedNowAndroidStepDef {
 	            
 	            if(flag) 
             	{
-	    		  soft.assertTrue(flag,"Validated Stories Carousel in untied now is displayed" );
+	    		  soft.assertTrue(flag,"Validated Greetings message in untied now is displayed" );
 		    	  soft.assertAll();
-		    	  ExtentsReportManager.extentReportLogging("info", "Validated greeting message in untied now is displayed ");
+		    	  ExtentsReportManager.extentReportLogging("info", "Validated greeting message in untied now is not displayed ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("warning", "Please disable the Stories Carousel from the CMS, as it is currently appearing in the app");
+	                ExtentsReportManager.extentReportLogging("warning", "Please disable the Greetings message from the CMS, as it is currently appearing in the app");
 	            }
 	    	            
 	        } catch (AssertionError e) {
@@ -1760,7 +1760,7 @@ public class UnitedNowAndroidStepDef {
 	    	        boolean comingUpCarouselDisplayedFromAPI = unitedNowAPIResponse.getComingUpCarousalFromApi("ComingUp/StoriesCarousalEndPoint");
 	    	        ExtentsReportManager.extentReportLogging("info","comingUpCarousel  From API<br />"+comingUpCarouselDisplayedFromAPI);
 	    	        boolean comingUpCarouselCarouselDisplayedFromUI = unitedNowPage.validatesComingUpCarouselIsNotDisplayedInUnitedNow();  
-	    	        if(comingUpCarouselCarouselDisplayedFromUI) 
+	    	        if(comingUpCarouselDisplayedFromAPI) 
 	            	{
 	    	        	ExtentsReportManager.extentReportLogging("warning", "Please disable the Coming Up Carousel from the CMS, as it is currently appearing in the app");
 	            	}
@@ -2154,7 +2154,7 @@ public class UnitedNowAndroidStepDef {
 			  
 			    	int expectedPosition = unitedNowCardsPage.getBrazeCardPositionBasedonMatchday( Integer.parseInt(brazecarddisplaytime));
 				    int brazePosition = unitedNowCardsPage.getBrazeCardPosition(10);
-				    soft.assertTrue((brazePosition==2), "Braze card as not displayed as second item in UN listing expected is 2 but actual position is "+brazePosition);
+				    soft.assertTrue((brazePosition==expectedPosition), "Braze card is not displayed in UN listing at expected position "+ expectedPosition +"  but actual position is "+brazePosition);
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "validated Braze card as second item in UN listing "+brazePosition);
 			    }

@@ -31,6 +31,9 @@ public class ExplorePageLocators {
 	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Close\"]")
 	public WebElement closeIconInAppMsgIosBrazeTest;
 	
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Close\"]")
+	public List<WebElement> closeIconInAppMsgIosBrazeTests;
+	
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"GENERAL\"]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"general\"]")

@@ -214,7 +214,7 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Match Result\"]")
     public  WebElement storiesCouroselUnitedNowPage1;
     
-    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[contains(@resource-id, \":id/cv_comingUpCarousel\")])[1]/android.widget.LinearLayout")
+    @AndroidFindBy(xpath = "(//android.widget.FrameLayout[contains(@resource-id, ':id/cv_comingUpCarousel')])[1]/android.widget.LinearLayout")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]")
     public List<WebElement> comingUpCouroselUnitedNowPage;
     

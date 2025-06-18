@@ -1,6 +1,7 @@
 package org.bdd.pages;
 
 import static org.bdd.utils.AndroidGenericLibrary.swipeWithCoordinates;
+import static org.bdd.utils.AndroidGenericLibrary.switchToNativeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,8 @@ import org.bdd.locators.ExplorePageLocators;
 import org.bdd.utils.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class ExplorePage extends Common {
 
@@ -114,7 +113,7 @@ public class ExplorePage extends Common {
 			if (explorePageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
 				waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
 				explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in popup");
 		}
 		} catch (NoSuchElementException ns) {
 		System.out.println("element is not displayed hence skipped");
@@ -140,6 +139,20 @@ public class ExplorePage extends Common {
 
 	public void clickOnHelp() {
 		try {
+//			switchToWebView();
+//
+////List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[contains(@resource-id, 'com_braze_inappmessage_html_webview')]"));
+// 
+//
+//			List<WebElement> allData = driver.findElements(By.xpath("(//*[contains(text(), 'Close') or contains(text(), 'close')]"));
+//			if (allData.size() > 0) {
+//			
+//				//waitForVisibilityFluentWait(allData.get(0), 60);
+//				allData.get(0).click();
+//				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
+//				
+//			}
+//			switchToNativeView(((AndroidDriver) driver));
 			waitForVisibilityFluentWait(explorePageLocators.help, 60);
 			explorePageLocators.help.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on help ");
@@ -163,9 +176,15 @@ public class ExplorePage extends Common {
 
 	public String getContactUs() throws Exception {
 		String device = GlobalParams.getPlatformName();
-		;
+		
 		try {
+			
 			if (device.equalsIgnoreCase("android")) {
+				if (explorePageLocators.closeIconInAppMsgIosBrazeTests.size()>0) {
+					waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
+					explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
+					ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
+				}
 				waitForVisibilityFluentWait(explorePageLocators.contactUsScreenText, 60);
 				Thread.sleep(5000);
 				ExtentsReportManager.extentReportLogging("pass", "Returns contactUs Screen Text ");
@@ -505,7 +524,7 @@ public class ExplorePage extends Common {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 			waitForVisibilityFluentWait(explorePageLocators.helpCouroselSearchPage, 60);
 			explorePageLocators.helpCouroselSearchPage.click();
-			if (explorePageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
+			if (explorePageLocators.closeIconInAppMsgIosBrazeTests.size()>0) {
 				waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
 				explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
@@ -1155,6 +1174,9 @@ public class ExplorePage extends Common {
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on okButtonCookiesScreen");
 			}
 			Thread.sleep(1000);
+		//to handle web view braze popup
+			clickOnBrazeWebViewPopup();			
+ 		
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {
@@ -1166,6 +1188,13 @@ public class ExplorePage extends Common {
 		}
 	}
 
+//	public void closePopupWithCoordinates(AndroidDriver driver) {
+//	    int x = 990; // X coordinate for 'X' button
+//	    int y = 650; // Y coordinate for 'X' button
+//
+//	    TouchAction<?> touchAction = new TouchAction<>(driver);
+//	    touchAction.tap(PointOption.point(x, y)).perform();
+//	}
 	public void clickOnNotNowButtonInMatchAppearanceAlertScreen() {
 		try {
 			if (!explorePageLocators.notNowButtonMatchAppearanceAlert1.isEmpty()) {
@@ -1183,6 +1212,28 @@ public class ExplorePage extends Common {
 			throw e;
 		}
 
+	}
+	
+	public void clickOnBrazeWebViewPopup() {
+		try {
+			List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[contains(@resource-id, 'com_braze_inappmessage_html_webview')]"));
+			//System.out.println("***********"+webViews.toString());
+			if (webViews.size()>0) {
+				switchToWebView();			 
+				WebElement closeButton = driver.findElement(By.xpath("//android.widget.Button[contains(@text, 'Close')]"));
+				closeButton.click();
+				ExtentsReportManager.extentReportLogging("pass",  "Clicks on close button in braze Web view Popup "); 
+				switchToNativeView(((AndroidDriver) driver));
+			}
+		} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (StaleElementReferenceException se) {
+			System.out.println("stale element exception");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickOnBrazeWebViewPopup()<br />" + e);
+			throw e;
+		}
 	}
 
 	public boolean validatesHeroCardInLatestScreen() {

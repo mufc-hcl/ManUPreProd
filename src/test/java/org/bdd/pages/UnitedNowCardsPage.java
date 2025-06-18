@@ -38,6 +38,7 @@ public class UnitedNowCardsPage extends Common {
 	}
 
 	public boolean validateAtLeast30DistinctCardsAndMore(int maxScrolls) {
+		try {
 		Set<String> seenElementIds = new HashSet<>();
 		Map<String, Integer> cardContentToYPosition = new HashMap<>();
 		int scrollCount = 0;
@@ -47,11 +48,11 @@ public class UnitedNowCardsPage extends Common {
 		int visibleCardPosition = 0;
 		List<String> lastScrollCardIds = new ArrayList<>();
 
-		WebElement closeUpsell = driver.findElement(By.xpath("//*[@content-desc='Close Notification']"));
-		if (closeUpsell.isDisplayed()) {
-		waitForVisibilityFluentWait(closeUpsell, 60);
-		closeUpsell.click();
-		ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
+		List<WebElement> closeUpsell = driver.findElements(By.xpath("//*[@content-desc='Close Notification']"));
+	    if (closeUpsell.size()>0) {
+			waitForVisibilityFluentWait(closeUpsell.get(0), 60);
+			closeUpsell.get(0).click();
+			ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
 		}
 
 		String device = GlobalParams.getPlatformName().toLowerCase();
@@ -117,22 +118,22 @@ public class UnitedNowCardsPage extends Common {
 		ExtentsReportManager.extentReportLogging("info", "Scroll " + (scrollCount + 1) + ": New cards = "
 		+ newCardsThisScroll + ", Total unique = " + seenElementIds.size());
 
-//		if (lastScrollCardIds.equals(currentScrollCardIds)) {
-//		sameCardScrolls++;
-//		if (sameCardScrolls >= 6) {
-//		ExtentsReportManager.extentReportLogging("fail",
-//		"Same set of cards displayed for 6 consecutive scrolls. Possibly stuck or page not loading.");
-//		return false;
-//		}
-//		} else {
-//		sameCardScrolls = 0;
-//		}
+		if (lastScrollCardIds.equals(currentScrollCardIds)) {
+		sameCardScrolls++;
+		if (sameCardScrolls >= 15) {
+		ExtentsReportManager.extentReportLogging("fail",
+		"Same set of cards displayed for 6 consecutive scrolls. Possibly stuck or page not loading.");
+		return false;
+		}
+		} else {
+		sameCardScrolls = 0;
+		}
 
 		lastScrollCardIds = new ArrayList<>(currentScrollCardIds);
 
 		if (seenElementIds.size() >= requiredTotalCount) {
 		ExtentsReportManager.extentReportLogging("pass",
-		"Successfully validated ≥35 distinct displayed cards. Final count: " + seenElementIds.size());
+		"Successfully validated more than 35 distinct displayed cards. Final count: " + seenElementIds.size());
 		return true;
 		}
 
@@ -146,16 +147,21 @@ public class UnitedNowCardsPage extends Common {
 		return false;
 		} else if (finalCount < requiredTotalCount) {
 		ExtentsReportManager.extentReportLogging("fail",
-		"Only " + finalCount + " cards found. Expected ≥ 35 after " + maxScrolls + " scrolls.");
+		"Only " + finalCount + " cards found. Expected more than 35 after " + maxScrolls + " scrolls.");
 		return false;
 		}
 
 		ExtentsReportManager.extentReportLogging("pass",
 		"Successfully validated ≥35 displayed cards. Final count: " + finalCount);
 		return true;
-		}
+	} catch (Exception e) {
+        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateAtLeast30DistinctCardsAndMore()<br />" + e);
+        throw e;
+    }
+	}
 
 	public boolean validateAtLeast30DistinctCardsAndMore1(int maxScrolls) {
+		try {
 		Set<String> seenCardIds = new HashSet<>();
 		int scrollCount = 0;
 		int requiredInitialCount = 30;
@@ -164,10 +170,10 @@ public class UnitedNowCardsPage extends Common {
 		int sameCardScrolls = 0;
 		List<String> lastScrollCardIds = new ArrayList<>();
 		
-		WebElement closeUpsell = driver.findElement(By.xpath("//*[@content-desc='Close Notification']"));
-	    if (closeUpsell.isDisplayed()) {
-			waitForVisibilityFluentWait(closeUpsell, 60);
-			closeUpsell.click();
+		List<WebElement> closeUpsell = driver.findElements(By.xpath("//*[@content-desc='Close Notification']"));
+	    if (closeUpsell.size()>0) {
+			waitForVisibilityFluentWait(closeUpsell.get(0), 60);
+			closeUpsell.get(0).click();
 			ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
 		}
 
@@ -279,21 +285,26 @@ public class UnitedNowCardsPage extends Common {
 		}
 
 		ExtentsReportManager.extentReportLogging("pass",
-				"Successfully validated ≥35 displayed cards. Final count: " + finalCount);
+				"Successfully validated 35 displayed cards. Final count: " + finalCount);
 		return true;
+	} catch (Exception e) {
+        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validateAtLeast30DistinctCardsAndMore()<br />" + e);
+        throw e;
+    }
 	}
 
 
 	
 	public int getDfpAdPosition(int maxScrolls) {
+		try {
 	    int scrollCount = 0;
 	    int visibleCardPosition = 0;
 	    int nondfpCardCount = 0;
 	    
-	    WebElement closeUpsell = driver.findElement(By.xpath("//*[@content-desc='Close Notification']"));
-	    if (closeUpsell.isDisplayed()) {
-			waitForVisibilityFluentWait(closeUpsell, 60);
-			closeUpsell.click();
+	    List<WebElement> closeUpsell = driver.findElements(By.xpath("//*[@content-desc='Close Notification']"));
+	    if (closeUpsell.size()>0) {
+			waitForVisibilityFluentWait(closeUpsell.get(0), 60);
+			closeUpsell.get(0).click();
 			ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
 		}
 
@@ -413,6 +424,11 @@ public class UnitedNowCardsPage extends Common {
 
 	    ExtentsReportManager.extentReportLogging("fail", "DFP Ad not found after full scroll.");
 	    return -1;
+	    
+	} catch (Exception e) {
+        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getDfpAdPosition()<br />" + e);
+        throw e;
+    }
 	}
 
 	
@@ -427,41 +443,48 @@ public class UnitedNowCardsPage extends Common {
 	        String appOpenTime = nowUK.format(formatter);
 
 	        // Extract match start time from the card element
-	        WebElement ele = driver.findElement(By.xpath(".//android.widget.TextView"));
-	        String matchStartTime = ele.getText();
+	        WebElement timerElement  = driver.findElement(By.xpath("//*[contains(@resource-id, 'linearlayout_match_parent_center_header')]/android.widget.LinearLayout/android.widget.TextView[1]"));
+	        String matchStartTime = timerElement.getText().trim();
+	        System.out.println("Timer Text: " + matchStartTime);
+
 
 	        // Parse times
-	        SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+	        SimpleDateFormat format = new SimpleDateFormat("hh:mm");
 	        Date matchStart = format.parse(matchStartTime);
 	        Date appOpen = format.parse(appOpenTime);
 
 	        // Calculate the difference in minutes
 	        long diffMillis = appOpen.getTime() - matchStart.getTime();
 	        int diffMinutes = (int) (diffMillis / (60 * 1000));
-
+	        int position;
 	        // Logic to decide position
 	        int displayWindowMinutes = displayTimeInHours * 60;
 	        if (diffMinutes <= displayWindowMinutes && diffMinutes >= 0) {
-	            return 3; // 2nd index position
-	        } else {
-	            return 2; // 1st index position
+	        	position = 3;
+	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be  : " + position);
+	            return position; // 2nd index position
+	        } else {	
+	        	position = 2;
+	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be : " + position);
+	            return position; // 1st index position
 	        }
 	    } catch (ParseException e) {
 	        throw new RuntimeException("Invalid time format. Use format like '3:00 PM' in function <getBrazeCardPositionBasedonMatchday>", e);
 	    } catch (Exception e) {
-	        throw new RuntimeException("Error extracting match start time from card element.", e);
+	        throw new RuntimeException("Error extracting match start time from card element in function getBrazeCardPositionBasedonMatchday.", e);
 	    }
 	}
 
 	
 	public int getBrazeCardPosition(int maxScrolls) {
+		try {
 		 int scrollCount = 0;
 		    int visibleCardPosition = 0;
 		    int nonbrazeCardCount = 0;
-		    WebElement closeUpsell = driver.findElement(By.xpath("//*[@content-desc='Close Notification']"));
-		    if (closeUpsell.isDisplayed()) {
-				waitForVisibilityFluentWait(closeUpsell, 60);
-				closeUpsell.click();
+		    List<WebElement> closeUpsell = driver.findElements(By.xpath("//*[@content-desc='Close Notification']"));
+		    if (closeUpsell.size()>0) {
+				waitForVisibilityFluentWait(closeUpsell.get(0), 60);
+				closeUpsell.get(0).click();
 				ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
 			}
 		    
@@ -580,6 +603,10 @@ public class UnitedNowCardsPage extends Common {
 
 		    ExtentsReportManager.extentReportLogging("fail", "Braze Card not found after full scroll.");
 		    return -1;
+	
+	} catch (Exception e) {
+        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getBrazeCardPosition()<br />" + e);
+        throw e;
+    }
 	}
-
 }
