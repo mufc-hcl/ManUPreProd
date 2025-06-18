@@ -2153,7 +2153,9 @@ public class UnitedNowAndroidStepDef {
 			    }else {
 			  
 			    	int expectedPosition = unitedNowCardsPage.getBrazeCardPositionBasedonMatchday( Integer.parseInt(brazecarddisplaytime));
+			    	ExtentsReportManager.extentReportLogging("info", "Braze Card Position in UN listing should be: "+expectedPosition);
 				    int brazePosition = unitedNowCardsPage.getBrazeCardPosition(10);
+				   
 				    soft.assertTrue((brazePosition==expectedPosition), "Braze card is not displayed in UN listing at expected position "+ expectedPosition +"  but actual position is "+brazePosition);
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "validated Braze card as second item in UN listing "+brazePosition);
