@@ -16,7 +16,7 @@ import java.io.IOException;
         "json:target/cucumber-reports/CucumberTestReport2.json",
         "rerun:rerun/cucumber-reports/rerun2.txt"}, features = {
         "src/test/resources"}, glue = {"org.bdd.stepdef"}, dryRun = false, monochrome = true,
-        tags ="@NotSanit"
+        tags ="@Sanity_IOS"
 
 )
 public class Runner2 {
