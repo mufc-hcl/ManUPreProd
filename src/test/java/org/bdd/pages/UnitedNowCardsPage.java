@@ -38,6 +38,8 @@ public class UnitedNowCardsPage extends Common {
 	}
 
 	public boolean validateAtLeast30DistinctCardsAndMore(int maxScrolls) {
+		  String device = GlobalParams.getPlatformName().toLowerCase();
+		    boolean isAndroid = device.contains("android");
 		try {
 		Set<String> seenElementIds = new HashSet<>();
 		Map<String, Integer> cardContentToYPosition = new HashMap<>();
@@ -46,6 +48,7 @@ public class UnitedNowCardsPage extends Common {
 		int requiredTotalCount = 35;
 		int sameCardScrolls = 0;
 		int visibleCardPosition = 0;
+		int maxMainFilterScrolls = 10;
 		List<String> lastScrollCardIds = new ArrayList<>();
 
 		List<WebElement> closeUpsell = driver.findElements(By.xpath("//*[@content-desc='Close Notification']"));
@@ -54,9 +57,50 @@ public class UnitedNowCardsPage extends Common {
 			closeUpsell.get(0).click();
 			ExtentsReportManager.extentReportLogging("info", "Clicks on close icon in Upsell PopUp in UnitedNow ");
 		}
+	    boolean filterAppeared = false;
 
-		String device = GlobalParams.getPlatformName().toLowerCase();
-		boolean isAndroid = device.contains("android");
+		// Step 1: Scroll until filter appears and disappears
+		boolean cardVisibleAfterFilter = false;
+
+		  while (scrollCount < maxMainFilterScrolls) {
+		        try {
+		          
+		            
+		            WebElement filterElement = isAndroid
+							? driver.findElement(
+									By.xpath("//android.widget.ImageView[contains(@resource-id, ':id/mFilterLay')]"))
+							: driver.findElement(By.xpath("//XCUIElementTypeButton[@name='filterIcon']"));
+
+		            if (filterElement.isDisplayed()) {
+		                Point location = filterElement.getLocation();
+		                Dimension screenSize = driver.manage().window().getSize();
+		                int threshold = screenSize.getHeight() / 4;
+
+		                if (!filterAppeared && location.getY() <= threshold) {
+		                    filterAppeared = true;
+		                    ExtentsReportManager.extentReportLogging("info", "Filter appeared near top.");
+		                }
+
+		                if (filterAppeared && !filterElement.isDisplayed()) {
+		                    ExtentsReportManager.extentReportLogging("info", "Filter disappeared. Stopping scroll.");
+		                    break;
+		                }
+		            }
+		        } catch (Exception e) {
+		            if (filterAppeared) {
+		                ExtentsReportManager.extentReportLogging("info", "Filter not found after appearing. Stopping scroll.");
+		                break;
+		            }
+		        }
+
+		        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+		        scrollCount++;
+		    }
+		
+		  if (!filterAppeared) {
+		    	ExtentsReportManager.extentReportLogging("info", "Filter never appeared after max scrolls.");
+		    }
+		
 
 		String cardXpath = isAndroid
 		? "//*[contains(@resource-id, ':id/card_view') or contains(@resource-id, 'brazeUnitedNowFragment') or contains(@resource-id,'linear_layout_dfp')]"
@@ -224,7 +268,9 @@ public class UnitedNowCardsPage extends Common {
 		        scrollCount++;
 		    }
 		
-
+		  if (!filterAppeared) {
+		    	ExtentsReportManager.extentReportLogging("info", "Filter never appeared after max scrolls.");
+		    }
 		// Step 3: Scroll to validate cards
 		scrollCount = 0;
 		while (scrollCount < maxScrolls) {
@@ -347,6 +393,10 @@ public class UnitedNowCardsPage extends Common {
 	        scrollCount++;
 	    }
 	    
+	    if (!filterAppeared) {
+	    	ExtentsReportManager.extentReportLogging("info", "Filter never appeared after max scrolls.");
+	    }
+	    
 	    while (scrollCount < maxScrolls) {
 	        List<WebElement> cardElements = driver.findElements(By.xpath(cardXpath));
 
@@ -431,52 +481,61 @@ public class UnitedNowCardsPage extends Common {
     }
 	}
 
-	
-	public int getBrazeCardPositionBasedonMatchday( int displayTimeInHours) {
+	public int getBrazeCardPositionBasedonMatchday(int displayTimeInHours) {
+	    final int DEFAULT_POSITION = 2;
+	    final int MATCH_CENTRE_POSITION = 3;
+	    int position = DEFAULT_POSITION;
+
 	    try {
-	        // Define UK time zone
-	        ZoneId ukZone = ZoneId.of("Europe/London");
+	        if (!unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.isEmpty()) {
+	            String cardText = unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText();
 
-	        // Get current UK time and format it
-	        ZonedDateTime nowUK = ZonedDateTime.now(ukZone);
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-	        String appOpenTime = nowUK.format(formatter);
+	            if ("LIVE MATCH CENTRE".equalsIgnoreCase(cardText)) {
+	                // Get current UK time
+	                ZoneId ukZone = ZoneId.of("Europe/London");
+	                ZonedDateTime nowUK = ZonedDateTime.now(ukZone);
+	                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+	                String appOpenTime = nowUK.format(formatter);
 
-	        // Extract match start time from the card element
-	        WebElement timerElement  = driver.findElement(By.xpath("//*[contains(@resource-id, 'linearlayout_match_parent_center_header')]/android.widget.LinearLayout/android.widget.TextView[1]"));
-	        String matchStartTime = timerElement.getText().trim();
-	        System.out.println("Timer Text: " + matchStartTime);
+	                // Extract match start time from UI
+	                WebElement timerElement = driver.findElement(By.xpath(
+	                    "//*[contains(@resource-id, 'linearlayout_match_parent_center_header')]/android.widget.LinearLayout/android.widget.TextView[1]"
+	                ));
+	                String matchStartTime = timerElement.getText().trim();
+	                System.out.println("Timer Text: " + matchStartTime);
 
+	                // Parse times
+	                SimpleDateFormat format = new SimpleDateFormat("hh:mm");
+	                Date matchStart = format.parse(matchStartTime);
+	                Date appOpen = format.parse(appOpenTime);
 
-	        // Parse times
-	        SimpleDateFormat format = new SimpleDateFormat("hh:mm");
-	        Date matchStart = format.parse(matchStartTime);
-	        Date appOpen = format.parse(appOpenTime);
+	                // Calculate time difference in minutes
+	                long diffMillis = appOpen.getTime() - matchStart.getTime();
+	                int diffMinutes = (int) (diffMillis / (60 * 1000));
+	                int displayWindowMinutes = displayTimeInHours * 60;
 
-	        // Calculate the difference in minutes
-	        long diffMillis = appOpen.getTime() - matchStart.getTime();
-	        int diffMinutes = (int) (diffMillis / (60 * 1000));
-	        int position;
-	        // Logic to decide position
-	        int displayWindowMinutes = displayTimeInHours * 60;
-	        if (diffMinutes <= displayWindowMinutes && diffMinutes >= 0) {
-	        	position = 3;
-	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be  : " + position);
-	            return position; // 2nd index position
-	        } else {	
-	        	position = 2;
-	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be : " + position);
-	            return position; // 1st index position
+	                // Determine position
+	                if (diffMinutes >= 0 && diffMinutes <= displayWindowMinutes) {
+	                    position = MATCH_CENTRE_POSITION;
+	                }
+
+	                ExtentsReportManager.extentReportLogging("pass",
+	                    "Match Live - Based on calculation Braze Card position should be: " + position);
+	            }
 	        }
 	    } catch (ParseException e) {
-	        throw new RuntimeException("Invalid time format. Use format like '3:00 PM' in function <getBrazeCardPositionBasedonMatchday>", e);
+	        throw new RuntimeException("Invalid time format. Expected format like '3:00'.", e);
 	    } catch (Exception e) {
-	        throw new RuntimeException("Error extracting match start time from card element in function getBrazeCardPositionBasedonMatchday.", e);
+	        throw new RuntimeException("Error extracting match start time from card element.", e);
 	    }
+
+	    return position;
 	}
 
 	
-	public int getBrazeCardPosition(int maxScrolls) {
+
+	
+	public int getBrazeCardPosition(int maxScrolls) throws Exception {
 		try {
 		 int scrollCount = 0;
 		    int visibleCardPosition = 0;
@@ -526,9 +585,15 @@ public class UnitedNowCardsPage extends Common {
 		        scrollCount++;
 		    }
 		    
+
+		    if (!filterAppeared) {
+		    	ExtentsReportManager.extentReportLogging("info", "Filter never appeared after max scrolls.");
+		    }
+
+		    
 		    while (scrollCount < maxScrolls) {
 		        List<WebElement> cardElements = driver.findElements(By.xpath(cardXpath));
-
+		        Thread.sleep(40);
 		        for (WebElement card : cardElements) {
 		            try {
 		                if (!card.isDisplayed()) continue;
@@ -588,7 +653,7 @@ public class UnitedNowCardsPage extends Common {
 		                    ExtentsReportManager.extentReportLogging("info", "Non-Braze card #" + nonbrazeCardCount + " at position " + visibleCardPosition);
 
 		                    if (nonbrazeCardCount > 4) {
-		                        ExtentsReportManager.extentReportLogging("info", "3+ non-braze cards seen. Aborting search.");
+		                        ExtentsReportManager.extentReportLogging("info", "4 non-braze cards seen. Aborting search.");
 		                        return -1;
 		                    }
 		                }

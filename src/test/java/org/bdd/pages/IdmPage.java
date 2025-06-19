@@ -666,6 +666,7 @@ public class IdmPage extends Common {
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_1));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_2));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_3));
+                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_4));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
                 //MANUSOCIAL@1234
 //                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.S));

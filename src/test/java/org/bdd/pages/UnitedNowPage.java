@@ -345,27 +345,43 @@ public class UnitedNowPage extends Common {
 	}
 
 	public void clickCalenderIconAnd() {
-		try {
-			elementToBeClickableFluentWait(unitedNowPageLocators.calenderIconUnitedPage, 60);
-			unitedNowPageLocators.calenderIconUnitedPage.click();
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on calender icon");
-		} catch (StaleElementReferenceException s) {
-			try {
-			AndroidGenericLibrary.clickAtCoordinates(driver,68,205);
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on calender icon with co-ordinates");
-			
-		} catch (Exception e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();",
-					unitedNowPageLocators.calenderIconUnitedPage);
-			ExtentsReportManager.extentReportLogging("pass", "Clicks on calender icon with js");
-			
-		}	
-		}catch (Exception e1) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clickCalenderIcon()<br />" + e1);
-			throw e1;
-		}
+	    try {
+	        String device = GlobalParams.getPlatformName();
+	        By calenderIconLocator;
 
+	        // Choose locator based on platform
+	        if (device.equalsIgnoreCase("android")) {
+	            calenderIconLocator = AppiumBy.xpath("//android.widget.ImageView[contains(@resource-id, ':id/image_left')]");
+	        } else {
+	            calenderIconLocator = AppiumBy.xpath("//XCUIElementTypeButton[@name='Fixtures']");
+	        }
+
+	        List<WebElement> calendarButtons = driver.findElements(calenderIconLocator);
+
+	        if (!calendarButtons.isEmpty()) {
+	            try {
+	                // Re-locate element just before clicking
+	                WebElement calendarIcon = driver.findElement(calenderIconLocator);
+	                elementToBeClickableFluentWait(calendarIcon, 60);
+	                calendarIcon.click();
+	                ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon");
+	            } catch (StaleElementReferenceException staleEx) {
+	                // Retry by re-locating the element
+	                try {
+	                    WebElement calendarIcon = driver.findElement(calenderIconLocator);
+	                    calendarIcon.click();
+	                    ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon after retry");
+	                } catch (Exception retryEx) {
+	                    // Fallback to coordinate click
+	                    AndroidGenericLibrary.clickAtCoordinates(driver, 68, 205);
+	                    ExtentsReportManager.extentReportLogging("pass", "Clicked on calendar icon using coordinates");
+	                }
+	            }
+	        }
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception in clickCalenderIconAnd():<br/>" + e);
+	        throw e;
+	    }
 	}
 	public void clickCalenderIcon1() throws Exception {
 		String device = GlobalParams.getPlatformName();

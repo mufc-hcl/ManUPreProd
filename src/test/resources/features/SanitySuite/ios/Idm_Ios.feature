@@ -93,7 +93,7 @@ Feature: IDM
 
     Examples: 
       | username                 | password |
-      | manutesting123@gmail.com | Manu@123 |
+      | manutesting123@gmail.com | Manu@1234 |
 
 
   
@@ -195,7 +195,7 @@ Feature: IDM
       | email             | dob | mob | yob  |
       | testmail@test.com |   1 | May | 2015 |
 
-  @idm15
+  @rerun7
   Scenario Outline: [IDM]TC015 Verify that user able to naviagte to Change email screen post log in natively and in change password email user should be able to change email sucessfully, also an email should get triggered with expected email template to confirm the email. Post email confirmation if user try to relogin user should be able to log in using new changed email.
     #PArtial script till entering the values in the signup screen
     Given user navigates to manu ios application
