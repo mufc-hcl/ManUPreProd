@@ -532,60 +532,7 @@ public class UnitedNowCardsPage extends Common {
 	    return position;
 	}
 
-	public int getBrazeCardPositionBasedonMatchday1( int displayTimeInHours) {
-		int position = 2;
-	    try {
-	    
-	    	if (!unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.isEmpty()) {
-				if (!(unitedNowPageLocators.makeYourPredictionsUnitedNowScreen.get(0).getText()
-						.equalsIgnoreCase("LIVE MATCH CENTRE"))) {
-					
-	        // Define UK time zone
-	        ZoneId ukZone = ZoneId.of("Europe/London");
-
-	        // Get current UK time and format it
-	        ZonedDateTime nowUK = ZonedDateTime.now(ukZone);
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-	        String appOpenTime = nowUK.format(formatter);
-
-	        // Extract match start time from the card element
-	        WebElement timerElement  = driver.findElement(By.xpath("//*[contains(@resource-id, 'linearlayout_match_parent_center_header')]/android.widget.LinearLayout/android.widget.TextView[1]"));
-	        String matchStartTime = timerElement.getText().trim();
-	        System.out.println("Timer Text: " + matchStartTime);
-
-
-	        // Parse times
-	        SimpleDateFormat format = new SimpleDateFormat("hh:mm");
-	        Date matchStart = format.parse(matchStartTime);
-	        Date appOpen = format.parse(appOpenTime);
-
-	        // Calculate the difference in minutes
-	        long diffMillis = appOpen.getTime() - matchStart.getTime();
-	        int diffMinutes = (int) (diffMillis / (60 * 1000));
-	        
-	        // Logic to decide position
-	        int displayWindowMinutes = displayTimeInHours * 60;
-	        if (diffMinutes <= displayWindowMinutes && diffMinutes >= 0) {
-	        	position = 3;
-	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be  : " + position);
-	            return position; // 2nd index position
-	        } else {	
-	        	position = 2;
-	        	ExtentsReportManager.extentReportLogging("pass", "Based on calculation Braze Card position should be : " + position);
-	            return position; // 1st index position
-	        }
-	    } 
-	    
-	    	}
-	    }catch (ParseException e) {
-	        throw new RuntimeException("Invalid time format. Use format like '3:00 PM' in function <getBrazeCardPositionBasedonMatchday>", e);
-	    } catch (Exception e) {
-	        throw new RuntimeException("Error extracting match start time from card element in function getBrazeCardPositionBasedonMatchday.", e);
-	    }
-		return position;
-	    
-	   
-	}
+	
 
 	
 	public int getBrazeCardPosition(int maxScrolls) throws Exception {
