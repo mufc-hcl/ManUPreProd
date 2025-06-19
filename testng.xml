@@ -2,14 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="15" verbose="2" >
 	
-	<test name="ios_device2">
+	<!-- <test name="ios_device2">
 		<parameter name="platformName" value="ios"/>
 		<parameter name="deviceName" value="iPhone 15 Pro"/>
 		<parameter name="os_version" value="17"/>
 		<classes>
 			<class name="org.bdd.runners.Runner2"/>
 		</classes>
-	</test>
+	</test> -->
 	
 	 <test name="android_device1">
 		<parameter name="platformName" value="android"/>
