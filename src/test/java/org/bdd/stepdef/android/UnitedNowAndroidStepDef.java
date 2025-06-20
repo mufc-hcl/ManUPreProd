@@ -2118,7 +2118,20 @@ public class UnitedNowAndroidStepDef {
 
 	@Then("^user validates and clicks on it is Fixures Results or no spotlight$")
 	public void userValidatesAndClicksOnItIsFixuresResultsOrNoSpotlight() throws Throwable {
-		try {
+			ArrayList<String> storiesCarouselFromAPI = new ArrayList<>();
+			try { 
+			    storiesCarouselFromAPI = unitedNowAPIResponse.getStoriesCarouselTitles("StoriesCarousalEndPoint");
+			    ExtentsReportManager.extentReportLogging("info", "Story Carousel from API " + storiesCarouselFromAPI);
+
+			    boolean isStoryCarouselDisplayed = false;
+
+			    if (!storiesCarouselFromAPI.isEmpty()) {
+			        isStoryCarouselDisplayed = unitedNowPage.validatesStoriesCarouselInUNUI(storiesCarouselFromAPI.get(0), false, 20, "Story Carousel");
+			        soft.assertTrue(isStoryCarouselDisplayed);
+			        ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
+			    } else {
+			        ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+			    }
 	          unitedNowPage.validatesAndClicksOnItIsFixuresResultsOrNoSpotlight();
 	          soft.assertAll();
 	          ExtentsReportManager.extentReportLogging("info", "Validated upcoming Fixtures using API");
