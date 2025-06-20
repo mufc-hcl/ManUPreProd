@@ -70,7 +70,7 @@ public class MyUnitedPageLocators {
 	@iOSXCUITFindBy(accessibility = "确定")
 	public WebElement confirmBtnInChineseLanguage;
 
-	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'image_left')]")
+	@AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"比赛\" or contains(@resource-id, 'image_left')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"赛程\" or @name=\"Fixtures\"]")
 	public WebElement calenderIconUnitedPage;
 

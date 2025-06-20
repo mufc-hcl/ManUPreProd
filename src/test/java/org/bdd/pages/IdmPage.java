@@ -354,8 +354,8 @@ public class IdmPage extends Common {
             elementToBeClickableFluentWait(idmPageLocators.editProfileMyProfilePage,60);
             idmPageLocators.editProfileMyProfilePage.click();
             ExtentsReportManager.extentReportLogging("pass","Clicks on EditProfile ");
-            idmPageLocators.editProfilePageHeadingMyProfilePage.click();
-            ExtentsReportManager.extentReportLogging("pass","Clicks on EditProfile ");
+//            idmPageLocators.editProfilePageHeadingMyProfilePage.click();
+//            ExtentsReportManager.extentReportLogging("pass","Clicks on EditProfile ");
         } catch (Exception e) {
            ExtentsReportManager.extentReportLogging("fail","Exception occured in function-clickOnContactUs()<br />" + e);throw e;
         }
@@ -666,6 +666,7 @@ public class IdmPage extends Common {
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_1));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_2));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_3));
+                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.DIGIT_4));
                 ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
                 //MANUSOCIAL@1234
 //                ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.S));

@@ -2085,15 +2085,35 @@ public class UnitedNowAndroidStepDef {
 
 	@Then("^user validates it is Fixures Results or no spotlight$")
 	public void userValidatesItsFixuresResultsOrNoSpotlight() throws Throwable {
-		try {
-          Boolean spotlight = unitedNowPage.validateFixturesResultsOrNoSpotlight();
-          soft.assertTrue(spotlight);
-          soft.assertAll();
-          ExtentsReportManager.extentReportLogging("info", "Validated upcoming Fixtures using API");
-      } catch (AssertionError e) {
-          ExtentsReportManager.extentReportLogging("fail", "Error in user Validate English Europa League Text userValidatesTheUpcomingFixturesusingApi<br />" + e);
-          throw e;
-      }
+	 	ArrayList<String> storiesCarouselFromAPI = new ArrayList<>();
+		try { 
+		    storiesCarouselFromAPI = unitedNowAPIResponse.getStoriesCarouselTitles("StoriesCarousalEndPoint");
+		    ExtentsReportManager.extentReportLogging("info", "Story Carousel from API " + storiesCarouselFromAPI);
+
+		    boolean isStoryCarouselDisplayed = false;
+
+		    if (!storiesCarouselFromAPI.isEmpty()) {
+		        isStoryCarouselDisplayed = unitedNowPage.validatesStoriesCarouselInUNUI(storiesCarouselFromAPI.get(0), false, 20, "Story Carousel");
+		        soft.assertTrue(isStoryCarouselDisplayed);
+		        ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
+		    } else {
+		        ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+		    }
+
+		    // Only validate fixtures if story carousel is displayed
+		    if (isStoryCarouselDisplayed) {
+		        Boolean spotlight = unitedNowPage.validateFixturesResultsOrNoSpotlight();
+		        soft.assertTrue(spotlight);
+		        ExtentsReportManager.extentReportLogging("info", "Validated upcoming Fixtures using API");
+		    }
+
+		    soft.assertAll();
+		    
+		} catch (AssertionError e) {
+		    ExtentsReportManager.extentReportLogging("fail", 
+		        "Error in user Validate English Europa League Text userValidatesTheUpcomingFixturesusingApi<br />" + e);
+		    throw e;
+		}
 	}
 
 	@Then("^user validates and clicks on it is Fixures Results or no spotlight$")
@@ -2153,7 +2173,9 @@ public class UnitedNowAndroidStepDef {
 			    }else {
 			  
 			    	int expectedPosition = unitedNowCardsPage.getBrazeCardPositionBasedonMatchday( Integer.parseInt(brazecarddisplaytime));
+			    	ExtentsReportManager.extentReportLogging("info", "Braze Card Position in UN listing should be: "+expectedPosition);
 				    int brazePosition = unitedNowCardsPage.getBrazeCardPosition(10);
+				   
 				    soft.assertTrue((brazePosition==expectedPosition), "Braze card is not displayed in UN listing at expected position "+ expectedPosition +"  but actual position is "+brazePosition);
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "validated Braze card as second item in UN listing "+brazePosition);
