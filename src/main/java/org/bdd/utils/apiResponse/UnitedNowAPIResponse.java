@@ -902,9 +902,12 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			for (int i = 0; i < size; i++) {
 				if (js.getString("ListingResponse.response.docs[" + i + "].contenttype_t")
 						.equalsIgnoreCase(headline_tPollCard)) {
-					expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
+					 if (js.getString("ListingResponse.response.docs[" + i + "].teaser_t") != null) {
+						 expPollCard.add(js.getString("ListingResponse.response.docs[" + i + "].teaser_t"));
+					 }
+					 }
 				}
-			}
+			
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return expPollCard;

@@ -924,6 +924,7 @@ public class UnitedNowIosStepDef {
 		 ArrayList<String> expectedArticalCard = new ArrayList<>();
 		try {
 			expectedArticalCard = unitedNowAPIResponse.getArticleCard("getAllCardsFromUnitedNow");
+			 ExtentsReportManager.extentReportLogging("info", "Poll Card from API  "+expectedArticalCard);
 			if(!expectedArticalCard.isEmpty()) {
 				soft.assertTrue(unitedNowPage.getArticleCardFromUnitedNow(expectedArticalCard.get(0)));
 				soft.assertAll();
@@ -995,18 +996,19 @@ public class UnitedNowIosStepDef {
 
 	@Then("user checks for quiz card in united now page using api in ios")
 	public void userValidatesTheQuizCardInIos() throws Exception {
-		ArrayList<String> expectedQuoteCard = new ArrayList<>();
+		ArrayList<String> expectedQuizCard = new ArrayList<>();
         try {
-        	expectedQuoteCard = unitedNowAPIResponse.getQuizCard("getAllCardsFromUnitedNow");
-            if(!expectedQuoteCard.isEmpty()) {
-                soft.assertTrue(unitedNowPage.getQuizCardFromUnitedNow(expectedQuoteCard.get(0)));
+        	expectedQuizCard = unitedNowAPIResponse.getQuizCard("getAllCardsFromUnitedNow");
+        	ExtentsReportManager.extentReportLogging("info", "Quiz Card from API"+expectedQuizCard);
+            if(!expectedQuizCard.isEmpty()) {
+                soft.assertTrue(unitedNowPage.getQuizCardFromUnitedNow(expectedQuizCard.get(0)));
                 soft.assertAll();
-                ExtentsReportManager.extentReportLogging("info", "Quote card is available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Quiz card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quote card not available in united now page");
+                ExtentsReportManager.extentReportLogging("info", "Quiz card not available in united now page");
             }
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quote card in united now page<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quiz card in united now page<br />" + e);
             throw e;
         }
 	}
@@ -1285,11 +1287,12 @@ public class UnitedNowIosStepDef {
 
 	@And("^user checks for poll card in united now page using api in ios$")
 	public void userChecksOnPollCardInUnitedNowPageInIos() throws Exception {
-		ArrayList<String> expectedQuoteCard = new ArrayList<>();
+		ArrayList<String> expectedPollCard = new ArrayList<>();
         try {
-        	expectedQuoteCard = unitedNowAPIResponse.getPollCard("getAllCardsFromUnitedNow");
-            if(!expectedQuoteCard.isEmpty()) {
-                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedQuoteCard.get(0)));
+        	expectedPollCard = unitedNowAPIResponse.getPollCard("getAllCardsFromUnitedNow");
+        	ExtentsReportManager.extentReportLogging("info", "Poll Card from API "+expectedPollCard);
+            if(!expectedPollCard.isEmpty()) {
+                soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Poll card is available in united now page");
             }else {

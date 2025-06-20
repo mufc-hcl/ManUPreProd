@@ -459,7 +459,7 @@ public class UnitedNowCardsPage extends Common {
 	                    ExtentsReportManager.extentReportLogging("info", "Non-DFP card #" + nondfpCardCount + " at position " + visibleCardPosition);
 
 	                    if (nondfpCardCount > 12) {
-	                        ExtentsReportManager.extentReportLogging("info", "11+ non-dfp cards seen. Aborting search.");
+	                        ExtentsReportManager.extentReportLogging("info", "11 non-dfp cards seen. Aborting search.");
 	                        return -1;
 	                    }
 	                }
@@ -472,7 +472,7 @@ public class UnitedNowCardsPage extends Common {
 	        scrollCount++;
 	    }
 
-	    ExtentsReportManager.extentReportLogging("fail", "DFP Ad not found after full scroll.");
+	    ExtentsReportManager.extentReportLogging("Warning", "DFP Ad not found after full scroll.");
 	    return -1;
 	    
 	} catch (Exception e) {
