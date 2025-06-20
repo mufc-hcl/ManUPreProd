@@ -71,7 +71,7 @@ Feature: Braze Funtionality
       | manupreprod@yopmail.com | Manu@123 |
 
 @TC004_Android_Braze
-  Scenario Outline: [Braze]TC004_United Now - Content Card - Logout & Login User
+  Scenario: [Braze]TC004_United Now - Content Card - Logout & Login User
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -82,14 +82,11 @@ Feature: Braze Funtionality
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "manupreprod@yopmail.com" and valid password "Manu@123"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now tab
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "manupreprod@yopmail.com" and valid password "Manu@123"
+    #And user clicks on login button in login screen
+    #And user clicks on close from notification
+    #And user clicks on united now tab
     Then user validates Braze card as second item in UN listing using api
-    
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+   

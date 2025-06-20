@@ -1,28 +1,23 @@
 @Regression_Android @Reg_Onboarding_Android
 Feature: Onboarding Android Regression features
 
-  Scenario Outline: DMD-2087,DMD-2089,DMD-2090,DMD-2091,DMD-2093,DMD-2094
+  Scenario Outline:[ON BOARDING]-TC001-DMD-2087_On app launch user should see "Welcome to the Man UTD app" screen with text which are configurable from CMS and Lets go button,DMD-2089_Tapping on Ask me later make user to opt out notifications and no native dialogue is shown,DMD-2090_ On tapping on either button or swipe left to right user should land in screen with headline Who is your favorite United 
+player?,DMD-2091_Select Fav Player and tap on Confirm. The text in screen in configured from CMS,DMD-2093_The text, Benefits and other details in screen are configurable from CMS,DMD-2094_Tap on Sign for United button from "Sign for United" Screen.
     Given user navigates to manu android application
     #DMD-2087-ON BOARDING- On app launch user should see "Welcome to the Man UTD app" screen with text which are configurable from CMS and Let's go button.
-    Then user validates all objects in screen one
-      | welcomeText                | quote                            | desc                                                                            | letsGOButton |
-      | Welcome to the Man Utd app | FOOTBALL IS NOTHING WITHOUT FANS | ...Sir Matt Busby said it best. Our app keeps you connected directly to United! | LET'S GO     |
+    Then user validates all objects in screen one using api
     And user navigates to screen two
     #DMD-2089- ON BOARDING - Tapping on Ask me later make user to opt out notifications and no native dialouge is shown.
     #And user clicks on dont allow Btn
     And user clicks on ask me later
     #DMD-2090 - ON BOARDING - On tapping on either button or swipe left to right user should land in screen with headline "Who is your favourite United player?"
-    Then user validates all objects in screen three
-      | welcomeText                          | men | women | swipeToSelect   | selection                                                                                        | confirmButton | skipButton |
-      | WHO IS YOUR FAVOURITE UNITED PLAYER? | Men | Women | SWIPE TO SELECT | Select your favourite player for access to exclusive content, regular updates and related offers | CONFIRM       | SKIP       |
+    Then user validates all objects in screen three using Api
     #DMD-2091 - ON BOARDING - Select Fav Player and tap on Confirm. The text in screen in configured from CMS.
     #And user navigates to screen three
-    And user swipes to select the favorite player and validates player name as "<player>"
+    And user swipes to select the favorite player and validates player name using Api
     And user clicks confirm button
     #DMD-2093 - ON BOARDING - The text, Benefits and other detsilas in screen are configurable from CMS.
-    Then user validates all objects in screen four
-      | welcomeText     | button1          | button2            | button3          | getExclusiveAccessText | desc                                                                                                                    | signForUnitedButton | skipButton | myUnitedBenefits   |
-      | SIGN FOR UNITED | FULL MUTV ACCESS | UNITED PREDICTIONS | OFFERS & REWARDS | GET EXCLUSIVE ACCESS   | This is the one true home of United. Get closer than ever before, sign for United today. Already got an account? Log In | SIGN FOR UNITED     | SKIP       | MY UNITED BENEFITS |
+    Then user validates all objects in screen four using Api
     #DMD-2094- ON BOARDING - Tap on Sign for United button from "Sign for United" Screen
     And user clicks on sign for united button
     Then user validates the sign in page
@@ -34,7 +29,7 @@ Feature: Onboarding Android Regression features
       | TEDEN MENGI |
 
   
-  Scenario Outline: DMD-2088,DMD-2096,DMD-2092,DMD-2097,DMD-2095
+  Scenario Outline: [ON BOARDING]-TC002-DMD-2088_ Tapping on Allow should bring native dialogue asking user to allow or dont allow notifications,DMD-2096_ Tap on push notifications before completing onboarding journey,DMD-2092_ Tap on Skip or swipe left to right or tap on Confirm from "Who is your favorite United player?" should land user to screen with headline "Sign for United",DMD-2097_ Check for all the card types applicable (Checked for Article & Video),DMD-2095_ Tap on Login button from "Sign for United" Screen,
     Given user navigates to manu android application
     And user navigates to screen two
     #DMD-2088-ON BOARDING- Tapping on Allow should bring native dialouge asking user to allow or don't allow notifications
