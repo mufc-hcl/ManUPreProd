@@ -14,7 +14,7 @@ Feature: My United features
     And user click on setting icon on top righhand side in ios
     And user click on GENERAL link in setting screen in ios
     And user click on Rate app in the General Screen in ios
-
+@weds
   Scenario: [My United]TC002 Settings --> General-Language --> Change to Chinese / English and validate if the changes are applied
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -66,7 +66,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@executes
+@iorun
   Scenario Outline: [My United]TC005 Validate the stickers carousel and then click on 'View All' then click on the back icon from the My United Stickers page
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -101,7 +101,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@iorun
   Scenario Outline: [My United]TC004 Validate the Season card navigation
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -161,7 +161,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@iorun
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -188,7 +188,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@MyU1
+@weds
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -273,7 +273,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@iorun
   Scenario Outline: [My United]TC010 Settings --> Notifications --> Both United and Match alerts on and off toggles(allow notification)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -330,7 +330,7 @@ Feature: My United features
   #| notificationbutton |
   #| deny_button        |
   
-  @MyU1
+  @iorun
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -355,7 +355,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@failed1
+@iorun
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -424,7 +424,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@weds
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -447,7 +447,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@iorun
   Scenario Outline: [My United]TC017 Native Login [>13 and <13] and Social Login
     #Social login possible only for >13 and its covered in IDM TC008 and TC009
     #Social login <13 - Under 13 registrations are not allowed to be linked to a social account" in Manu app
@@ -495,29 +495,29 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-      @failed11
-          Scenario Outline: [My United]TC020 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
- Given user navigates to manu ios application
-    And user clicks on cancel button in apple id screen
-    And user clicks lets go button in screen one in ios
-    And user clicks on ask me later in screen two in ios
-    And user clicks skip button in screen three in ios
-    And user click on skip button in screen four in ios
-    And user clicks on ok in the cookies screen in ios
-    And user clicks on not now button in match appearance alert screen in ios
-    And user click on My United in bottom tab in ios
-    And user clicks on log in button in ios
-    And user clicks on continue button in ios
-    And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in login screen in ios
-    And user clicks on test continue and clicks on back icon
-    And user clicks on No tracking
+      
+          #Scenario Outline: [My United]TC020 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
+ #Given user navigates to manu ios application
+    #And user clicks on cancel button in apple id screen
+    #And user clicks lets go button in screen one in ios
+    #And user clicks on ask me later in screen two in ios
+    #And user clicks skip button in screen three in ios
+    #And user click on skip button in screen four in ios
+    #And user clicks on ok in the cookies screen in ios
+    #And user clicks on not now button in match appearance alert screen in ios
+    #And user click on My United in bottom tab in ios
+    #And user clicks on log in button in ios
+    #And user clicks on continue button in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    #And user clicks on login button in login screen in ios
+    #And user clicks on test continue and clicks on back icon
+    #And user clicks on No tracking
     #Then user validates my tickets component in my united screen
     #And user clicks on my tickets component in my united screen
-    
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #
+     #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
       
       
      

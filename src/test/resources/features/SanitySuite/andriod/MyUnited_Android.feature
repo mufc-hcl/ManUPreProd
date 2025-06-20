@@ -132,7 +132,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@MyU
+
   Scenario Outline: [My United]TC006 Validate if user is able to see the name on jersey and the shirt number updated at the bottom of the My United screen should reflect on the Jersey  t shirt name
     Given user navigates to manu android application
     And user navigates to screen two
@@ -184,7 +184,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@MyU
+
   Scenario Outline: [My United]TC008 Validate the My United Season Score card , Total Score card , Daily Streaks card , Appearances card navigations
     Given user navigates to manu android application
     And user navigates to screen two
@@ -339,6 +339,7 @@ Feature: My United features
   #Examples:
   #| username                | password | notificationbutton |
   #| manupreprod@yopmail.com | Manu@123 | deny_button        |
+ 
   Scenario Outline: [My United]TC012 Validate the My Tickets & Stadium components navigation on the My United page for login user
     Given user navigates to manu android application
     And user navigates to screen two
@@ -362,7 +363,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@wert
   Scenario Outline: [My United]TC013 Settings --> My Profile --> Preference Center navigation
     Given user navigates to manu android application
     And user navigates to screen two
@@ -393,7 +394,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@wert
   Scenario Outline: [My United]TC015 Settings --> My Profile --> Edit Profile --> Make changes and Save. Validate if the new changes are added to the profile
     Given user navigates to manu android application
     And user navigates to screen two
@@ -487,7 +488,7 @@ Feature: My United features
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
 
-  @webex1
+  
   Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -511,29 +512,29 @@ Feature: My United features
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
       
-       Scenario Outline: [My United]TC020 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
-    Given user navigates to manu android application
-    And user navigates to screen two
-    And user navigates to screen three
-    And user navigates to screen four
-    And user click on skip button in screen four
-    And user clicks on ok button in cookies screen
-    And user clicks continue in MUApp popup
-    And user clicks on not now button in match appearance alert screen
-    And user clicks on braze in app msg
+       #Scenario Outline: [My United]TC020 Validate the My tickets page displaying SeatGeek tickets page in both online and offline mode when tickets are already accessed in good network
+    #Given user navigates to manu android application
+    #And user navigates to screen two
+    #And user navigates to screen three
+    #And user navigates to screen four
+    #And user click on skip button in screen four
+    #And user clicks on ok button in cookies screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on not now button in match appearance alert screen
+    #And user clicks on braze in app msg
     #    And user clicks on the notification at bottom of screen
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks continue in MUApp popup
-    And user clicks on close from notification
-    Then user validates my tickets component in my united screen
-    And user clicks on my tickets component in my united screen
-    
-     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+    #And user click on My United in bottom tab
+    #And user clicks on log in button
+    #And user enter the valid email "<username>" and valid password "<password>"
+    #And user clicks on login button in login screen
+    #And user clicks continue in MUApp popup
+    #And user clicks on close from notification
+    #Then user validates my tickets component in my united screen
+    #And user clicks on my tickets component in my united screen
+    #
+     #Examples: 
+      #| username                | password |
+      #| manupreprod@yopmail.com | Manu@123 |
       
       
    

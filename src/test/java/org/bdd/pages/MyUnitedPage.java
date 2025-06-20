@@ -2408,6 +2408,7 @@ public class MyUnitedPage extends Common {
 
 	public void clicksOnSavePreferenceButton() {
 		try {
+			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
             waitForVisibilityFluentWait(myUnitedPageLocators.saveButtonInPreferenceCenter, 60);
             myUnitedPageLocators.saveButtonInPreferenceCenter.click();
             ExtentsReportManager.extentReportLogging("pass", "Clicks on selectingOneOfTheChecklistInThePreferenceCenterScreen ");

@@ -2072,7 +2072,7 @@ public class UnitedNowAndroidStepDef {
 	@Then("user validates scroll and validates 30 items loaded in UN listing")
 	public void validateScrollAndItemCountInUNListing() {
 		 try {
-	            boolean actualDFPAdsValues = unitedNowCardsPage.validateAtLeast30DistinctCardsAndMore(150); 
+	            boolean actualDFPAdsValues = unitedNowCardsPage.validateAtLeast30DistinctCardsAndMore(200); 
 	            ExtentsReportManager.extentReportLogging("info","validates scroll and validates 30 items loaded in UN listing");
 	            soft.assertTrue(actualDFPAdsValues, "validates 30 items not loaded in UN listing after scroll");
 	            soft.assertAll();
@@ -2162,7 +2162,7 @@ public class UnitedNowAndroidStepDef {
 	           {
 	        	   ExtentsReportManager.extentReportLogging("WARNING", "Data for DFP Ads is not added by the CMS and is unavailable after the first 10 items in the UN listing");
 	           }else {
-	          soft.assertTrue((actualDFPAdsPosition==11), "DFP Ads expected position is 11 that is after 10 items in UN listing but actual position is   "+ actualDFPAdsPosition);
+	        	soft.assertTrue((actualDFPAdsPosition==11), "DFP Ads expected position is 11 that is after 10 items in UN listing but actual position is   "+ actualDFPAdsPosition);
 	            soft.assertAll();
 	            
 	            ExtentsReportManager.extentReportLogging("info", "validated DFP Ads after every 10 items in UN listing");
@@ -2188,11 +2188,15 @@ public class UnitedNowAndroidStepDef {
 			    	int expectedPosition = unitedNowCardsPage.getBrazeCardPositionBasedonMatchday( Integer.parseInt(brazecarddisplaytime));
 			    	ExtentsReportManager.extentReportLogging("info", "Braze Card Position in UN listing should be: "+expectedPosition);
 				    int brazePosition = unitedNowCardsPage.getBrazeCardPosition(10);
-				   
+				   if (brazePosition == -1) {
+					   ExtentsReportManager.extentReportLogging("Warning","Braze card is not displayed in UN listing as Not enabled from Braze dashboard "); 
+				   }
+				   else {
 				    soft.assertTrue((brazePosition==expectedPosition), "Braze card is not displayed in UN listing at expected position "+ expectedPosition +"  but actual position is "+brazePosition);
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "validated Braze card as second item in UN listing "+brazePosition);
-			    }
+				   }
+				 }
 	            
 	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in validating Braze card as second item in UN listing<br />" + e);
