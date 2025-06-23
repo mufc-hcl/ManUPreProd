@@ -1,4 +1,4 @@
-@Sanity_AndroidOSLessThan13 @Onboarding_Android
+@Sanity_AndroidOSLessThan13 @Onboarding_Android13
 Feature: Onboarding
 
   Scenario: [Onboarding]TC001 Verify the all three screens of the manchester app onboarding  for less than OS 13
