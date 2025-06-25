@@ -930,7 +930,7 @@ public class UnitedNowIosStepDef {
 				soft.assertAll();
 				ExtentsReportManager.extentReportLogging("info", "Article card is available in united now page");
 			}else {
-				ExtentsReportManager.extentReportLogging("info", "Article card not available in united now page");
+				ExtentsReportManager.extentReportLogging("Warning", "Article card not available in united now page");
 			}
 		} catch (AssertionError | Exception e) {
 			ExtentsReportManager.extentReportLogging("fail", "Error in checking for article card in united now page<br />" + e);
@@ -949,7 +949,7 @@ public class UnitedNowIosStepDef {
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Image card is available in united now page");
              }else {
-                 ExtentsReportManager.extentReportLogging("info", "Image card not available in united now page");
+                 ExtentsReportManager.extentReportLogging("Warning", "Image card not available in united now page");
              }
          } catch (AssertionError e) {
              ExtentsReportManager.extentReportLogging("fail", "Error in checking for Image card in united now page<br />" + e);
@@ -968,7 +968,7 @@ public class UnitedNowIosStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Gallery card not available in united now page in UI and API");
+                ExtentsReportManager.extentReportLogging("Warning", "Gallery card not available in united now page in UI and API");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Gallery card in united now page<br />" + e);
@@ -986,7 +986,7 @@ public class UnitedNowIosStepDef {
 	                soft.assertAll();
 	                ExtentsReportManager.extentReportLogging("info", "video card is available in united now page");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("info", "video card not available in united now page");
+	                ExtentsReportManager.extentReportLogging("Warning", "video card not available in united now page");
 	            }
 	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in checking for video card in united now page<br />" + e);
@@ -1005,7 +1005,7 @@ public class UnitedNowIosStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Quiz card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quiz card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Quiz card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quiz card in united now page<br />" + e);
@@ -1277,7 +1277,7 @@ public class UnitedNowIosStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Quote card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quote card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Quote card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quote card in united now page<br />" + e);
@@ -1296,7 +1296,7 @@ public class UnitedNowIosStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Poll card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Poll card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Poll card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Poll card in united now page<br />" + e);
@@ -1720,7 +1720,7 @@ public class UnitedNowIosStepDef {
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Competition card is available in united now page");
              }else {
-                 ExtentsReportManager.extentReportLogging("info", "Competition card not available in united now page");
+                 ExtentsReportManager.extentReportLogging("Warning", "Competition card not available in united now page");
              }
          } catch (AssertionError e) {
              ExtentsReportManager.extentReportLogging("fail", "Error in checking for Competition card in united now page<br />" + e);
@@ -1739,7 +1739,7 @@ public class UnitedNowIosStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Adcard "+expectedAdcardCard.get(0)+" is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Adcard card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Adcard card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Adcard in united now page<br />" + e);
@@ -1769,7 +1769,7 @@ public class UnitedNowIosStepDef {
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page and API");
+	                ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
 	            }
 	            
 	        } catch (AssertionError e) {
@@ -1901,7 +1901,7 @@ public class UnitedNowIosStepDef {
 	            soft.assertAll();
 	            ExtentsReportManager.extentReportLogging("info", contentType + " card '" + expectedCards.get(0) + "' is available in united now page");
 	        } else {
-	            ExtentsReportManager.extentReportLogging("info", contentType + " card not available in united now page");
+	            ExtentsReportManager.extentReportLogging("Warning", contentType + " card not available in united now page");
 	        }
 	    } catch (AssertionError e) {
 	        ExtentsReportManager.extentReportLogging("fail", "Error in checking for " + contentType + " card in united now page<br />" + e);

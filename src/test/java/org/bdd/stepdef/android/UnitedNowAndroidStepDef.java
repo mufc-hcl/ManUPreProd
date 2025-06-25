@@ -700,7 +700,7 @@ public class UnitedNowAndroidStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Story Carousel is not available in united now page");
             }
   		
 	        } catch (Exception e) {
@@ -974,14 +974,15 @@ public class UnitedNowAndroidStepDef {
             	 expectedImageCard = unitedNowAPIResponse.getImageCard("getAllCardsFromUnitedNow");
                  ExtentsReportManager.extentReportLogging("info", "Image Card from API"+expectedImageCard);
                  if(!expectedImageCard.isEmpty()) {
-                     soft.assertTrue(unitedNowPage.getImagefromUnitedNow(expectedImageCard.get(0)));
-                     soft.assertAll();
+                     //soft.assertTrue(unitedNowPage.getImagefromUnitedNow(expectedImageCard.get(0)));
+                	 soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedImageCard.get(0),false, 30,"Image"));
+                	 soft.assertAll();
                      ExtentsReportManager.extentReportLogging("info", "Image card "+expectedImageCard.get(0)+" is available in united now page");
                  }else {
-                     ExtentsReportManager.extentReportLogging("info", "Image card  not available in united now page");
+                     ExtentsReportManager.extentReportLogging("Warning", "Image card  not available in united now page");
                  }
              } catch (AssertionError e) {
-                 ExtentsReportManager.extentReportLogging("fail", "Error in checking for Competition card in united now page<br />" + e);
+                 ExtentsReportManager.extentReportLogging("fail", "Error in checking for Image card in united now page<br />" + e);
                  throw e;
              }
     }
@@ -1037,7 +1038,7 @@ public class UnitedNowAndroidStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Quiz card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quiz card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Quiz card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quiz card in united now page<br />" + e);
@@ -1379,11 +1380,11 @@ public class UnitedNowAndroidStepDef {
             ExtentsReportManager.extentReportLogging("info", "Poll Card from API "+expectedPollCard);
             if(!expectedPollCard.isEmpty()) {
                 //soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
-            	soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 20,"Poll"));
+            	soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 30,"Poll"));
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(0)+"is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Poll card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Poll card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Poll card in united now page<br />" + e);
@@ -1402,7 +1403,7 @@ public class UnitedNowAndroidStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Quote card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Quote card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Quote card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for Quote card in united now page<br />" + e);
@@ -1707,7 +1708,7 @@ public class UnitedNowAndroidStepDef {
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Article card is available in united now page");
             }else {
-                ExtentsReportManager.extentReportLogging("info", "Article card not available in united now page");
+                ExtentsReportManager.extentReportLogging("Warning", "Article card not available in united now page");
             }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in checking for article card in united now page<br />" + e);
@@ -1814,7 +1815,7 @@ public class UnitedNowAndroidStepDef {
 		            soft.assertAll();
 		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed united now is displayed ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("info", "Upsell functionality is not available in united now page and API");
+	                ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
 	            }
 	            
 	        } catch (AssertionError e) {
@@ -1846,7 +1847,7 @@ public class UnitedNowAndroidStepDef {
                 ExtentsReportManager.extentReportLogging("info","actual live video From UI<br />"+unitedNowPage.validatesLiveVideoInUnitedNowIsDisplayed());
                 soft.assertEquals(liveVideoFromAPI, liveVideoDisplayedFromUI, "live video display mismatch.");
             }else{
-                ExtentsReportManager.extentReportLogging("info","live video is not enabled in UI<br />");
+                ExtentsReportManager.extentReportLogging("Warning","live video is not enabled in UI<br />");
             }
             soft.assertAll();
 
@@ -1869,7 +1870,7 @@ public class UnitedNowAndroidStepDef {
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Competition card "+expectedCompetitionCard.get(0)+" is available in united now page");
              }else {
-                 ExtentsReportManager.extentReportLogging("info", "Competition card not available in united now page");
+                 ExtentsReportManager.extentReportLogging("Warning", "Competition card not available in united now page");
              }
          } catch (AssertionError e) {
              ExtentsReportManager.extentReportLogging("fail", "Error in checking for Competition card in united now page<br />" + e);
@@ -1888,7 +1889,7 @@ public class UnitedNowAndroidStepDef {
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Adcard "+expectedAdcardCard.get(0)+" is available in united now page");
              }else {
-                 ExtentsReportManager.extentReportLogging("info", "Adcard card not available in united now page");
+                 ExtentsReportManager.extentReportLogging("Warning", "Adcard card not available in united now page");
              }
          } catch (AssertionError e) {
              ExtentsReportManager.extentReportLogging("fail", "Error in checking for Adcard in united now page<br />" + e);
@@ -2097,7 +2098,7 @@ public class UnitedNowAndroidStepDef {
 		        soft.assertTrue(isStoryCarouselDisplayed);
 		        ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
 		    } else {
-		        ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+		        ExtentsReportManager.extentReportLogging("Warning", "Story Carousel is not available in united now page");
 		    }
 
 		    // Only validate fixtures if story carousel is displayed
@@ -2130,7 +2131,7 @@ public class UnitedNowAndroidStepDef {
 			        soft.assertTrue(isStoryCarouselDisplayed);
 			        ExtentsReportManager.extentReportLogging("info", "Story Carousel is available in united now page");
 			    } else {
-			        ExtentsReportManager.extentReportLogging("info", "Story Carousel is not available in united now page");
+			        ExtentsReportManager.extentReportLogging("Warning", "Story Carousel is not available in united now page");
 			    }
 	          unitedNowPage.validatesAndClicksOnItIsFixuresResultsOrNoSpotlight();
 	          soft.assertAll();

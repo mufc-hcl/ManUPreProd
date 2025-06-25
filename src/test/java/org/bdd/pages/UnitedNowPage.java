@@ -4484,7 +4484,7 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				int i = 0;
-				while (i < 30) {
+				while (i < 35) {
 					String type = "name";
 					List<WebElement> e = driver.findElements(AppiumBy
 							.iOSNsPredicateString(type + " == \"" + shortheadline_t.replaceAll("\\[|\\]", "") + "\""));
@@ -4495,7 +4495,7 @@ public class UnitedNowPage extends Common {
 						ExtentsReportManager.extentReportLogging("pass", "Checked for Gallery Card in united now page");
 						return true;
 					} else {
-						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
 						i++;
 					}
 				}
@@ -4747,7 +4747,7 @@ public class UnitedNowPage extends Common {
 				}
 			} else {
 				int i = 0;
-				while (i < 20) {
+				while (i < 30) {
 					String type = "name";
 					List<WebElement> e = driver
 							.findElements(AppiumBy.iOSNsPredicateString(type + " == \"" + expImageCcard + "\""));

@@ -343,6 +343,7 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
+  
   Scenario: [United now]TC022 - Validate the functionality of the Poll card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -360,7 +361,7 @@ Feature: United now
     #And user clicks on test continue and clicks on back icon
     #And user clicks on No tracking
     #And user clicks on united now tab in ios
-    Then user checks for poll card in united now page using api in ios
+    Then user checks for poll card in united now page using api
 
   #Examples:
   #| username                | password |
@@ -454,7 +455,7 @@ Feature: United now
     #And user clicks on not now button in match appearance alert screen in ios
     #Then user validates Sponsor logo in united now screen using API in ios
 
-  
+  #@tc28ios
   #Scenario: [UNITED NOW] TC028_User should be able to scroll in UN listing and post 30 items the next 30 items should load if the data is avaibale.
     #Given user navigates to manu ios application
     #And user clicks on cancel button in apple id screen
