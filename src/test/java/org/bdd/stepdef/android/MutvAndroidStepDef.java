@@ -1218,19 +1218,17 @@ public class MutvAndroidStepDef {
         }
 	}
 
-	@And("^user validates braze content card in MUTV$")
+	@Then("^user validates braze content card in MUTV$")
 	public void userValidatesContentCardInMUTV() throws Throwable {
 		try {
-			mutvPage.userNavigatesToBrazeContentcardMUTV();
-			 boolean flag = mutvPage.validatesContentCardInMUTV();
-	            
+			 boolean flag = mutvPage.userNavigatesToBrazeContentcardMUTV();
 	            if(flag)
         	{
 	    		  soft.assertTrue(flag,"Content card is not displayed" );
 		    	  soft.assertAll();
 		    	  ExtentsReportManager.extentReportLogging("info", "validated content card in MUTV ");
 	            }else {
-	                ExtentsReportManager.extentReportLogging("warning", "Please Enable Braze content card in MUTV");
+	                ExtentsReportManager.extentReportLogging("warning", "Braze card is not displayed in MUTV as Not enabled from Braze dashboard");
 	            }
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in displaying greeting message in united now<br />" + e);

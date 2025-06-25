@@ -64,7 +64,7 @@ Feature: Braze Funtionality
     And user clicks continue in MUApp popup
     And user clicks on Mutv tab
     And user clicks on explore icon
-    And user validates braze content card in MUTV
+    Then user validates braze content card in MUTV
 
     Examples: 
       | username                | password |
