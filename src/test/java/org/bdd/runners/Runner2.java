@@ -48,7 +48,7 @@ public class Runner2 {
         testNGCucumberRunner.runScenario(pickleEvent.getPickle());
     }
 
-    @DataProvider(name = "scenarios", parallel = false)
+    @DataProvider(name = "scenarios", parallel = true)
     public Object[][] parallelScenarios() {
         return testNGCucumberRunner.provideScenarios();
     }
