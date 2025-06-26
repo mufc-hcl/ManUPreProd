@@ -1,5 +1,5 @@
-userName: indirapaidapattl_VtITA6
-accessKey: b7avisoyxzyAic6grYsW
+userName: prabhavathiponug_cyDgNL
+accessKey: 2cP5TzbrwohSrQqDwtLe
 projectName: ManUAppiumParallelExecution
 buildName: ManU Appium build
 buildIdentifier: '#${BUILD_NUMBER}'
@@ -9,3 +9,4 @@ networkLogs: true
 consoleLogs: errors
 testObservability: true
 browserstackAutomation: false
+parallelsPerPlatform: 20
