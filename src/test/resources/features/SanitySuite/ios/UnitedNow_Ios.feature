@@ -1,7 +1,7 @@
 @Sanity_IOS @UnitedNow_IOS
 Feature: United now
 
-  @United_Now_01
+ @Matchday_IOS
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -14,7 +14,6 @@ Feature: United now
     Then verify whats new or live match blog in home page using api in ios
     Then user validates the current day and date in ios
 
-@un2
   Scenario: [United now]TC002 Validate if the filter is not selected by default
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -27,7 +26,7 @@ Feature: United now
     And user click on filter icon in ios
     And user validates filter is not selected by default in ios
 
-@un2
+
   Scenario: [United now]TC003,TC004  Validate the filter functionality on United Now when filter is selected &  Validate the filter functionality on United Now when filter is unselected
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -43,7 +42,7 @@ Feature: United now
     And user clicks on each filter and validates section and deselection of each filter in ios
     And user clicks on select all icon in ios using Api
     Then user validate the clear all icon in UnitedNow page in ios Using Api
-
+@Matchday_IOS
   Scenario: [United now]TC005,TC006,TC007 Validation of Fixture Calender Icon,Men and United Tabs and Men Dropdown List
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -59,7 +58,6 @@ Feature: United now
       | UNITEDTab Item | ALL TEAMSTab Item |
     And user click on men drop down and validates the dropdown values in ios using API
 
-  @IOSToBeFixedTC008
   Scenario: [United now]TC008 Validate the fixture listing page show the data based on the Team + League filter applied
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -78,7 +76,7 @@ Feature: United now
   #And user select third radio option and validate content in the body in ios
   #And user select fourth radio option and validate content in the body in ios
   #And user select fifth radio option and validate content in the body in ios
-  @UNITEDNOW_IOS_009
+  @Matchday_IOS
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -98,6 +96,7 @@ Feature: United now
     Then user validates the upcoming Fixtures using Api in ios
 
   #Then user validates the upcoming Fixtures using Api in united now in ios
+  @Matchday_IOS
   Scenario: [United now]TC010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -175,7 +174,7 @@ Feature: United now
   #And user clicks player from "women" tab in ios
   #And navigate to the latest section for the player in ios
   #And verify clicking on video or article navigates to the respective page in ios
-  @u1111
+  
   Scenario: [United now]TC013 United Now Carousel should display in United Now when it's Fixture, Result or No Spotlight
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -190,7 +189,8 @@ Feature: United now
     #Then user validates the story page is displayed
     Then user validates Stories Carousel in united now is displayed using API
     Then user validates it is Fixures Results or no spotlight
-@United_Now_14_Test
+
+@Matchday_IOS
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -205,7 +205,7 @@ Feature: United now
      Then user validates Stories Carousel in united now is displayed using API
     Then user validates and clicks on it is Fixures Results or no spotlight
      #Then user validates deeplink to Match listing or respective match centre
-@tc015i
+
   Scenario: [United now]TC015 Validate if the Greetings message / Stories Carousel / Coming Up carousel are not displayed in United Now page when disabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -264,7 +264,7 @@ Feature: United now
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
   
-  @tc18g
+
   Scenario: [United now]TC018 - Validate the functionality of the gallery card from United Now feeds/United Now Stories
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -288,6 +288,8 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
+  
+  @Matchday_IOS
   Scenario: [United now]TC019 Validate the Live Video functionality in United Now if enabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -432,6 +434,7 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
+  @Matchday_IOS
   Scenario: [United now]TC026 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

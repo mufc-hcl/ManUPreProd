@@ -424,7 +424,7 @@ Feature: My United features
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-@weds
+@Matchday_IOS
   Scenario Outline: [My United]TC016 Verify on my United screen user are displayed with About you section with text containing user FN, LN, Country< age details personalised.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -474,6 +474,7 @@ Feature: My United features
       | manutesting13@yopmail.com | Manu@123 | TESTING13 |
       | manupreprod@yopmail.com   | Manu@123 | PREPROD   |
 
+@Matchday_IOS
   Scenario Outline: [My United]TC018 Verify Tapping on My United from botton nav takes user to My United screen and if user is logged in they are presented with profile screen with Red, Platinum, gold background based on user memership type.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

@@ -1,6 +1,7 @@
-@Sanity_Android @Explore_Android
+@Sanity_Android @Explore_Android @Matchday_Android
 Feature: Explore
 
+@exptc1t6a
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu android application
     And user navigates to screen two
@@ -154,7 +155,7 @@ Feature: Explore
     And user clicks search button in united screen
     And user clicks shop courosel in search screen
     Then user validates all the tabs names in shop screen using API
-@tc16
+@tc16exp
   Scenario: [Explore]TC016 My Tickets -> should be Hybrid Page
     Given user navigates to manu android application
     And user navigates to screen two

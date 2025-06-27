@@ -2956,7 +2956,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getUnitedNowTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.unitedNowTabNavigations, 60);
@@ -2975,7 +2975,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getMutvTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.mutvTabNavigations, 60);
@@ -2994,7 +2994,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getShopTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.shopTabNavigations, 60);
@@ -3013,7 +3013,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getMyUnitedTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.myunitedTabNavigations, 60);
@@ -3090,7 +3090,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getMyUnitedTabAfterLogin() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.myunitedTabNavigationsAfterLogin, 60);
@@ -3522,7 +3522,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getPremierLeagueTextInMenTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.premierLeagueTabinTableCTA, 60);
@@ -3541,7 +3541,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getEuropaLeagueTextInMenTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.europaLeagueTabinTableCTA, 60);
@@ -3596,7 +3596,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getWomensSuperLeagueTextInWomenTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.womenSuperLeagueInWomenTab, 60);
@@ -3616,7 +3616,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getContinentalLeaguecupTextInWomenTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.continentalLeagueCupInWomenTab, 60);
@@ -3635,7 +3635,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getPremierLeague2TextInUnder21sTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.premierLeagueInUnder21sTab, 60);
@@ -3654,7 +3654,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getEflTrophyTextInUnder21sTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.eflTrophyInunder21sTab, 60);
@@ -3674,7 +3674,7 @@ public class UnitedNowPage extends Common {
 
 	public String getUefaYouthLeagueTextInUnder18Tab() {
 
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.uefaYouthLeagueInUnder18sTab, 60);
@@ -3695,7 +3695,7 @@ public class UnitedNowPage extends Common {
 
 	public String getU18PremierLeagueTextInUnder18Tab() {
 
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.u18PremierLeagueInUnder18sTab, 60);
@@ -3715,7 +3715,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getPremierLeagueTextInGirlsTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.premierLeagueInGirlsTab, 60);
@@ -3735,7 +3735,7 @@ public class UnitedNowPage extends Common {
 	}
 
 	public String getChampionsLeagueTextInGirlsTab() {
-		String device = new AppiumDriverManager().getDevice();
+		String device = GlobalParams.getPlatformName().toLowerCase();
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.championsLeagueInGirlsTab, 60);

@@ -585,11 +585,11 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ADCARD FOR HISTORICAL MATCH NEXT GEN AUTOMATION\"]")
     public List<WebElement> adCardInternalLinkToHistoricalMatchNextGen;
     
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_large_label_view')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"United Now\"]")
     public WebElement unitedNowTabNavigations;
     
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='MUTV']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"MUTV\"]")
     public WebElement mutvTabNavigations;
     

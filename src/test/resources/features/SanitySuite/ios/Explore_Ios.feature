@@ -1,6 +1,6 @@
-@Sanity_IOS @Explore_IOS
+@Sanity_IOS @Explore_IOS @Matchday_IOS
 Feature: Explore
-@AWSFailure1
+@exptc1t6
   Scenario: [Explore]TC001 to TC006 Help --> Contact Us &CTA (Settings Page)
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen

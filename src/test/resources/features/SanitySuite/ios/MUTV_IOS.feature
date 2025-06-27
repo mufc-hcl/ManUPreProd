@@ -1,4 +1,4 @@
-@Sanity_IOS @MUTV_IOS
+@Sanity_IOS @MUTV_IOS @Matchday_IOS
 Feature: MUTV IOS feature
 
   Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List screen and tapping on back button should take user back to MUTV screen ,Verify "Find Something to Add" button along with "+" icon is displayed when there is no favorite item added to My List
