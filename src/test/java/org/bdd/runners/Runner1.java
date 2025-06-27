@@ -17,7 +17,7 @@ import java.io.IOException;
         "json:target/cucumber-reports/CucumberTestReport1.json",
         "rerun:rerun/cucumber-reports/rerun1.txt"}, features = {
         "src/test/resources"}, glue = {"org.bdd.stepdef"}, dryRun = false, monochrome = true,
-        tags = "@Sanity_Android"
+        tags = "@Matchday_Android"
 
 )
 public class Runner1 {
