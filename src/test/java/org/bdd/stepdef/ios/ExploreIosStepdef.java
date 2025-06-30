@@ -717,6 +717,7 @@ public class ExploreIosStepdef {
         try {
             boolean flag = explorePage.validatesHeroCardInLatestScreen();
             soft.assertTrue(flag);
+            soft.assertAll();
             ExtentsReportManager.extentReportLogging("info", "validated hero card in Latest screen");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in validates hero card in Latest screen<br />" + e);

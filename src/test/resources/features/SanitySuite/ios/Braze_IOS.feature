@@ -23,8 +23,8 @@ Feature: Braze Funtionality
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
-  Scenario Outline: [My United]TC002 My United - Content Card - Logout & Login User - braze.
+@iorun
+  Scenario Outline: [Braze]TC002 My United - Content Card - Logout & Login User - braze.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -45,7 +45,7 @@ Feature: Braze Funtionality
     Examples: 
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
-
+@iorun
   Scenario Outline: [MUTV] TC003- Content Card - Logout & Login User - braze
     Given user navigates to manu android application
     And user clicks on cancel button in apple id screen

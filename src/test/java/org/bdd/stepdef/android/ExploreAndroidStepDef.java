@@ -1117,6 +1117,7 @@ public class ExploreAndroidStepDef {
     public void userSelectsALatestVideoInLatestListingPage() {
         try {
             explorePage.selectsALatestVideoInLatestListingPage();
+            explorePage.clicksLatestVideoInListingPage();
             ExtentsReportManager.extentReportLogging("info", "Selected latest video in latest listing page");
         } catch (AssertionError e) {
             ExtentsReportManager.extentReportLogging("fail", "Error in selecting latest video in latest listing page <br />" + e);
@@ -1127,7 +1128,6 @@ public class ExploreAndroidStepDef {
     @Then("^user validates the video playing in video destination page$")
     public void userValidatesTheVideoPlayingInVideoDestinationPage() {
         try {
-            explorePage.clicksLatestVideoInListingPage();
             boolean flag = explorePage.validatesTheVideoPlayingInVideoDestinationPageDisplayed();
             soft.assertTrue(flag);
             soft.assertAll();

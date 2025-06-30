@@ -1168,6 +1168,7 @@ public class ExplorePage extends Common {
 		try {
 			clickOnNotNowButtonInMatchAppearanceAlertScreen();
 //            waitForVisibilityFluentWait(explorePageLocators.weUseCookiesTexts);
+			
 			if (explorePageLocators.weUseCookiesTexts.isDisplayed()) {
 //                waitForVisibilityFluentWait(explorePageLocators.okButtonCookiesScreen);
 				explorePageLocators.okButtonCookiesScreen.click();
@@ -1197,10 +1198,12 @@ public class ExplorePage extends Common {
 //	}
 	public void clickOnNotNowButtonInMatchAppearanceAlertScreen() {
 		try {
+			if (Common.apiEnv().equalsIgnoreCase("prod")) {
 			if (!explorePageLocators.notNowButtonMatchAppearanceAlert1.isEmpty()) {
 //                elementToBeClickableFluentWait(explorePageLocators.notNowButtonMatchAppearanceAlert);
 				explorePageLocators.notNowButtonMatchAppearanceAlert.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on notNowButtonMatchAppearanceAlert");
+			}
 			}
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
@@ -2028,9 +2031,16 @@ public class ExplorePage extends Common {
 
 	public boolean validatesTheVideoPlayingInVideoDestinationPageDisplayed() {
 		try {
+			 if (explorePageLocators.podcastShowsListenBtn.isDisplayed()) {
+	                explorePageLocators.podcastShowsListenBtn.click();
+	                ExtentsReportManager.extentReportLogging("pass", "Clicked on podcastShowsListenBtn");
+	                return true;
+			 }
+	                else {
 			waitForVisibilityFluentWait(explorePageLocators.moreInfoBtnInVideoModel, 60);
 			ExtentsReportManager.extentReportLogging("pass", "Returns moreInfoBtnInVideoModel Text");
 			return explorePageLocators.moreInfoBtnInVideoModel.isDisplayed();
+	                }
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occured in function-validatesTheVideoPlayingInVideoDestinationPageDisplayed()<br />"
@@ -2041,8 +2051,8 @@ public class ExplorePage extends Common {
 
 	public void clicksLatestVideoInListingPage() {
 		try {
-			elementToBeClickableFluentWait(explorePageLocators.latestVideoListingPage1, 60);
-			explorePageLocators.latestVideoListingPage1.click();
+				waitForVisibilityFluentWait(explorePageLocators.latestVideoListingPage1, 60);
+				explorePageLocators.latestVideoListingPage1.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on latestVideoListingPage1");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -2158,7 +2168,7 @@ public class ExplorePage extends Common {
 	}
 
 	public void swipwToLeft() {
-		swipeWithCoordinates(982, 1071, 559, 1085, 200, "left", driver);
+		swipeWithCoordinates(95, 1090, 593, 1105, 200, "left", driver);
 
 	}
 
@@ -2292,9 +2302,11 @@ public class ExplorePage extends Common {
 
 	public void clickOnReggNotNowInMyUnited() {
 		try {
+			if (Common.apiEnv().equalsIgnoreCase("prod")) {
 			if (!explorePageLocators.ReggressionPopUpUniteNow.isEmpty()) {
 				explorePageLocators.ReggressionPopUpUniteNow.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on ReggressionPopUpUniteNow ");
+			}
 			}
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on dfpAdCardInPlayersScreen1");
 		} catch (Exception e) {

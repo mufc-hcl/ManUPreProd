@@ -482,17 +482,21 @@ public class ExplorePageLocators {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Table\"])[1]")
 	public WebElement tableCTABtnInFixtures1;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/image_view_icon\')]")
-	@iOSXCUITFindBy(accessibility = "icon video play")
+	@AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Play\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"icon video play\"]")
 	public List<WebElement> latestVideoListingPage;
 
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/image_view_icon\')]")
-	@iOSXCUITFindBy(accessibility = "Video with upsell and icons")
+	@AndroidFindBy(id = "com.mu.muclubapp.staging_mu_dxc:id/text_view_info")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"icon video play\"]")
 	public WebElement latestVideoListingPage1;
 
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/text_more_info\')]")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"MORE INFO\"])[1]")
 	public WebElement moreInfoBtnInVideoModel;
+	
+	@AndroidFindBy(id = "com.mu.muclubapp.staging_mu_dxc:id/podcast_shows_listen_btn")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"MORE INFO\"])[1]")
+	public WebElement podcastShowsListenBtn;
 
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"TICKET INFO\"])[1]")
 	public List<WebElement> ticketInfoBtnFixturesPage;

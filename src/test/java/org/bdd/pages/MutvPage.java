@@ -223,11 +223,13 @@ public class MutvPage extends Common {
 
 	public void clickOnNotNowButtonInMatchAppearanceAlertScreen() {
 		try {
+			 if (Common.apiEnv().equalsIgnoreCase("prod")) {
 			if (!mutvPageLocators.notNowButtonMatchAppearanceAlert1.isEmpty()) {
 				waitForVisibilityFluentWait(mutvPageLocators.notNowButtonMatchAppearanceAlert, 60);
 				mutvPageLocators.notNowButtonMatchAppearanceAlert.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on notNowButtonMatchAppearanceAlert ");
 			}
+			 }
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (StaleElementReferenceException se) {
@@ -2109,11 +2111,13 @@ public class MutvPage extends Common {
 
 	public void clicksinAppMsgIOSBrazeTestCloseButton() {
 		try {
-			if (mutvPageLocators.closeIconInAppMsgIosBrazeTest.isDisplayed()) {
-				waitForVisibilityFluentWait(mutvPageLocators.closeIconInAppMsgIosBrazeTest, 60);
-				mutvPageLocators.closeIconInAppMsgIosBrazeTest.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
-			}
+				if (Common.apiEnv().equalsIgnoreCase("prod")) {
+		            if (!mutvPageLocators.closeIconInAppMsgIosBrazeTest1.isEmpty()) {
+		                mutvPageLocators.closeIconInAppMsgIosBrazeTest.click();
+		                ExtentsReportManager.extentReportLogging("pass", 
+		                    "Clicked on Braze in-app message close button in iOS (Stage)");
+			  }
+				}
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {

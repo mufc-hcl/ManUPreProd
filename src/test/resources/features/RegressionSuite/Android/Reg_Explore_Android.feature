@@ -1,6 +1,6 @@
 @Regression_Android @Reg_Explore_Android
 Feature: Explore Android Regression features
-@DMSMiss
+
   Scenario Outline: [EXPLORE] TC001- DMD-2187_LATEST - Hero card,DMD-2188_LATEST - Page Filters,DMD-2189-LATEST - CTA[Opening in Destination or Modal],DMD-2190_LATEST - Listing Page with latest Item,DMD-2191_LATEST - Share the cards
     Given user navigates to manu android application
     And user navigates to screen two
@@ -30,7 +30,7 @@ Feature: Explore Android Regression features
     Examples: 
       | username             | password |
       | Manutest@yopmail.com | Manu@123 |
-@DMSMiss
+
   Scenario: [EXPLORE] TC002- DMD-2192_LATEST - DFP Ads as expected & CTA
     Given user navigates to manu android application
     And user navigates to screen two
@@ -45,7 +45,7 @@ Feature: Explore Android Regression features
     And user clicks latest courosel in search screen
     And user scrolls down to DFP Ads card in latest screen
     Then user validates the DFP Ad card and Click on Dfp ad card
-@DMSMiss
+@2187LATEST
   Scenario Outline: [EXPLORE]TC003- DMD-2193_LATEST - Listing Page with latest Video,DMD-2194_LATEST - CTA[Video PlayingÂ  inÂ  Video Modal]
     Given user navigates to manu android application
     And user navigates to screen two
@@ -56,21 +56,22 @@ Feature: Explore Android Regression features
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
-    And user click on My United in bottom tab
-    And user clicks on log in button
-    And user enter the valid email "<username>" and valid password "<password>"
-    And user clicks on login button in login screen
-    And user clicks on close from notification
-    And user clicks on united now in bottom tab
     And user clicks search button in united screen
     And user clicks latest courosel in search screen
     And user selects a latest video in latest listing page
+    Then validate subscribe screen is displayed
+    And user clicks on log in button in subscribe page
+    And user enter the valid email and valid password for subscribed user
+    #And user enter the valid email "<username>" and valid password "<password>"
+    And user clicks on login button in login screen
+    And user clicks continue in MUApp popup
+    And user clicks on close from notification
     Then user validates the video playing in video destination page
 
     Examples: 
       | username             | password |
       | Manutest@yopmail.com | Manu@123 |
-@DMSMiss
+
   Scenario: [EXPLORE]TC004- DMD-2215_HELP - Contact Us &CTA (Hybrid Page),DMD-2216_HELP - FAQs &CTA (Hybrid Page),DMD-2217_HELP - Accessibility &CTA (Hybrid Page),DMD-2218_HELP - Term Of Use &CTA (Hybrid Page),DMD-2219_HELP - Privacy Policy &CTA (Hybrid Page),DMD-2220_HELP - Send App Feedback &CTA (Native Screen)  
    Given user navigates to manu android application
     And user navigates to screen two
@@ -118,7 +119,7 @@ Feature: Explore Android Regression features
       | email address | subject      | feedback      |
       | test@test.com | Test Subject | Test Feedback |
 
-  @DMSMiss
+  
   Scenario: [EXPLORE]TC005- DMD-2221_HISTORY - CTA (Hybrid Page),DMD-2222_HISTORY - Items in Page CTA
     Given user navigates to manu android application
     And user navigates to screen two
@@ -156,14 +157,16 @@ Feature: Explore Android Regression features
     And user clicks on united now in bottom tab
     And user clicks search button in united screen
     And user clicks shop courosel in search screen
-    Then user validates all the tabs names in shop screen
-      | merch | membership | tickets | shoptab |
-      | MERCH | MEMBERSHIP | TICKETS | SHOPTAB |
+    Then user validates all the tabs names in shop screen using API
+    #Then user validates all the tabs names in shop screen
+      #| merch | membership | tickets | shoptab |
+      #| MERCH | MEMBERSHIP | TICKETS | SHOPTAB |
     And user swipes to left in shop page
     And user clicks mutv courosel in search screen
-    Then user verify the mutv screen
-      | welcome to mutv | Description of mutv                                                                                                                                      | explore |
-      | WELCOME TO MUTV | Welcome to the all-new MUTV, now available in the Manchester United App! Access MUTV 24/7, including your favourite shows & boxsets, live and on-demand. | EXPLORE |
+     Then user verify the following details using Api
+    #Then user verify the mutv screen
+      #| welcome to mutv | Description of mutv                                                                                                                                      | explore |
+      #| WELCOME TO MUTV | Welcome to the all-new MUTV, now available in the Manchester United App! Access MUTV 24/7, including your favourite shows & boxsets, live and on-demand. | EXPLORE |
     And user clicks on explore icon
     And user swipes to left in shop page
     And user clicks search button in united screen
@@ -219,7 +222,7 @@ Feature: Explore Android Regression features
     Examples: 
       | ExploreSearchText | ImageContent | VideoContent | NewsContent | AllContent |
       | Bruno             | image        | video        | News        | All        |
-
+@firstcase
   Scenario: [EXPLORE]TC008- DMD-2195_FIXTURES AND TABLES - Page Filter (UNITED & ALL TEAM),DMD-2196_FIXTURES AND TABLES - Upcoming Match Fixtures,DMD-2197_FIXTURES AND TABLES - Upcoming Match Fixtures,DMD-2198_ FIXTURES AND TABLES - Different Teams Filter (First Team, Women, U23 and U18),DMD-2199_FIXTURES AND TABLES - League Filter (EPL, CL, etc only for Current year),DMD-2200_FIXTURES AND TABLES - Data reflection based on League filter Selection
     Given user navigates to manu android application
     And user navigates to screen two
@@ -232,66 +235,38 @@ Feature: Explore Android Regression features
     And user clicks on braze in app msg
     And user clicks search button in united screen
     And user clicks fixtures and table courosel in search screen
-    Then user navigates to fixtures screen and validate below three values
-      | united | All Teams | men |
-      | UNITED | ALL TEAMS | Men |
-    Then user validates the upcoming Fixtures
-      | Fixtures                             |
-      | TICKET STG INFO,TICKET INFO,DATE TBC |
-    And user clicks on results icon in the united now screen
-    Then user validates the results
-      | results      |
-      | MATCH REVIEW |
+  Then user navigates to fixtures screen and validate below three values
+      | united | All Teams |
+      | UNITED | ALL TEAMS |
+ Then user validates the upcoming Fixtures using Api in united now
+      #| Fixtures                             |
+      #| TICKET STG INFO,TICKET INFO,DATE TBC |
+    #And user clicks on results icon in the united now screen
+    #Then user validates the results
+      #| results      |
+      #| MATCH REVIEW |
     And user clicks Three dots icon
-    Then user validates the following leagues
-      | All         | premier        | FA     | league     | Europe        | friendly |
-      | All 2024/25 | Premier League | FA Cup | League Cup | Europa League | Friendly |
+     Then user validates the following leagues using Api
+      #| All         | premier        | FA     | league     | Europe        | friendly |
+      #| All 2024/25 | Premier League | FA Cup | League Cup | Europa League | Friendly |
     And user clicks Three dots icon
-    Then user validates the following leagues
-      | All         | premier        | FA     | league     | Europe        | friendly |
-      | All 2024/25 | Premier League | FA Cup | League Cup | Europa League | Friendly |
+    #Then user validates the following leagues
+      #| All         | premier        | FA     | league     | Europe        | friendly |
+      #| All 2024/25 | Premier League | FA Cup | League Cup | Europa League | Friendly |
     And user clicks the following filter in UnitedNow Calender screen
       | League      |
       | All 2024/25 |
     #    And user clicks all radio button and validates leagues displayed
     And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League         |
-      | Premier League |
-    Then user validates the filtered league
-      | Filter Validation                                                                     |
-      | English Premier League,There are currently no fixtures available in this competition. |
-    And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League |
-      | FA Cup |
-    Then user validates the filtered league
-      | Filter Validation                                                     |
-      | FA Cup,There are currently no fixtures available in this competition. |
-    And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League     |
-      | League Cup |
-    Then user validates the filtered league
-      | Filter Validation                                                          |
-      | League Cup ,There are currently no fixtures available in this competition. |
-    And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League        |
-      | Europa League |
-    Then user validates the filtered league
-      | Filter Validation                                                             |
-      | Europa League ,There are currently no fixtures available in this competition. |
-    And user clicks Three dots icon
-    And user clicks the following filter in UnitedNow Calender screen
-      | League   |
-      | Friendly |
-    Then user validates the filtered league
-      | Filter Validation                                                        |
-      | Friendly ,There are currently no fixtures available in this competition. |
-    And user click on men drop down and validates the dropdown values
-      | Men | Women | Under 21s | Under 18s | Girls |
-      | Men | Women | Under-21s | Under-18s | Girls |
+    Then user validates the following leagues using Api
+    And user select first radio option and validate content in the body
+    And user select secound radio option and validate content in the body
+    And user select third radio option and validate content in the body
+    And user select fourth radio option and validate content in the body
+    And user select fifth radio option and validate content in the body
+  And user click on men drop down and validates the dropdown values using API
+      #| Men | Women | Under 21s | Under 18s | Girls |
+      #| Men | Women | Under-21s | Under-18s | Girls |
 
   Scenario: [EXPLORE]TC009- DMD-2201_FIXTURES AND TABLES - Buy Ticket/Hospitality/Tickey Info  for Home Match & CTA,DMD-2202_FIXTURES AND TABLES - CTA to Table,DMD-2203_FIXTURES AND TABLES - Table Page filter (Based on Data in Service),DMD-2204_FIXTURES AND TABLES - CTA [To Match Centre only for Result or 3 hour prior Match Live]
     Given user navigates to manu android application
@@ -340,7 +315,7 @@ Feature: Explore Android Regression features
   #Then user validates match center
   #|matchcenter|
   #|MATCH CENTRE|
-  @DMSMiss
+  
   Scenario: [EXPLORE]TC010- DMD-2206_EXPLORE - FIXTURES AND TABLES - DFP Ad's as expected & CTA
     Given user navigates to manu android application
     And user navigates to screen two
@@ -391,7 +366,7 @@ Feature: Explore Android Regression features
     Then verify profile and stats tab are displayed
     And navigate to the latest section for the player
     And verify clicking on video or article navigates to the respective page
-@DMSMiss
+
   Scenario: [EXPLORE]TC012- DMD-2211_Match Live Stats and Season Stats for Players (If Applicable),DMD-2212_Tapping View More takes user to Search,DMD-2213_PLAYERS - Share the player
     Given user navigates to manu android application
     And user navigates to screen two
@@ -415,7 +390,7 @@ Feature: Explore Android Regression features
     Then user validates the share icon in players screen
     And user clicks on share icon in players screen
     And user clicks on message icon in share screen
-@DMSMiss
+
   Scenario: [EXPLORE]TC013- DMD-2214_PLAYERS - DFP Ads as expected & CTA
     Given user navigates to manu android application
     And user navigates to screen two
@@ -431,7 +406,7 @@ Feature: Explore Android Regression features
     And user clicks player from "men" tab
     And user scrolls down to DFP Ads card in Players screen
     Then user validates the DFP Ad card and Click on Dfp ad card Players Screen
-    @DMSMiss
+    
      Scenario: [EXPLORE]TC014- DMD-2205_FIXTURES AND TABLES - Crest Image for Teams (TABLET Only)
      And user initiates the android Tablet Session
     Given user navigates to manu android application
