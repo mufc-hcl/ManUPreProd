@@ -674,4 +674,64 @@ public class UnitedNowCardsPage extends Common {
         throw e;
     }
 	}
+	
+	public boolean validatesFourTabs(String tabName) {
+	    try {
+	        String device = GlobalParams.getPlatformName().toLowerCase();
+	        boolean isAndroid = device.contains("android");
+
+	        boolean isSelected = false;
+	        tabName = tabName.toLowerCase().trim();
+
+	        switch (tabName) {
+	            case "united now":
+	                if (isAndroid) {
+	                    isSelected = unitedNowPageLocators.unitedNowTabNavigation.isSelected() &&
+	                                 unitedNowPageLocators.unitedNowTabNavigation.getText().equalsIgnoreCase(tabName);
+	                } else {
+	                    isSelected = unitedNowPageLocators.unitedNowTabNavigation.isSelected();
+	                }
+	                break;
+
+	            case "mutv":
+	                if (isAndroid) {
+	                    isSelected = unitedNowPageLocators.mutvTabNavigation.isSelected() &&
+	                                 unitedNowPageLocators.mutvTabNavigation.getText().equalsIgnoreCase(tabName);
+	                } else {
+	                    isSelected = unitedNowPageLocators.mutvTabNavigation.isSelected();
+	                }
+	                break;
+
+	            case "shop":
+	                if (isAndroid) {
+	                    isSelected = unitedNowPageLocators.shopTabNavigation.isSelected() &&
+	                                 unitedNowPageLocators.shopTabNavigation.getText().equalsIgnoreCase(tabName);
+	                } else {
+	                    isSelected = unitedNowPageLocators.shopTabNavigation.isSelected();
+	                }
+	                break;
+
+	            case "my united":
+	                if (isAndroid) {
+	                    isSelected = unitedNowPageLocators.myunitedTabNavigation.isSelected() &&
+	                                 unitedNowPageLocators.myunitedTabNavigation.getText().equalsIgnoreCase(tabName);
+	                } else {
+	                    isSelected = unitedNowPageLocators.myunitedTabNavigation.isSelected();
+	                }
+	                break;
+
+	            default:
+	                ExtentsReportManager.extentReportLogging("fail", "Invalid tab name: " + tabName);
+	                return false;
+	        }
+
+	        ExtentsReportManager.extentReportLogging("pass", "Validated selected tab: " + tabName);
+	        return isSelected;
+
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validatesFourTabs()<br />" + e);
+	        throw e;
+	    }
+	}
+
 }

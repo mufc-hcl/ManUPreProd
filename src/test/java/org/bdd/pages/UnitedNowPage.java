@@ -2960,11 +2960,11 @@ public class UnitedNowPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.unitedNowTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns united now text");
 				return unitedNowPageLocators.unitedNowTabNavigations.getText();
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.unitedNowTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns united now text");
 				return unitedNowPageLocators.unitedNowTabNavigations.getDomAttribute("label");
 			}
 		} catch (Exception e) {
@@ -2979,11 +2979,11 @@ public class UnitedNowPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.mutvTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns mutv text");
 				return unitedNowPageLocators.mutvTabNavigations.getText();
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.mutvTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns mutv text");
 				return unitedNowPageLocators.mutvTabNavigations.getDomAttribute("label");
 			}
 		} catch (Exception e) {
@@ -2998,11 +2998,11 @@ public class UnitedNowPage extends Common {
 		try {
 			if (device.equalsIgnoreCase("android")) {
 				waitForVisibilityFluentWait(unitedNowPageLocators.shopTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns shop text");
 				return unitedNowPageLocators.shopTabNavigations.getText();
 			} else {
 				waitForVisibilityFluentWait(unitedNowPageLocators.shopTabNavigations, 60);
-				ExtentsReportManager.extentReportLogging("pass", "Returns my united text");
+				ExtentsReportManager.extentReportLogging("pass", "Returns shop text");
 				return unitedNowPageLocators.shopTabNavigations.getDomAttribute("label");
 			}
 		} catch (Exception e) {
@@ -5695,5 +5695,7 @@ public class UnitedNowPage extends Common {
 	        throw e;
 	    }
 	}
+
+	
 }
 	
