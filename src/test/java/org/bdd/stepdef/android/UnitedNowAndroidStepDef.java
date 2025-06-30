@@ -2204,6 +2204,19 @@ public class UnitedNowAndroidStepDef {
 	            throw e;
 	        }
 	}
+	
+	@Then("user validates the {string} is selected")
+	public void uservalidatetabSelected(String tabName) throws Throwable {
+	try {
+          boolean tabPresent = unitedNowCardsPage.validatesFourTabs(tabName);
+          soft.assertTrue(tabPresent,"Tab is not selected "+tabName);
+          soft.assertAll();
+          ExtentsReportManager.extentReportLogging("info", "validated Navigation tab after clicking "+tabName);
+      } catch (AssertionError e) {
+          ExtentsReportManager.extentReportLogging("fail", "Error in user validateing navigation tab after selection <br />" + e);
+          throw e;
+      }
+	}
         
 	}
 

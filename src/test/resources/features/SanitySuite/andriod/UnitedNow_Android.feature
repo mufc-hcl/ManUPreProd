@@ -1,6 +1,6 @@
 @Sanity_Android @UnitedNow_Android
 Feature: United now
- @United_Now_14
+@Matchday_Android
   Scenario: [United now]TC001 Validate the What's New text along with the date and day in united now screen
     Given user navigates to manu android application
     And user navigates to screen two
@@ -43,7 +43,7 @@ Feature: United now
     And user clicks on each filter and validates section and deselection of each filter
     And user clicks on select all icon
     Then user validate the clear all icon in UnitedNow page Using Api
-
+@Matchday_Android
   Scenario: [United now]TC005,TC006,TC007 Validation of Fixture Calender Icon,Men and United Tabs and Men Dropdown List
     Given user navigates to manu android application
     And user navigates to screen two
@@ -82,7 +82,7 @@ Feature: United now
     And user select fourth radio option and validate content in the body
     And user select fifth radio option and validate content in the body
 
-  
+  @Matchday_Android
   Scenario: [United now]TC009 Validate the fixture listing page has Results and Upcoming fixtures data
     Given user navigates to manu android application
     And user navigates to screen two
@@ -101,7 +101,7 @@ Feature: United now
     #Then user validates the upcoming Fixtures using Api
     Then user validates the upcoming Fixtures using Api in united now
 
-  
+  @Matchday_Android
   Scenario: [United now]TC0010 Validate if the Greetings message , Stories Carousel and Coming Up carousel are displayed in United Now page when enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -194,7 +194,7 @@ Feature: United now
      Then user validates Stories Carousel in united now is displayed using API
      Then user validates it is Fixures Results or no spotlight
 
-
+@Matchday_Android
   Scenario: [United now]TC014 First Card In Carousel should be Fixture or Result Spotlight and deeplink to Match listing or respective match centre.
     Given user navigates to manu android application
     And user navigates to screen two
@@ -226,7 +226,8 @@ Feature: United now
     Then user validates Greetings message is not displayed in united now page
     Then user validates Stories Carousel is not displayed in united now
     Then user validates Coming Up carousel is not displayed in united now using API
-
+		
+		@Matchday_Android
   Scenario: [United now]TC016 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two
@@ -238,7 +239,7 @@ Feature: United now
     And user clicks on not now button in match appearance alert screen
     And user clicks on braze in app msg
     Then user validates upsell functionality is displayed united now screen using API
-
+@Matchday_Android
   Scenario Outline: [United now]TC017 Validate the Live Video functionality in United Now if enabled from CMS
     Given user navigates to manu android application
     And user navigates to screen two

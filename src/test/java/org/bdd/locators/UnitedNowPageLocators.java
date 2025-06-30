@@ -585,11 +585,11 @@ public class UnitedNowPageLocators {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ADCARD FOR HISTORICAL MATCH NEXT GEN AUTOMATION\"]")
     public List<WebElement> adCardInternalLinkToHistoricalMatchNextGen;
     
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_large_label_view')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"United Now\"]")
     public WebElement unitedNowTabNavigations;
     
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_small_label_view') and @text='MUTV']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"MUTV\"]")
     public WebElement mutvTabNavigations;
     
@@ -948,4 +948,20 @@ public class UnitedNowPageLocators {
     
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView")
     public List<WebElement> noSpolightStoriescarousel1;
+    
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_large_label_view')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"United Now\"]")
+    public WebElement unitedNowTabNavigation;
+    
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, ':id/navigation_bar_item_large_label_view')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"MUTV\"]")
+    public WebElement mutvTabNavigation;
+    
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Shop\"]")
+    public WebElement shopTabNavigation;
+    
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"My United, you are not logged in.\"]")
+    public WebElement myunitedTabNavigation;
 }

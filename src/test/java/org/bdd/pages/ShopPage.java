@@ -1061,6 +1061,8 @@ public class ShopPage extends Common {
 	    try {
 	        // Validate the hamburger feature in the shop web view, user should be able to open
 	        openMyLibraryHamburgerIcon();
+	        
+	        IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.4);
 
 	        // Captured menu items from API and validating in Hamburger Menu Items Shop UI page
 	        for (String menuItem : expectedHamburgerMenuItems) {
