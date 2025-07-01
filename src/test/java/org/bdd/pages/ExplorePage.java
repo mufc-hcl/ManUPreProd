@@ -1168,7 +1168,6 @@ public class ExplorePage extends Common {
 		try {
 			clickOnNotNowButtonInMatchAppearanceAlertScreen();
 //            waitForVisibilityFluentWait(explorePageLocators.weUseCookiesTexts);
-			
 			if (explorePageLocators.weUseCookiesTexts.isDisplayed()) {
 //                waitForVisibilityFluentWait(explorePageLocators.okButtonCookiesScreen);
 				explorePageLocators.okButtonCookiesScreen.click();
@@ -1177,7 +1176,6 @@ public class ExplorePage extends Common {
 			Thread.sleep(1000);
 		//to handle web view braze popup
 			clickOnBrazeWebViewPopup();			
- 		
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {
@@ -2300,9 +2298,10 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clickOnReggNotNowInMyUnited() {
+	public void clickOnReggNotNowInMyUnited() throws Exception {
 		try {
 			if (Common.apiEnv().equalsIgnoreCase("prod")) {
+				Thread.sleep(100);
 			if (!explorePageLocators.ReggressionPopUpUniteNow.isEmpty()) {
 				explorePageLocators.ReggressionPopUpUniteNow.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on ReggressionPopUpUniteNow ");
