@@ -25,7 +25,7 @@ Feature: Braze Funtionality
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [My United]TC002 My United - Content Card - Logout & Login User - braze.
+  Scenario Outline: [Braze]TC002 My United - Content Card - Logout & Login User - braze.
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -47,7 +47,7 @@ Feature: Braze Funtionality
       | username                | password |
       | manupreprod@yopmail.com | Manu@123 |
 
-  Scenario Outline: [MUTV] TC003 - Content Card - Logout & Login User - braze
+  Scenario Outline: [Braze] TC003 - Content Card - Logout & Login User - braze
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
