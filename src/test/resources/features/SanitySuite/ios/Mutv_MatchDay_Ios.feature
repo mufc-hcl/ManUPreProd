@@ -1,4 +1,4 @@
-@MatchDay_IOS @MUTV_Matchday_IOS
+@MatchDay_IOS1 @MUTV_Matchday_IOS
 
 Feature: MUTV Feature
 

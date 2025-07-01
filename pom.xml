@@ -14,6 +14,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<dataprovider.parallel-count>20</dataprovider.parallel-count>
+		<parallel.config>methods</parallel.config>
+		<thread.count>20</thread.count>
 	</properties>
 
 
@@ -128,12 +131,24 @@
 						<version>3.1.2</version>
 						<configuration>
 							<!--suppress UnresolvedMavenProperty -->
-							<argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"
-								-XX:CompressedClassSpaceSize=3g
+							<argLine>
+								-Ddataproviderthreadcount=${dataprovider.parallel-count}
 							</argLine>
+
 							<suiteXmlFiles>
 								<suiteXmlFile>testng.xml</suiteXmlFile>
 							</suiteXmlFiles>
+							<properties>
+								<property>
+									<name>threadcount</name>
+									<value>${thread.count}</value>
+								</property>
+								<property>
+									<name>parallel</name>
+									<value>${parallel.config}</value>
+								</property>
+							</properties>
+
 						</configuration>
 					</plugin>
 					<plugin>
