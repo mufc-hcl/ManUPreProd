@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 import org.bdd.locators.ShopPageLocators;
 import org.bdd.utils.*;
 import org.bdd.utils.apiResponse.ShopAPIResponse;
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
