@@ -1887,6 +1887,7 @@ public class MyUnitedPage extends Common {
 
 	public void clicksContinueInMUAppPopup() {
 		try {
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			if (myUnitedPageLocators.mutvINAppPopUp.size() > 0) {
 				if (myUnitedPageLocators.closeIconMutvINAppPopUp.size() > 0) {
 				myUnitedPageLocators.closeIconMutvINAppPopUp.get(0).click();
@@ -1912,6 +1913,7 @@ public class MyUnitedPage extends Common {
 					myUnitedPageLocators.noButtonIdfaVariant.click();
 					ExtentsReportManager.extentReportLogging("pass", "Clicks on no button in idfa variant popup");
 				}
+			}
 			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",

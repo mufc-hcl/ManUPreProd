@@ -1693,6 +1693,7 @@ public class MutvPage extends Common {
 	public void clicksOnImagePopUpWindow() {
 		try {
 			String deviceName = new GlobalParams().getDeviceName();
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			if (mutvPageLocators.imagePopUpWindow.size() > 0) {
 				if (deviceName.equalsIgnoreCase("Google Pixel 9")) {
 					swipeWithCoordinates(96, 2293, 970, 2293, 200, "left", driver);
@@ -1704,7 +1705,7 @@ public class MutvPage extends Common {
 				mutvPageLocators.imagePopUpWindow.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on imagePopUpWindow ");
 			}
-
+			}
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception occured in function-clicksOnImagePopUpWindow()<br />" + e);
@@ -2057,11 +2058,12 @@ public class MutvPage extends Common {
 
 	public void clicksOnShopNowPopUP() {
 		try {
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			if (mutvPageLocators.buyORshopNowInUnitedNowPopUp1.isDisplayed()) {
 				waitForVisibilityFluentWait(mutvPageLocators.buyORshopNowInUnitedNowPopUp1, 60);
 				mutvPageLocators.buyORshopNowInUnitedNowPopUp1.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in shop Now In UnitedNow PopUp");
-			}
+			}}
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {
@@ -2093,10 +2095,12 @@ public class MutvPage extends Common {
 
 	public void clicksOnNotnowPopUp() {
 		try {
+			if (Common.apiEnv().equalsIgnoreCase("stage")) {
 			if (mutvPageLocators.notNowPopUpInMatchAlert.isDisplayed()) {
 				waitForVisibilityFluentWait(mutvPageLocators.notNowPopUpInMatchAlert, 60);
 				mutvPageLocators.notNowPopUpInMatchAlert.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in Not Now In UnitedNow PopUp");
+			}
 			}
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
