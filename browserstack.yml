@@ -9,4 +9,3 @@ networkLogs: true
 consoleLogs: errors
 testObservability: true
 browserstackAutomation: false
-parallelsPerPlatform: 20
