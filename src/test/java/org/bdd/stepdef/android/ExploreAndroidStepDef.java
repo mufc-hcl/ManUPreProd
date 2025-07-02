@@ -710,6 +710,7 @@ public class ExploreAndroidStepDef {
         try {
             explorePage.clickOnReggNotNowInMyUnited();
             explorePage.clicksOnOkButtonInCookiesScreen();
+            explorePage.clickOnReggNotNowInMyUnited();
             mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             ExtentsReportManager.extentReportLogging("info", "Clicked on OK button in cookies screen");
         } catch (AssertionError e) {
