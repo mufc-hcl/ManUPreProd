@@ -125,7 +125,7 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clickOnGeneral() {
+	public void clickOnGeneral() throws Exception {
 		try {
 			waitForVisibilityFluentWait(explorePageLocators.general, 60);
 			explorePageLocators.general.click();
@@ -139,20 +139,6 @@ public class ExplorePage extends Common {
 
 	public void clickOnHelp() {
 		try {
-//			switchToWebView();
-//
-////List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[contains(@resource-id, 'com_braze_inappmessage_html_webview')]"));
-// 
-//
-//			List<WebElement> allData = driver.findElements(By.xpath("(//*[contains(text(), 'Close') or contains(text(), 'close')]"));
-//			if (allData.size() > 0) {
-//			
-//				//waitForVisibilityFluentWait(allData.get(0), 60);
-//				allData.get(0).click();
-//				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
-//				
-//			}
-//			switchToNativeView(((AndroidDriver) driver));
 			waitForVisibilityFluentWait(explorePageLocators.help, 60);
 			explorePageLocators.help.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on help ");
@@ -162,7 +148,7 @@ public class ExplorePage extends Common {
 		}
 	}
 
-	public void clickOnContactUs() {
+	public void clickOnContactUs() throws Exception {
 		try {
 			waitForVisibilityFluentWait(explorePageLocators.contactUs, 60);
 			explorePageLocators.contactUs.click();
@@ -523,12 +509,14 @@ public class ExplorePage extends Common {
 		try {
 			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 			waitForVisibilityFluentWait(explorePageLocators.helpCouroselSearchPage, 60);
+			
 			explorePageLocators.helpCouroselSearchPage.click();
 			if (explorePageLocators.closeIconInAppMsgIosBrazeTests.size()>0) {
 				waitForVisibilityFluentWait(explorePageLocators.closeIconInAppMsgIosBrazeTest, 60);
 				explorePageLocators.closeIconInAppMsgIosBrazeTest.click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
 			}
+			
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on helpCourosel SearchPage");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -1215,17 +1203,20 @@ public class ExplorePage extends Common {
 
 	}
 	
-	public void clickOnBrazeWebViewPopup() {
+	public void clickOnBrazeWebViewPopup() throws Exception {
 		try {
-			List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[contains(@resource-id, 'com_braze_inappmessage_html_webview')]"));
+			Thread.sleep(100);
+			switchToWebView();		
+			List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[@text='Modal Message']"));
 			//System.out.println("***********"+webViews.toString());
 			if (webViews.size()>0) {
-				switchToWebView();			 
+				 
 				WebElement closeButton = driver.findElement(By.xpath("//android.widget.Button[contains(@text, 'Close')]"));
 				closeButton.click();
 				ExtentsReportManager.extentReportLogging("pass",  "Clicks on close button in braze Web view Popup "); 
-				switchToNativeView(((AndroidDriver) driver));
+				
 			}
+			switchToNativeView(((AndroidDriver) driver));
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (StaleElementReferenceException se) {
@@ -2301,7 +2292,7 @@ public class ExplorePage extends Common {
 	public void clickOnReggNotNowInMyUnited() throws Exception {
 		try {
 			if (Common.apiEnv().equalsIgnoreCase("prod")) {
-				Thread.sleep(100);
+				//Thread.sleep(120);
 			if (!explorePageLocators.ReggressionPopUpUniteNow.isEmpty()) {
 				explorePageLocators.ReggressionPopUpUniteNow.get(0).click();
 				ExtentsReportManager.extentReportLogging("pass", "Clicks on ReggressionPopUpUniteNow ");

@@ -10,10 +10,8 @@ import org.bdd.pages.MutvPage;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
 import org.bdd.utils.apiResponse.MUTVAPIResponse;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
@@ -21,6 +19,7 @@ public class MutvAndroidStepDef {
     public SoftAssert soft = new SoftAssert();
     public MutvPage mutvPage = new MutvPage();
     public IdmPage idmPage = new IdmPage();
+    public ExplorePage explorePage = new ExplorePage();
     public MUTVAPIResponse mutvAPIResponse = new MUTVAPIResponse();
 
     @And("^user clicks on Mutv tab$")
@@ -583,8 +582,9 @@ public class MutvAndroidStepDef {
     }
 
     @And("user clicks on log in button in subscribe page")
-    public void userClicksOnLogInButtonInSubscribePage() {
+    public void userClicksOnLogInButtonInSubscribePage() throws Exception {
         try {
+        	explorePage.clickOnBrazeWebViewPopup();
         	mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             idmPage.clicksOnLogInButtonInSubscribePage();
             ExtentsReportManager.extentReportLogging("info", "Clicked on log in button in subscribe page");

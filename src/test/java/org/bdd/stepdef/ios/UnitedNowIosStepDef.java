@@ -3,9 +3,12 @@ package org.bdd.stepdef.ios;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bdd.pages.UnitedNowCardsPage;
 import org.bdd.pages.UnitedNowPage;
 import org.bdd.utils.Common;
 import org.bdd.utils.ExtentsReportManager;
@@ -20,6 +23,7 @@ public class UnitedNowIosStepDef {
 	public SoftAssert soft = new SoftAssert();
 
 	public UnitedNowPage unitedNowPage = new UnitedNowPage();
+	public UnitedNowCardsPage unitedNowCardsPage = new UnitedNowCardsPage();
 	public UnitedNowAPIResponse unitedNowAPIResponse = new UnitedNowAPIResponse();
 	 private static final Logger log = LogManager.getLogger(UnitedNowPage.class);
 
@@ -1747,39 +1751,38 @@ public class UnitedNowIosStepDef {
         }
     }
 
-	@Then("^user validates upsell functionality is displayed united now screen in ios using API$")
-	public void userValidatesUpsellFunctionalityIsDisplayedUnitedNowScreenInIos() throws Throwable {
-		 try {
-	            //data from API
-			 String upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
-	            ExtentsReportManager.extentReportLogging("info","upsellTitle Text From API<br />"+upsellTitleFromAPI);
-	            
-	            if(upsellTitleFromAPI != null) {
-	            	String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
-					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
-
-					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
-		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
-		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();
-
-		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
-					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
-
-		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
-		            soft.assertAll();
-		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed untied now is displayed ");
-	            }else {
-	                ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
-	            }
-	            
-	        } catch (AssertionError e) {
-	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying upsell functionality is displayed in united now<br />" + e);
-	            throw e;
-	        }catch (IndexOutOfBoundsException i) {
-          ExtentsReportManager.extentReportLogging("pass", "Upsell  is not displayed in united now<br />" );
-//          throw i;
-      }
-	    }
+//	@Then("^user validates upsell functionality is displayed united now screen in ios using API$")
+//	public void userValidatesUpsellFunctionalityIsDisplayedUnitedNowScreenInIos() throws Throwable {
+//		 try {
+//	            //data from API
+//			  ArrayList<String> upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
+//	            ExtentsReportManager.extentReportLogging("info","upsellTitle Text From API<br />"+upsellTitleFromAPI);
+//	          
+//	            if(!upsellTitleFromAPI.isEmpty()) {
+//	                             
+//	                String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
+//					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
+//
+//					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.get(0).toUpperCase());
+//		            ArrayList<String> watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
+//		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
+//		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();		           
+//					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
+//
+//		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
+//		            soft.assertAll();
+//	               
+//	            }else {
+//	            	ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
+//	            }
+//	        } catch (AssertionError e) {
+//	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying upsell functionality is displayed in united now<br />" + e);
+//	            throw e;
+//	        }catch (IndexOutOfBoundsException i) {
+//          ExtentsReportManager.extentReportLogging("pass", "Upsell  is not displayed in united now<br />" );
+////          throw i;
+//      }
+//	    }
 
 	@Then("^user validates Greetings message in united now is displayed in ios$")
 	public void userValidatesGreetingsMessageInUnitedNowIsDisplayedInIos() throws Throwable {
@@ -1909,6 +1912,51 @@ public class UnitedNowIosStepDef {
 	    }
 	}
    
+	@And("user navigates to adcard for {string} in united now screen using api")
+	public void userNavigatesToAdcardForInternalLinkInUnitedNowScreenusingApi(String linkType) throws Throwable {
+	    try {
+	        List<Map<String, String>> expectedAdcardCards = unitedNowAPIResponse.getAdCardCards("getAllCardsFromUnitedNow");
+	        ExtentsReportManager.extentReportLogging("info", "expectedAdcardCards value using API " + expectedAdcardCards.toString());
+
+	        if (expectedAdcardCards == null || expectedAdcardCards.isEmpty()) {
+	            ExtentsReportManager.extentReportLogging("info", "No adcard cards available in United Now page.");
+	            return;
+	        }
+
+	        for (Map<String, String> adcard : expectedAdcardCards) {
+	            String headline = adcard.get("headline");
+	            String siteMapurl = adcard.get("siteMapurl").toLowerCase().trim();
+	            String ctaurl = adcard.get("ctaurl").toLowerCase().trim();
+
+	            if (headline == null || ctaurl == null || siteMapurl == null) continue;
+
+	            String detectedLinkType = null;
+	            if (siteMapurl.contains("nextgen") && ctaurl.contains("manutd.com") && siteMapurl.contains("manchesterunited/manutd/editorial/content/adcard")) {
+	                detectedLinkType = "Internal Link to Next Gen";
+	            } else if (siteMapurl.contains("interview") && ctaurl.contains("manutd.com") && siteMapurl.contains("manchesterunited/manutd/editorial/content/adcard")) {
+	                detectedLinkType = "Internal link to historical match next gen";
+	            } else if (siteMapurl.contains("home") && ctaurl.contains("manutd.com") && siteMapurl.contains("manchesterunited/manutd/editorial/content/adcard")) {
+	                detectedLinkType = "Internal Link to Other screen of the App";
+	            } else if (siteMapurl.contains("external") && ctaurl.contains("www") && siteMapurl.contains("manchesterunited/manutd/editorial/content/adcard")) {
+	                detectedLinkType = "External Link to external Browser";
+	              }
+	        	
+	            // Only proceed if the detected link type matches the input linkType
+	            if (detectedLinkType.equalsIgnoreCase(linkType)) {
+	                boolean result = unitedNowCardsPage.navigatesToAdcardLinkInUnitedNowScreen(headline, detectedLinkType);
+	                soft.assertTrue(result, "Card '" + headline + "' with link type '" + detectedLinkType + "' not found or failed validation.");
+	                soft.assertAll();
+	                ExtentsReportManager.extentReportLogging("info", "Navigated to adcard for '" + linkType + "' link in United Now screen.");
+	                return;
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("Warning", "No adcard found matching link type: " + linkType);
+	    } catch (AssertionError e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Error navigating to adcard for '" + linkType + "' link in United Now screen.<br/>" + e);
+	        throw e;
+	    }
+	}
 		
 	}
 

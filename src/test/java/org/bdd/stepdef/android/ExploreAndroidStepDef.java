@@ -88,6 +88,7 @@ public class ExploreAndroidStepDef {
     @And("^user click on GENERAL link in setting screen$")
     public void userClickOnGENERALLinkInSettingScreen() throws Throwable {
         try {
+        	explorePage.clickOnBrazeWebViewPopup();
             explorePage.clickOnGeneral();
             ExtentsReportManager.extentReportLogging("info", "Clicked on General link in the setting screen");
         } catch (AssertionError e) {
@@ -108,8 +109,9 @@ public class ExploreAndroidStepDef {
     }
 
     @And("^user click on contact us link help screen$")
-    public void userClickOnContactUsLinkHelpScreen() {
+    public void userClickOnContactUsLinkHelpScreen() throws Exception {
         try {
+        	explorePage.clickOnBrazeWebViewPopup();
             explorePage.clickOnContactUs();
             ExtentsReportManager.extentReportLogging("info", "CLicked on contact us link in help screen");
         } catch (AssertionError e) {
@@ -710,6 +712,7 @@ public class ExploreAndroidStepDef {
         try {
             explorePage.clickOnReggNotNowInMyUnited();
             explorePage.clicksOnOkButtonInCookiesScreen();
+           // explorePage.clickOnReggNotNowInMyUnited();
             mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             ExtentsReportManager.extentReportLogging("info", "Clicked on OK button in cookies screen");
         } catch (AssertionError e) {

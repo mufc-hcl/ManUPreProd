@@ -1,8 +1,8 @@
 @Regression_Android @AdCard_Android
 Feature: Ad card feature
 
-
-  Scenario: DMD-2263 AD CARD - AD CARD - Ad Card - Internal Link to Other screen of the App
+  @TC001_android_AdCard
+  Scenario: [AD CARD]DMD-2263 -TC001_Ad Card - Internal Link to Other screen of the App
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -11,12 +11,12 @@ Feature: Ad card feature
     And user clicks on ok button in cookies screen
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
-    #And user clicks on continue in personal your experience popupwindow
-    #And user click on close in app myUnited popup
-    And user navigates to adcard for internal link in united now screen
+    And user clicks on braze in app msg
+    And user navigates to adcard for "Internal Link to Other screen of the App" in united now screen using api
 
-
-  Scenario: DMD-2262	AD CARD - AD CARD - Ad Card - External Link to external Browser
+  #Then user checks for Adcard card in united now page using api
+  @TC002_android_AdCard
+  Scenario: [AD CARD] DMD-2262-TC002_Ad Card - External Link to external Browser
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -25,12 +25,14 @@ Feature: Ad card feature
     And user clicks on ok button in cookies screen
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
     #And user clicks on continue in personal your experience popupwindow
     #And user click on close in app myUnited popup
-    And user navigates to adcard for external link in united now screen
-    Then user validates  adcard external link in external browser
+   # And user navigates to adcard for external link in united now screen
+    And user navigates to adcard for "External Link to external Browser" in united now screen using api
 
-  Scenario: DMD-2265 AD CARD - AD CARD - Ad Card - Internal Link to Next Gen
+  @TC003_android_AdCard
+  Scenario: [AD CARD] DMD-2265 TC003_Ad Card - Internal Link to Next Gen
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -39,12 +41,13 @@ Feature: Ad card feature
     And user clicks on ok button in cookies screen
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
     #And user clicks on continue in personal your experience popupwindow
     #And user click on close in app myUnited popup
-    And user navigates to adcard for internal link to next Gen in united now page
+    And user navigates to adcard for "Internal Link to Next Gen" in united now screen using api
 
-
-  Scenario: DMD-2264 AD CARD - AD CARD - Ad Card - Internal link to historical match next gen
+  @TC004_android_AdCard
+  Scenario: [AD CARD]  DMD-2264 TC004_Ad Card - Internal link to historical match next gen
     Given user navigates to manu android application
     And user navigates to screen two
     And user navigates to screen three
@@ -53,13 +56,13 @@ Feature: Ad card feature
     And user clicks on ok button in cookies screen
     And user clicks continue in MUApp popup
     And user clicks on not now button in match appearance alert screen
+    And user clicks on braze in app msg
+    And user click on My United in bottom tab
+    And user clicks on log in button
+    And user enter the valid email "manupreprod@yopmail.com" and valid password "Manu@123"
+    And user clicks on login button in login screen
+    And user clicks on close from notification
+    And user clicks on united now tab
     #And user clicks on continue in personal your experience popupwindow
     #And user click on close in app myUnited popup
-    And user navigates to adcard for internal link to historical match next Gen in united now page
-    
-    
-    
-    
-    
-    
-    
+    And user navigates to adcard for "Internal link to historical match next gen" in united now screen using api

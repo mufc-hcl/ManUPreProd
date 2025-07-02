@@ -1798,25 +1798,45 @@ public class UnitedNowAndroidStepDef {
 	public void userValidatesUpsellFunctionalityIsDisplayedUnitedNowScreen() throws Throwable {
 		 try {
 	            //data from API
-	            String upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
+	            ArrayList<String> upsellTitleFromAPI = unitedNowAPIResponse.getUpsellTitleFromApi("upsellEndpoint");
 	            ExtentsReportManager.extentReportLogging("info","upsellTitle Text From API<br />"+upsellTitleFromAPI);
-	            
-	            if(upsellTitleFromAPI != null) {
-	            	String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
+	          
+	            if(!upsellTitleFromAPI.isEmpty()) {
+	                             
+	                String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
 					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
 
-					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
-		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
+					soft.assertTrue(upsellTitleFromAPI.contains(actualUpsellTitleTextUI.toUpperCase()),"Upsell not found in UN page ");
+					
+		            ArrayList<String> watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
 		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
 		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();		           
 					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
 
-		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
+		            soft.assertTrue(watchNowBtnTextFromAPI.contains(actualWatchNowTextBtnUI.toUpperCase())," WatchNowText not found in UN page ");
 		            soft.assertAll();
-		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed united now is displayed ");
+	               
 	            }else {
-	                ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
+	            	ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
 	            }
+	  		
+	            
+//	            if(upsellTitleFromAPI != null) {
+//	            	String actualUpsellTitleTextUI = unitedNowPage.getUpsellTitleFromUI();
+//					ExtentsReportManager.extentReportLogging("info","actual upsellTitle Text From UI<br />"+actualUpsellTitleTextUI);
+//
+//					soft.assertEquals(actualUpsellTitleTextUI.toUpperCase(), upsellTitleFromAPI.toUpperCase());
+//		            String watchNowBtnTextFromAPI = unitedNowAPIResponse.getWatchNowBtnTextFromAPI("upsellEndpoint");
+//		            ExtentsReportManager.extentReportLogging("info","watchNowBtn Text From API<br />"+watchNowBtnTextFromAPI);
+//		            String actualWatchNowTextBtnUI = unitedNowPage.getWatchNowBtnTextUi();		           
+//					 ExtentsReportManager.extentReportLogging("info","actual watchNowBtn Text From UI<br />"+actualWatchNowTextBtnUI);
+//
+//		            soft.assertEquals(actualWatchNowTextBtnUI.toUpperCase(), watchNowBtnTextFromAPI.toUpperCase());
+//		            soft.assertAll();
+//		            ExtentsReportManager.extentReportLogging("info", "Validated upsell functionality is displayed united now is displayed ");
+//	            }else {
+//	                ExtentsReportManager.extentReportLogging("Warning", "Upsell functionality is not available in united now page and API");
+//	            }
 	            
 	        } catch (AssertionError e) {
 	            ExtentsReportManager.extentReportLogging("fail", "Error in displaying upsell functionality is displayed in united now<br />" + e);

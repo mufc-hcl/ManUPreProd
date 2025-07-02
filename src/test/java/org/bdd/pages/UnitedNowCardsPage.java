@@ -20,12 +20,17 @@ import org.bdd.utils.*;
 import org.bdd.utils.apiResponse.UnitedNowAPIResponse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.remote.SupportsContextSwitching;
 
 public class UnitedNowCardsPage extends Common {
 	private static final Logger log = LogManager.getLogger(UnitedNowCardsPage.class);
@@ -732,6 +737,207 @@ public class UnitedNowCardsPage extends Common {
 	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function validatesFourTabs()<br />" + e);
 	        throw e;
 	    }
+	}
+	
+	public boolean navigatesToAdcardLinkInUnitedNowScreen(String cardHeadline, String linkType) {
+		try {
+			String device = GlobalParams.getPlatformName().toLowerCase();
+			boolean isAndroid = device.contains("android");
+			if (cardHeadline == null || cardHeadline.trim().isEmpty()) {
+				ExtentsReportManager.extentReportLogging("fail", "Card headline is missing.");
+				return false;
+			}
+
+			// search for card and click
+			boolean cardFound = getActualCardFromUnitedNowUI(cardHeadline, true, 100, "adcard", linkType);
+
+			if (!cardFound) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Adcard with headline '" + cardHeadline + "' not found.");
+				return false;
+			}
+
+			ExtentsReportManager.extentReportLogging("pass",
+					"Adcard with headline '" + cardHeadline + "' clicked (" + linkType + ")");
+
+			if (unitedNowPageLocators.closeIconInMatchCenter.size() > 0) {
+				unitedNowPageLocators.closeIconInMatchCenter.get(0).click();
+				ExtentsReportManager.extentReportLogging("pass", "Clicks on close button in Popup ");
+			}
+			boolean isValid = false;
+			List<WebElement> elements;
+			try {
+				if (linkType.toLowerCase().contains("next gen")) {
+					elements = driver
+							.findElements(AppiumBy.xpath("//*[@content-desc='Welcome to United Predictions']"));
+					if (!unitedNowPageLocators.matchCentre.isEmpty()) {
+						isValid = unitedNowPageLocators.matchCentre.get(0).isEnabled();
+					} else if (!elements.isEmpty()) {
+						isValid = elements.get(0).isEnabled();
+					}
+				}
+				if (linkType.toLowerCase().contains("other")) {
+					isValid = unitedNowPageLocators.shopTabNavigation.isEnabled();
+				}
+				if (linkType.toLowerCase().contains("historical")) {
+					// Login to My united
+
+					if (!unitedNowPageLocators.acceptAll.isEmpty()) {
+						unitedNowPageLocators.acceptAll.get(0).click();
+					}
+					if (!unitedNowPageLocators.okInPopup.isEmpty()) {
+						unitedNowPageLocators.okInPopup.get(0).click();
+					}
+					
+					if (!unitedNowPageLocators.okInPopup.isEmpty()) {
+						unitedNowPageLocators.okInPopup.get(0).click();
+					}
+//					if (mutvPageLocators.buyORshopNowInUnitedNowPopUp1.isDisplayed()) {
+//						waitForVisibilityFluentWait(mutvPageLocators.buyORshopNowInUnitedNowPopUp1, 60);
+//						mutvPageLocators.buyORshopNowInUnitedNowPopUp1.click();
+//						ExtentsReportManager.extentReportLogging("pass", "Clicks on ok button in shop Now In UnitedNow PopUp");
+//					}
+					Thread.sleep(100);
+					//to handle web view braze popup
+					clickOnBrazeWebViewPopup();	
+					Thread.sleep(30);
+					if (!unitedNowPageLocators.siteCorePage.isEmpty()) {
+						isValid = unitedNowPageLocators.siteCorePage.get(0).isEnabled();
+					}
+				} else if(linkType.toLowerCase().contains("external")) {
+//					if (isAndroid) {
+//						AndroidGenericLibrary.switchToWebViewContext((AndroidDriver) driver);
+//					}
+					if (!unitedNowPageLocators.externalWebView.isEmpty()) {
+					 isValid = unitedNowPageLocators.externalWebView.get(0).isEnabled();
+					}
+				}
+			} catch (Exception e) {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Validation failed for '" + cardHeadline + "' (" + linkType + ")");
+			}
+
+			if (isValid) {
+				ExtentsReportManager.extentReportLogging("pass",
+						"Adcard '" + cardHeadline + "' opened and validated as " + linkType);
+			} else {
+				ExtentsReportManager.extentReportLogging("fail",
+						"Adcard '" + cardHeadline + "' opened but validation failed (" + linkType + ")");
+			}
+
+			return isValid;
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occurred in function navigatesToAdcardLinkInUnitedNowScreen()<br />" + e);
+			throw e;
+		}
+	}
+
+	public void clickOnBrazeWebViewPopup() {
+		try {
+			String device = GlobalParams.getPlatformName().toLowerCase();
+			boolean isAndroid = device.contains("android");
+			if (isAndroid) {
+			List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[contains(@resource-id, 'com_braze_inappmessage_html_webview')]"));
+			//System.out.println("***********"+webViews.toString());
+			if (webViews.size()>0) {
+				AndroidGenericLibrary.switchToWebViewContext((AndroidDriver) driver);			 
+				WebElement closeButton = driver.findElement(By.xpath("//android.widget.Button[contains(@text, 'Close')]"));
+				closeButton.click();
+				ExtentsReportManager.extentReportLogging("pass",  "Clicks on close button in braze Web view Popup "); 
+				 ((AndroidDriver) driver).context("NATIVE_APP");
+			     log.info("Switched to native context");
+			}
+			}
+			else {
+				List<WebElement> webViews = driver.findElements(By.xpath("//XCUIElementTypeOther[@name='Container, web dialog']"));
+				//System.out.println("***********"+webViews.toString());
+				if (webViews.size()>0) {
+				WebElement closeButton = driver.findElement(AppiumBy.accessibilityId("Close Message"));
+				closeButton.click();
+				}
+			}
+			
+		} catch (NoSuchElementException ns) {
+			System.out.println("element is not displayed hence skipped");
+		} catch (StaleElementReferenceException se) {
+			System.out.println("stale element exception");
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception occured in function-clickOnBrazeWebViewPopup()<br />" + e);
+			throw e;
+		}
+	}
+	
+	public boolean getActualCardFromUnitedNowUI(String cardTextToSearch, boolean upperCase, int maxScrolls,
+			String contentType, String linkType) {
+		String device = GlobalParams.getPlatformName().toLowerCase();
+		boolean isAndroid = device.contains("android");
+
+		try {
+			IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+			String eleText = isAndroid && upperCase ? cardTextToSearch.toUpperCase().trim() : cardTextToSearch.trim();
+			int attempts = 0;
+
+			while (attempts < maxScrolls) {
+				List<WebElement> elements;
+
+				if (isAndroid) {
+					elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
+				} else {
+					elements = driver.findElements(AppiumBy.iOSNsPredicateString("name ==[c] '" + eleText + "'"));
+				}
+
+				if (!elements.isEmpty()) {
+					try {
+						WebElement card = elements.get(0);
+						waitForVisibilityFluentWait(card, 60);
+						Thread.sleep(100); 
+						card.click();
+
+						ExtentsReportManager.extentReportLogging("pass",
+								contentType + " Card '" + eleText + "' clicked.");
+						return true;
+
+					} catch (StaleElementReferenceException | NoSuchElementException e) {
+                    // Element disappeared, try to scroll 
+						IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
+						Thread.sleep(200); 
+
+						if (isAndroid) {
+							elements = driver.findElements(AppiumBy.xpath("//*[contains(@text, '" + eleText + "')]"));
+						} else {
+							elements = driver
+									.findElements(AppiumBy.iOSNsPredicateString("name ==[c] '" + eleText + "'"));
+						}
+
+						if (!elements.isEmpty()) {
+							WebElement cardRetry = elements.get(0);
+							waitForVisibilityFluentWait(cardRetry, 60);
+							cardRetry.click();
+
+							ExtentsReportManager.extentReportLogging("pass",
+									contentType + " Card '" + eleText + "' clicked after retry.");
+							return true;
+						}
+					}
+				}
+
+
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.6);
+				attempts++;
+			}
+
+			ExtentsReportManager.extentReportLogging("fail",
+					contentType + " Card '" + eleText + "' not found after " + maxScrolls + " scroll attempts.");
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail",
+					"Exception in getActualCardFromUnitedNowUI() while searching for card '" + contentType + " "
+							+ cardTextToSearch + "': " + e.getMessage());
+		}
+
+		return false;
 	}
 
 }
