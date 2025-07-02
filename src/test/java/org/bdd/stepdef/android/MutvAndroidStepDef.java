@@ -268,6 +268,7 @@ public class MutvAndroidStepDef {
     @Then("validate subscribe screen is displayed")
     public void userValidateSubscribeScreenIsDisplayed() {
         try {
+        	mutvPage.clicksinAppMsgIOSBrazeTestCloseButton();
             boolean flag = mutvPage.validateSubscribeScreenIsDisplayed();
             soft.assertTrue(flag);
             soft.assertAll();
