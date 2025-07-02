@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -802,11 +804,23 @@ public class UnitedNowAPIResponse extends BaseApiService {
 	}
 
 
-	public String getUpsellTitleFromApi(String endpoint) throws Exception {
+	public ArrayList<String> getUpsellTitleFromApi(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
-			js = new JsonPath(res.asString());
-			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].title_t");
+			 ArrayList<String> upsellTitleFromAPI = new ArrayList<>();
+			  js = new JsonPath(res.asString());
+		        int size = js.getList("UpsellResponse.response.docs").size();
+
+		        for (int i = 0; i < size; i++) {
+		        	 String contenttype = js.getString("UpsellResponse.response.docs[" + i + "].contenttype_t");
+		            if (contenttype != null && contenttype.equalsIgnoreCase("upsell")) {
+		                String headline = js.getString("UpsellResponse.response.docs[" + i + "].title_t");
+		                upsellTitleFromAPI.add(headline);
+		            }
+		        }
+		       
+//			js = new JsonPath(res.asString());
+//			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].title_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return upsellTitleFromAPI;
@@ -817,11 +831,24 @@ public class UnitedNowAPIResponse extends BaseApiService {
 		}
 	}
 
-	public String getWatchNowBtnTextFromAPI(String endpoint) throws Exception {
+	public ArrayList<String> getWatchNowBtnTextFromAPI(String endpoint) throws Exception {
 		try {
 			Response res = getUrlEncodedResponse(endpoint);
-			js = new JsonPath(res.asString());
-			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].ctatitle_t");
+			
+			 ArrayList<String> upsellTitleFromAPI = new ArrayList<>();
+			  js = new JsonPath(res.asString());
+		        int size = js.getList("UpsellResponse.response.docs").size();
+
+		       
+		        for (int i = 0; i < size; i++) {
+		        	 String contenttype = js.getString("UpsellResponse.response.docs[" + i + "].contenttype_t");
+		            if (contenttype != null && contenttype.equalsIgnoreCase("upsell")) {
+		                String headline = js.getString("UpsellResponse.response.docs[" + i + "].ctatitle_t");
+		                upsellTitleFromAPI.add(headline);
+		            }
+		        }
+//			js = new JsonPath(res.asString());
+//			String upsellTitleFromAPI = js.getString("UpsellResponse.response.docs[0].ctatitle_t");
 			ExtentsReportManager.extentReportLogging("info",
 					"Getting the response from the endpoint " + getURIInfo(endpoint));
 			return upsellTitleFromAPI;
@@ -1575,6 +1602,38 @@ public class UnitedNowAPIResponse extends BaseApiService {
 			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getBrazeCardDisplayTime()" + e);
 			throw e;
 		}
+	}
+	
+	public List<Map<String, String>> getAdCardCards(String endpoint) throws Exception {
+	    try {
+	        List<Map<String, String>> adCards = new ArrayList<>();
+	        String contentTypeAdcardCard = "adcard";
+
+	        Response res = getResponse(endpoint);
+	        js = new JsonPath(res.asString());
+	        int size = js.getList("ListingResponse.response.docs").size();
+
+	        for (int i = 0; i < size; i++) {
+	            String contentType = js.getString("ListingResponse.response.docs[" + i + "].contenttype_t");
+	            if (contentType != null && contentType.equalsIgnoreCase(contentTypeAdcardCard)) {
+	                String headline = js.getString("ListingResponse.response.docs[" + i + "].shortheadline_t");
+	                String siteMapurl = js.getString("ListingResponse.response.docs[" + i + "].sitemapurl_s");
+	                String ctaurl = js.getString("ListingResponse.response.docs[" + i + "].ctaurlstring_s");
+	                Map<String, String> adCard = new HashMap<>();
+	                adCard.put("headline", headline);
+	                adCard.put("siteMapurl", siteMapurl);
+	                adCard.put("ctaurl",ctaurl);
+	                adCards.add(adCard);
+	            }
+	        }
+
+	        ExtentsReportManager.extentReportLogging("info",
+	                "Getting the response from the endpoint " + getURIInfo(endpoint));
+	        return adCards;
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function getAdcardCards(): " + e);
+	        throw e;
+	    }
 	}
 }
 

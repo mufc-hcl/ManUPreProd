@@ -964,4 +964,23 @@ public class UnitedNowPageLocators {
     @AndroidFindBy(xpath = "//*[contains(@resource-id, \":id/navigation_bar_item_large_label_view\")]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"My United, you are not logged in.\"]")
     public WebElement myunitedTabNavigation;
+    
+    @AndroidFindBy(xpath = "//android.view.View[@resource-id='siteCorePage']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Subscribe | Manchester United']")
+    public List<WebElement> siteCorePage;
+    
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout/android.webkit.WebView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeWebView[@name='WebView']")
+    public List<WebElement> externalWebView;
+    
+    @AndroidFindBy(xpath = "//*[contains(@text, 'ACCEPT ALL')]")
+	@iOSXCUITFindBy(xpath = "//*[@name='ACCEPT ALL']")
+	public List<WebElement> acceptAll;
+    
+    @iOSXCUITFindBy(xpath = "//*[@name='OK']")
+	public List<WebElement> okInPopup;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Match Centre')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='MATCH CENTRE']")
+    public List<WebElement> matchCentre;
 }

@@ -193,7 +193,7 @@ public class ExploreIosStepdef {
     }
 
     @And("user click on GENERAL link in setting screen in ios")
-    public void userClickOnGENERALLinkInSettingScreenInIos() {
+    public void userClickOnGENERALLinkInSettingScreenInIos() throws Exception {
         try {
             explorePage.clickOnGeneral();
             ExtentsReportManager.extentReportLogging("info", "Clicked on GENERAL link in setting screen in ios");
@@ -217,7 +217,7 @@ public class ExploreIosStepdef {
     }
 
     @And("user click on contact us link help screen in ios")
-    public void userClickOnContactUsLinkHelpScreenInIos() {
+    public void userClickOnContactUsLinkHelpScreenInIos() throws Exception {
         try {
             explorePage.clickOnContactUs();
             ExtentsReportManager.extentReportLogging("info", "Clicked on contact us link help screen in ios");
