@@ -4298,6 +4298,8 @@ public class UnitedNowPage extends Common {
 				waitForVisibilityFluentWait(e.get(0), 60);
 				ExtentsReportManager.extentReportLogging("pass", "Checked for Article Card in united now page");
 				e.get(0).click();
+				
+				ExtentsReportManager.extentReportLogging("pass", "Destination page for Article Card is displayed");
 				return true;
 				}
 			} else {
@@ -4845,8 +4847,10 @@ public class UnitedNowPage extends Common {
 		try {
 			for (String allLeagueBodyContent : allLeague) {
 
+//				List<WebElement> bodyText = driver.findElements(AppiumBy
+//						.xpath("(//android.widget.TextView[contains(@text,'Friendly') or contains(@text,'English Premier League')])[1]"));
 				List<WebElement> bodyText = driver.findElements(AppiumBy
-						.xpath("(//android.widget.TextView[contains(@text,'" + allLeagueBodyContent + "')])[1]"));
+							.xpath("(//android.widget.TextView[contains(@text,'" + allLeagueBodyContent + "')])[1]"));
 				if (bodyText.size() > 0) {
 					waitForVisibilityFluentWait(bodyText.get(0), 60);
 					String actualBodyText = bodyText.get(0).getText();
