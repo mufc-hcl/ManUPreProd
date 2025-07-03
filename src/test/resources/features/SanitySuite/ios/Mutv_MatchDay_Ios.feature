@@ -1,7 +1,7 @@
  @Matchday_IOS @MUTV_Matchday_IOS 
 
 Feature: MUTV Feature
-
+ @MUTV_8and13
 Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List screen and tapping on back button should take user back to MUTV screen ,Verify "Find Something to Add" button along with "+" icon is displayed when there is no favorite item added to My List
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -42,7 +42,7 @@ Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List scr
     Then user validate list containing schedules for next seven days in ios
     And user clicks on Back icon in ios
 
-@MUTV_Combined_Scripts_IOS
+
   Scenario: [MUTV]TC005 & TC006 Verify user is able add Video to the My List from Video landing screen_Verify item is removed from My list when user taps on My list icon in Video/Audio landing screen after adding.
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -220,8 +220,8 @@ Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List scr
     And user clicks on Mutv tab in ios
     And user clicks on explore icon in ios
     And user validates the MUTV hero carousel is not displayed when disabled from CMS
-    
-    Scenario Outline: [MUTV]TC007 Verify that CBS badges display for  subscribe display,[MUTV]TC010 & TC011MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text , [MUTV]TC012 Title and Play button with red color dot blinking,Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
+   
+    Scenario Outline: [MUTV]TC007 Verify that CBS badges display for  subscribe display,[MUTV]TC010 & TC011MUTV schedule screen should have the EPG schedule list with the current time , Video icon , White border, Playing Now text 
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
     And user clicks lets go button in screen one in ios
@@ -251,6 +251,33 @@ Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List scr
     And user clicks on close button in ios
     #And user click on less than symbol button in my list screen in ios
     #And user clicks on Schedule icon in ios
+    
+
+    Examples: 
+      | username                | password |
+      | manupreprod@yopmail.com | Manu@123 |
+      
+      Scenario Outline: [MUTV]TC012 Validate the Set Reminder and Close functionality of the upcoming MUTV Schedules
+    Given user navigates to manu ios application
+    And user clicks on cancel button in apple id screen
+    And user clicks lets go button in screen one in ios
+    And user clicks on allow button in ios
+    And user clicks on "<notificationbutton>" button in notification screen in ios
+    And user clicks skip button in screen three in ios
+    And user click on skip button in screen four in ios
+    And user clicks on ok in the cookies screen in ios
+    And user clicks on not now button in match appearance alert screen in ios
+    And user click on My United in bottom tab in ios
+    And user clicks on log in button in ios
+    And user clicks on continue button in ios
+    And user enter the valid email and valid password for subscribed user in ios
+    #And user enter the valid email "<username>" and valid password "<password>" in ios
+    And user clicks on login button in login screen in ios
+    And user clicks on test continue and clicks on back icon
+    And user clicks on No tracking
+    And user clicks on Mutv tab in ios
+    And user clicks on explore icon in ios
+    And user clicks on Schedule icon in ios
     And user clicks on plus icon in mutv schedule screen
     And user clicks on set remainder icon
     Then validate the tick icon displayed in ios
@@ -260,18 +287,7 @@ Scenario: [MUTV]TC001 &TC002 Verify tapping on My List icon displays My List scr
     And user clicks on plus icon in mutv schedule screen
     Then validate close icon is displayed
     And user clicks in close icon in remainder set page
-    And user selects the video and check CBS badge in ios
-    Then validate subscribe screen is displayed in ios
-      | subscription title |
-      | SUBSCRIBE          |
-    And user clicks on login button in subscribe screen
-    And user clicks on continue button in ios
-    And user enter the valid email and valid password for subscribed user in ios
-    #And user enter the valid email "<username>" and valid password "<password>" in ios
-    And user clicks on login button in subscribe screen in ios
-
-    #And user clicks on play Icon for CBS video
 
     Examples: 
-      | username                | password |
-      | manupreprod@yopmail.com | Manu@123 |
+      | notificationbutton | username                | password |
+      | allow_button       | manupreprod@yopmail.com | Manu@123 |

@@ -189,8 +189,8 @@ public class UnitedNowAndroidStepDef {
             Collections.sort(allLeagueFiltersDropDownValues);
             Collections.sort(actualDropDownValues);
 
-            log.info("Expected All league filters from API" + allLeagueFiltersDropDownValues);
-            log.info("Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
+            ExtentsReportManager.extentReportLogging("info","Expected All league filters from API" + allLeagueFiltersDropDownValues);
+            ExtentsReportManager.extentReportLogging("info","Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
             
             soft.assertEquals(allLeagueFiltersDropDownValues, actualDropDownValues);
             soft.assertAll();
