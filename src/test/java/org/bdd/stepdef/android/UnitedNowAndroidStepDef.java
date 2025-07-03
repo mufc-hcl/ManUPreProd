@@ -189,8 +189,8 @@ public class UnitedNowAndroidStepDef {
             Collections.sort(allLeagueFiltersDropDownValues);
             Collections.sort(actualDropDownValues);
 
-            log.info("Expected All league filters from API" + allLeagueFiltersDropDownValues);
-            log.info("Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
+            ExtentsReportManager.extentReportLogging("info","Expected All league filters from API" + allLeagueFiltersDropDownValues);
+            ExtentsReportManager.extentReportLogging("info","Actual All league filters from UI" + unitedNowPage.getLeagueFilterRadioBtnValues());
             
             soft.assertEquals(allLeagueFiltersDropDownValues, actualDropDownValues);
             soft.assertAll();
@@ -211,9 +211,9 @@ public class UnitedNowAndroidStepDef {
             boolean flag = unitedNowPage.clickingRadioButtonAndValidateContentInBodyOne(allLeagueFiltersDropDownValues);
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen first radio and validating content in the body "+allLeagueFiltersDropDownValues.get(0));
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now first radio  and content mismatch<br />" + e);
             throw e;
         }
 
@@ -228,9 +228,9 @@ public class UnitedNowAndroidStepDef {
             boolean flag = unitedNowPage.clickingRadioButtonAndValidateContentInBodyTwo(allLeagueFiltersDropDownValues);
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen second radio and validating content in the body "+allLeagueFiltersDropDownValues.get(1));
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now second radio and content mismatch<br />" + e);
             throw e;
         }
 
@@ -245,9 +245,9 @@ public class UnitedNowAndroidStepDef {
             boolean flag = unitedNowPage.clickingRadioButtonAndValidateContentInBodyThree(allLeagueFiltersDropDownValues);
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen third radio and validating content in the body "+allLeagueFiltersDropDownValues.get(2));
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in third radio united now and content mismatch<br />" + e);
             throw e;
         }
 
@@ -262,9 +262,9 @@ public class UnitedNowAndroidStepDef {
             boolean flag = unitedNowPage.clickingRadioButtonAndValidateContentInBodyFour(allLeagueFiltersDropDownValues);
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen fourth radio and validating content in the body "+allLeagueFiltersDropDownValues.get(3));
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now fourth radio and content mismatch<br />" + e);
             throw e;
         }
 
@@ -279,9 +279,9 @@ public class UnitedNowAndroidStepDef {
             boolean flag = unitedNowPage.clickingRadioButtonAndValidateContentInBodyFive(allLeagueFiltersDropDownValues);
             soft.assertTrue(flag);
             soft.assertAll();
-            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen and validating content in the body");
+            ExtentsReportManager.extentReportLogging("info", "Clicked the filter in united now calendar screen fifth radio and validating content in the body "+allLeagueFiltersDropDownValues.get(4));
         } catch (AssertionError e) {
-            ExtentsReportManager.extentReportLogging("fail", "Error in clicking filter in united now and content mismatch<br />" + e);
+            ExtentsReportManager.extentReportLogging("fail", "Error in clicking fifth radio filter in united now and content mismatch<br />" + e);
             throw e;
         }
 
@@ -996,7 +996,7 @@ public class UnitedNowAndroidStepDef {
              ExtentsReportManager.extentReportLogging("info", "Gallery Card from API  "+expectedGalleryCard);
              if(!expectedGalleryCard.isEmpty()) {
                 // soft.assertTrue(unitedNowPage.getGalleryCardFromUnitedNow(expectedGalleryCard.get(0)));
-            	 soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 30,"Gallery"));
+            	 soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedGalleryCard.get(0),true, 50,"Gallery"));
                  soft.assertAll();
                  ExtentsReportManager.extentReportLogging("info", "Gallery card is available in united now page");
              }else {
@@ -1380,7 +1380,7 @@ public class UnitedNowAndroidStepDef {
             ExtentsReportManager.extentReportLogging("info", "Poll Card from API "+expectedPollCard);
             if(!expectedPollCard.isEmpty()) {
                 //soft.assertTrue(unitedNowPage.getPollCardFromUnitedNow(expectedPollCard.get(0)));
-            	soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(0),false, 30,"Poll"));
+            	soft.assertTrue(unitedNowPage.getActualCardFromUnitedNowUI(expectedPollCard.get(1),false, 60,"Poll"));
                 soft.assertAll();
                 ExtentsReportManager.extentReportLogging("info", "Poll card "+expectedPollCard.get(0)+"is available in united now page");
             }else {

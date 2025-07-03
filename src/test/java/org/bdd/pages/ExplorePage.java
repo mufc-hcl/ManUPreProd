@@ -1206,17 +1206,17 @@ public class ExplorePage extends Common {
 	public void clickOnBrazeWebViewPopup() throws Exception {
 		try {
 			Thread.sleep(100);
-			switchToWebView();		
+					
 			List<WebElement> webViews = driver.findElements(By.xpath("//android.webkit.WebView[@text='Modal Message']"));
 			//System.out.println("***********"+webViews.toString());
 			if (webViews.size()>0) {
-				 
+				switchToWebView();
 				WebElement closeButton = driver.findElement(By.xpath("//android.widget.Button[contains(@text, 'Close')]"));
 				closeButton.click();
 				ExtentsReportManager.extentReportLogging("pass",  "Clicks on close button in braze Web view Popup "); 
-				
+				switchToNativeView(((AndroidDriver) driver));
 			}
-			switchToNativeView(((AndroidDriver) driver));
+			
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (StaleElementReferenceException se) {
@@ -2800,33 +2800,38 @@ public class ExplorePage extends Common {
 //		}
 //	}
 	public String getWhatsNewText() {
-	    String device = GlobalParams.getPlatformName();
-	    String whatsNew = null;
-	    
-	    try {
-	        if (device.equalsIgnoreCase("android")) {
-	            if (explorePageLocators.whatsNew.isDisplayed()) {
-	            	IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-	                whatsNew = explorePageLocators.whatsNew.getText();
-	                return whatsNew;
-	            } else {
-	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-	                whatsNew = explorePageLocators.whatsNew.getAttribute("name");
-	                return whatsNew;
-	            }
-	        } else { // iOS
-	            if (!explorePageLocators.whatsNew.isDisplayed()) {
-	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
-	            }
-	            whatsNew = explorePageLocators.whatsNew.getAttribute("name");
-	            return whatsNew;
-	        }
-	        
-	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getWhatsNew()<br />" + e);
-	        throw e;
-	    }
+		String device = GlobalParams.getPlatformName();
+		String whatsNew = null;
+
+		try {
+			// Keep scrolling until "what's new" is found or max attempts reached
+			int maxScrolls = 10;
+			int scrollCount = 0;
+
+			while ((explorePageLocators.whatsNew1 == null || explorePageLocators.whatsNew1.size() == 0
+					|| !explorePageLocators.whatsNew1.get(0).isDisplayed()) && scrollCount < maxScrolls) {
+				IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.2);
+				scrollCount++;
+			}
+
+			if (explorePageLocators.whatsNew1 != null && explorePageLocators.whatsNew1.size() > 0
+					&& explorePageLocators.whatsNew1.get(0).isDisplayed()) {
+				if (device.equalsIgnoreCase("android")) {
+					whatsNew = explorePageLocators.whatsNew1.get(0).getText();
+				} else {
+					whatsNew = explorePageLocators.whatsNew1.get(0).getAttribute("name");
+				}
+
+			}
+
+			return whatsNew;
+
+		} catch (Exception e) {
+			ExtentsReportManager.extentReportLogging("fail", "Exception occurred in function-getWhatsNewText()\n" + e);
+			throw e;
+		}
 	}
+
 
 }
  

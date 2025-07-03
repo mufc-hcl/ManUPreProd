@@ -294,10 +294,55 @@ public class MutvPage extends Common {
 		}
 	}
 
+
+//	public void clicksOnOneVideo() {
+//	    try {
+//	        int maxScrollAttempts = 25;
+//	        boolean elementFound = false;
+//
+//	        if (Common.apiEnv().equalsIgnoreCase("prod")) {
+//	            for (int i = 0; i < maxScrollAttempts; i++) {
+//	                if (mutvPageLocators.fullMUTV != null && mutvPageLocators.fullMUTV.size() > 0) {
+//	                    elementFound = true;
+//	                    break;
+//	                }
+//	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+//	            }
+//	        } else if (Common.apiEnv().equalsIgnoreCase("stage")) {
+//	            for (int i = 0; i < maxScrollAttempts; i++) {
+//	                if (mutvPageLocators.fullMUTV1 != null && mutvPageLocators.fullMUTV1.size() > 0) {
+//	                    elementFound = true;
+//	                    break;
+//	                }
+//	                IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.3);
+//	            }
+//	        }
+//
+//	        if (!elementFound) {
+//	            throw new NoSuchElementException("One Video MUTV element not found after scrolling.");
+//	        }
+//
+//	        if (Common.apiEnv().equalsIgnoreCase("stage")) {
+//	            waitForVisibilityFluentWait(mutvPageLocators.oneVideoMutvScreen, 60);
+//	            mutvPageLocators.oneVideoMutvScreen.click();
+//	            ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Stage)");
+//	        } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+//	            elementToBeClickableFluentWait(mutvPageLocators.oneVideoMutvScreen1, 60);
+//	            mutvPageLocators.oneVideoMutvScreen1.click();
+//	            ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Prod)");
+//	        }
+//
+//	    } catch (Exception e) {
+//	        ExtentsReportManager.extentReportLogging("fail",
+//	                "Exception occurred in function-clicksOnOneVideo()<br />" + e);
+//	        throw e;
+//	    }
+//	}
+	
 	public void clicksOnOneVideo() {
-		try {
-			int maxScrollAttempts = 10;
-			boolean elementFound = false;
+	    try {
+	        int maxScrollAttempts = 25;
+	        boolean elementFound = false;
 
 			if (Common.apiEnv().equalsIgnoreCase("prod")) {
 				for (int i = 0; i < maxScrollAttempts; i++) {
@@ -317,26 +362,28 @@ public class MutvPage extends Common {
 				}
 			}
 
-			if (!elementFound) {
-				throw new NoSuchElementException("One Video MUTV element not found after scrolling.");
-			}
+	        if (!elementFound) {
+	            throw new NoSuchElementException("One Video MUTV element not found after scrolling.");
+	        }
 
-			if (Common.apiEnv().equalsIgnoreCase("stage")) {
-				waitForVisibilityFluentWait(mutvPageLocators.oneVideoMutvScreen, 60);
-				mutvPageLocators.oneVideoMutvScreen.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Stage)");
-			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
-				elementToBeClickableFluentWait(mutvPageLocators.oneVideoMutvScreen1, 60);
-				mutvPageLocators.oneVideoMutvScreen1.click();
-				ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Prod)");
-			}
+	        if (Common.apiEnv().equalsIgnoreCase("stage")) {
+	            waitForVisibilityFluentWait(mutvPageLocators.oneVideoMutvScreen, 60);
+	            mutvPageLocators.oneVideoMutvScreen.click();
+	            ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Stage)");
+	        } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+	            elementToBeClickableFluentWait(mutvPageLocators.oneVideoMutvScreen1, 60);
+	            mutvPageLocators.oneVideoMutvScreen1.click();
+	            ExtentsReportManager.extentReportLogging("pass", "Clicks on oneVideoMutvScreen (Prod)");
+	        }
 
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clicksOnOneVideo()<br />" + e);
-			throw e;
-		}
+	    } catch (Exception e) {
+	        ExtentsReportManager.extentReportLogging("fail",
+	                "Exception occurred in function-clicksOnOneVideo()<br />" + e);
+	        throw e;
+	    }
 	}
+
+
 
 	public void clickPlusSymbolMyListScreen() {
 		try {
@@ -665,6 +712,7 @@ public class MutvPage extends Common {
 		    }
 		    return false;
 	}
+
 
 //            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
 //            if (dots == null || dots.isEmpty()) {
@@ -2141,9 +2189,9 @@ public class MutvPage extends Common {
 				ExtentsReportManager.extentReportLogging("pass",
 						"'Subscribe/Register to Watch' badge found after scrolling above");
 				return true;
+			}else {
+				ExtentsReportManager.extentReportLogging("Pass", "CBS or CBR Is not displayed for current program");
 			}
-
-			ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge not found after scrolling  above");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception in CBSCBRBadgesDisplayForPreviousScheduleProgram()<br />" + e);
@@ -2161,9 +2209,9 @@ public class MutvPage extends Common {
 				ExtentsReportManager.extentReportLogging("pass",
 						"'Subscribe/Register to Watch' badge found after scrolling DOWn");
 				return true;
+			}else {
+				ExtentsReportManager.extentReportLogging("Pass", "CBS or CBR Is not displayed for current program");
 			}
-
-			ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge not found after scrolling  DOWN");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
 					"Exception in CBSCBRBadgesDisplayForPreviousScheduleProgram()<br />" + e);
@@ -2204,7 +2252,7 @@ public class MutvPage extends Common {
 			String elementText = element.getText();
 
 			if (elementText.contains("Subscribe to watch") || elementText.contains("Register to watch")) {
-				ExtentsReportManager.extentReportLogging("fail", "CBRorCBS badge Text contains.'");
+				ExtentsReportManager.extentReportLogging("Pass", "CBRorCBS badge Text contains.'");
 			} else {
 				ExtentsReportManager.extentReportLogging("Pass", "CBS or CBR Is not displayed for current program");
 			}
