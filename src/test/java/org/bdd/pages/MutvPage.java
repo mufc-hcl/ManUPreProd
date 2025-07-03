@@ -1196,8 +1196,8 @@ public class MutvPage extends Common {
 	public void clicksOnPlayIconForCBRVideo() throws InterruptedException {
 		try {
 			Thread.sleep(5000);
-//            elementToBeClickableFluentWait(mutvPageLocators.playIconCBRVideoScreen, 60);
-//            mutvPageLocators.playIconCBRVideoScreen.click();
+            elementToBeClickableFluentWait(mutvPageLocators.playIconCBRVideoScreen, 60);
+            mutvPageLocators.playIconCBRVideoScreen.click();
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on playIconCBRVideoScreen ");
 		} catch (Exception e) {
 			ExtentsReportManager.extentReportLogging("fail",
@@ -2115,13 +2115,12 @@ public class MutvPage extends Common {
 
 	public void clicksinAppMsgIOSBrazeTestCloseButton() {
 		try {
-				if (Common.apiEnv().equalsIgnoreCase("prod")) {
 		            if (!mutvPageLocators.closeIconInAppMsgIosBrazeTest1.isEmpty()) {
 		                mutvPageLocators.closeIconInAppMsgIosBrazeTest.click();
 		                ExtentsReportManager.extentReportLogging("pass", 
 		                    "Clicked on Braze in-app message close button in iOS (Stage)");
 			  }
-				}
+				
 		} catch (NoSuchElementException ns) {
 			System.out.println("element is not displayed hence skipped");
 		} catch (NullPointerException np) {

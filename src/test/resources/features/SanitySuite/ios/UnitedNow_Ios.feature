@@ -434,7 +434,7 @@ Feature: United now
   #Examples:
   #| username                | password |
   #| manupreprod@yopmail.com | Manu@123 |
-  @Matchday_IOS
+  @Matchday_IOS @upsell
   Scenario: [United now]TC026 Validate the upsell functionality in United Now if upsell is enabled from CMS
     Given user navigates to manu ios application
     And user clicks on cancel button in apple id screen
@@ -444,7 +444,7 @@ Feature: United now
     And user click on skip button in screen four in ios
     And user clicks on ok in the cookies screen in ios
     And user clicks on not now button in match appearance alert screen in ios
-    Then user validates upsell functionality is displayed united now screen in ios using API
+   Then user validates upsell functionality is displayed united now screen using API
 
   #@logo1
   #Scenario: TC027 UNITED NOW All Configured Sponsor get displayed

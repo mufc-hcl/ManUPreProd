@@ -158,7 +158,7 @@ public class MutvPageLocators {
 //	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView[2]/XCUIElementTypeCell/XCUIElementTypeOther")
 	public WebElement pauseButton1;
 	
-	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/podcast_control_close\')]")
+	@AndroidFindBy(xpath = "//android.widget.ImageView[contains(@resource-id, 'fs_close_button')]")
 	@iOSXCUITFindBy(accessibility = "xCircleFill")
 	public WebElement closeButtonVideo;
 	

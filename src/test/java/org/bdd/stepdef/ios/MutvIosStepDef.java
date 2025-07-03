@@ -1124,6 +1124,10 @@ public class MutvIosStepDef {
 	                    password = props.getProperty("password_preprod");
 	                }
 
+	                if (username == null || password == null) {
+	                    throw new IllegalStateException("Username or password is null for the current environment");
+	                }
+
 	                idmPage.enterUsername(username);
 	                idmPage.enterPasswordInIos(password);
 	                ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password in ios");
@@ -1151,16 +1155,75 @@ public class MutvIosStepDef {
 	            soft.assertEquals(actualFindSomeThingToAdd.toUpperCase(), findSomeThingToAddAPI.toUpperCase());
 
 	            soft.assertAll();
-	            ExtentsReportManager.extentReportLogging("info", "verifying the following details using Api");
+	            ExtentsReportManager.extentReportLogging("info", "Verifying the following details using API");
 	        }
 	    } catch (AssertionError e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Error in verify the following details using Api<br />" + e);
+	        ExtentsReportManager.extentReportLogging("fail", "Assertion error during verification<br />" + e);
 	        throw e;
 	    } catch (Exception e) {
-	        ExtentsReportManager.extentReportLogging("fail", "Error in clicking on log in button in ios<br />" + e);
+	        ExtentsReportManager.extentReportLogging("fail", "Unexpected error in login flow<br />" + e);
 	        throw e;
 	    }
 	}
+
+//	public void userClicksOnLoginToAddCalenderButtonInIos() throws Throwable {
+//	    try {
+//	        if (Common.apiEnv().equalsIgnoreCase("stage")) {
+//	            mutvPage.clicksOnLoginToAddCalenderButtonInIos();
+//	            idmPage.clicksOnContinueButton();
+//
+//	            try {
+//	                Properties props = new PropertyFileManager().getProperties();
+//	                String username = null;
+//	                String password = null;
+//
+//	                if (Common.apiEnv().equalsIgnoreCase("stage")) {
+//	                    username = props.getProperty("username_stage");
+//	                    password = props.getProperty("password_stage");
+//	                } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+//	                    username = props.getProperty("username_preprod");
+//	                    password = props.getProperty("password_preprod");
+//	                }
+//
+//	                idmPage.enterUsername(username);
+//	                idmPage.enterPasswordInIos(password);
+//	                ExtentsReportManager.extentReportLogging("info", "Entered the valid username and password in ios");
+//	            } catch (AssertionError e) {
+//	                ExtentsReportManager.extentReportLogging("fail", "Error in entering valid username and password in ios<br />" + e);
+//	                throw e;
+//	            }
+//
+//	            idmPage.clicksOnLogInButton();
+//	            mutvPage.clicksOnLoginToAddCalenderButtonInIos();
+//	            mutvPage.clickOnMyListIcon();
+//	            ExtentsReportManager.extentReportLogging("info", "Clicked on log in button in ios");
+//
+//	        } else {
+//	            String myListTitleFromAPI = mutvAPIResponse.getMyListTitleFromAPI("MUTVMyListEndpoint");
+//	            String actualMyList = mutvPage.getMyListTitle();
+//	            soft.assertEquals(actualMyList.toUpperCase(), myListTitleFromAPI.toUpperCase());
+//
+//	            // String myListDescAPI = mutvAPIResponse.getMyListDescFromAPI("MUTVMyListEndpoint");
+//	            // String actualMyListDescAPI = mutvPage.getMyListDesc();
+//	            // soft.assertEquals(actualMyListDescAPI.toUpperCase(), myListDescAPI.toUpperCase());
+//
+//	            String findSomeThingToAddAPI = mutvAPIResponse.getFindSomeThingToAddFromAPI("MUTVMyListEndpoint");
+//	            String actualFindSomeThingToAdd = mutvPage.getFindSomeThingToAdd();
+//	            soft.assertEquals(actualFindSomeThingToAdd.toUpperCase(), findSomeThingToAddAPI.toUpperCase());
+//
+//	            soft.assertAll();
+//	            ExtentsReportManager.extentReportLogging("info", "verifying the following details using Api");
+//	        }
+//	    } catch (AssertionError e) {
+//	        ExtentsReportManager.extentReportLogging("fail", "Error in verify the following details using Api<br />" + e);
+//	        throw e;
+//	    } catch (Exception e) {
+//	        ExtentsReportManager.extentReportLogging("fail", "Error in clicking on log in button in ios<br />" + e);
+//	        throw e;
+//	    }
+//	}
+	
+	
 
 //	public void userClicksOnLoginToAddCalenderButtonInIos() throws Throwable {
 //		try {
