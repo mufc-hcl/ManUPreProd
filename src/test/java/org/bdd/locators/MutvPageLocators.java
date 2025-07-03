@@ -70,7 +70,7 @@ public class MutvPageLocators {
 	public WebElement oneVideoMutvScreen;
 	
 	@AndroidFindBy(xpath = "(//android.widget.ImageView[contains(@resource-id, \':id/card_image\')])[1]")
-	@iOSXCUITFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.mu.muclubapp.staging_mu_dxc:id/card_image\"]")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[contains(@name, \"Full 90:\")])[1]")
 	public WebElement oneVideoMutvScreen1;
 	
 	
@@ -132,7 +132,7 @@ public class MutvPageLocators {
 	public WebElement heroCarouselInMutvPage;
 	
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, 'mutv_view_pager_container')]/android.widget.LinearLayout")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Manchester United App\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[3]")
 	public WebElement heroCarouselInMutvPage1;
 	
 	@AndroidFindBy(xpath = "//*[contains(@resource-id, \':id/epg_time\')]")

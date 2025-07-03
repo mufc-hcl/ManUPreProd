@@ -1159,8 +1159,8 @@ public class MyUnitedPage extends Common {
 		        myUnitedPageLocators.appearanceTitleFour.click();
 		    }
 				} else {
-					 waitForVisibilityFluentWait(myUnitedPageLocators.viewSeasonFour, 60);
-					 myUnitedPageLocators.viewSeasonFour.click();
+					 waitForVisibilityFluentWait(myUnitedPageLocators.appereanceFourCardMyunited, 60);
+					 myUnitedPageLocators.appereanceFourCardMyunited.click();
 				}
 
 		} catch (Exception e) {

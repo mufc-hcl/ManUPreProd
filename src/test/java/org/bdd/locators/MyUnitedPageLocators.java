@@ -282,7 +282,7 @@ public class MyUnitedPageLocators {
 	// Appearance card
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_score')]")
 	public WebElement numberHeadingSeasonFour;
-
+						
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_title')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
 	public WebElement appearanceTitleFour;
@@ -290,6 +290,10 @@ public class MyUnitedPageLocators {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_title')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
 	public List<WebElement> appearanceTitleFour1;
+	
+	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, \":id/match_appearance_card\")]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCollectionView/XCUIElementTypeCell[position()=2 or position()=3]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
+	public WebElement appereanceFourCardMyunited;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id, ':id/appearance_description')]")
 	public WebElement thisSeasonFour;

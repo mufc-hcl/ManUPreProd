@@ -255,10 +255,10 @@ public class MutvIosStepDef {
 			boolean heroCarousel = mutvPage.clicksOnTheHeroCarouselDotsInMutvScreenIos();
             soft.assertTrue(heroCarousel,"Hero carousel is not present in mutv screen in ios");
 			soft.assertAll();
-			ExtentsReportManager.extentReportLogging("info", "Clicked on the hero carousel dots in Mutv screen in ios");
+			ExtentsReportManager.extentReportLogging("info", "Validates Hero carousel is present in mutv screen in ios");
 		} catch (AssertionError e) {
 			ExtentsReportManager.extentReportLogging("fail",
-					"Error in clicking on the hero carousel dots in Mutv screen in ios" + e);
+					"Error in validating hero carousel dots in Mutv screen in ios" + e);
 			throw e;
 		}
 	}

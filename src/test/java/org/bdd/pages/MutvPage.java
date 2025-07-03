@@ -305,7 +305,7 @@ public class MutvPage extends Common {
 						elementFound = true;
 						break;
 					}
-					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.5);
+					IosGenericLibrary.scroll(driver, null, IosGenericLibrary.ScrollDirection.DOWN, 0.7);
 				}
 			} else if (Common.apiEnv().equalsIgnoreCase("stage")) {
 				for (int i = 0; i < maxScrollAttempts; i++) {
@@ -652,18 +652,18 @@ public class MutvPage extends Common {
 			if (Common.apiEnv().equalsIgnoreCase("stage")) {
 				ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
 				return mutvPageLocators.heroCarouselInMutvPage.isDisplayed();
-			} else if (Common.apiEnv().equalsIgnoreCase("prod")) {
-				ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed ");
-				return mutvPageLocators.heroCarouselInMutvPage1.isDisplayed();
-			} else {
-				ExtentsReportManager.extentReportLogging("fail", "Unknown environment: " + Common.apiEnv());
-				return false;
-			}
-		} catch (Exception e) {
-			ExtentsReportManager.extentReportLogging("fail",
-					"Exception occurred in function-clicksOnTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
-			throw e;
-		}
+			 } else if (Common.apiEnv().equalsIgnoreCase("prod")) {
+		            if (mutvPageLocators.heroCarouselInMutvPage1.isDisplayed()) {
+		                ExtentsReportManager.extentReportLogging("pass", "Hero carousel is displayed in prod environment");
+		                return mutvPageLocators.heroCarouselInMutvPage1.isDisplayed();
+		            }
+		        }
+		    } catch (Exception e) {
+		        ExtentsReportManager.extentReportLogging("fail",
+		            "Exception occurred in function-validatesTheHeroCarouselDotsInMutvScreenIos()<br />" + e);
+		        throw e;
+		    }
+		    return false;
 	}
 
 //            List<WebElement> dots = mutvPageLocators.heroCarouselDotsMutvPage;
