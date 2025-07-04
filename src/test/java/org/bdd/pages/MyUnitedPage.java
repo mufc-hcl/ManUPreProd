@@ -1971,6 +1971,8 @@ public class MyUnitedPage extends Common {
 				myUnitedPageLocators.trackingMyUnited.click();
 			} else if (!myUnitedPageLocators.notToTrack1.isEmpty()) {
 				myUnitedPageLocators.notToTrack.click();
+			}else if (!myUnitedPageLocators.closeButtonLogin.isEmpty()) {
+				myUnitedPageLocators.closeButtonLogin.get(0).click();
 			}
 			ExtentsReportManager.extentReportLogging("pass", "Clicks on no tracking");
 		} catch (NoSuchElementException ns) {

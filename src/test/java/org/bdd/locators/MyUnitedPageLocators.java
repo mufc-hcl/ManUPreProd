@@ -474,7 +474,9 @@ public class MyUnitedPageLocators {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"No\"]")
 	public List<WebElement> trackingMyUnited1;
 	@iOSXCUITFindBy(accessibility = "Ask App Not to Track")
-	public List<WebElement> notToTrack1;
+	public List<WebElement> notToTrack1;	
+	@iOSXCUITFindBy(accessibility = "Close")
+	public List<WebElement> closeButtonLogin;
 	@iOSXCUITFindBy(accessibility = "Ask App Not to Track")
 	public WebElement notToTrack;
 	@AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id, ':id/com_braze_inappmessage_modal_text_layout')]")
